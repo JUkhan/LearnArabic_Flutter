@@ -1,0 +1,44 @@
+{   
+    "lines": [
+        
+        {
+            
+            "words": [
+                {"w": "I love your brotherx"},
+                {
+                    "w": "أخيك",
+                    "m": "your brother",
+                    "d": "rtl"
+                },
+                {
+                    "w": "أحب",
+                    "m": "i love",
+                    "d": "rtl"
+                }
+            ]
+        },
+        {
+            "mode": "list",
+            "words":[{"w":"This is a test title"}],
+            "lines":[
+                {
+                    "words":[{"w":"One"}]
+                },
+                {
+                    "words":[{"w":"Two"}]
+                },
+                {
+                    "words":[{"w":"Three"}]
+                }
+            ]
+        },
+        {
+            "nom":1,
+            "words":[{"w":"1."},{"w":"What is this?"},{"ws":100, "bbd":1, "a":"This is blank"}, {"w":"هذا؟", "m":"this", "d": "rtl"},{"w":"ما","m":"what","d": "rtl" }]
+        },
+        {
+            "nom":1,
+            "words":[{"w":"2."},{"w":"What is this?"},{"ws":100, "bbd":1, "a":"This is blank"}, {"w":"هذا؟", "m":"this", "d": "rtl"},{"w":"ما","m":"what","d": "rtl" }]
+        }
+    ]
+}
