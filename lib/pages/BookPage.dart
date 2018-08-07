@@ -6,6 +6,7 @@ import '../blocs/models/AsyncData.dart';
 import '../blocs/models/BookInfo.dart';
 import '../widgets/LoadingWidget.dart';
 import '../widgets/JErrorWidget.dart';
+import '../widgets/PageDataWidget.dart';
 
 class BookPage extends StatelessWidget {
   @override
@@ -28,7 +29,7 @@ class BookPage extends StatelessWidget {
               children: <Widget>[
                 LoadingWidget(snapshot.data),
                 JErrorWidget(snapshot.data),
-                ViewPageData(bloc, snapshot.data)
+                PageDataWidget(bloc, snapshot.data)
               ],
             ),
           );
@@ -55,10 +56,12 @@ class BookPage extends StatelessWidget {
                     Icons.arrow_back,
                     //color: Colors.pink[500],
                   ),
-                  onPressed: snapshot.data ?(){ 
-                    bloc.bookBloc.prev();
-                    Navigator.pushReplacementNamed(context, '/book');
-                   }: null,
+                  onPressed: snapshot.data
+                      ? () {
+                          bloc.bookBloc.prev();
+                          Navigator.pushReplacementNamed(context, '/book');
+                        }
+                      : null,
                 ),
           ),
           StreamBuilder<bool>(
@@ -67,91 +70,117 @@ class BookPage extends StatelessWidget {
             builder: (_, snapshot) => IconButton(
                   tooltip: 'Next page',
                   icon: Icon(Icons.arrow_forward),
-                  onPressed: snapshot.data ?(){ 
-                    Navigator.pushReplacementNamed(context, '/book');
-                    bloc.bookBloc.next();
-                  } : null,
+                  onPressed: snapshot.data
+                      ? () {
+                          Navigator.pushReplacementNamed(context, '/book');
+                          bloc.bookBloc.next();
+                        }
+                      : null,
                 ),
           ),
           Expanded(
-              child: Text(
-            'jasim khan test',
-            textAlign: TextAlign.center,
-            //style: ThemeData.dark().textTheme.body2,
-            // style: TextStyle(
-            //     fontWeight: FontWeight.bold,
-            //     fontStyle: FontStyle.italic,
-            //     //color: Colors.white24,
-            //     //fontSize: 20.0
-            //     ),
+              child: StreamBuilder<JWord>(
+            initialData: JWord.empty(),
+            stream: bloc.bookBloc.selectedWord,
+            builder: (_, snapshot) => snapshot.data.word.isEmpty
+                ? const Text('')
+                : Text(
+                    '${snapshot.data.english} / ${snapshot.data.bangla}',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.title,
+                  ),
           )),
-          IconButton(
-              tooltip: 'Details meaning',
-              icon: Icon(Icons.details),
-              onPressed: () {}),
+          StreamBuilder<JWord>(
+              initialData: JWord.empty(),
+              stream: bloc.bookBloc.selectedWord,
+              builder: (_, snapshot) {
+                if (snapshot.data.word.isNotEmpty) {
+                  return IconButton(
+                    tooltip: 'Details meaning',
+                    icon: Icon(Icons.details),
+                    onPressed: () {
+                      _showBottomSheet(context, snapshot.data);
+                    },
+                  );
+                }
+                return const Text('');
+              }),
         ],
       ),
     );
   }
-}
 
-class ViewPageData extends StatelessWidget {
-  final AsyncData<JPage> page;
-  final StateMgmtBloc bloc;
-  ViewPageData(this.bloc, this.page);
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      opacity: page.asyncStatus == AsyncStatus.loaded ? 1.0 : 0.0,
-      duration: const Duration(milliseconds: 500),
-      child: ListView(
-        children: _getListItem(page.data),
-      ),
-    );
-  }
-
-  List<Widget> _getListItem(JPage page) {
-    final list = List<Widget>();
-    if (page == null) {
-      return list;
-    }
-    page.lines.forEach((line) {
-      if ((line.words != null && line.words.length > 0)) {
-        var richText = new RichText(
-            maxLines: 3, text: TextSpan(text: line.words[0].word ?? ''));
-
-        list.add(new Container(
-          padding: EdgeInsets.all(20.0),
-          child: richText,
-        ));
-      }
-    });
-    return list;
-  }
-}
-
-//copy listView
-/*var exa=ListView(
-          children: <Widget>[            
-           
-            ListTile(
-              title: Text('4Hell item'),
+  void _showBottomSheet(BuildContext context, JWord word) {
+    showModalBottomSheet(
+        context: context,
+        builder: (bc) {
+          return Container(
+            //color: Colors.greenAccent,
+            padding: const EdgeInsets.all(5.0),
+            child: Column(
+              children: <Widget>[
+                RichText(
+                  text: _getTextSpan(context, word),
+                ),
+                Divider(),
+                _getStartSubstring(context, word),
+                _getEndSubstring(context, word),
+                Divider(),
+                _getDetails(context, word),
+              ],
             ),
-            ListTile(
-                title: new RichText(
-              //textDirection: TextDirection.rtl,
-              text: new TextSpan(
-                text: 'Hello ',
-                style: TextStyle(color: Colors.blueGrey[400], fontSize: 20.0),
-                children: <TextSpan>[
-                  new TextSpan(
-                      text: 'الْ', style: TextStyle(color: Colors.pink[300])),
-                  new TextSpan(
-                    text: 'رَّجُلُ',
-                    //style: new TextStyle(fontWeight: FontWeight.bold)
-                  ),
-                ],
-              ),
-            ))
-          ],
-        );*/
+          );
+        });
+  }
+
+  Widget _getStartSubstring(BuildContext context, JWord word) {
+    if (word.hasStartSubstr > 0) {
+      return RichText(
+          text: TextSpan(
+              text: word.word.substring(0, word.hasStartSubstr),
+              children: [TextSpan(text: ': under construction')],
+              style: TextStyle(fontSize: 26.0, color: Colors.pinkAccent)));
+    }
+    return Container();
+  }
+
+  Widget _getEndSubstring(BuildContext context, JWord word) {
+    if (word.hasEndSubstr > 0) {
+      return RichText(
+          text: TextSpan(
+              text: word.word.substring(word.word.length - word.hasEndSubstr),
+              children: [TextSpan(text: ': under construction')],
+              style: TextStyle(fontSize: 26.0, color: Colors.redAccent)));
+    }
+    return Container();
+  }
+
+  Widget _getDetails(BuildContext context, JWord word) {
+    return RichText(
+        text: TextSpan(
+            text: word.word.substring(0, word.hasStartSubstr),
+            children: [TextSpan(text: ': under construction')],
+            style: Theme.of(context).textTheme.title));
+  }
+
+  TextSpan _getTextSpan(BuildContext context, JWord word) {
+    final txtSpans = List<TextSpan>();
+    if (word.hasStartSubstr > 0) {
+      txtSpans.add(TextSpan(
+          text: word.word.substring(0, word.hasStartSubstr),
+          style: TextStyle(color: Colors.pinkAccent)));
+    }
+    txtSpans.add(TextSpan(
+      text: word.word
+          .substring(word.hasStartSubstr, word.word.length - word.hasEndSubstr),
+    ));
+    if (word.hasEndSubstr > 0) {
+      txtSpans.add(TextSpan(
+          text: word.word.substring(word.word.length - word.hasEndSubstr),
+          style: TextStyle(color: Colors.redAccent)));
+    }
+
+    return TextSpan(
+        style: Theme.of(context).textTheme.display1, children: txtSpans);
+  }
+}

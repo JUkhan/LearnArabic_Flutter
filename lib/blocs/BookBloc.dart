@@ -16,6 +16,7 @@ class BookBloc {
   final _bookNameController = BehaviorSubject<String>();
   final _pageIndexController = BehaviorSubject<int>();
   final _lessonIndexController=BehaviorSubject<int>();
+  final _selectedWord=PublishSubject<JWord>();
 
   BookBloc({@required this.rootBloc});
 
@@ -23,8 +24,9 @@ class BookBloc {
   Function(int)    get pageIndexAction  => _pageIndexController.sink.add;
   Function(int)    get lessonIndexAction => _lessonIndexController.sink.add;
 
+  Stream<JWord> get selectedWord=>_selectedWord.stream;
   Stream<String> get lessonInfo=>_lessonIndexController
-  .map((index)=> index>=0?'Lesson ${index+1} was reading':'');
+  .map((index)=> index>=0?'Lesson $index was reading':'');
 
   Stream<bool> get hasPrev=>_pageIndexController.map((index)=>index>1);
   Stream<bool> get hasNext=>_pageIndexController.map((index)=>index<totalPage);
@@ -98,10 +100,13 @@ Future<JPage> _loadPageData(String path) {
       pageIndexAction(currentPage);
     }
   }
-  
+
   dispose() {
     _bookNameController.close();
     _pageIndexController.close();
     _lessonIndexController.cast();
+  }
+  selectWord(JWord word){
+    _selectedWord.sink.add(word);
   }
 }

@@ -1,9 +1,12 @@
 
 import 'dart:async';
 import './BookBloc.dart';
+import './SettingBloc.dart';
 
 class StateMgmtBloc{
   BookBloc bookBloc;
+  SettingBloc settingBloc;
+
   final _navStreamController=StreamController<String>.broadcast();
   StreamSubscription<String> _navSubscription;
   Function(String) get navAction=>_navStreamController.sink.add;
@@ -23,6 +26,7 @@ class StateMgmtBloc{
       
     });
     bookBloc=BookBloc(rootBloc: this);
+    settingBloc=SettingBloc();
   }
 
   dispose(){

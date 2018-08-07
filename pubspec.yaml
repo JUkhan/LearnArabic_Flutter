@@ -8,8 +8,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  rxdart: ^0.18.1
-  video_player: ^0.6.4
+  rxdart: ^0.18.1  
+  flutter_webview_plugin: ^0.2.0
+  shared_preferences: ^0.4.2
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +31,7 @@ flutter:
   #To add assets to your application, add an assets section, like this:
   assets:   
     - assets/
+    - assets/images/
     - assets/book1/
     - assets/book1/lesson1/   
     - assets/book1/lesson2/

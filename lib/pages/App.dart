@@ -3,8 +3,9 @@ import './HomePage.dart';
 import './BookPage.dart';
 import '../blocs/AppStateProvider.dart';
 import '../blocs/StateMgmtBloc.dart';
-import 'AppTheme.dart';
 import './BookLessonsPage.dart';
+import '../widgets/DynamicThemeWidget.dart';
+import './SettingPage.dart';
 
 class App extends StatefulWidget {
   final StateMgmtBloc block;
@@ -22,16 +23,19 @@ class _AppState extends State<App> {
         borderRadius: BorderRadius.circular(10.0),
         child: AppStateProvider(
             stateMgmtBloc: widget.block,
-            child: new MaterialApp(
-              title: 'Pleasure of Allah',
-              theme:AppTheme.theme,
-              initialRoute: '/',
-              routes: {
-                '/': (_) => HomePage(),
-                '/book': (_) => BookPage(),
-                '/lessons':(_)=>BookLessonsPage()
-                },
-            )));
+            child: DynamicThemeWidget(
+                defaultTheme: Themes.light,
+                themedWidgetBuilder: (context, theme) => new MaterialApp(
+                      title: 'Pleasure of Allah',
+                      theme: theme,
+                      initialRoute: '/',
+                      routes: {
+                        '/': (_) => HomePage(),
+                        '/book': (_) => BookPage(),
+                        '/lessons': (_) => BookLessonsPage(),
+                        '/setting':(_)=> SettingPage()
+                      },
+                    ))));
   }
 
   @override

@@ -2,18 +2,18 @@
     "lines": [
         
         {
-            
-            "words": [
-                {"w": "I love your brotherx"},
-                {
-                    "w": "أخيك",
-                    "m": "your brother",
-                    "d": "rtl"
-                },
+            "mode":"img-sentence", "d":"rtl", "img":"house.png",
+            "words": [               
+                
                 {
                     "w": "أحب",
-                    "m": "i love",
-                    "d": "rtl"
+                    "e": "i love"
+                },
+                {
+                    "w": "أخيك",
+                    "e": "your brother",
+                    "ss": 1,
+                    "es": 1
                 }
             ]
         },

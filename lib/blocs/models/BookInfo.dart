@@ -29,13 +29,18 @@ T getValue<T>(Map<String, dynamic> json, String key, dynamic defaultValue){
 class JLine {
   final String direction;
   final String mode;
+  final String img;
+  final double height;
   final List<JLine> lines;
   final List<JWord> words;
+
   JLine({
     this.direction,
     this.mode,
+    this.img,
     this.lines,
-    this.words
+    this.words,
+    this.height
   });
   factory JLine.fromJson(Map<String, dynamic> json){
     var lines=<JLine>[];
@@ -53,23 +58,30 @@ class JLine {
     return JLine(
       direction: getValue<String>(json, 'd', 'ltr'),
       mode: getValue<String>(json, 'mode', ''),
+      img:  getValue<String>(json, 'img', 'house.png'),
+      height:  getValue<double>(json, 'height', 0.0),
       lines:lines,
       words:words
       );
   }
+  
 }
 class JWord{
   final String direction;
   final String word;
   final String bangla;
   final String english;
+  final int hasStartSubstr;
+  final int hasEndSubstr;
   final int wordSpace;
   JWord({
     this.direction,
     this.bangla,
     this.english,
     this.word,
-    this.wordSpace
+    this.wordSpace,
+    this.hasEndSubstr,
+    this.hasStartSubstr
   });
   factory JWord.fromJson(Map<String, dynamic> json){
     
@@ -78,16 +90,30 @@ class JWord{
       direction: getValue<String>(json, 'd', 'ltr'),
       bangla: getValue<String>(json, 'b', ''),
       english: getValue<String>(json, 'e', ''),
-      wordSpace: getValue<int>(json, 'ws', 0)
+      wordSpace: getValue<int>(json, 'ws', 0),
+      hasStartSubstr: getValue<int>(json, 'ss', 0),
+      hasEndSubstr: getValue<int>(json, 'es', 0),
     );
+  }
+
+  factory JWord.empty(){
+    return JWord(
+    direction:'',
+    bangla:'',
+    english:'',
+    word:'',
+    wordSpace:0,
+    hasEndSubstr:0,
+    hasStartSubstr:0 );
   }
   
 }
 
 class JPage{
+  final JLine title;
   final List<JVideo> videos;
   final List<JLine> lines;
-  JPage({this.lines, this.videos});
+  JPage({this.lines, this.videos, this.title});
   factory JPage.fromJson(Map<String, dynamic> json){
     var videos=<JVideo>[];
     var lines=<JLine>[];
@@ -99,6 +125,12 @@ class JPage{
       lines=(json['lines'] as List).cast<Map<String, dynamic>>()
       .map<JLine>((item)=>JLine.fromJson(item)).toList();
     }
-    return JPage(lines: lines, videos: videos);
+    var temp=getValue<dynamic>(json, 'title', null);
+    JLine title=temp==null?null:JLine.fromJson(temp);
+    return JPage(
+      lines: lines, 
+      videos: videos, 
+      title: title, 
+      );
   }
 }

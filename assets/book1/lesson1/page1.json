@@ -1,30 +1,98 @@
 {
+    "title":{
+        "mode":"lesson", "d":"rtl", "height":60.0,
+        "words":[
+            {"w":"اَلدَّرْسُ", "e":"lesson"},
+            {"w":"اْلأَوَّلُ", "e":"one"}
+        ]
+    },
     "videos":[
         {
             "id":"RXLwATGwQ-M", "title":"ARABIC ALPHABETS"
         },
         {
             "id":"70QgvVXhJZY", "title":"Arabic vowel signs"
+        },
+        {
+            "id":"wvpnmd0Tid4", "title":"Madinah Arabic Course B1 L1 P1"
         }
     ],
     "lines": [
+        {
+            "mode":"lesson", "height":50.0,"d":"rtl",
+            "words":[
+                {"w":"هَذَا", "e":"this"}
+            ]
+        },
         
         {
-            
-            "words": [
-                {"w": "I love your brother"},
-                {
-                    "w": "أخيك",
-                    "m": "your brother",
-                    "d": "rtl"
-                },
+            "mode":"img-sentence", "d":"rtl", "img":"door.png",
+            "words": [               
+                
                 {
                     "w": "أحب",
-                    "m": "i love",
-                    "d": "rtl"
+                    "e": "i love"                    
+                },
+                {
+                    "w": "أخيك",
+                    "e": "your brother",
+                    "es":1                    
+                },
+                {"w":"اَلدَّرْسُ", "e":"lesson"},
+                {"w":"اْلأَوَّلُ", "e":"one"}
+            ],
+            "lines":[
+                {
+                    "words": [               
+                
+                        {
+                            "w": "أحب",
+                            "e": "i love"                    
+                        },
+                        {
+                            "w": "أخيك",
+                            "e": "your brother",
+                            "es":1                    
+                        }
+                    ]
+                    
+                },
+                {
+                    "words": [               
+                
+                        {
+                            "w": "أحب",
+                            "e": "i love"                    
+                        },
+                        {
+                            "w": "أخيك",
+                            "e": "your brother",
+                            "es":1                    
+                        }
+                    ]
+                    
                 }
             ]
         },
+
+        {
+            "mode":"img-sentence", "d":"rtl", "img":"house.png",
+            "words": [               
+                
+                {
+                    "w": "أحب",
+                    "e": "i love"                    
+                },
+                {
+                    "w": "أخيك",
+                    "e": "your brother",
+                    "es":1,
+                    "ss":1                    
+                }
+            ]
+        },
+
+
         {
             "mode": "list",
             "words":[{"w":"This is a test title"}],

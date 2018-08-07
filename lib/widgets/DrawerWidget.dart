@@ -23,7 +23,9 @@ class DrawerWidget extends StatelessWidget {
                         ? Text('')
                         : OutlineButton(                           
                             child: Text(snapshot.data,),
-                            onPressed: () {},
+                            onPressed: () {
+                               Navigator.pushReplacementNamed(context, '/book');
+                            },
                           );
                   }),
               currentAccountPicture: new CircleAvatar(
@@ -37,7 +39,7 @@ class DrawerWidget extends StatelessWidget {
           Divider(),
           getTile(context, 'Book Marks', Icons.bookmark, '/book1'),
           Divider(),
-          getTile(context, 'Settings', Icons.settings, '/book1'),
+          getTile(context, 'Settings', Icons.settings, '/setting'),
           Divider(),
         ],
       ),
