@@ -34,7 +34,7 @@ class SettingBloc {
 
   static const String _fontKey = "fontKey";
   Future<double> _loadFontSize() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    SharedPreferences prefs = await SharedPreferences.getInstance();    
     return (prefs.getDouble(_fontKey) ?? 1.0);
   }
 }
