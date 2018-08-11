@@ -3,8 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+enum Themes { light, dark }
+
 class SettingBloc {
-  double _fontSize = 1.0;
+  Themes theme = Themes.dark;
+  double _fontSize = 2.0;
   SettingBloc() {
     _loadFontSize().then((value) {
       _fontSize = value;
@@ -20,7 +23,13 @@ class SettingBloc {
     return _fontSize;
   }
 
-  TextStyle getTextTheme(BuildContext context) {
+  TextStyle getTextTheme(BuildContext context, String direction) {
+    if (direction == 'ltr') {
+      if (_fontSize == 1.0)
+        return Theme.of(context).textTheme.title;
+      else if (_fontSize == 2.0) return Theme.of(context).textTheme.headline;
+      return Theme.of(context).textTheme.headline;
+    }
     if (_fontSize == 1.0)
       return Theme.of(context).textTheme.title;
     else if (_fontSize == 2.0)
@@ -34,7 +43,7 @@ class SettingBloc {
 
   static const String _fontKey = "fontKey";
   Future<double> _loadFontSize() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();    
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     return (prefs.getDouble(_fontKey) ?? 1.0);
   }
 }

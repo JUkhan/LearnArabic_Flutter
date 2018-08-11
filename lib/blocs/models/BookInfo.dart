@@ -58,7 +58,7 @@ class JLine {
     return JLine(
       direction: getValue<String>(json, 'd', 'ltr'),
       mode: getValue<String>(json, 'mode', ''),
-      img:  getValue<String>(json, 'img', 'house.png'),
+      img:  getValue<String>(json, 'img', ''),
       height:  getValue<double>(json, 'height', 0.0),
       lines:lines,
       words:words

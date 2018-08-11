@@ -3,6 +3,7 @@ import '../blocs/AppStateProvider.dart';
 import '../widgets/DrawerWidget.dart';
 import '../widgets/DynamicThemeWidget.dart';
 import '../blocs/StateMgmtBloc.dart';
+import '../blocs/SettingBloc.dart';
 
 class SettingPage extends StatefulWidget {
   @override
@@ -72,7 +73,7 @@ class _SettingPageState extends State<SettingPage> {
               },
               onChangeEnd: valueChange,
             ),
-            Text('اَلدَّرْسُ اْلأَوَّلُ', style: bloc.settingBloc.getTextTheme(context),)
+            Text('اَلدَّرْسُ اْلأَوَّلُ', style: bloc.settingBloc.getTextTheme(context, 'rtl'),)
           ],
         ),
       );
@@ -89,6 +90,8 @@ class _SettingPageState extends State<SettingPage> {
               groupValue: DynamicThemeWidget.of(context).theme,
               onChanged: (value) {
                 DynamicThemeWidget.of(context).setTheme(Themes.light);
+                bloc.settingBloc.theme=Themes.light;
+
               },
               title: new Text("Light"),
             ),
@@ -97,6 +100,7 @@ class _SettingPageState extends State<SettingPage> {
               groupValue: DynamicThemeWidget.of(context).theme,
               onChanged: (value) {
                 DynamicThemeWidget.of(context).setTheme(Themes.dark);
+                bloc.settingBloc.theme=Themes.dark;
               },
               title: new Text("Dark"),
             ),

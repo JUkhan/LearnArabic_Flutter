@@ -1,6 +1,6 @@
 {
     "title":{
-        "mode":"lesson", "d":"rtl", "height":60.0,
+        "mode":"lesson", "d":"rtl", "height":50.0,
         "words":[
             {"w":"اَلدَّرْسُ", "e":"lesson"},
             {"w":"اْلأَوَّلُ", "e":"one"}
@@ -26,136 +26,141 @@
         },
         
         {
-            "mode":"img-sentence", "d":"rtl", "img":"door.png",
-            "words": [               
-                
-                {
-                    "w": "أحب",
-                    "e": "i love"                    
-                },
-                {
-                    "w": "أخيك",
-                    "e": "your brother",
-                    "es":1                    
-                },
-                {"w":"اَلدَّرْسُ", "e":"lesson"},
-                {"w":"اْلأَوَّلُ", "e":"one"}
-            ],
-            "lines":[
-                {
-                    "words": [               
-                
-                        {
-                            "w": "أحب",
-                            "e": "i love"                    
-                        },
-                        {
-                            "w": "أخيك",
-                            "e": "your brother",
-                            "es":1                    
-                        }
-                    ]
-                    
-                },
-                {
-                    "words": [               
-                
-                        {
-                            "w": "أحب",
-                            "e": "i love"                    
-                        },
-                        {
-                            "w": "أخيك",
-                            "e": "your brother",
-                            "es":1                    
-                        }
-                    ]
-                    
-                }
-            ]
-        },
-
-        {
             "mode":"img-sentence", "d":"rtl", "img":"house.png",
             "words": [               
                 
                 {
-                    "w": "أحب",
-                    "e": "i love"                    
+                    "w": "هَذَا",
+                    "e": "this"                    
                 },
                 {
-                    "w": "أخيك",
-                    "e": "your brother",
-                    "es":1,
-                    "ss":1                    
+                    "w": "بَيْتٌ",
+                    "e": "a house"                                        
                 }
             ]
         },
 
-
         {
-            "mode": "list",
-            "words":[{"w":"This is a test title"}],
-            "lines":[
+            "mode":"img-sentence", "d":"rtl", "img":"mosque.png",
+            "words": [               
+                
                 {
-                    "words":[{"w":"One"}]
+                    "w": "هَذَا",
+                    "e": "this"                    
                 },
                 {
-                    "words":[{"w":"Two"}]
-                },
-                {
-                    "words":[{"w":"Three"}]
+                    "w": "مَسْجِدٌ",
+                    "e": "a mosque"
+                                      
                 }
             ]
         },
         {
-            "nom":1,
-            "words":[{"w":"1."},{"w":"What is this?"},{"ws":100, "bbd":1, "a":"This is blank"}, {"w":"هذا؟", "m":"this", "d": "rtl"},{"w":"ما","m":"what","d": "rtl" }]
-        },
-        {
-            "nom":1,
-            "words":[{"w":"2."},{"w":"What is this?"},{"ws":100, "bbd":1, "a":"This is blank"}, {"w":"هذا؟", "m":"this", "d": "rtl"},{"w":"ما","m":"what","d": "rtl" }]
-        },
-        {
-            "d": "rtl","mic":1,"mode":"table","cols":2,"border":1, "lineno":1,"bgcrows":1,
-            "lines":[
+            "mode":"img-sentence", "d":"rtl", "img":"door.png",
+            "words": [               
+                
                 {
-                   "mic":1,
-                    "words":[ 
-                        {"w": "مَنْ", "e":"who","b":""},
-                        {"w": "هَذَا", "e":"this","b":""},
-                        {"w": "الرَّجُلُ", "e":"man","b":""},
-                        {"w": "وَ", "e":"and","b":""},
-                        {"w": "مَنْ", "e":"who","b":""},
-                        {"w": "ذَلِكَ", "e":"that","b":""},
-                        {"w": "الرَّجُلُ؟", "e":"man","b":""}                
-                    ]
+                    "w": "هَذَا",
+                    "e": "this"                    
                 },
-                {   "mic":1, "ans":1,
-                    "words":[                 
-                        {  "a":"هَذَا"}                   
-                    ]
-                } ,
                 {
-                    "mic":1,
-                     "words":[ 
-                         {"w": "مَنْ", "e":"who","b":""},
-                         {"w": "هَذَا", "e":"this","b":""},
-                         {"w": "الرَّجُلُ", "e":"man","b":""},
-                         {"w": "وَ", "e":"and","b":""},
-                         {"w": "مَنْ", "e":"who","b":""},
-                         {"w": "ذَلِكَ", "e":"that","b":""},
-                         {"w": "الرَّجُلُ؟", "e":"man","b":""}                
-                     ]
-                 },
-                 {   "mic":1,"ans":1,
-                     "words":[                 
-                         {  "a":"هَذَا"}                   
-                     ]
-                 } 
+                    "w": "بَابٌ",
+                    "e": "a door"
+                                      
+                }
             ]
-            
+        },
+        {
+            "mode":"img-sentence", "d":"rtl", "img":"book.png",
+            "words": [               
+                
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "كِتَابٌ",
+                    "e": "a book"
+                                      
+                }
+            ]
+        },
+        {
+            "mode":"img-sentence", "d":"rtl", "img":"pen.png",
+            "words": [               
+                
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "قَلَمٌ",
+                    "e": "a pen"
+                                      
+                }
+            ]
+        },
+        {
+            "mode":"img-sentence", "d":"rtl", "img":"key.png",
+            "words": [               
+                
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "مِفْتَاحٌ",
+                    "e": "a key"
+                                      
+                }
+            ]
+        },
+        {
+            "mode":"img-sentence", "d":"rtl", "img":"table.png",
+            "words": [               
+                
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "مَكْتَبٌ",
+                    "e": "a table"
+                                      
+                }
+            ]
+        },
+        {
+            "mode":"img-sentence", "d":"rtl", "img":"bed.png",
+            "words": [               
+                
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "سَرِيْرٌ",
+                    "e": "a bed"
+                                      
+                }
+            ]
+        },
+        {
+            "mode":"img-sentence", "d":"rtl", "img":"chair.png",
+            "words": [             
+                
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "كُرْسِيٌّ",
+                    "e": "a chair"
+                                      
+                }
+            ]
         }
+
         
     ]
 }

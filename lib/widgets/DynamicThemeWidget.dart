@@ -1,13 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import '../blocs/SettingBloc.dart';
+import '../blocs/StateMgmtBloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppTheme {
   static get dark {
     final originalTextTheme = ThemeData.dark().textTheme;
-    final originalBody1 = originalTextTheme.body1;
-
+    final originalBody1 = originalTextTheme.body1;    
     return ThemeData.dark().copyWith(
         primaryColor: Colors.grey[800],
         accentColor: Colors.cyan[300],
@@ -26,13 +27,14 @@ class AppTheme {
 }
 
 typedef Widget ThemedWidgetBuilder(BuildContext context, ThemeData theme);
-enum Themes { light, dark }
+//enum Themes { light, dark }
 
 class DynamicThemeWidget extends StatefulWidget {
   final ThemedWidgetBuilder themedWidgetBuilder;
   final Themes defaultTheme;
+  final StateMgmtBloc bloc;
 
-  DynamicThemeWidget({Key key, this.defaultTheme, this.themedWidgetBuilder})
+  DynamicThemeWidget({Key key, this.bloc, this.defaultTheme, this.themedWidgetBuilder})
       : super(key: key);
 
   @override
@@ -55,7 +57,8 @@ class DynamicThemeWidgetState extends State<DynamicThemeWidget> {
       theme = widget.defaultTheme;
     loadThem().then((value) {
       setState(() {
-        theme= value == 'light' ? Themes.light : Themes.dark;        
+        theme= value == 'light' ? Themes.light : Themes.dark;  
+        widget.bloc.settingBloc.theme=theme;
       });
     });
     super.initState();

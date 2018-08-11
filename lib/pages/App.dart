@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../blocs/SettingBloc.dart';
 import './HomePage.dart';
 import './BookPage.dart';
 import '../blocs/AppStateProvider.dart';
@@ -20,10 +21,11 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(4.0),
         child: AppStateProvider(
             stateMgmtBloc: widget.block,
             child: DynamicThemeWidget(
+                bloc: widget.block,
                 defaultTheme: Themes.light,
                 themedWidgetBuilder: (context, theme) => new MaterialApp(
                       title: 'Pleasure of Allah',

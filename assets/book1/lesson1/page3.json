@@ -1,0 +1,170 @@
+{   
+    "lines": [
+        {
+            "mode":"lesson", "height":50.0,"d":"rtl",
+            "words":[
+                {"w":"اِقْرَأ", "e":"read"},
+                {"w":"وَ", "e":"and"},
+                {"w":"اكْتُبْ", "e":"write"}
+            ]
+        },
+        {
+            "mode":"read-and-write", "d":"rtl",
+            "words":[
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "مَكْتَبٌ.",
+                    "e": "a table"                                      
+                },
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "مَسْجِدٌ.",
+                    "e": "a mosque"
+                                      
+                },
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "قَلَمٌ.",
+                    "e": "a pen"
+                                      
+                },
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "سَرِيْرٌ.",
+                    "e": "a bed"
+                                      
+                },
+                {"w":"مَا", "e":"what"},
+                {"w":"هَذَا؟", "e":"this"},
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "كُرْسِيٌّ.",
+                    "e": "a chair"
+                                      
+                },
+                {"w":"أَ", "e":"interogative word"},
+                {"w":"هَذَا", "e":"this"},
+                {"w":"بَيْتٌ؟", "e":"a house"},
+                {"w":"لاَ،", "e":"no"},
+                {"w":"هَذَا", "e":"this"},
+                {"w":"مَسْجِدٌ.", "e":"a mosque"},
+                {"w":"مَا", "e":"what"},
+                {"w":"هَذَا؟", "e":"this"},
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "مِفْتَاحٌ.",
+                    "e": "a key"
+                                      
+                }
+            ]
+        },
+        {
+            "mode":"lesson","height":50.0, "d":"rtl",
+            "words":[
+                {"w":"مَنْ", "e":"who(is)"},
+                {"w":"هَذَا ؟", "e":"this"}
+            ]
+        },
+        {
+            "mode":"img-sentence", "img":"doctor.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"مَنْ", "e":"who"},
+                        {"w":"هَذَا ؟", "e":"this"}
+                    ]
+                },
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"طَبِيْبٌ.", "e":"a doctor"}
+                    ]
+                }
+            ]
+
+        },
+        {
+            "mode":"img-sentence", "img":"boy.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"مَنْ", "e":"who"},
+                        {"w":"هَذَا ؟", "e":"this"}
+                    ]
+                },
+                {
+                    "d":"rtl",
+                    "words":[                    
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"وَلَدٌ.", "e":"a boy"}
+                    ]
+                }
+            ]
+
+        },
+        {
+            "mode":"img-sentence", "img":"student.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"مَنْ", "e":"who"},
+                        {"w":"هَذَا ؟", "e":"this"}
+                    ]
+                },
+                {
+                    "d":"rtl",
+                    "words":[                    
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"طَالِبٌ.", "e":"a student"}
+                    ]
+                }
+            ]
+
+        },
+        {
+            "mode":"img-sentence", "img":"man.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"أَ", "e":"interogative word"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"وَلَدٌ ؟", "e":"a boy"}
+                    ]
+                },
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"لاَ،", "e":"no"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"رَجُلٌ.", "e":"a man"}
+                    ]
+                }
+            ]
+
+        }
+        
+    ]
+}

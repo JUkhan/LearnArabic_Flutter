@@ -85,7 +85,7 @@ class BookPage extends StatelessWidget {
             builder: (_, snapshot) => snapshot.data.word.isEmpty
                 ? const Text('')
                 : Text(
-                    '${snapshot.data.english} / ${snapshot.data.bangla}',
+                    '${snapshot.data.english}',
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.title,
                   ),
@@ -159,7 +159,7 @@ class BookPage extends StatelessWidget {
     return RichText(
         text: TextSpan(
             text: word.word.substring(0, word.hasStartSubstr),
-            children: [TextSpan(text: ': under construction')],
+            children: [TextSpan(text: word.english)],
             style: Theme.of(context).textTheme.title));
   }
 

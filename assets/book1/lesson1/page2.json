@@ -1,44 +1,131 @@
 {   
     "lines": [
-        
         {
-            "mode":"img-sentence", "d":"rtl", "img":"house.png",
-            "words": [               
-                
-                {
-                    "w": "أحب",
-                    "e": "i love"
-                },
-                {
-                    "w": "أخيك",
-                    "e": "your brother",
-                    "ss": 1,
-                    "es": 1
-                }
+            "mode":"lesson", "height":50.0,"d":"rtl",
+            "words":[
+                {"w":"مَا", "e":"what"},
+                {"w":"هَذَا؟", "e":"this"}
             ]
         },
         {
-            "mode": "list",
-            "words":[{"w":"This is a test title"}],
+            "mode":"img-sentence", "img":"house.png",
             "lines":[
                 {
-                    "words":[{"w":"One"}]
+                    "d":"rtl",
+                    "words":[
+                        {"w":"مَا", "e":"what"},
+                        {"w":"هَذَا؟", "e":"this"}
+                    ]
                 },
                 {
-                    "words":[{"w":"Two"}]
+                    "d":"rtl",
+                    "words":[
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"بَيْتٌ.", "e":"a house"}
+                    ]
                 },
                 {
-                    "words":[{"w":"Three"}]
+                    "d":"rtl",
+                    "words":[
+                        {"w":"أَ", "e":"interogative word"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"بَيْتٌ؟", "e":"a house"}
+                    ]
+                },
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"نَعَمُ،", "e":"yes"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"بَيْتٌ.", "e":"a house"}
+                    ]
                 }
             ]
+
         },
         {
-            "nom":1,
-            "words":[{"w":"1."},{"w":"What is this?"},{"ws":100, "bbd":1, "a":"This is blank"}, {"w":"هذا؟", "m":"this", "d": "rtl"},{"w":"ما","m":"what","d": "rtl" }]
+            "mode":"img-sentence", "img":"dress.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"مَا", "e":"what"},
+                        {"w":"هَذَا؟", "e":"this"}
+                    ]
+                },
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"قَمِيْصٌ.", "e":"a dress"}
+                    ]
+                }
+            ]
+
         },
         {
-            "nom":1,
-            "words":[{"w":"2."},{"w":"What is this?"},{"ws":100, "bbd":1, "a":"This is blank"}, {"w":"هذا؟", "m":"this", "d": "rtl"},{"w":"ما","m":"what","d": "rtl" }]
+            "mode":"img-sentence", "img":"chair.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"أَ", "e":"interogative word"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"سَرِيْرٌ؟", "e":"a bed"}
+                    ]
+                },
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"لاَ،", "e":"no"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"كُرْسِيٌّ.", "e":"a chair"}
+                    ]
+                }
+            ]
+
+        },
+        {
+            "mode":"img-sentence", "img":"pen.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"أَ", "e":"interogative word"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"مِفْتَاحٌ؟", "e":"a key"}
+                    ]
+                },
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"لاَ،", "e":"no"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"قَلَمٌ.", "e":"a pen"}
+                    ]
+                }
+            ]
+
+        },
+        {
+            "mode":"img-sentence", "img":"star.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"مَا", "e":"what"},
+                        {"w":"هَذَا؟", "e":"this"}
+                    ]
+                },
+                {
+                    "d":"rtl",
+                    "words":[                    
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"نَجْمٌ.", "e":"a star"}
+                    ]
+                }
+            ]
+
         }
     ]
 }

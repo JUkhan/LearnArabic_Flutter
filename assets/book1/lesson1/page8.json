@@ -1,0 +1,19 @@
+{
+    "lines":[
+    {
+        "mode":"lesson", "height":50.0,
+        "words":[
+            {"w":"Vocabulary:"}
+        ]
+    },
+    {
+        "mode":"vocabx", "d":"rtl",
+        "words":[
+            {"w":"بَيْتٌ", "e":"house"},
+            {"w":"بَيْتٌ", "e":"boy"},
+            {"w":"بَيْتٌ", "e":"mosque"}
+        ]
+    }
+
+]
+}

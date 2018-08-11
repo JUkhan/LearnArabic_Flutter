@@ -1,0 +1,71 @@
+{   
+    "lines": [
+       
+        {
+            "mode":"img-sentence", "img":"horse.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"أَ", "e":"interogative word"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"هِمَارٌ؟", "e":"a dog"},
+                        {"w":"لاَ،", "e":"no"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"حِصَانٌ.", "e":"a horse"}
+                    ]
+                }
+            ]
+
+        },
+        {
+            "mode":"img-sentence", "img":"camel.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"وَ", "e":"and"},
+                        {"w":"مَا", "e":"what"},
+                        {"w":"هَذَا؟", "e":"this"},
+                        {"w":"هَذَا", "e":"this"},                       
+                        {"w": "جَمَلٌ","e": "a camel"}
+                    ]
+                }
+            ]
+
+        },
+        {
+            "mode":"img-sentence", "img":"rooster.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"مَا", "e":"what"},
+                        {"w":"هَذَا؟", "e":"this"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"دِيْكٌ.", "e":"a rooster"}
+                    ]
+                }
+            ]
+
+        },        
+        {
+            "mode":"img-sentence", "img":"teacher.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"مَنْ", "e":"who"},
+                        {"w":"هَذَا؟", "e":"this"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"مُدَرِّسٌ.", "e":"a teacher"}
+                    ]
+                }
+            ]
+
+        }
+        
+        
+        
+    ]
+}
