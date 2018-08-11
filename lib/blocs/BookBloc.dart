@@ -124,9 +124,10 @@ class BookBloc {
     _pageIndexController.close();
     _lessonIndexController.cast();
   }
-
+  
   selectWord(JWord word) {
     _selectedWord.sink.add(word);
+    
   }
 
   Future<T> loadData<T>(String key, T defaultValue) async {

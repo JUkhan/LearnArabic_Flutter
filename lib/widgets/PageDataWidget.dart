@@ -27,8 +27,9 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
   @override
   void dispose() {
-    print('dispose all recognizers');
+    print('dispose all recognizers: ${_gestureList.length}');
     _gestureList.forEach((ges) => ges.dispose());
+    _gestureList.clear();
     super.dispose();
   }
 
@@ -105,7 +106,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         case 'card':
           list.add(_getCardMode(line));
           break;
-          case 'vocab':
+        case 'vocab':
           list.add(_getVocabMode(line));
           break;
         default:
@@ -120,23 +121,38 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     if (fontSize == 4.0) return height + height * 0.35;
     return height;
   }
-  Widget _getVocabMode(JLine line){
-    return Expanded(child:  GridView.count(  
-  crossAxisCount: 2,  
-  children: List.generate(line.words.length, (index) {
-    print(line.words[index].word+'-->');
-    return Center(
-      child: Text(
-        'بَيْتٌ',//line.words[index].word,
-         textDirection: _getDirection(line.direction),
-        style:widget.bloc.settingBloc.getTextTheme(_context, line.direction) ,
-      ),
-    );
-  }),
-));
+
+  Widget _getVocabMode(JLine line) {
+    var children = List<Widget>();
+    int i = 0, l = line.words.length;
+    
+    do {
+      var rc = List<Widget>();
+      rc.add(RichText(
+        //textScaleFactor: 0.5,
+        textDirection: _getDirection(line.direction),
+        text: _getTextSpan(line.words[i], line.direction),
+      ));
+      i++;
+      if (i < l) {
+        rc.add(RichText(
+          //textScaleFactor: 0.5,
+          textDirection: _getDirection(line.direction),
+          text: _getTextSpan(line.words[i], line.direction),
+        ));
+      }
+      i++;
+      children.add(Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: rc,
+      ));
+    } while (i < l);
+    return Column(children:children,);
   }
+
   Widget _getCardMode(JLine line) {
-    final list = List<Widget>();    
+    final list = List<Widget>();
     if (line.words.length > 0) {
       list.add(RichText(
         textDirection: _getDirection(line.direction),
@@ -146,7 +162,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
                 .toList()),
       ));
     }
-    if (line.words.length > 0 ) {
+    if (line.words.length > 0) {
       list.add(Divider());
     }
     if (line.lines.length > 0) {
@@ -158,14 +174,13 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
                     .toList()),
           )));
     }
-    
+
     return Card(
         child: Container(
-          padding: const EdgeInsets.all(10.0),
-      child: Column(
-        children: list,
-      )
-    ));
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: list,
+            )));
   }
 
   Widget _getLessonMode(JLine line) {
