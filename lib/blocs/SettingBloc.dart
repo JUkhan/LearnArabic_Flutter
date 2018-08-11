@@ -40,11 +40,10 @@ class SettingBloc {
 
     return Theme.of(context).textTheme.title;
   }
-//decoration: TextDecoration.underline,
-  ///               decorationStyle: TextDecorationStyle.wavy,
+
   static const String _fontKey = "fontKey";
   Future<double> _loadFontSize() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return (prefs.getDouble(_fontKey) ?? 1.0);
+    return (prefs.getDouble(_fontKey) ?? 2.0);
   }
 }

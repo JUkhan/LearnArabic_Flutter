@@ -2,7 +2,7 @@
     "lines": [
        
         {
-            "mode":"img-sentence", "img":"mercantile.png",
+            "mode":"img-sentence", "img":"merchant.png",
             "lines":[
                 {
                     "d":"rtl",
@@ -10,7 +10,7 @@
                         {"w":"مَنْ", "e":"who"},
                         {"w":"هَذَا؟", "e":"this"},
                         {"w":"هَذَا", "e":"this"},
-                        {"w":"تَاجِرٌ.", "e":"a mercantile"}
+                        {"w":"تَاجِرٌ.", "e":"a merchant"}
                     ]
                 }
             ]
