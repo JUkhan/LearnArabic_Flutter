@@ -1,4 +1,16 @@
 {
+    "title":{
+        "mode":"lesson", "d":"rtl", "height":50.0,
+        "words":[
+            {"w":"اَلدَّرْسُ", "e":"lesson"},
+            {"w":"الثَّانِيْ", "e":"two"}
+        ]
+    },
+    "videos":[
+        {
+            "id":"RXLwATGwQ-M", "title":"ARABIC ALPHABETS"
+        }       
+    ],
     "lines": [
         
         {

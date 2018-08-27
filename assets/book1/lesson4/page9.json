@@ -1,0 +1,45 @@
+{
+    "lines":[
+        {"mode":"card",
+         "lines":[
+             {"d":"ltr", "words":[{"w":"And a feminine noun is referred to by the pronoun هِيَ whether it denotes a human being, an animal or a thing. e.g."}]},
+             {"words":[{"w":"أَيْنَ آمِنَةُ؟"}]},
+             {"d":"ltr","words":[{"w":"Where is Aminah?"}]},
+             {"words":[{"w":"هِيَ فِي البَيْتِ."}]},
+             {"d":"ltr","words":[{"w":"She is in the house."}]},
+             {"words":[{"w":"أَيْنَ السَّعَةُ؟"}]},
+             {"d":"ltr","words":[{"w":"Where is the watch?"}]},
+             {"words":[{"w":"هِيَ عَلَي السَّرِيرِ."}]},
+             {"d":"ltr","words":[{"w":"It is on the bed"}]},
+             {"d":"ltr","words":[{"w":"\nMost feminine nouns end with a round ta (ة) but there are some which do not have any ending."}]}
+         ]   
+        },
+        {   "d":"ltr",
+            "mode":"lesson", "height":50.0,
+            "words":[{"w":"Note:"}]
+        },
+        {"mode":"card",
+            "lines":[
+                {"d":"ltr", "words":[{"w":"a. We have learn that the tanwin is the indefinite article, e.g. بَيْتٌ a house. The rule does not apply to proper nouns. So حَامِدٌ is just \"hamid\", not \"a hamid\".\n\n2. Feminine proper nouns have no tanwin, e.g. فَاطِمَةُ،  زَزْنَبُ،  آمِنَةُ "}]}               
+            ]   
+        },
+        {   "d":"ltr",
+            "mode":"lesson", "height":50.0,
+            "words":[{"w":"Vocabulary:"}]
+        },
+        {  
+            "mode":"vocab", 
+            "words":[
+                {"w":"أَيْنَ", "e":"were"},
+                {"w":"عَلَي", "e":"on"},
+                {"w":"السَّمَءُ", "e":"sky"},
+                {"w":"غُرْفَةٌ", "e":"room"},
+                {"w":"الفَصْلُ", "e":"class room"},
+                {"w":"الحَمَّامُ", "e":"bathroom"},
+                {"w":"المِرْحَاضُ", "e":"toilet"},
+                {"w":"المَطْبَخُ", "e":"kitchen"},
+                {"w":"فِي", "e":"in"}
+            ]
+        }
+    ]
+}

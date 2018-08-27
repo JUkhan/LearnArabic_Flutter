@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:meta/meta.dart';
+import './models/Bookmarks.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './StateMgmtBloc.dart';
@@ -13,20 +14,25 @@ class BookBloc {
   int currentPage = 0;
   int totalPage = 0;
   String _bookPath = '';
+  BookMarks _bm;
   final StateMgmtBloc rootBloc;
   final _bookNameController = BehaviorSubject<String>();
   final _pageIndexController = BehaviorSubject<int>();
   final _lessonIndexController = BehaviorSubject<int>();
+  final _bookmarksController = BehaviorSubject<bool>(seedValue: false);
   final _selectedWord = PublishSubject<JWord>();
 
   BookBloc({@required this.rootBloc}) {
     syncWithPref();
   }
 
+
+  Function(bool) get bookMarkAction => _bookmarksController.sink.add;
   Function(String) get bookNameAction => _bookNameController.sink.add;
   Function(int) get pageIndexAction => _pageIndexController.sink.add;
   Function(int) get lessonIndexAction => _lessonIndexController.sink.add;
 
+  Stream<bool> get bookMarkStream => _bookmarksController.stream;
   Stream<JWord> get selectedWord => _selectedWord.stream;
   Stream<String> get lessonInfo => _lessonIndexController
       .map((index) => index >= 0 ? 'Lesson $index page $currentPage was reading' : '');
@@ -50,7 +56,7 @@ class BookBloc {
         return Observable
             .fromFuture(_loadBookInfo(path))
             .map((data) => AsyncData.loaded(data))
-            .onErrorReturn(AsyncData.error('Unexpected error!'))
+            .onErrorReturn(AsyncData.error('Insha Allah, coming soon!'))
             .startWith(AsyncData.loading());
       });
 
@@ -65,7 +71,7 @@ class BookBloc {
         return Observable
             .fromFuture(_loadPageData(path))
             .map((data) => AsyncData.loaded(data))
-            .onErrorReturn(AsyncData.error('Unexpected error!'))
+            .onErrorReturn(AsyncData.error('Insha Allah, coming soon!'))
             .startWith(AsyncData.loading());
       });
 
@@ -97,17 +103,24 @@ class BookBloc {
 
   moveToLesson(int index) async {
     selectedLessonIndex = index;
-    lessonIndexAction(index);
+    currentPage = 0;   
     totalPage = await _getTotalPage('$_bookPath/lesson$selectedLessonIndex'); 
-    pageIndexAction(1);
-    currentPage = 1;
+    lessonIndexAction(index);
+    pageIndexAction(0);
+    bookMarkAction(false);
   }
 
+ moveToPage(int index) async {   
+    currentPage = index;   
+    pageIndexAction(currentPage);   
+    findBookMark();
+  }
   prev() {
     if (currentPage > 1) {
       currentPage--;
       pageIndexAction(currentPage);
       setData<int>(currentPage, _pageIndex);
+      findBookMark();
     }
   }
 
@@ -116,13 +129,16 @@ class BookBloc {
       currentPage++;
       pageIndexAction(currentPage);
       setData<int>(currentPage, _pageIndex);
+      findBookMark();
     }
   }
 
   dispose() {
     _bookNameController.close();
     _pageIndexController.close();
-    _lessonIndexController.cast();
+    _lessonIndexController.close();
+    _bookmarksController.close();
+    _selectedWord.close();
   }
   
   selectWord(JWord word) {
@@ -144,6 +160,12 @@ class BookBloc {
   }
 
   void syncWithPref() async {
+    String bmData=await loadData<String>(_bookMarks, '');
+    if(bmData.isNotEmpty){
+      _bm=BookMarks.fromStr(bmData);
+    }else{
+      _bm=BookMarks();
+    }
     String bookName = await loadData<String>(_bookName, '');
     int lesson = await loadData<int>(_lessonIndex, -1);
     int page = await loadData<int>(_pageIndex, -1);
@@ -159,10 +181,34 @@ class BookBloc {
       currentPage=page;
       pageIndexAction(page);
       totalPage = await _getTotalPage('$_bookPath/lesson$selectedLessonIndex'); 
+      findBookMark();
     } 
+    
   }
-
+   void findBookMark(){    
+    bookMarkAction(
+    _bm.find(int.parse(_bookPath.substring(5)), selectedLessonIndex, currentPage)
+    );
+  }
+  void bookMark(){    
+    bookMarkAction(
+    _bm.add(int.parse(_bookPath.substring(5)), selectedLessonIndex, currentPage)
+    );
+    setData(BookMarks.getJson(_bm), _bookMarks);
+  }
+  List<BMBook> get books=>_bm.bids..sort((a,b)=>a.id-b.id);
+  openBookMark(int book, int lesson, int page) async {
+    _bookPath='/book$book';
+    selectedLessonIndex = lesson;
+    currentPage = page;   
+    totalPage = await _getTotalPage('$_bookPath/lesson$selectedLessonIndex');
+    bookNameAction(_bookPath); 
+    lessonIndexAction(lesson);
+    pageIndexAction(page);
+    findBookMark();
+  }
   static const String _bookName = 'bookName';
   static const String _lessonIndex = 'lessonIndex';
   static const String _pageIndex = 'pageIndex';
+  static const String _bookMarks='#BM#';
 }

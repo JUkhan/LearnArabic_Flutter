@@ -36,6 +36,13 @@ flutter:
     - assets/book1/lesson1/   
     - assets/book1/lesson2/
     - assets/book1/lesson3/
+    - assets/book1/lesson4/
+    - assets/book1/lesson5/
+    - assets/book1/lesson6/
+    - assets/book1/lesson7/
+    - assets/book1/lesson8/
+    - assets/book1/lesson9/
+    - assets/book1/lesson10/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

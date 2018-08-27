@@ -9,7 +9,7 @@
             ]
         },
         {
-            "mode":"read-and-write", "d":"rtl",
+            "mode":"raw", "d":"rtl",
             "words":[
                 {
                     "w": "هَذَا",

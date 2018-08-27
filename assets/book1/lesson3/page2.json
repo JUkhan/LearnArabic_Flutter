@@ -1,44 +1,141 @@
 {   
     "lines": [
-        
         {
-            
-            "words": [
-                {"w": "I love your brother"},
+            "mode": "img-sentence",
+            "img": "3chair.png",
+            "d": "rtl",
+            "words":[
                 {
-                    "w": "أخيك",
-                    "m": "your brother",
-                    "d": "rtl"
-                },
+                    "w": "الْكُرْسِيُّ",
+                    "e": "chair"
+                },               
                 {
-                    "w": "أحب",
-                    "m": "i love",
-                    "d": "rtl"
+                    "w": "مَكُسُورٌ",
+                    "e": "broken"
                 }
             ]
         },
         {
-            "mode": "list",
-            "words":[{"w":"This is a test title"}],
-            "lines":[
+            "mode": "img-sentence",
+            "img": "3water.png",
+            "d": "rtl",
+            "words":[
                 {
-                    "words":[{"w":"One"}]
-                },
+                    "w": "الْمَاءُ",
+                    "e": "water"
+                },               
                 {
-                    "words":[{"w":"Two"}]
-                },
-                {
-                    "words":[{"w":"Three"}]
+                    "w": "بَارِدٌ",
+                    "e": "cold"
                 }
             ]
         },
         {
-            "nom":1,
-            "words":[{"w":"1."},{"w":"What is this?"},{"ws":100, "bbd":1, "a":"This is blank"}, {"w":"هذا؟", "m":"this", "d": "rtl"},{"w":"ما","m":"what","d": "rtl" }]
+            "mode": "img-sentence",
+            "img": "3moon.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "الْقَمَرُ",
+                    "e": "moon"
+                },               
+                {
+                    "w": "جَمِيْلٌ",
+                    "e": "beautiful"
+                }
+            ]
         },
         {
-            "nom":1,
-            "words":[{"w":"2."},{"w":"What is this?"},{"ws":100, "bbd":1, "a":"This is blank"}, {"w":"هذا؟", "m":"this", "d": "rtl"},{"w":"ما","m":"what","d": "rtl" }]
+            "mode": "img-sentence",
+            "img": "3house.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "الْبَيْتُ",
+                    "e": "house"
+                },               
+                {
+                    "w": "قَرِيْبٌ",
+                    "e": "near"
+                },
+                {
+                    "w": "وَالْمَسْجِدُ",
+                    "e": "mosque"
+                },               
+                {
+                    "w": "بَعِيْدٌ",
+                    "e": "far away"
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3stone.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "الْحَجَرُ",
+                    "e": "rock"
+                },               
+                {
+                    "w": "ثَقِيْلٌ",
+                    "e": "heavy"
+                },
+                {
+                    "w": "وَالْوَرَقُ",
+                    "e": "paper"
+                },               
+                {
+                    "w": "خَفِيْفٌ",
+                    "e": "light"
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3milk.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "اللَّبَنُ",
+                    "e": "milk"
+                },               
+                {
+                    "w": "حَارٌّ",
+                    "e": "hot"
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3shirt.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "القَمِيْصُ",
+                    "e": "dress"
+                },               
+                {
+                    "w": "نَاظِيْفٌ",
+                    "e": "clean"
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3eng.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "المُهَنْدِسُ",
+                    "e": "engineer"
+                },               
+                {
+                    "w": "وَاقِفٌ",
+                    "e": "standing"
+                }
+            ]
         }
+
     ]
 }

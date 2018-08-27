@@ -19,6 +19,14 @@ class BookPage extends StatelessWidget {
           stream: bloc.bookBloc.pageTitle,
           builder: (_, snapshot) => Text(snapshot.data),
         ),
+        actions: <Widget>[IconButton(
+          onPressed: bloc.bookBloc.bookMark, 
+          tooltip: 'Toggle Book Marks',         
+          icon: StreamBuilder<bool>(
+            initialData: false,
+            stream: bloc.bookBloc.bookMarkStream,
+            builder: (_, snapshot)=>Icon(Icons.star, color:snapshot.data? Colors.pink[400]:null,),
+          ))], //Icon(Icons.star, color: Colors.pink[400],),)],
       ),
       body: StreamBuilder<AsyncData<JPage>>(
         initialData: AsyncData.loading(),
@@ -85,7 +93,7 @@ class BookPage extends StatelessWidget {
             builder: (_, snapshot) => snapshot.data.word.isEmpty
                 ? const Text('')
                 : Text(
-                    '${snapshot.data.english}',
+                    _getMeaning(snapshot.data),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.title,
                   ),
@@ -109,8 +117,38 @@ class BookPage extends StatelessWidget {
       ),
     );
   }
-
+  String _getMeaning(JWord word){
+    StringBuffer buffer=StringBuffer();
+    if(word.word.startsWith('الْ')||word.word.startsWith('ال')){
+      buffer.write('the ');
+    }
+    else if(word.word.startsWith('وَالْ')|| word.word.startsWith('وَال')){
+      buffer.write('and the ');
+    }
+    buffer.write(word.english);
+    return buffer.toString();
+  }
   void _showBottomSheet(BuildContext context, JWord word) {
+    int ss=word.hasStartSubstr;
+    int es=word.hasEndSubstr;
+    var hasAl=false;
+    if(ss==0){
+      if(word.word.startsWith('الْ')){ ss=3; hasAl=true;}
+      else if(word.word.startsWith('ال')){ss=2; hasAl=true;}
+      else if(word.word.startsWith('وَالْ')){ ss=5; hasAl=true;}
+      else if(word.word.startsWith('وَال')){ss=4; hasAl=true;}
+    }
+    if(es==0){
+     //if(hasAl)es=2;
+    }
+    word=JWord(
+      word: word.word,
+      english: word.english,
+      bangla: word.bangla,
+      hasStartSubstr: ss,
+      hasEndSubstr: es,
+      wordSpace: word.wordSpace
+    );
     showModalBottomSheet(
         context: context,
         builder: (bc) {
@@ -120,6 +158,7 @@ class BookPage extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 RichText(
+                  textDirection: TextDirection.rtl,
                   text: _getTextSpan(context, word),
                 ),
                 Divider(),
@@ -132,13 +171,22 @@ class BookPage extends StatelessWidget {
           );
         });
   }
-
+  String _getSubStringMeaning(String val){
+    switch (val) {
+      case 'الْ':
+      case 'ال': return 'the ';
+      case 'وَالْ':
+      case 'وَال': return 'and the ';  
+      default: return '';
+    }
+  }
   Widget _getStartSubstring(BuildContext context, JWord word) {
     if (word.hasStartSubstr > 0) {
+      var subStr=word.word.substring(0, word.hasStartSubstr);
       return RichText(
           text: TextSpan(
-              text: word.word.substring(0, word.hasStartSubstr),
-              children: [TextSpan(text: ': under construction')],
+              text: subStr,
+              children: [TextSpan(text: ' : '+_getSubStringMeaning(subStr))],
               style: TextStyle(fontSize: 26.0, color: Colors.pinkAccent)));
     }
     return Container();
@@ -146,10 +194,11 @@ class BookPage extends StatelessWidget {
 
   Widget _getEndSubstring(BuildContext context, JWord word) {
     if (word.hasEndSubstr > 0) {
+      var subStr= word.word.substring(word.word.length - word.hasEndSubstr);
       return RichText(
           text: TextSpan(
-              text: word.word.substring(word.word.length - word.hasEndSubstr),
-              children: [TextSpan(text: ': under construction')],
+              text:subStr,
+              children: [TextSpan(text: ' : '+_getSubStringMeaning(subStr))],
               style: TextStyle(fontSize: 26.0, color: Colors.redAccent)));
     }
     return Container();
@@ -158,8 +207,8 @@ class BookPage extends StatelessWidget {
   Widget _getDetails(BuildContext context, JWord word) {
     return RichText(
         text: TextSpan(
-            text: word.word.substring(0, word.hasStartSubstr),
-            children: [TextSpan(text: word.english)],
+            text:_getMeaning(word), //word.word.substring(word.hasStartSubstr, word.word.length - word.hasEndSubstr),
+            //children: [TextSpan(text: _getMeaning(word))],
             style: Theme.of(context).textTheme.title));
   }
 

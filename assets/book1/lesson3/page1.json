@@ -1,15 +1,209 @@
 {
-    "lines": [
-        
+    "title": {
+        "mode": "lesson",
+        "d": "rtl",
+        "height": 50.0,
+        "words": [
+            {
+                "w": "اَلدَّرْسُ",
+                "e": "Lesson"
+            },
+            {
+                "w": "الثَّالِثُ",
+                "e": "Three"
+                
+            }
+        ]
+    },
+    "videos": [
         {
-            
-            "words": [
-                {"w":"New words:"},
-                { "w":"الكلمة الجديدة",  "e": "New Words","b":"নতুন শব্দ", "d": "rtl"}
-               
-            ]
+            "id": "RXLwATGwQ-M",
+            "title": "ARABIC ALPHABETS"
         }
-        
-        
+    ],
+    "lines": [
+        {
+            "mode": "img-sentence",
+            "img": "3house.png",
+            "lines": [
+                {
+                    "d": "rtl",
+                    "words": [
+                        {
+                            "w": "بَيْتٌ",
+                            "e": "a house"
+                        },
+                        {"w":":"},
+                        {
+                            "w": "الْبَيْتُ",
+                            "e": "house",
+                            "ss":3,
+                            "es":2
+                        }
+                    ]
+                },
+                {
+                    "d": "rtl",
+                    "words": [
+                        {
+                            "w": "قَلَمٌ",
+                            "e": "a pen"
+                        },
+                        {"w":":"},
+                        {
+                            "w": "الْقَلَمُ",
+                            "e": "pen",
+                            "ss":3,
+                            "es":2
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "book.png",
+            "lines": [
+                {
+                    "d": "rtl",
+                    "words": [
+                        {
+                            "w": "كِتَابٌ",
+                            "e": "a book"
+                        },
+                        {"w":":"},
+                        {
+                            "w": "الْكِتَابُ",
+                            "e": "book",
+                            "ss":3,
+                            "es":2
+                        }
+                    ]
+                },
+                {
+                    "d": "rtl",
+                    "words": [
+                        {
+                            "w": "جَمَلٌ",
+                            "e": "a camel"
+                        },
+                        {"w":":"},
+                        {
+                            "w": "الْجَمَلُ",
+                            "e": "camel",
+                            "ss":3,
+                            "es":2
+                        }
+                        
+                    ]
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3pen.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "الْقَلَمُ",
+                    "e": "pen"
+                },               
+                {
+                    "w": "مَكْصُورٌ.",
+                    "e": "broken"
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3door.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "البَابُ",
+                    "e": "door"
+                },               
+                {
+                    "w": "مَفْتُوحٌ.",
+                    "e": "open"
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3boy.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "الْوَلَدُ",
+                    "e": "boy"
+                },               
+                {
+                    "w": "جَالِسٌ.",
+                    "e": "sitting"
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3teacher.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "وَالْمُدَرِّسُ",
+                    "e": "teacher"
+                },               
+                {
+                    "w": "وَاقِفٌ.",
+                    "e": "standing"
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3book.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "الْكِتَابُ",
+                    "e": "book"
+                },               
+                {
+                    "w": "جَدِيْدٌ",
+                    "e": "new"
+                },
+                {
+                    "w": "وَالْقَلَمُ",
+                    "e": "pen"
+                },               
+                {
+                    "w": "قَدِيْمٌ",
+                    "e": "old"
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3horse.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "الْحِمَارُ",
+                    "e": "donkey"
+                },               
+                {
+                    "w": "صَغِرٌ",
+                    "e": "small"
+                },
+                {
+                    "w": "وَالْحِصَانُ",
+                    "e": "horse"
+                },               
+                {
+                    "w": "كَبِيرٌ",
+                    "e": "big"
+                }
+            ]
+        }        
     ]
 }

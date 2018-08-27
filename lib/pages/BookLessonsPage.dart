@@ -58,7 +58,7 @@ class LessonWidget extends StatelessWidget {
               selected: bloc.bookBloc.selectedLessonIndex==index+1,
               onTap: (){
                 bloc.bookBloc.moveToLesson(index+1);                
-                Navigator.pushReplacementNamed(context, '/book');
+                Navigator.pushReplacementNamed(context, '/page');
               },
             ),
       ),

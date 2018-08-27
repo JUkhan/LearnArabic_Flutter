@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../pages/BookmarkPage.dart';
+import '../pages/Pages.dart';
 import '../blocs/SettingBloc.dart';
 import './HomePage.dart';
 import './BookPage.dart';
@@ -35,7 +37,9 @@ class _AppState extends State<App> {
                         '/': (_) => HomePage(),
                         '/book': (_) => BookPage(),
                         '/lessons': (_) => BookLessonsPage(),
-                        '/setting':(_)=> SettingPage()
+                        '/setting':(_)=> SettingPage(),
+                        '/page':(_)=> Pages(),
+                        '/markbook':(_)=>BookMarkPage()
                       },
                     ))));
   }

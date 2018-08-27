@@ -1,0 +1,44 @@
+{
+    "lines":[        
+        
+        { "d":"ltr",
+            "mode":"lesson", "height":50.0,
+            "words":[{"w":"POINTS TO REMEMBER"}]
+        },
+        {"mode":"padding", "height":5.0},
+        { "d":"ltr",
+            "mode":"card",
+            "words":[{"w":"In this lesson, we learn the use of ذَلِكَ meaning \"that\", and وَ meaning \"and\", e.g. "}]
+        },
+        {
+            "mode":"card",
+           "lines":[
+               { "d":"ltr",
+                   "words":[
+                       {"w":"This is a house and that is a mosque."}
+                   ]
+               },
+               {
+                  
+                "words":[
+                    {"w":" هَذَا بَيْتٌ، وَذَلِكَ مَسْجِدٌ."}
+                ]
+            }
+           ]
+        },
+        { "d":"ltr",
+            "mode":"lesson", "height":50.0,
+            "words":[
+                {"w":"Vocabulary:"}
+            ]
+        },
+        {
+            "mode":"vocab", "d":"rtl",
+            "words":[
+                {"w":"إِمَامٌ", "e":"imamh"},
+                {"w":"حَجَرٌ", "e":"stone"},
+                {"w":"سُكَّرٌ", "e":"sugar"},
+                {"w":"لَبَنٌ", "e":"milk"}]
+            }
+    ]
+}

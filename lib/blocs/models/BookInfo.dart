@@ -30,6 +30,7 @@ class JLine {
   final String direction;
   final String mode;
   final String img;
+  bool isHide= false;
   final double height;
   final List<JLine> lines;
   final List<JWord> words;
@@ -56,7 +57,7 @@ class JLine {
       .map<JWord>((item)=>JWord.fromJson(item)).toList();
     }
     return JLine(
-      direction: getValue<String>(json, 'd', 'ltr'),
+      direction: getValue<String>(json, 'd', 'rtl'),
       mode: getValue<String>(json, 'mode', ''),
       img:  getValue<String>(json, 'img', ''),
       height:  getValue<double>(json, 'height', 0.0),
@@ -87,7 +88,7 @@ class JWord{
     
     return JWord(
       word: getValue<String>(json, 'w', ''),
-      direction: getValue<String>(json, 'd', 'ltr'),
+      direction: getValue<String>(json, 'd', 'rtl'),
       bangla: getValue<String>(json, 'b', ''),
       english: getValue<String>(json, 'e', ''),
       wordSpace: getValue<int>(json, 'ws', 0),
@@ -96,12 +97,12 @@ class JWord{
     );
   }
 
-  factory JWord.empty(){
+  factory JWord.empty({String text=''}){
     return JWord(
     direction:'',
     bangla:'',
     english:'',
-    word:'',
+    word:text,
     wordSpace:0,
     hasEndSubstr:0,
     hasStartSubstr:0 );

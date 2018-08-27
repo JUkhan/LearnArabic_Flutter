@@ -1,3 +1,101 @@
 {
-    "data":"page3 data"
+    "lines":[
+        {
+            "mode":"lesson", "height":50.0,"d":"rtl",
+            "words":[
+                {"w":"تَمْرِيْنٌ", "e":"Exercise"}
+            ]
+
+        },
+        {
+            "mode":"lesson", "height":50.0,"d":"rtl",
+            "words":[
+                {"w":"اِقْرَأ", "e":"read"},
+                {"w":"وَ", "e":"and"},
+                {"w":"اكْتُبْ", "e":"write"}
+            ]
+
+        },
+        {
+            "mode":"img-sentence", "d":"rtl", "img":"milk.png",
+            "words": [               
+                
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "سُكَّرٌ",
+                    "e": "sugar"                                        
+                },
+                {
+                    "w": "وَذَلِكَ",
+                    "e": "and that"                                        
+                },
+                {
+                    "w": "لَبَنٌ.",
+                    "e": "milk"                                        
+                }
+            ]
+        },
+        {
+            "mode":"img-sentence", "img":"imamh.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"مَنْ", "e":"who(is)"},
+                        {"w":"ذَلِكَ؟", "e":"that"},
+                        {"w":"ذَلِكَ", "e":"that"},
+                        {"w":"إِمَامٌ.", "e":"a imamh"}
+                    ]
+                }
+            ]
+
+        },
+        {
+            "mode":"img-sentence", "img":"dog2.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"أَ", "e":"interogative word"},
+                        {"w":"ذَلِكَ", "e":"this"},
+                        {"w":"قِطٌّ؟", "e":"a cat"},
+                        {"w":"لاَ،", "e":"no"},
+                        {"w":"ذَلِكَ", "e":"this"},
+                        {"w":"كَلْبٌ.", "e":"dog"}
+                    ]
+                }
+            ]
+
+        },
+        {
+            "mode":"img-sentence", "img":"stone.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {
+                            "w": "مَا",
+                            "e": "what"                    
+                        },
+                        {
+                            "w": "هَذَا؟",
+                            "e": "this"                                        
+                        },
+                        {
+                            "w": "هَذَا",
+                            "e": "this"                                        
+                        },
+                        {
+                            "w": "حَجَرٌ.",
+                            "e": "a stone"                                        
+                        }
+                    ]
+                }
+            ]
+
+        }
+    ]
 }

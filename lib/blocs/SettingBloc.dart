@@ -26,8 +26,8 @@ class SettingBloc {
   TextStyle getTextTheme(BuildContext context, String direction) {
     if (direction == 'ltr') {
       if (_fontSize == 1.0)
-        return Theme.of(context).textTheme.title;
-      else if (_fontSize == 2.0) return Theme.of(context).textTheme.headline;
+        return Theme.of(context).textTheme.subhead;
+      else if (_fontSize == 2.0) return Theme.of(context).textTheme.title;
       return Theme.of(context).textTheme.headline;
     }
     if (_fontSize == 1.0)

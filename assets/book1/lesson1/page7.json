@@ -1,25 +1,24 @@
 {
     "lines":[        
         
-        {
+        {   "d":"ltr",
             "mode":"lesson", "height":50.0,
             "words":[{"w":"POINTS TO REMEMBER"}]
         },
         {"mode":"padding", "height":5.0},
-        {
+        {"d":"ltr",
             "mode":"card",
             "words":[{"w":"In this lesson we learn the following patterns:"}]
         },
         {
             "mode":"card",
            "lines":[
-               {
+               {"d":"ltr",
                    "words":[
                        {"w":"What is this?"}
                    ]
                },
-               {
-                   "d":"rtl",
+               {                  
                 "words":[
                     {"w":"مَا هَدَا؟"}
                 ]
@@ -29,13 +28,12 @@
         {
             "mode":"card",
            "lines":[
-               {
+               {"d":"ltr",
                    "words":[
                        {"w":"This is a book"}
                    ]
                },
-               {
-                   "d":"rtl",
+               {                  
                 "words":[
                     {"w":"هَدَا كِتَابٌ."}
                 ]
@@ -45,13 +43,12 @@
         {
             "mode":"card",
            "lines":[
-               {
+               {"d":"ltr",
                    "words":[
                        {"w":"Is this a house?"}
                    ]
                },
-               {
-                   "d":"rtl",
+               {                  
                 "words":[
                     {"w":"أهَدَا بَيْتٌ؟"}
                 ]
@@ -61,13 +58,12 @@
         {
             "mode":"card",
            "lines":[
-               {
+               {"d":"ltr",
                    "words":[
                        {"w":"Yes, this is a house"}
                    ]
                },
-               {
-                   "d":"rtl",
+               {                 
                 "words":[
                     {"w":"نَعَمْ، هَدَا بَيْتٌ."}
                 ]
@@ -77,13 +73,13 @@
         {
             "mode":"card",
            "lines":[
-               {
+               {"d":"ltr",
                    "words":[
                        {"w":"No, this is a mosque."}
                    ]
                },
                {
-                   "d":"rtl",
+                  
                 "words":[
                     {"w":"لا، هَدَا مَسْجِدٌ."}
                 ]
@@ -93,27 +89,27 @@
         {
             "mode":"card",
            "lines":[
-               {
+               {"d":"ltr",
                    "words":[
                        {"w":"Who is this?"}
                    ]
                },
                {
-                   "d":"rtl",
+                  
                 "words":[
                     {"w":"مَنْ هَدَا؟"}
                 ]
             }
            ]
         },
-        {
+        {"d":"ltr",
             "mode":"lesson", "height":50.0,
             "words":[{"w":"Note the following:"}]
         },
         {
             "mode":"card",
            "lines":[
-               {
+               {"d":"ltr",
                    "words":[
                        {"w":"1. "},
                        {"w":"هَدَا"},
@@ -124,7 +120,7 @@
                
            ]
         },
-        {
+        {"d":"ltr",
             "mode":"card",           
             "words":[
                 {"w":"2. "},
@@ -132,7 +128,7 @@
             ]             
            
         },
-        {
+        {"d":"ltr",
             "mode":"card",           
             "words":[
                 {"w":"3. "},
@@ -140,31 +136,29 @@
             ]             
            
         },
-        {
+        {"d":"ltr",
             "mode":"card",           
             "words":[
                 {"w":"4. "},
                 {"w":"The particle أ placed at the begining of a statement turns it into a question, e.g."}               
             ] ,
             "lines":[
-                {
+                {"d":"ltr",
                     "words":[
                         {"w":"This is a house"}
                     ]
                 },
-                {
-                    "d":"rtl",
+                {                   
                  "words":[
                      {"w":" هَدَا بَيْتٌ."}
                  ]
              },
-                {
+                {"d":"ltr",
                     "words":[
                         {"w":"Is this a house?"}
                     ]
                 },
-                {
-                    "d":"rtl",
+                {                   
                  "words":[
                      {"w":"أهَدَا بَيْتٌ؟"}
                  ]

@@ -17,9 +17,28 @@ class PageDataWidget extends StatefulWidget {
 
 class _ViewPageDataWidgetState extends State<PageDataWidget> {
   final _gestureList = List<TapGestureRecognizer>();
+  JWord _selectedWord;
   static const String WORD_SPACE = '  ';
   BuildContext _context;
   int _gestureCounter = 0;
+  var _nums = [
+    '٠',
+    '١',
+    '٢',
+    '٣',
+    '٤',
+    '٥',
+    '٦',
+    '٧',
+    '٨',
+    '٩',
+    '١٠',
+    '١١',
+    '١٢',
+    '١٣',
+    '١٤',
+    '١٥'
+  ];
   @override
   void initState() {
     super.initState();
@@ -38,6 +57,8 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       final temp = _gestureList[_gestureCounter];
       temp.onTap = () {
         widget.bloc.bookBloc.selectWord(word);
+        _selectedWord = word;
+        setState(() {});
       };
       _gestureCounter++;
       return temp;
@@ -45,6 +66,8 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     final temp = TapGestureRecognizer();
     temp.onTap = () {
       widget.bloc.bookBloc.selectWord(word);
+      _selectedWord = word;
+      setState(() {});
     };
     _gestureList.add(temp);
     _gestureCounter++;
@@ -92,7 +115,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         case 'img-sentence':
           list.add(_getImgSentence(line));
           break;
-        case 'read-and-write':
+        case 'raw':
           list.add(_getReadAndWrite(line));
           break;
         case 'lesson':
@@ -109,10 +132,194 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         case 'vocab':
           list.add(_getVocabMode(line));
           break;
+        case 'qa':
+          list.add(_getQA(line));
+          break;
         default:
       }
     });
     return list;
+  }
+
+  Widget _getQA(JLine line, [double padding=10.0]) {
+    var widgets = List<Widget>();
+    if (line.words.length > 0) {
+      widgets.add(RichText(
+        textDirection: _getDirection('ltr'),
+        text: TextSpan(
+            children: line.words
+                .where((d) => d.direction == 'ltr')
+                .map((word) => _getTextSpan(word, word.direction))
+                .toList()),
+      ));
+      widgets.add(RichText(
+        textDirection: _getDirection('rtl'),
+        text: TextSpan(
+            children: line.words
+                .where((d) => d.direction == 'rtl')
+                .map((word) => _getTextSpan(word, word.direction))
+                .toList()),
+      ));
+    }
+
+    if (line.lines.length > 0) {
+      if (line.words.length > 0) {
+        widgets.add(Divider());
+      }
+      if (line.lines[0].mode != 'match' && line.lines[0].words.length > 0) {
+        widgets.add(RichText(
+          textDirection: _getDirection(line.lines[0].direction),
+          text: TextSpan(
+              children: line.lines[0].words
+                  .map((word) => _getTextSpan(word, line.lines[0].direction))
+                  .toList()),
+        ));
+      }
+      if (line.lines[0].lines.length > 0) {
+        if (line.lines[0].mode == 'match') {
+          widgets.add(_getMatchMode(line.lines[0]));
+        } else {
+          _setWidget(widgets, line.lines[0]);
+        }
+      }
+    }
+    if (line.lines.length == 2) {      
+      widgets.add(RaisedButton(
+        child: const Text('Ans'),
+        onPressed: () {
+          line.isHide = !line.isHide;
+          setState(() {});
+        },
+      ));
+    }
+
+    if (line.isHide) {
+      widgets.add(Divider(
+        color: Colors.blue,
+        height: 25.0,
+      ));
+      if (line.lines[1] != null && line.lines[1].words.length > 0) {
+        widgets.add(RichText(
+          textDirection: _getDirection(line.lines[1].direction),
+          text: TextSpan(
+              children: line.lines[1].words
+                  .map((word) => _getTextSpan(word, line.lines[1].direction))
+                  .toList()),
+        ));
+      }
+
+      if (line.lines[1] != null && line.lines[1].lines.length > 0) {
+        _setWidget(widgets, line.lines[1]);
+      }
+    }
+    return Container(
+      padding: EdgeInsets.all(padding),
+      child: Column(
+        //mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: widgets,
+      ),
+    );
+  }
+
+  void _setWidget(List<Widget> widgets, JLine line) {
+    int lineNo = 1;
+    for (var l in line.lines) {
+      var spans = List<TextSpan>();
+      spans.add(TextSpan(
+          text: _nums[lineNo] + ')' + WORD_SPACE,
+          style: widget.bloc.settingBloc.getTextTheme(_context, 'ltr')));
+      //before
+      if (line.mode == 'b') {
+        spans.add(TextSpan(
+            text: '..........' + WORD_SPACE,
+            style: widget.bloc.settingBloc
+                .getTextTheme(_context, line.direction)));
+      }
+      spans.addAll(
+          l.words.map((word) => _getTextSpan(word, line.direction)).toList());
+
+      //after
+      if (line.mode == 'a') {
+        spans.add(TextSpan(
+            text: '............',
+            style: widget.bloc.settingBloc
+                .getTextTheme(_context, line.direction)));
+      }
+      widgets.add(RichText(
+        textDirection: _getDirection(line.direction),
+        text: TextSpan(children: spans),
+      ));
+      widgets.add(Divider());
+      lineNo++;
+    }
+  }
+
+  Widget _getMatchHeader(JWord word) {
+    return Expanded(
+        child: RichText(
+      maxLines: 7,
+      textDirection: _getDirection('rtl'),
+      text: _getTextSpan(word, 'rtl'),
+    ));
+  }
+
+  Widget _getMatchMode(JLine line) {
+    var children = List<Widget>();
+    int i = 0, l = line.lines.length, count = 1;
+    if (line.words.length == 2) {
+      var rc = List<Widget>();
+      rc.add(_getMatchHeader(line.words[0]));
+      rc.add(_getMatchHeader(line.words[1]));
+      children.add(Row(
+        children: rc.reversed.toList(),
+      ));
+    } else {
+      var rc = List<Widget>();
+      rc.add(_getMatchHeader(JWord.empty(text: '( أ )')));
+      rc.add(_getMatchHeader(JWord.empty(text: '( ب )')));
+      children.add(Row(
+        children: rc.reversed.toList(),
+      ));
+    }
+    do {
+      var rc = List<Widget>();
+      rc.add(Expanded(
+          child: RichText(
+        maxLines: 7,
+        textDirection: _getDirection(line.direction),
+        text: TextSpan(
+            style: Theme.of(_context).textTheme.title,
+            text: '${_nums[count]}) ',
+            children: line.lines[i].words
+                .map((word) => _getTextSpan(word, line.direction))
+                .toList()),
+      )));
+      i++;
+
+      if (i < l) {
+        rc.add(Expanded(
+            child: RichText(
+          maxLines: 7,
+          textDirection: _getDirection(line.direction),
+          text: TextSpan(
+              style: Theme.of(_context).textTheme.title,
+              text: '${_nums[count]}) ',
+              children: line.lines[i].words
+                  .map((word) => _getTextSpan(word, line.direction))
+                  .toList()),
+        )));
+      }
+      i++;
+      count++;
+      children.add(Row(
+        children: rc.reversed.toList(),
+      ));
+      children.add(Divider());
+    } while (i < l);
+    return Column(
+      children: children,
+    );
   }
 
   double _getHeight(double height) {
@@ -125,18 +332,16 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   Widget _getVocabMode(JLine line) {
     var children = List<Widget>();
     int i = 0, l = line.words.length;
-    
+
     do {
       var rc = List<Widget>();
       rc.add(RichText(
-        //textScaleFactor: 0.5,
         textDirection: _getDirection(line.direction),
         text: _getTextSpan(line.words[i], line.direction),
       ));
       i++;
       if (i < l) {
         rc.add(RichText(
-          //textScaleFactor: 0.5,
           textDirection: _getDirection(line.direction),
           text: _getTextSpan(line.words[i], line.direction),
         ));
@@ -148,7 +353,9 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         children: rc,
       ));
     } while (i < l);
-    return Column(children:children,);
+    return Column(
+      children: children,
+    );
   }
 
   Widget _getCardMode(JLine line) {
@@ -166,26 +373,34 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       list.add(Divider());
     }
     if (line.lines.length > 0) {
-      list.addAll(line.lines.map((l) => RichText(
-            textDirection: _getDirection(l.direction),
-            text: TextSpan(
-                children: l.words
-                    .map((word) => _getTextSpan(word, l.direction))
-                    .toList()),
-          )));
+      list.addAll(line.lines.map((l) {
+        switch (l.mode) {
+          case 'divider':return Divider();
+          case 'lesson': return _getLessonMode(l, 0.0);
+          case 'qa': return _getQA(l, 0.0);
+          case 'vocab': return _getVocabMode(l);          
+          default:
+            return RichText(
+              textDirection: _getDirection(l.direction),
+              text: TextSpan(
+                  children: l.words
+                      .map((word) => _getTextSpan(word, l.direction))
+                      .toList()),
+            );
+        }
+      }));
     }
 
-    return Card(
-        child: Container(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              children: list,
-            )));
+    return Container(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: list,
+        ));
   }
 
-  Widget _getLessonMode(JLine line) {
+  Widget _getLessonMode(JLine line, [double padding=10.0]) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      padding: EdgeInsets.symmetric(horizontal: padding),
       height: _getHeight(line.height),
       width: double.infinity,
       decoration: BoxDecoration(
@@ -214,7 +429,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     if (word.hasStartSubstr > 0) {
       txtSpans.add(TextSpan(
           text: word.word.substring(0, word.hasStartSubstr),
-          style: TextStyle(color: Colors.pinkAccent)));
+          style: TextStyle(color: Colors.deepOrange)));
     }
     txtSpans.add(TextSpan(
       recognizer: direction == 'rtl' ? _getGesture(word) : null,
@@ -226,11 +441,18 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       txtSpans.add(TextSpan(
           text: word.word.substring(word.word.length - word.hasEndSubstr) +
               WORD_SPACE,
-          style: TextStyle(color: Colors.redAccent)));
+          style: TextStyle(color: Colors.red[400])));
     }
 
     return TextSpan(
-        style: widget.bloc.settingBloc.getTextTheme(_context, direction),
+        style: word == _selectedWord
+            ? widget.bloc.settingBloc
+                .getTextTheme(_context, direction)
+                .copyWith(
+                    color: widget.bloc.settingBloc.theme == Themes.light
+                        ? Colors.blueAccent
+                        : Colors.pink[400])
+            : widget.bloc.settingBloc.getTextTheme(_context, direction),
         children: txtSpans);
   }
 
@@ -257,21 +479,20 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
                     .map((word) => _getTextSpan(word, l.direction))
                     .toList()),
           )));
-    }
-    if (line.words.length > 0 || line.lines.length > 0) {
-      list.add(Divider());
-    }
-    return Container(
-      padding: const EdgeInsets.only(top: 10.0, left: 10.0, right: 5.0),
+    }    
+    return Card(
+        child: Container(
+      padding: const EdgeInsets.only(
+          top: 10.0, left: 10.0, right: 5.0, bottom: 10.0),
       child: Column(
         children: list,
       ),
-    );
+    ));
   }
 
   Widget _getReadAndWrite(JLine line) {
     return Container(
-      padding: const EdgeInsets.only(top: 10.0, left: 5.0, right: 5.0),
+      padding: const EdgeInsets.all(10.0),
       child: RichText(
         textDirection: _getDirection(line.direction),
         text: TextSpan(
@@ -287,10 +508,10 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         begin: Alignment.bottomLeft,
         stops: [0.1, 0.5, 0.7, 0.9],
         colors: [
-          Colors.amber[800],
-          Colors.amber[700],
-          Colors.amber[600],
-          Colors.amber[400],
+          Colors.pink[600],
+          Colors.pink[500],
+          Colors.pink[400],
+          Colors.pink[300],
         ],
       );
 

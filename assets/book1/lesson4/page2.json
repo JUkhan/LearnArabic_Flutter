@@ -1,44 +1,38 @@
-{   
+{ 
+    "title":{
+        "mode":"lesson", "height":50.0,"d":"rtl",
+            "words":[
+                {"w":"تَمْرِيْنٌ", "e":"Exercise"}
+            ]
+         },  
     "lines": [
-        
         {
-            
-            "words": [
-                {"w": "I love your brother"},
-                {
-                    "w": "أخيك",
-                    "m": "your brother",
-                    "d": "rtl"
-                },
-                {
-                    "w": "أحب",
-                    "m": "i love",
-                    "d": "rtl"
-                }
-            ]
-        },
-        {
-            "mode": "list",
-            "words":[{"w":"This is a test title"}],
+            "mode":"qa",
+            "words":[{"d":"ltr", "w":"Answer the following questions:"}],
             "lines":[
-                {
-                    "words":[{"w":"One"}]
+                {"lines":[
+                    {"words":[{"w":"أَيْنَ", "e":"where"},{"w":"الكِتَابُ؟", "e":"book"}]},
+                    {"words":[{"w":"أَيْنَ", "e":"where"},{"w":"مُحَمَّدٌ؟", "e":"muhammad"}]},
+                    {"words":[{"w":"أَيْنَ", "e":"where"},{"w":"السَّاعَةُ؟", "e":"watch"}]},
+                    {"words":[{"w":"أَيْنَ", "e":"where"},{"w":"يَاسِرٌ", "e":"yasir"}]},
+                    {"words":[{"w":"أَيْنَ", "e":"where"},{"w":"آمِنَةُ", "e":""}]},
+                    {"words":[{"w":"أَآمِنَةُ", "e":"is aminah"},{"w":"فِي", "e":"in"},{"w":"الغُرْفَةِ؟", "e":"room"}]},
+                    {"words":[{"w":"", "e":"where"},{"w":"", "e":""}]},
+                    {"words":[{"w":"", "e":"where"},{"w":"", "e":""}]},
+                    {"words":[{"w":"", "e":"where"},{"w":"", "e":""}]},
+                    {"words":[{"w":"", "e":"where"},{"w":"", "e":""}]},
+                    {"words":[{"w":"", "e":"where"},{"w":"", "e":""}]}
+                ]
                 },
                 {
-                    "words":[{"w":"Two"}]
-                },
-                {
-                    "words":[{"w":"Three"}]
+                    "lines":[
+                        {"words":[{"w":"هُوَ عَلَي المَكْتَابِ."}]},
+                        {"words":[{"w":"هُوَ فِي الفَصْلِ."}]},
+                        {"words":[{"w":"هِيَ عَلَي المَكْتَابِ."}]}
+                    ]
                 }
             ]
-        },
-        {
-            "nom":1,
-            "words":[{"w":"1."},{"w":"What is this?"},{"ws":100, "bbd":1, "a":"This is blank"}, {"w":"هذا؟", "m":"this", "d": "rtl"},{"w":"ما","m":"what","d": "rtl" }]
-        },
-        {
-            "nom":1,
-            "words":[{"w":"2."},{"w":"What is this?"},{"ws":100, "bbd":1, "a":"This is blank"}, {"w":"هذا؟", "m":"this", "d": "rtl"},{"w":"ما","m":"what","d": "rtl" }]
         }
+        
     ]
 }
