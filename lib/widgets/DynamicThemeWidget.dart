@@ -5,6 +5,7 @@ import '../blocs/SettingBloc.dart';
 import '../blocs/StateMgmtBloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 class AppTheme {
   static get dark {
     final originalTextTheme = ThemeData.dark().textTheme;
@@ -22,7 +23,7 @@ class AppTheme {
   }
 
   static get light {
-    return ThemeData.light();
+   return ThemeData.light();
   }
 }
 

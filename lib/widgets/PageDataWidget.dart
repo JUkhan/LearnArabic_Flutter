@@ -37,7 +37,12 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     '١٢',
     '١٣',
     '١٤',
-    '١٥'
+    '١٥',
+    '١٦',
+    '١٧',
+    '١٨',
+    '١٩',
+    '٢٠'
   ];
   @override
   void initState() {
@@ -378,6 +383,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
           case 'divider':return Divider();
           case 'lesson': return _getLessonMode(l, 0.0);
           case 'qa': return _getQA(l, 0.0);
+          case 'raw': return _getReadAndWrite(line, 0.0);
           case 'vocab': return _getVocabMode(l);          
           default:
             return RichText(
@@ -450,7 +456,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
                 .getTextTheme(_context, direction)
                 .copyWith(
                     color: widget.bloc.settingBloc.theme == Themes.light
-                        ? Colors.blueAccent
+                        ? Colors.blue[400]
                         : Colors.pink[400])
             : widget.bloc.settingBloc.getTextTheme(_context, direction),
         children: txtSpans);
@@ -490,9 +496,9 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     ));
   }
 
-  Widget _getReadAndWrite(JLine line) {
+  Widget _getReadAndWrite(JLine line, [double padding=10.0]) {
     return Container(
-      padding: const EdgeInsets.all(10.0),
+      padding:  EdgeInsets.all(padding),
       child: RichText(
         textDirection: _getDirection(line.direction),
         text: TextSpan(

@@ -1,48 +1,31 @@
 import 'package:flutter/material.dart';
+import '../widgets/BookImageWidget.dart';
 import '../widgets/DrawerWidget.dart';
 import '../blocs/AppStateProvider.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final block = AppStateProvider.of(context);
+    final bloc = AppStateProvider.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Pleasure of Allah'),
       ),
-      body: new Container(
-        height: 150.0,
-        width: double.infinity,
-        decoration:  BoxDecoration(
-          gradient:  LinearGradient(
-            end: Alignment.topRight,                                  // new
-            begin: Alignment.bottomLeft,            
-            stops: [0.1, 0.5, 0.7, 0.9],
-            colors: [              
-              Colors.indigo[800],
-              Colors.indigo[700],
-              Colors.indigo[600],
-              Colors.indigo[400],
-            ],
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-             Text('اَلدَّرْسُ اْلأَوَّلُ',
-        style: Theme.of(context).textTheme.caption,
-        ),
-        Text('Lesson One',
-        style: Theme.of(context).textTheme.title,
-        ),
-        Text('Lesson One',
-        style: Theme.of(context).textTheme.headline,
-        )
-          ],
-        ),
+      body: GridView.count(
+        crossAxisCount: 2,
+        padding: EdgeInsets.all(10.0),
+        childAspectRatio: 7.0 / 9.0,
+        // TODO: Build a grid of cards (102)
+        children: <Widget>[
+          BookImageWidget(bloc, 'book1'),
+          BookImageWidget(bloc, 'book2'),
+          BookImageWidget(bloc, 'book3'),
+          BookImageWidget(bloc, 'book4'),
+          BookImageWidget(bloc, 'book5'),
+          BookImageWidget(bloc, 'book6'),
+        ],
       ),
-      drawer: DrawerWidget(block),
+      drawer: DrawerWidget(bloc),
     );
   }
 }

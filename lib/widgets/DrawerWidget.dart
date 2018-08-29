@@ -32,15 +32,15 @@ class DrawerWidget extends StatelessWidget {
                 backgroundImage: AssetImage('assets/title_img.jpg'),
               )),
           getTile(context, 'Home', Icons.home, '/'),
-          Divider(),
+         
           getTile(context, 'Book1', Icons.favorite, '/book1'),
-          Divider(),
+         
           getTile(context, 'Book2', Icons.favorite, '/book2'),
           Divider(),
           getTile(context, 'Book Marks', Icons.star, '/markbook'),
-          Divider(),
+        
           getTile(context, 'Settings', Icons.settings, '/setting'),
-          Divider(),
+         
         ],
       ),
     );
