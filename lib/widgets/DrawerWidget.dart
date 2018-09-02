@@ -29,7 +29,7 @@ class DrawerWidget extends StatelessWidget {
                           );
                   }),
               currentAccountPicture: new CircleAvatar(
-                backgroundImage: AssetImage('assets/title_img.jpg'),
+                backgroundImage: AssetImage('assets/launcher.png'),
               )),
           getTile(context, 'Home', Icons.home, '/'),
          

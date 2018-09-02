@@ -11,11 +11,18 @@ dependencies:
   rxdart: ^0.18.1  
   flutter_webview_plugin: ^0.2.0
   shared_preferences: ^0.4.2
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  flutter_launcher_icons: "^0.5.0"
+
+flutter_icons:
+  android: true 
+  ios: true
+  image_path: "assets/launcher.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
