@@ -13,7 +13,7 @@
                 {
                      "lines":[
                         {"words":[{"w":"مِنْ أَيْنَ أَنْتَ؟", "e":"where are you from?"}]},
-                        {"words":[{"w":"أَأَنْتَ مِنَ الفِلِبَّيْنِ.", "e":"are you from Philippines?"}]},
+                        {"words":[{"w":"أَأَنْتَ مِنَ الفِلِبَّيْنِ؟.", "e":"are you from Philippines?"}]},
                         {"words":[{"w":"مَنْ مِنَ الصِّيْنِ؟", "e":"who is from china?"}]},
                         {"words":[{"w":"مِنَ أَيْنَ حَامِدٌ؟", "e":"where is Hamid from?"}]},
                         {"words":[{"w":"أَيْنَ ذَهَبَ عَبَّاسٌ؟", "e":"Where did Abbas go?"}]},

@@ -121,6 +121,10 @@ class BookBloc {
       pageIndexAction(currentPage);
       setData<int>(currentPage, _pageIndex);
       findBookMark();
+    }else{       
+       if(selectedLessonIndex>1) 
+          selectedLessonIndex--;         
+      autoLessonChange();
     }
   }
 
@@ -129,10 +133,20 @@ class BookBloc {
       currentPage++;
       pageIndexAction(currentPage);
       setData<int>(currentPage, _pageIndex);
-      findBookMark();
+      findBookMark(); 
+    }else{     
+      selectedLessonIndex++;      
+      autoLessonChange();
     }
   }
-
+  autoLessonChange() async{
+    currentPage=1;
+    totalPage = await _getTotalPage('$_bookPath/lesson$selectedLessonIndex'); 
+    pageIndexAction(currentPage);
+    lessonIndexAction(selectedLessonIndex);
+    setData<int>(currentPage, _pageIndex);
+    findBookMark();
+  }
   dispose() {
     _bookNameController.close();
     _pageIndexController.close();

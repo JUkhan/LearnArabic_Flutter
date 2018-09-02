@@ -78,7 +78,25 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     _gestureCounter++;
     return temp;
   }
-
+  int _milis;  
+  bool _isUp;
+  _dragStart(DragStartDetails details){
+   _milis= details.sourceTimeStamp.inMilliseconds;
+   
+  }
+  _dragUpdate(DragUpdateDetails details){
+    if( details.sourceTimeStamp.inMilliseconds>_milis+100)
+     {            
+       if(details.delta.dx>0)_isUp=true;
+       else _isUp=false;
+     }
+  }
+  _dragEnd(DragEndDetails details){
+    Navigator.pushReplacementNamed(context, '/book');
+    if(_isUp)widget.bloc.bookBloc.prev();
+    else widget.bloc.bookBloc.next();
+    
+  }
   @override
   Widget build(BuildContext context) {
     _gestureCounter = 0;
@@ -87,8 +105,12 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     return AnimatedOpacity(
       opacity: widget.page.asyncStatus == AsyncStatus.loaded ? 1.0 : 0.0,
       duration: const Duration(milliseconds: 1000),
-      child: ListView(
+      child: GestureDetector(child:  ListView(
         children: _getListItem(widget.page.data),
+      ),
+      onHorizontalDragStart:_dragStart ,
+      onHorizontalDragUpdate: _dragUpdate,
+      onHorizontalDragEnd: _dragEnd,
       ),
     );
   }
