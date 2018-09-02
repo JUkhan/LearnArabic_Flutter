@@ -55,7 +55,7 @@ class BookPage extends StatelessWidget {
       //hasNotch: true,
       child: Row(
         children: <Widget>[
-          StreamBuilder<bool>(
+          /*StreamBuilder<bool>(
             initialData: false,
             stream: bloc.bookBloc.hasPrev,
             builder: (_, snapshot) => IconButton(
@@ -85,7 +85,7 @@ class BookPage extends StatelessWidget {
                         }
                       : null,
                 ),
-          ),
+          ),*/
           Expanded(
               child: StreamBuilder<JWord>(
             initialData: JWord.empty(),

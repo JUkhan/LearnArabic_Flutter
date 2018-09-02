@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import '../pages/BookPage.dart';
+import './SlideRoute.dart';
 import '../widgets/VideoPlay.dart';
 import '../blocs/models/AsyncData.dart';
 import '../blocs/models/BookInfo.dart';
@@ -78,25 +80,45 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     _gestureCounter++;
     return temp;
   }
-  int _milis;  
+
+  int _milis;
   bool _isUp;
-  _dragStart(DragStartDetails details){
-   _milis= details.sourceTimeStamp.inMilliseconds;
-   
+  bool _hasPage;
+  _dragStart(DragStartDetails details) {
+    _milis = details.sourceTimeStamp.inMilliseconds;
+    _hasPage = false;
   }
-  _dragUpdate(DragUpdateDetails details){
-    if( details.sourceTimeStamp.inMilliseconds>_milis+100)
-     {            
-       if(details.delta.dx>0)_isUp=true;
-       else _isUp=false;
-     }
+
+  _dragUpdate(DragUpdateDetails details) {
+    if (_hasPage == false &&
+        details.sourceTimeStamp.inMilliseconds > _milis + 100) {
+      _hasPage = true;
+      if (details.delta.dx > 0)
+        _isUp = true;
+      else
+        _isUp = false;
+    }
   }
-  _dragEnd(DragEndDetails details){
-    Navigator.pushReplacementNamed(context, '/book');
-    if(_isUp)widget.bloc.bookBloc.prev();
-    else widget.bloc.bookBloc.next();
-    
+
+  _dragEnd(DragEndDetails details) {
+    if (_hasPage) {
+      //Navigator.pushReplacementNamed(context, '/book');
+      if (_isUp) {
+        widget.bloc.bookBloc.prev();
+        Navigator.pushReplacement(
+            context,
+            SlideRoute(
+                widget: BookPage(), sildeDirection: SlideDirection.Right));
+      } else {
+        widget.bloc.bookBloc.next();
+        Navigator.pushReplacement(
+            context,
+            SlideRoute(
+                widget: BookPage(), sildeDirection: SlideDirection.Left));
+      }
+    }
   }
+
   @override
   Widget build(BuildContext context) {
     _gestureCounter = 0;
@@ -105,12 +127,13 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     return AnimatedOpacity(
       opacity: widget.page.asyncStatus == AsyncStatus.loaded ? 1.0 : 0.0,
       duration: const Duration(milliseconds: 1000),
-      child: GestureDetector(child:  ListView(
-        children: _getListItem(widget.page.data),
-      ),
-      onHorizontalDragStart:_dragStart ,
-      onHorizontalDragUpdate: _dragUpdate,
-      onHorizontalDragEnd: _dragEnd,
+      child: GestureDetector(
+        child: ListView(
+          children: _getListItem(widget.page.data),
+        ),
+        onHorizontalDragStart: _dragStart,
+        onHorizontalDragUpdate: _dragUpdate,
+        onHorizontalDragEnd: _dragEnd,
       ),
     );
   }
@@ -168,7 +191,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     return list;
   }
 
-  Widget _getQA(JLine line, [double padding=10.0]) {
+  Widget _getQA(JLine line, [double padding = 10.0]) {
     var widgets = List<Widget>();
     if (line.words.length > 0) {
       widgets.add(RichText(
@@ -210,7 +233,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         }
       }
     }
-    if (line.lines.length == 2) {      
+    if (line.lines.length == 2) {
       widgets.add(RaisedButton(
         child: const Text('Ans'),
         onPressed: () {
@@ -402,11 +425,16 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     if (line.lines.length > 0) {
       list.addAll(line.lines.map((l) {
         switch (l.mode) {
-          case 'divider':return Divider();
-          case 'lesson': return _getLessonMode(l, 0.0);
-          case 'qa': return _getQA(l, 0.0);
-          case 'raw': return _getReadAndWrite(line, 0.0);
-          case 'vocab': return _getVocabMode(l);          
+          case 'divider':
+            return Divider();
+          case 'lesson':
+            return _getLessonMode(l, 0.0);
+          case 'qa':
+            return _getQA(l, 0.0);
+          case 'raw':
+            return _getReadAndWrite(line, 0.0);
+          case 'vocab':
+            return _getVocabMode(l);
           default:
             return RichText(
               textDirection: _getDirection(l.direction),
@@ -426,7 +454,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         ));
   }
 
-  Widget _getLessonMode(JLine line, [double padding=10.0]) {
+  Widget _getLessonMode(JLine line, [double padding = 10.0]) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: padding),
       height: _getHeight(line.height),
@@ -507,7 +535,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
                     .map((word) => _getTextSpan(word, l.direction))
                     .toList()),
           )));
-    }    
+    }
     return Card(
         child: Container(
       padding: const EdgeInsets.only(
@@ -518,9 +546,9 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     ));
   }
 
-  Widget _getReadAndWrite(JLine line, [double padding=10.0]) {
+  Widget _getReadAndWrite(JLine line, [double padding = 10.0]) {
     return Container(
-      padding:  EdgeInsets.all(padding),
+      padding: EdgeInsets.all(padding),
       child: RichText(
         textDirection: _getDirection(line.direction),
         text: TextSpan(
