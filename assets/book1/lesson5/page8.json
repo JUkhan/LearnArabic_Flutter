@@ -1,0 +1,30 @@
+{    
+    "lines":[
+        {"mode":"raw", "d":"ltr","words":[{"w":"2. تَحْتَ \"under\". The noun following تَحْتَ is in the genitive case because it is mudaf ilaihi: تَحْتَ المَكْتَبِ، تَحْتَ الكِتَابِ"}]},
+        {"mode":"raw","d":"ltr","words":[{"w":"3. يَا is a vocative particle. A noun following يَا has only one dammah: يَا أُسْتَاذُ، يَا شَيْخُ، يَا بِلآلُ not  يَا بِلآلٌ etc."}]},
+        {"mode":"raw","d":"ltr","words":[{"w":"4. The words اِسْمٌ and اِبْنٌ commence with hamzatu l-wasl. When preceded by a word the initial <<i>> is dropped in pronunciation."}]},
+        {"mode":"raw","d":"ltr","words":[{"w":"اِسْمُ  الْوَلَدِ  بِلآلٌ \n ism-u l-walad-i bilal-u-n \nوَاسْمُ  الْبِنْتِ  آمِنَةُ \nwa sm-u l-bint-i aminat-u\nاِبْنُ الْمُدَرِّسِ طَبِيْبٌ \nibn-u l-mudarris-i tabib-u-n\nوَابْنُ  الإِمَمِ  يَاجِرٌ \nwa bn-u l-imam-i tajir-u-n\nأَيْنَ  ابْنُ  حَامِدٍ \naina bn-u hamid-i-n?"}]},
+        {   "d":"ltr",
+            "mode":"lesson", "height":50.0,
+            "words":[{"w":"Vocabulary:"}]
+        },
+        {"mode":"vocab", 
+            "words":[
+                {"w":"الرَّسُولُ", "e":"messenger"},
+                {"w":"تَحْتَ", "e":"under, beneath"},
+                {"w":"العَمُّ", "e":"paternal uncle"},
+                {"w":"الاِبْنُ", "e":"son"},
+                {"w":"الشَّرِعُ", "e":"street"},
+                {"w":"السَّيَارَةُ", "e":"car"},
+                {"w":"الكَعْبَةُ", "e":"Kabah"},
+                {"w":"هُنَا", "e":"here"},
+                {"w":"الخَالُ", "e":"maternal uncle"},
+                {"w":"هُنَاكَ", "e":"there"},
+                {"w":"مُغْلَقٌ", "e":"colsed, shut"},
+                {"w":"البِنْتُ", "e":"daughter, girl"},
+                {"w":"الاِسْمُ", "e":"name"},
+                {"w":"الحَقِيبَةُ", "e":"bag, case"}
+            ]
+        }
+    ]
+}

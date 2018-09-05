@@ -82,7 +82,6 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   }
 
   int _milis;
-  bool _isUp;
   bool _hasPage;
   _dragStart(DragStartDetails details) {
     _milis = details.sourceTimeStamp.inMilliseconds;
@@ -91,30 +90,20 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
   _dragUpdate(DragUpdateDetails details) {
     if (_hasPage == false &&
-        details.sourceTimeStamp.inMilliseconds > _milis + 100) {
+        details.sourceTimeStamp.inMilliseconds > _milis + 50) {
       _hasPage = true;
-      if (details.delta.dx > 0)
-        _isUp = true;
-      else
-        _isUp = false;
-    }
-  }
-
-  _dragEnd(DragEndDetails details) {
-    if (_hasPage) {
-      //Navigator.pushReplacementNamed(context, '/book');
-      if (_isUp) {
-        widget.bloc.bookBloc.prev();
+      if (details.delta.dx > 0) {
         Navigator.pushReplacement(
             context,
             SlideRoute(
                 widget: BookPage(), sildeDirection: SlideDirection.Right));
+        widget.bloc.bookBloc.prev();
       } else {
-        widget.bloc.bookBloc.next();
         Navigator.pushReplacement(
             context,
             SlideRoute(
                 widget: BookPage(), sildeDirection: SlideDirection.Left));
+        widget.bloc.bookBloc.next();
       }
     }
   }
@@ -126,14 +115,13 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
     return AnimatedOpacity(
       opacity: widget.page.asyncStatus == AsyncStatus.loaded ? 1.0 : 0.0,
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 300),
       child: GestureDetector(
         child: ListView(
           children: _getListItem(widget.page.data),
         ),
         onHorizontalDragStart: _dragStart,
         onHorizontalDragUpdate: _dragUpdate,
-        onHorizontalDragEnd: _dragEnd,
       ),
     );
   }
@@ -185,7 +173,11 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         case 'qa':
           list.add(_getQA(line));
           break;
+        case 'divider':
+          list.add(Divider());
+          break;
         default:
+          list.add(_getReadAndWrite(line));
       }
     });
     return list;
@@ -216,20 +208,24 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       if (line.words.length > 0) {
         widgets.add(Divider());
       }
-      if (line.lines[0].mode != 'match' && line.lines[0].words.length > 0) {
-        widgets.add(RichText(
-          textDirection: _getDirection(line.lines[0].direction),
-          text: TextSpan(
-              children: line.lines[0].words
-                  .map((word) => _getTextSpan(word, line.lines[0].direction))
-                  .toList()),
-        ));
-      }
-      if (line.lines[0].lines.length > 0) {
-        if (line.lines[0].mode == 'match') {
-          widgets.add(_getMatchMode(line.lines[0]));
-        } else {
-          _setWidget(widgets, line.lines[0]);
+      if (line.lines.length > 2) {
+        _setWidget(widgets, line);
+      } else {
+        if (line.lines[0].mode != 'match' && line.lines[0].words.length > 0) {
+          widgets.add(RichText(
+            textDirection: _getDirection(line.lines[0].direction),
+            text: TextSpan(
+                children: line.lines[0].words
+                    .map((word) => _getTextSpan(word, line.lines[0].direction))
+                    .toList()),
+          ));
+        }
+        if (line.lines[0].lines.length > 0) {
+          if (line.lines[0].mode == 'match') {
+            widgets.add(_getMatchMode(line.lines[0]));
+          } else {
+            _setWidget(widgets, line.lines[0]);
+          }
         }
       }
     }
@@ -265,7 +261,6 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     return Container(
       padding: EdgeInsets.all(padding),
       child: Column(
-        //mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: widgets,
       ),

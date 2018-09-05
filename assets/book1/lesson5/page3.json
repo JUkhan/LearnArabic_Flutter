@@ -1,3 +1,32 @@
 {
-    "data":"page3 data"
+    "lines":[
+        {"d":"ltr", "words":[
+            {"w":"Read and write each of the following phrases vocalizing the last letter of both words:"}]
+        },
+        {"mode":"divider"},
+        {"d":"rtl", "words":[
+            {"w":"بَاب المَدْرَسَة،", "e":"بَابُ المَدْرَسَةِ"},
+            {"w":"", "e":""},
+            {"w":"", "e":""},
+            {"w":"", "e":""},
+            {"w":"", "e":""},
+            {"w":"", "e":""},
+            {"w":"", "e":""},
+            {"w":"", "e":""},
+            {"w":"", "e":""},
+            {"w":"", "e":""}
+        ]
+        },
+        {
+            "mode":"lesson", "height":50.0,"d":"rtl",
+            "words":[
+                {"w":"اِقْرَأ", "e":"read"}
+            ]
+        },
+        {"mode":"qa","lines":[            
+            {"words":[{"w":"", "e":""}]},
+            {"words":[{"w":"", "e":""}]},
+            {"words":[{"w":"", "e":""}]}
+        ]}
+    ]
 }
