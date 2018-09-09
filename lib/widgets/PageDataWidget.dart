@@ -115,7 +115,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
     return AnimatedOpacity(
       opacity: widget.page.asyncStatus == AsyncStatus.loaded ? 1.0 : 0.0,
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 500),
       child: GestureDetector(
         child: ListView(
           children: _getListItem(widget.page.data),
@@ -123,7 +123,8 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         onHorizontalDragStart: _dragStart,
         onHorizontalDragUpdate: _dragUpdate,
       ),
-    );
+    );  
+    
   }
 
   List<Widget> _getListItem(JPage page) {
