@@ -6,17 +6,13 @@
             {"w":"اْلأَوَّلُ", "e":"one"}
         ]
     },
-    "videos":[
-        {
-            "id":"RXLwATGwQ-M", "title":"ARABIC ALPHABETS"
-        },
-        {
-            "id":"70QgvVXhJZY", "title":"Arabic vowel signs"
-        },
-        {
-            "id":"wvpnmd0Tid4", "title":"Madinah Arabic Course B1 L1 P1"
-        }
-    ],
+    "videos":[        
+        {"id":"wvpnmd0Tid4", "title":"Madinah Arabic Course B1 L1 P1"},
+        {"id":"f9HvGxlT5w0", "title":"Madinah Arabic Course B1 L1 P2"},        
+        {"id":"IF59zX37VO0", "title":"Madinah Arabic Course B1 L1 P3"},
+        {"id":"RXLwATGwQ-M", "title":"ARABIC ALPHABETS"},
+        {"id":"70QgvVXhJZY", "title":"Arabic vowel signs"},        
+        {"id":"hxmMMGJzofo", "title":"Demonstrative pronoun HADHA هذا"}],
     "lines": [
         {
             "mode":"lesson", "height":50.0,"d":"rtl",
@@ -31,11 +27,11 @@
                 
                 {
                     "w": "هَذَا",
-                    "e": "this"                    
+                    "e": "this"                
                 },
                 {
                     "w": "بَيْتٌ",
-                    "e": "a house"                                        
+                    "e": "a house"                                       
                 }
             ]
         },

@@ -7,9 +7,15 @@
         ]
     },
     "videos":[
-        {
-            "id":"RXLwATGwQ-M", "title":"ARABIC ALPHABETS"
-        }       
+        {"id":"aBOusDq9TPY", "title":"Madinah Arabic Course B1 L5 P1"},
+        {"id":"mITUcTGupQ4", "title":"Madinah Arabic Course B1 L5 P2"} ,
+        {"id":"7Hso9VolWGI", "title":"arabic pronoun song"},
+        {"id":"nioaTioRmmk", "title":"FULL COURSE ARABIC PRONOUNS EXCERCISE"},
+        {"id":"vXl4YEvlAYE", "title":"FULL COURSE ARABIC VOCABULARY 2"},
+        {"id":"muQAxSj0III", "title":"-INTRODUCTION TO فعل"},
+        {"id":"kz2AmGaJE_U", "title":"introduction to فعل contd" },
+        {"id":"StuOkHQG2Do", "title":"INTRODUCTION TO IDAAFA" },
+        {"id":"mWdzeZXLD5Q", "title":"conversation based on idaafa"}       
     ],
     "lines": [        
         {"mode":"raw", "words":[
