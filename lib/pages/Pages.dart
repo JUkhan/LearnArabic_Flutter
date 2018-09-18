@@ -12,7 +12,7 @@ class Pages extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title:StreamBuilder<String>(
-          initialData: 'Pleasure of Allah',
+          initialData: 'Pages',
           stream: bloc.bookBloc.pageTitle,
           builder: (_, snapshot) => Text(snapshot.data),
         ),

@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
     final bloc = AppStateProvider.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pleasure of Allah'),
+        title: Text('Learn Arabic'),
       ),
       body: GridView.count(
         crossAxisCount: 2,

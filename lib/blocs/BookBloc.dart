@@ -43,7 +43,7 @@ class BookBloc {
   Stream<String> get pageTitle => Observable.combineLatest2(
       _lessonIndexController,
       _pageIndexController,
-      (a, b) => 'Lesson$a - Page$b/$totalPage');
+      (a, b) => 'Lesson$a - Page $b of $totalPage');
   Stream<String> get bookName => _bookNameController
       .map((name) => 'Book ${name.substring(name.length-1)}');
   Stream<AsyncData<BookInfo>> get bookInfo =>

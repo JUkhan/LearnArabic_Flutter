@@ -14,7 +14,7 @@ class BookLessonsPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pleasure of Allah'),
+        title: Text('Lessons'),
       ),
       body: StreamBuilder<AsyncData<BookInfo>>(
         initialData: AsyncData.loading(),

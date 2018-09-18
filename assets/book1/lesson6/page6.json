@@ -1,0 +1,31 @@
+{
+    "title":{   "d":"ltr",
+        "mode":"lesson", "height":50.0,
+        "words":[{"w":"POINTS TO REMEMBER"}]
+    },
+    "lines":[
+        {"d":"ltr","words":[{"w":"In this lesson we learn:\n1. هَذِهِ which is the feminine of هَذَا. It is pronounced هَاذِهِ but the alif is omitted in writing."}]},
+        {"d":"ltr","words":[{"w":"This is a boy and this is a girl."}]},
+        {"words":[{"w":"هَذَا  وَلَدٌ  وَ  هَذِهِ  بِنْتٌ."}]},
+        {"d":"ltr","words":[{"w":"2. Nouns and adjectives are made feminine by adding a <<ة>> at the end. The last letter before this (ة) takes a fathah(a)."}]},
+        {"mode":"vocab", "d":"ltr", "words":[
+            {"w":"مُدَرِّسٌ"}, {"w":"مُدَرِّسَةٌ"},
+            {"w":"mudarris-u-n\n(teacher)"}, {"w":"mudarris-a-t-u-n\n(lady teacher)"}
+           
+        ]},
+        {"d":"ltr","words":[{"w":"Some nouns have a separate form for feminine e.g:"}]},
+        {"mode":"vocab", "words":[
+            {"w":"ابْنٌ", "e":"son"}, {"w":"بِنْتٌ", "e":"daughter"},
+            {"w":"أَخٌ", "e":"brother"}, {"w":"أُخْتٌ", "e":"sister"}           
+        ]},
+        {"d":"ltr","words":[{"w":"All nouns in Arabic either masculin or feminine. Femenine nouns ans adjectives usually have the ة-ending. But there are some words which do not have this ending. Students when learning a new noun must learn its gender also.\n\nDouble members of the body are usually femenine while single members are masculine, e.g."}]},
+        {"mode":"vocab", "words":[
+            {"w":"Feminine"}, {"w":"Masculine"},
+            {"w":"يَدٌ", "e":"hand"}, {"w":"رَأْسٌ", "e":"head"},
+            {"w":"رِجْلٌ", "e":"leg"}, {"w":"أَنْفٌ", "e":"nose"},
+            {"w":"عَيْنٌ", "e":"eye"}, {"w":"فَمٌ", "e":"mouth"},
+            {"w":"أُذُنٌ", "e":"ear"}, {"w":"وَجْهٌ", "e":"face"}            
+        ]}
+
+    ]
+}

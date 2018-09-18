@@ -3,7 +3,7 @@
         "mode":"lesson", "d":"rtl", "height":50.0,
         "words":[
             {"w":"اَلدَّرْسُ", "e":"lesson"},
-            {"w":"الثَّانِيْ", "e":"two"}
+            {"w":"السَّادِسُ", "e":"six"}
         ]
     },
     "videos":[
@@ -11,16 +11,98 @@
         {"id":"mSHR8ycXsWI", "title":"Madinah Arabic Course B1 L6 P2"}      
     ],
     "lines": [
-        
-        {
-            
-            "words": [
-                {"w":"New words:"},
-                { "w":"الكلمة الجديدة",  "e": "New Words","b":"নতুন শব্দ", "d": "rtl"}
-               
+        {   
+            "mode":"lesson", "height":50.0,
+            "words":[{"w":"هَذِهِ", "e":"this"}]
+        },
+        {"words": [               
+                { "w":"هَذَ",  "e": "this"},
+                { "w":"ابْنُ",  "e": "son"},
+                { "w":"حَامِدٍ",  "e": "Hamid"},
+                { "w":"وَهَزِهِ",  "e": "and this"},
+                { "w":"بِنْتُ",  "e": "daughter"},
+                { "w":"يَاسِرٍ.",  "e": "Yasir"}
             ]
-        }
-        
+        },{"mode":"divider"},
+        {"words": [               
+            { "w":"اِبْنُ",  "e": "son"},
+            { "w":"حَامِدٍ",  "e": "Hamid"},
+            { "w":"جَالِسٌ",  "e": "sitting"},
+            { "w":"وَبِنْتُ",  "e": "and daughter"},
+            { "w":"يَاسِرٍ",  "e": "Yasir"},
+            { "w":"وَاقِفَةٌ.",  "e": "standing"}
+        ]
+    },{"mode":"divider"}
+    ,
+    {
+        "mode":"img-sentence", "d":"rtl", "img":"6doctor.png",
+        "lines":[
+        {"words": [
+            {"w":"مَنْ", "e":"who"},
+            {"w":"هَذِهِ؟", "e":"this"}
+        ]},
+        {"words": [              
+            
+            {"w":"هَذِهِ", "e":"this"},
+            {"w":"أُخْتُ", "e":"sister"}, 
+            {"w":"المُهَنْدِسِ.", "e":"engineer"}
+        ]},
+        {"words": [              
+            
+            {"w":"أَهِيَ", "e":"is she"},
+            {"w":"أَيْضًا", "e":"also"}, 
+            {"w":"مُهَنْدِسَةٌ؟", "e":"engineer"}
+        ]},
+        {"words": [              
+            
+            {"w":"لا،", "e":"no"},
+            {"w":"هِيَ", "e":"she"}, 
+            {"w":"طَبِيبَةٌ.", "e":"doctor"}
+        ]}
+    ]
+    },
+    {
+        "mode":"img-sentence", "d":"rtl", "img":"6car.png",
+        "lines":[
+        {"words": [              
+            
+            {"w":"لِمَنْ", "e":"whose"},
+            {"w":"هَذِهِ", "e":"this"}, 
+            {"w":"السَّيَّارَتُ؟", "e":"car"}
+        ]},
+        {"words": [              
+            
+            {"w":"هَذِهِ", "e":"this"},
+            {"w":"سَيَّارَتُ", "e":"car"}, 
+            {"w":" المُدِيرِ.", "e":"director"}
+        ]}
+    ]
+    },
+    {
+        "mode":"img-sentence", "d":"rtl", "img":"6iron.png",
+        "lines":[
+        {"words": [              
+            
+            {"w":"مَا", "e":"what"},
+            {"w":"هَذِهِ؟", "e":"this"}
+        ]},
+        {"words": [              
+            
+            {"w":"هَذِهِ", "e":"this"},
+            {"w":"مِكْوَاةٌ.", "e":"iron (for ironing)"}
+        ]},
+        {"words": [              
+            
+            {"w":"لِمَنْ", "e":"whose"},
+            {"w":"هَذِهِ؟", "e":"this"}
+        ]},
+        {"words": [              
+            
+            {"w":"هَذِهِ", "e":"this"},
+            {"w":"لِخَالِدٍ.", "e":"for Khalid"}
+        ]}
+    ]
+    }   
         
     ]
 }

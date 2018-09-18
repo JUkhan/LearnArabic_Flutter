@@ -1,0 +1,36 @@
+{
+    "lines":[
+        {"mode":"qa", "words":[{"w":"Read and write the following sentences vocalizing the last letter of all nouns:", "d":"ltr"}],
+        "lines":[{"lines":[
+            {"words":[
+                {"w":"هَذَا", "e":"this"},{"w":"لِمُحَمَّد", "e":"for Muhammad"},{"w":"وَذَلِكَ", "e":"this"},{"w":"لِحَامِد .", "e":"for Hamid"}
+            ]},
+            {"words":[
+                {"w":"لِمَنْ", "e":"whose"},{"w":"هَذِهِ ؟", "e":"this"},{"w":"هَذِهِ", "e":"this"},{"w":" لِيَاسِر .", "e":"for Yasir"}
+            ]},
+            {"words":[
+                {"w":"الحَمْد", "e":"all praise"},{"w":"للٌَه .", "e":"for Allah"}
+            ]},
+            {"words":[
+                {"w":"لِلَّه", "e":"for Allah"},{"w":"المَشْرِق", "e":"east"},{"w":"وَالمَغْرِب .", "e":"west"}
+            ]}
+        ]},
+        {
+            "lines":[
+                {"words":[
+                    {"w":"هَذَا  لِمُحَمَّدٍ  وَذَلِكَ  لِحَامِدٍ ."}
+                ]},
+                {"words":[
+                    {"w":"لِمَنْ هَذِهِ ؟  هَذِهِ  لِيَاسِرٍ ."}
+                ]},
+                {"words":[
+                    {"w":" الحَمْدُ  ِللٌَهِ ."}
+                ]},
+                {"words":[
+                    {"w":"لِلَّهِ المَشْرِقُ  وَالمَغْرِبُ ."}
+                ]}
+            ]
+        }]
+        }
+    ]
+}
