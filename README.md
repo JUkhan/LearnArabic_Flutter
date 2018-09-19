@@ -1,4 +1,4 @@
-# pleasure_of_allah
+# Learan Arabic
 
 A new Flutter project.
 
