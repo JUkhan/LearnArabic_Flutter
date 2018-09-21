@@ -17,8 +17,11 @@ class Pages extends StatelessWidget {
           builder: (_, snapshot) => Text(snapshot.data),
         ),
       ),
-      body:ListView.builder(
-        itemCount:bloc.bookBloc.totalPage,
+      body:StreamBuilder<int>(
+        initialData: 0,
+        stream: bloc.bookBloc.totalPageStream,
+        builder: (_, snapshot)=>ListView.builder(
+        itemCount:snapshot.data,
         itemBuilder: (context, index) => ListTile(
               leading: CircleAvatar(
                 child: Text('${index+1}',),
@@ -31,7 +34,9 @@ class Pages extends StatelessWidget {
                 Navigator.pushReplacementNamed(context, '/book');
               },
             ),
-      ),            
+      ),
+      ),
+                  
       drawer: DrawerWidget(bloc),
     );
   }

@@ -1,66 +1,141 @@
-{
-    "lines":[
+{   
+    "lines": [
         {
-            "mode":"qa",
-            "words": [
-                {"w": "Complete each of the following sentences using one of the words given below:", "d":"ltr"},
-                {"w":"جَمِيلٌ", "e":"beautiful"},
-                {"w":"وَسِخٌ", "e":"dirty"},  
-                {"w":"مَفْتُوحٌ", "e":"open"},
-                {"w":"حَرٌّ", "e":"hot"},
-                {"w":"ثَقِيلٌ", "e":"heavy"},  
-                {"w":"خَفِيفٌ", "e":"light"}                 
-            ],
-            "lines":[
-                {"mode":"a", "lines":[
-                    { "words":[{"w":"الحَجَر", "e":"rock"}] },
-                    { "words":[{"w":"البَابُ", "e":"door"}] },
-                    { "words":[{"w":"الْقَمَرُ", "e":"moon"}] },
-                    { "words":[{"w":"الوَرَقُ", "e":"paper"}] },
-                    { "words":[{"w":"المِنْدِيْلُ", "e":"kerchief"}] },
-                    { "words":[{"w":"اللَّبَنُ", "e":"milk"}] }
-                ]},
-                {"lines":[
-                    { "words":[{"w":"ثَقِيلٌ"}] },
-                    { "words":[{"w":"مَفْتُوحٌ"}] },
-                    { "words":[{"w":"جَمِيلٌ"}] },
-                    { "words":[{"w":"خَفِيفٌ"}] },
-                    { "words":[{"w":"وَسِخٌ"}] },
-                    { "words":[{"w":"حَرٌّ"}] }
-                ]}
+            "mode": "img-sentence",
+            "img": "3chair.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "الْكُرْسِيُّ","sp":[0,3],
+                    "e": "the chair"
+                },               
+                {
+                    "w": "مَكُسُورٌ",
+                    "e": "broken"
+                }
             ]
         },
         {
-            "mode":"qa",
-            "words": [
-                {"w": "Fill in the blank in each of the following sentences with a suitable word:", "d":"ltr"}                              
-            ],
-            "lines":[
-                {"mode":"b", "lines":[
-                    { "words":[{"w":"نَظِيفٌ", "e":"clean"}] },
-                    { "words":[{"w":"مَكْسُورٌ", "e":"broken"}] },
-                    { "words":[{"w":"بَارِدٌ", "e":"cold"}] },
-                    { "words":[{"w":"قَرِيبٌ", "e":"near"}] },
-                    { "words":[{"w":"بَعِيدٌ", "e":"far away"}] },
-                    { "words":[{"w":"وَاقِفٌ", "e":"standing"}] },
-                    { "words":[{"w":"جَالِسٌ", "e":"sitting"}] },
-                    { "words":[{"w":"كَبِيرٌ", "e":"big"}] },
-                    { "words":[{"w":"قَدِيمٌ", "e":"old"}] },
-                    { "words":[{"w":"جَدِيدٌ", "e":"new"}] }
-                ]},
-                {"lines":[
-                    { "words":[{"w":"القَمِيصُ", "e":"dress"}] },
-                    { "words":[{"w":"القَلَمٌ", "e":"pen"}] },
-                    { "words":[{"w":"المَاء", "e":"water"}] },
-                    { "words":[{"w":"البَيْتُ", "e":"house"}] },
-                    { "words":[{"w":"المَسْجِدُ", "e":"mosque"}] },
-                    { "words":[{"w":"الحِصَانُ", "e":"horse"}] },
-                    { "words":[{"w":"الكَلْبُ", "e":"dog"}] },
-                    { "words":[{"w":"الْقَمَرُ", "e":"moon"}] },
-                    { "words":[{"w":"البَيْت", "e":"house"}] },
-                    { "words":[{"w":"القَلَمٌ", "e":"pen"}] }
-                ]}
+            "mode": "img-sentence",
+            "img": "3water.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "الْمَاءُ","sp":[0,3],
+                    "e": "water"
+                },               
+                {
+                    "w": "بَارِدٌ",
+                    "e": "cold"
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3moon.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "الْقَمَرُ","sp":[0,3],
+                    "e": "the moon"
+                },               
+                {
+                    "w": "جَمِيْلٌ",
+                    "e": "beautiful"
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3house.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "الْبَيْتُ","sp":[0,3],
+                    "e": "the house"
+                },               
+                {
+                    "w": "قَرِيْبٌ",
+                    "e": "near"
+                },
+                {
+                    "w": "وَالْمَسْجِدُ","sp":[0,2,2,5],
+                    "e": "and the mosque"
+                },               
+                {
+                    "w": "بَعِيْدٌ",
+                    "e": "far away"
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3stone.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "الْحَجَرُ","sp":[0,3],
+                    "e": "the rock"
+                },               
+                {
+                    "w": "ثَقِيْلٌ",
+                    "e": "heavy"
+                },
+                {
+                    "w": "وَالْوَرَقُ","sp":[0,2,2,5],
+                    "e": "and the paper"
+                },               
+                {
+                    "w": "خَفِيْفٌ",
+                    "e": "light"
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3milk.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "اللَّبَنُ", "sp":[0,2],
+                    "e": "milk"
+                },               
+                {
+                    "w": "حَارٌّ",
+                    "e": "hot"
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3shirt.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "القَمِيْصُ","sp":[0,2],
+                    "e": "the dress"
+                },               
+                {
+                    "w": "نَاظِيْفٌ",
+                    "e": "clean"
+                }
+            ]
+        },
+        {
+            "mode": "img-sentence",
+            "img": "3eng.png",
+            "d": "rtl",
+            "words":[
+                {
+                    "w": "المُهَنْدِسُ","sp":[0,2],
+                    "e": "the engineer"
+                },               
+                {
+                    "w": "وَاقِفٌ",
+                    "e": "standing"
+                }
             ]
         }
+
     ]
 }

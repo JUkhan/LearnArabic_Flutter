@@ -90,7 +90,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
   _dragUpdate(DragUpdateDetails details) {
     if (_hasPage == false &&
-        details.sourceTimeStamp.inMilliseconds > _milis + 50) {
+        details.sourceTimeStamp.inMilliseconds > _milis + 150) {
       _hasPage = true;
       if (details.delta.dx > 0) {
         Navigator.pushReplacement(
@@ -123,8 +123,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         onHorizontalDragStart: _dragStart,
         onHorizontalDragUpdate: _dragUpdate,
       ),
-    );  
-    
+    );
   }
 
   List<Widget> _getListItem(JPage page) {
@@ -475,38 +474,93 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   TextDirection _getDirection(String direction) {
     return direction == 'rtl' ? TextDirection.rtl : TextDirection.ltr;
   }
+  
+  TextSpan _textSpan({String text, dynamic recognizer, bool hasColor=true, bool hasWordSpac=false}){
+      Color color;
+      if(hasColor){
+        switch (text) {
+          case 'وَ':color=Colors.green;break;
+          case 'أَ':case 'أ': color=Colors.lightBlue;break;
+          case 'الْ':case 'ال': case 'اَلْ': color=Colors.cyan;break;
+          case 'لِ':color=Colors.red;break;
 
+          default:color=Colors.orange;
+        }        
+      }  
+      /*color: widget.bloc.settingBloc.theme == Themes.light
+                        ? Colors.blue[400]
+                        : Colors.pink[400] */   
+      return TextSpan(
+            recognizer: recognizer,
+            text:hasWordSpac? text + WORD_SPACE:text,
+            style: hasColor? TextStyle(color: color):null);
+  }
   TextSpan _getTextSpan(JWord word, String direction) {
     final txtSpans = List<TextSpan>();
-    if (word.hasStartSubstr > 0) {
-      txtSpans.add(TextSpan(
-          text: word.word.substring(0, word.hasStartSubstr),
-          style: TextStyle(color: Colors.deepOrange)));
+    var gesture = direction == 'rtl' ? _getGesture(word) : null;
+    if (word.sp != null) {
+      int len = word.sp.length;
+      if (len == 1) {
+        txtSpans.add(_textSpan(recognizer: gesture, text: word.word.substring(0, word.sp[0]), hasColor: false));
+        txtSpans.add(_textSpan(
+            recognizer: gesture,
+            text: word.word.substring(word.sp[0]),
+            hasWordSpac: true));
+      } else {
+        int i = 0, pairIndex;
+        bool isFirst = true;
+        do {
+          if (isFirst) {
+            isFirst = false;
+            txtSpans.add(_textSpan(
+                recognizer: gesture,
+                text: word.word.substring(word.sp[i], word.sp[i + 1]),
+                ));
+            pairIndex = i + 1;
+            i += 2;
+          } else {
+            if (word.sp[pairIndex] == word.sp[i] && i+1<len) {
+              txtSpans.add(_textSpan(
+                  recognizer: gesture,
+                  text: word.word.substring(word.sp[i], word.sp[i + 1]),
+                  ));
+              pairIndex = i + 1;
+              i += 2;
+            } else {
+              txtSpans.add(_textSpan(
+                  recognizer: gesture,hasColor: false,
+                  text: word.word.substring(word.sp[pairIndex], word.sp[i])));
+              if (len % 2 == 0||i+1<len)
+                isFirst = true;
+              else {
+                i++;
+                pairIndex = i;
+              }
+            }
+          }
+        } while (i < len);
+        if (len % 2 != 0) {
+          txtSpans.add(_textSpan(
+              recognizer: gesture,
+              text: word.word.substring(word.sp[len - 1]),
+              hasWordSpac: true));
+        } else if (i < word.word.length && pairIndex < len) {
+          txtSpans.add(_textSpan(
+              recognizer: gesture, hasWordSpac: true,hasColor: false,
+              text: word.word.substring(word.sp[pairIndex])));
+        }
+      }
+    } else {
+      txtSpans.add(_textSpan(recognizer: gesture, text: word.word , hasWordSpac: true, hasColor: false));
     }
-    txtSpans.add(TextSpan(
-      recognizer: direction == 'rtl' ? _getGesture(word) : null,
-      text: word.word.substring(
-              word.hasStartSubstr, word.word.length - word.hasEndSubstr) +
-          (word.hasEndSubstr > 0 ? '' : WORD_SPACE),
-    ));
-    if (word.hasEndSubstr > 0) {
-      txtSpans.add(TextSpan(
-          text: word.word.substring(word.word.length - word.hasEndSubstr) +
-              WORD_SPACE,
-          style: TextStyle(color: Colors.red[400])));
-    }
-
     return TextSpan(
         style: word == _selectedWord
             ? widget.bloc.settingBloc
                 .getTextTheme(_context, direction)
-                .copyWith(
-                    color: widget.bloc.settingBloc.theme == Themes.light
-                        ? Colors.blue[400]
-                        : Colors.pink[400])
+                .copyWith( background: Paint()..color=widget.bloc.settingBloc.theme == Themes.light?Colors.lime[400]:Colors.purple[400])
             : widget.bloc.settingBloc.getTextTheme(_context, direction),
         children: txtSpans);
-  }
+  } 
 
   Widget _getImgSentence(JLine line) {
     final list = List<Widget>()..add(Image.asset('assets/images/${line.img}'));
@@ -556,26 +610,26 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   }
 
   LinearGradient _getGradient() => LinearGradient(
-        end: Alignment.topRight,
-        begin: Alignment.bottomLeft,
-        stops: [0.1, 0.5, 0.7, 0.9],
-        colors: [
-          Colors.pink[600],
-          Colors.pink[500],
-          Colors.pink[400],
-          Colors.pink[300],
+        //begin: Alignment.centerRight, 
+        //end: Alignment.centerLeft, 
+       begin: FractionalOffset.topCenter,
+       end: FractionalOffset.bottomCenter,        
+        stops: [ 0.1, 0.9],
+        colors: [          
+          Colors.pink.withOpacity(0.4),
+          Colors.pink.withOpacity(0.7)
         ],
       );
 
   LinearGradient _getGradient2() => LinearGradient(
-        end: Alignment.topRight,
-        begin: Alignment.bottomLeft,
-        stops: [0.1, 0.5, 0.7, 0.9],
+       begin: FractionalOffset.topCenter,
+       end: FractionalOffset.bottomCenter,       
+        stops: [0.1, 0.5, 0.7, 0.9],         
         colors: [
-          Colors.indigo[800],
-          Colors.indigo[700],
-          Colors.indigo[600],
-          Colors.indigo[400],
+          Colors.blue[400],
+          Colors.blue[700],
+          Colors.blue[600],
+          Colors.blue[400]
         ],
       );
 }

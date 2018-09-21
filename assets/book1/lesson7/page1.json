@@ -1,41 +1,48 @@
-{
-    "title":{
-        "mode":"lesson", "d":"rtl", "height":50.0,
-        "words":[
-            {"w":"اَلدَّرْسُ", "e":"lesson"},
-            {"w":"السَّابِعُ", "e":"seven"}
-        ]
-    },
-    "videos":[
-        {
-            "id":"pRhJStz27PM", "title":"Madinah Arabic Course B1 L7"
-        }       
-    ],
-    "lines": [        
-        {"words": [{"w":"مَنْ", "e":"who"}, {"w":"هَذِهِ ؟", "e":"this(feminine)"}]},
-        {"words": [{"w":"هَذِهِ", "e":"this"}, {"w":"آمِنَةُ .", "e":""}]},
-        {"mode":"divider"},
-        {"words": [{"w":"وَمَنْ", "e":"and who"}, {"w":"تِلْكَ ؟", "e":"that(feminine)"}]},
-        {"words": [{"w":"تِلْكَ", "e":"that"}, {"w":"فَاطِمَةُ .", "e":"Fatima"}]},
-        {"mode":"divider"},
-
-        {"words": [{"w":"هَذِهِ", "e":"this"}, {"w":"طَبِيبَةٌ", "e":"doctor"},{"w":"وَتِلْكَ", "e":"and that"}, {"w":"مُمَرَّضَةٌ .", "e":"nurse"}]},
-        {"mode":"divider"},
-        {"words": [{"w":"هَذِهِ", "e":"this"}, {"w":"مِنَ", "e":"from"},{"w":"الهِنْدِ", "e":"India"}, {"w":"وَتِلْكَ", "e":"and that"},{"w":"مِنَ", "e":"from"}, {"w":"اليَابَانِ .", "e":"Japan"}]},
-        {"mode":"divider"},
-        {"words": [{"w":"هَذِهِ", "e":""}, {"w":"طَوِيلَةٌ", "e":"tall"},{"w":"وَتِلْكَ", "e":""}, {"w":"قَصِيرَةٌ .", "e":"short"}]},
-        {"mode":"divider"},
-
-        {"words": [{"w":"مَنْ", "e":"who"}, {"w":"هَذَا ؟", "e":"this"}]},
-        {"words": [{"w":"هَذَا"}, {"w":"حَامِدٌ ."}]},
-        {"mode":"divider"},
-        {"words": [{"w":"وَمَنْ"}, {"w":"ذَلِكَ ؟"}]},
-        {"words": [{"w":"ذَلِكَ"}, {"w":"عَلِيٌ ."}]},
-        {"mode":"divider"},
-        {"words": [{"w":"أَتِلْكَ"}, {"w":"دَجَاجَةٌ ؟", "e":"hen"}]},
-        {"words": [{"w":"لاَ،"}, {"w":"تِلْكَ"}, {"w":"بَطَّةٌ .", "e":"duck"}]},
-        {"mode":"divider"}
-        
-        
+{"title":{
+    "mode":"lesson", "d":"rtl", "height":50.0,
+    "words":[
+        {"w":"اَلدَّرْسُ", "e":"lesson"},
+        {"w":"السَّابِعُ", "e":"seven"}
+    ]
+},
+"videos":[
+    {
+        "id":"pRhJStz27PM", "title":"Madinah Arabic Course B1 L7"
+    }       
+],
+    
+    "lines":[
+       {   "d":"ltr",
+            "mode":"lesson", "height":50.0,
+            "words":[{"w":"POINTS TO REMEMBER"}]
+        },
+        { "d":"ltr", "words":[{"w":"In this lesson we learn تِلْكَ which is the feminine of ذَلِكَ \"that\" e.g.\n\nThis is Bilal and this is Hamid\n\n. هَذَا بِلَالٌ، وَذَلِكَ حَامِدٌ \n\nThis is Aminah and that is Maryam.\n\n. هَذِهِ آمِنَةُ وَتِلْكَ مَرْيَمُ  "} ]},
+        {   "mode":"lesson", "height":50.0,
+            "words":[
+                {"w":"أَسْمَءُ", "e":"name of"},
+                {"w":"الإِشَارَةِ", "e":"signal"},
+                {"w":"لِلْقَرِبِ", "e":"for near"}
+            ]
+        },
+        {"words":[{"w":"هَذَا  مُحَمَّدٌ"}]},
+        {"words":[{"w":"هَذِهِ  آمِنَةٌ"}]},
+        {   "mode":"lesson", "height":50.0,
+            "words":[
+                {"w":"أَسْمَءُ", "e":"name of"},
+                {"w":"الإِشَارَةِ", "e":"signal"},
+                {"w":"لِلْبَعِيدِ", "e":"for far away"}
+            ]
+        },
+        {"words":[{"w":"ذَلِكَ حَامِدٌ"}]},
+        {"words":[{"w":"تِلْكَ زَيْنَبُ"}]},
+        {   "d":"ltr",
+            "mode":"lesson", "height":50.0,
+            "words":[{"w":"Vocabulary:"}]
+        },
+        {"mode":"vocab", "words":[            
+            {"w":"النَّاقَةُ", "e":"she-camel"}, {"w":"البَطَّةُ", "e":"duck"},
+            {"w":"البَيْضَةُ", "e":"egg"}, {"w":"المُمَرِّضَةُ", "e":"nurse"},             
+            {"w":"المُؤَذِّنُ", "e":"muazzin"}, {"w":"الدَّجَاجَةُ", "e":"hen"}  
+        ]}
     ]
 }

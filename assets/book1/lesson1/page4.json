@@ -1,83 +1,128 @@
 {   
     "lines": [
-       
         {
-            "mode":"img-sentence", "img":"merchant.png",
+            "mode":"lesson", "height":50.0,"d":"rtl",
+            "words":[               
+                {"w":"مَا", "e":"what"},
+                {"w":"هَذَا؟", "e":"this"}
+            ]
+        },
+        {
+            "mode":"img-sentence", "img":"house.png",
             "lines":[
                 {
                     "d":"rtl",
+                    "words":[                       
+                        {"w":"مَا", "e":"what"},
+                        {"w":"هَذَا؟", "e":"this"}
+                    ]
+                },
+                {
+                    "d":"rtl",
                     "words":[
-                        {"w":"مَنْ", "e":"who"},
-                        {"w":"هَذَا؟", "e":"this"},
                         {"w":"هَذَا", "e":"this"},
-                        {"w":"تَاجِرٌ.", "e":"a merchant"}
+                        {"w":"بَيْتٌ.", "e":"a house"}
+                    ]
+                },
+                {
+                    "d":"rtl",
+                    "words":[                        
+                        {"w":"أَهَذَا", "e":"this", "sp":[0,2]},
+                        {"w":"بَيْتٌ؟", "e":"a house"}
+                    ]
+                },
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"نَعَمُ،", "e":"yes"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"بَيْتٌ.", "e":"a house"}
                     ]
                 }
             ]
 
         },
         {
-            "mode":"img-sentence", "img":"mosque.png",
+            "mode":"img-sentence", "img":"dress.png",
             "lines":[
                 {
                     "d":"rtl",
                     "words":[
                         {"w":"مَا", "e":"what"},
-                        {"w":"هَذَا؟", "e":"this"},
-                        {"w":"هَذَا", "e":"this"},                       
-                        {"w": "مَسْجِدٌ","e": "a mosque"}
+                        {"w":"هَذَا؟", "e":"this"}
+                    ]
+                },
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"قَمِيْصٌ.", "e":"a shirt"}
                     ]
                 }
             ]
 
         },
         {
-            "mode":"img-sentence", "img":"dog.png",
+            "mode":"img-sentence", "img":"chair.png",
             "lines":[
                 {
                     "d":"rtl",
                     "words":[
-                        {"w":"مَا", "e":"what"},
-                        {"w":"هَذَا؟", "e":"this"},
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"كَلْبٌ.", "e":"a dog"}
+                        {"w":"أَهَدَا", "e":"this", "sp":[0,2]},
+                        {"w":"سَرِيْرٌ؟", "e":"a bed"}
                     ]
-                }
-            ]
-
-        },
-        {
-            "mode":"img-sentence", "img":"cat.png",
-            "lines":[
+                },
                 {
                     "d":"rtl",
                     "words":[
-                        {"w":"أَ", "e":"interogative word"},
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"كَلْبٌ؟", "e":"a dog"},
                         {"w":"لاَ،", "e":"no"},
                         {"w":"هَذَا", "e":"this"},
-                        {"w":"قِطٌّ.", "e":"a cat"}
+                        {"w":"كُرْسِيٌّ.", "e":"a chair"}
                     ]
                 }
             ]
 
         },
         {
-            "mode":"img-sentence", "img":"donkey.png",
+            "mode":"img-sentence", "img":"pen.png",
             "lines":[
                 {
                     "d":"rtl",
-                    "words":[                     
+                    "words":[                       
+                        {"w":"أَهَدَا", "e":"this", "sp":[0,2]},
+                        {"w":"مِفْتَاحٌ؟", "e":"a key"}
+                    ]
+                },
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"لاَ،", "e":"no"},
                         {"w":"هَذَا", "e":"this"},
-                        {"w":"هِمَارٌ", "e":"a donkey"}
-                        
+                        {"w":"قَلَمٌ.", "e":"a pen"}
+                    ]
+                }
+            ]
+
+        },
+        {
+            "mode":"img-sentence", "img":"star.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"مَا", "e":"what"},
+                        {"w":"هَذَا؟", "e":"this"}
+                    ]
+                },
+                {
+                    "d":"rtl",
+                    "words":[                    
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"نَجْمٌ.", "e":"a star"}
                     ]
                 }
             ]
 
         }
-        
-        
     ]
 }

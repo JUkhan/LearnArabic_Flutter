@@ -1,89 +1,30 @@
-{   
-    "title":{
-        "mode":"lesson", "height":50.0,"d":"rtl",
-            "words":[
-                {"w":"تَمْرِيْنٌ", "e":"Exercise"}
-            ]
-         }, 
-    "lines": [
-        {"mode":"qa", "words":[{"w":"Answer the following questions:", "d":"ltr"}],
-            "lines":[
-                {"lines":[
-                    {"words":[
-                      {"w":"أَيْنَ", "e":"where"} ,
-                      {"w":"كِتَابُ", "e":"book"} ,
-                      {"w":"مُحَمَّدٍ؟", "e":""}  
-                    ]},
-                    {"words":[
-                        {"w":"أَيْنَ", "e":"where"} ,
-                        {"w":"كِتَابُ", "e":"book"} ,
-                        {"w":"عَمَّارٍ؟", "e":""}  
-                      ]},
-                      {"words":[
-                        {"w":"أَيْنَ", "e":"where"} ,
-                        {"w":"حَقِيبَةُ", "e":"bag"} ,
-                        {"w":"المُدَرِّسِ؟", "e":"teacher"}  
-                      ]}  
-                ]},
-                {"lines":[
-                    {"words":[
-                      {"w":"هُوَ", "e":"it"} ,
-                      {"w":"عَلَي", "e":"on"} ,
-                      {"w":"المَكْتَبِ", "e":"table"},
-                      {"w":"هُنَاكَ", "e":"there"}  
-                    ]},
-                    {"words":[
-                        {"w":"هُوَ", "e":"it"} ,
-                        {"w":"عَلَي", "e":"on"} ,
-                        {"w":"مَكْتَبِ", "e":"table"} ,
-                        {"w":"المُدَرِّسِ", "e":"teacher"}  
-                      ]},
-                      {"words":[
-                        {"w":"هُوَ", "e":"it"} ,
-                        {"w":"تَحْتَ", "e":"under"} ,
-                        {"w":"المَكْتَبِ", "e":"table"}  
-                      ]}  
-                ]
-
-                }
-            ]
+{    
+    "lines":[
+        {"mode":"raw", "d":"ltr","words":[{"w":"2. تَحْتَ \"under\". The noun following تَحْتَ is in the genitive case because it is mudaf ilaihi: تَحْتَ المَكْتَبِ، تَحْتَ الكِتَابِ"}]},
+        {"mode":"raw","d":"ltr","words":[{"w":"3. يَا is a vocative particle. A noun following يَا has only one dammah: يَا أُسْتَاذُ، يَا شَيْخُ، يَا بِلآلُ not  يَا بِلآلٌ etc."}]},
+        {"mode":"raw","d":"ltr","words":[{"w":"4. The words اِسْمٌ and اِبْنٌ commence with hamzatu l-wasl. When preceded by a word the initial <<i>> is dropped in pronunciation."}]},
+        {"mode":"raw","d":"ltr","words":[{"w":"اِسْمُ  الْوَلَدِ  بِلآلٌ \n ism-u l-walad-i bilal-u-n \nوَاسْمُ  الْبِنْتِ  آمِنَةُ \nwa sm-u l-bint-i aminat-u\nاِبْنُ الْمُدَرِّسِ طَبِيْبٌ \nibn-u l-mudarris-i tabib-u-n\nوَابْنُ  الإِمَمِ  يَاجِرٌ \nwa bn-u l-imam-i tajir-u-n\nأَيْنَ  ابْنُ  حَامِدٍ \naina bn-u hamid-i-n?"}]},
+        {   "d":"ltr",
+            "mode":"lesson", "height":50.0,
+            "words":[{"w":"Vocabulary:"}]
         },
-        {"mode":"card","d":"ltr", "words":[{"w":"Rewrite the two words in each group so that the second word is in the possessive form:"}],
-            "lines":[
-                {"words":[{"w":"كَتَابٌ، مُحَمَّدٌ"},{"w":":"},{"w":"كَتَابُ مُحَمَّدٍ"}]},
-                {"mode":"divider"},
-                {"words":[{"w":"قَلَمٌ، حَامِدٌ"},{"w":":"},{"w":".....", "e":" قَلَمُ حَامِدٍ"}]},
-                {"mode":"divider"},
-                {"words":[{"w":"بَيْتٌ، عَبَّاسٌ"},{"w":":"},{"w":".....", "e":"بَيْتُ عَبَّاسٍ"}]},
-                {"mode":"divider"},
-                {"words":[{"w":"عُرْفَتٌ،  عَلِيٌّ"},{"w":":"},{"w":".....", "e":"عُرْفَتُ عَلِيٍّ"}]},
-                {"mode":"divider"},
-                {"words":[{"w":"دَفْتَرٌ،  سَعِيدٌ"},{"w":":"},{"w":".....", "e":"دَفْتَرُ سَعِيدٍ."}]},
-                {"mode":"divider"},
-                {"words":[{"w":"مِنْدِيلٌ، يَاسِرُ"},{"w":":"},{"w":".....", "e":"مِنْدِيلُ مِنْدِيلٍ"}]},
-                {"mode":"divider"},
-                {"words":[{"w":"قَمِيصٌ،  عَمَّرٌ"},{"w":":"},{"w":".....", "e":"قَمِيصُ عَمَّرٍ"}]},
-                {"mode":"divider"},
-                {"words":[{"w":"سَرِيرٌ،  خَالِدٌ"},{"w":":"},{"w":".....", "e":"سَرِيرُ خَالِدٍ"}]},
-                {"mode":"divider"},
-                {"words":[{"w":"مَكْتَبٌ،  المُدَرِّسُ"},{"w":":"},{"w":"مَكْتَبُ المُدَرِّسِ"}]},                
-                {"mode":"divider"},
-                {"words":[{"w":"مِفْتَاحٌ،  البَيْتُ"},{"w":":"},{"w":".....", "e":"مِفْتَاحُ  البَيْتِ"}]},
-                {"mode":"divider"},
-                {"words":[{"w":"دُكَّنونٌ، التَّاجِرُ"},{"w":":"},{"w":".....", "e":"دُكَّنونُ  التَّاجِرِ"}]},
-                {"mode":"divider"},
-                {"words":[{"w":"بَيْتٌ،  المُهَنْدِسُ"},{"w":":"},{"w":".....", "e":"بَيْتُ  المُهَنْدِسِ"}]},
-                {"mode":"divider"},
-                {"words":[{"w":"اِسْمٌ،  الوَلَدُ"},{"w":":"},{"w":".....", "e":"اِسْمُ  الوَلَدِ"}]},
-                {"mode":"divider"},
-                {"words":[{"w":"كِتَابٌ،  اللَّهُ"},{"w":":"},{"w":".....", "e":"كِتَابُ  اللَّهِ"}]},
-                {"mode":"divider"},
-                {"words":[{"w":"بِنْتٌ،  الطَّبِيْبُ"},{"w":":"},{"w":".....", "e":"بِنْتُ  الطَّبِيْبِ"}]},
-                {"mode":"divider"},
-                {"words":[{"w":"مِفْتَاحٌ،  السَّيَّارَةُ"},{"w":":"},{"w":".....", "e":"مِفْتَاحُ  السَّيَّارَةِ"}]},
-                {"mode":"divider"}
-                
+        {"mode":"vocab", 
+            "words":[
+                {"w":"الرَّسُولُ", "e":"messenger"},
+                {"w":"تَحْتَ", "e":"under, beneath"},
+                {"w":"العَمُّ", "e":"paternal uncle"},
+                {"w":"الاِبْنُ", "e":"son"},
+                {"w":"الشَّرِعُ", "e":"street"},
+                {"w":"السَّيَارَةُ", "e":"car"},
+                {"w":"الكَعْبَةُ", "e":"Kabah"},
+                {"w":"هُنَا", "e":"here"},
+                {"w":"الخَالُ", "e":"maternal uncle"},
+                {"w":"هُنَاكَ", "e":"there"},
+                {"w":"مُغْلَقٌ", "e":"closed, shut"},
+                {"w":"البِنْتُ", "e":"daughter, girl"},
+                {"w":"الاِسْمُ", "e":"name"},
+                {"w":"الحَقِيبَةُ", "e":"bag, case"}
             ]
-        }        
+        }
     ]
 }

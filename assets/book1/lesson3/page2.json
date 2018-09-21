@@ -1,141 +1,71 @@
-{   
-    "lines": [
+{
+    "lines":[
         {
-            "mode": "img-sentence",
-            "img": "3chair.png",
-            "d": "rtl",
-            "words":[
-                {
-                    "w": "الْكُرْسِيُّ",
-                    "e": "chair"
-                },               
-                {
-                    "w": "مَكُسُورٌ",
-                    "e": "broken"
-                }
-            ]
-        },
-        {
-            "mode": "img-sentence",
-            "img": "3water.png",
-            "d": "rtl",
-            "words":[
-                {
-                    "w": "الْمَاءُ",
-                    "e": "water"
-                },               
-                {
-                    "w": "بَارِدٌ",
-                    "e": "cold"
-                }
-            ]
-        },
-        {
-            "mode": "img-sentence",
-            "img": "3moon.png",
-            "d": "rtl",
-            "words":[
-                {
-                    "w": "الْقَمَرُ",
-                    "e": "moon"
-                },               
-                {
-                    "w": "جَمِيْلٌ",
-                    "e": "beautiful"
-                }
-            ]
-        },
-        {
-            "mode": "img-sentence",
-            "img": "3house.png",
-            "d": "rtl",
-            "words":[
-                {
-                    "w": "الْبَيْتُ",
-                    "e": "house"
-                },               
-                {
-                    "w": "قَرِيْبٌ",
-                    "e": "near"
+            "mode":"card",  
+            "lines":[
+                {"d":"ltr",
+                    "words":[{"w":"The initial vowel (a, i, or u) which is omitted when preceded by a word is called hamazatu l-wasl,  "}]
                 },
                 {
-                    "w": "وَالْمَسْجِدُ",
-                    "e": "mosque"
-                },               
-                {
-                    "w": "بَعِيْدٌ",
-                    "e": "far away"
-                }
-            ]
-        },
-        {
-            "mode": "img-sentence",
-            "img": "3stone.png",
-            "d": "rtl",
-            "words":[
-                {
-                    "w": "الْحَجَرُ",
-                    "e": "rock"
-                },               
-                {
-                    "w": "ثَقِيْلٌ",
-                    "e": "heavy"
+                   
+                    "words":[{"w":"اَلْبَابُ", "e":"the door", "sp":[0,4]},{"w":"مَفْتُوحٌ .", "e":"open"}]
+                },
+                {"d":"ltr",
+                    "words":[{"w":"The door is open."}]
                 },
                 {
-                    "w": "وَالْوَرَقُ",
-                    "e": "paper"
-                },               
-                {
-                    "w": "خَفِيْفٌ",
-                    "e": "light"
+                    
+                    "words":[{"w":"اَلْقَلَمُ", "e":"the pen","sp":[0,4]},{"w":"مَكْصُورٌ .", "e":"broken"}]
+                },
+                {"d":"ltr",
+                    "words":[{"w":"The pen is broken"}]
                 }
+            ]
+            
+        },
+        {"d":"ltr",
+            "mode":"lesson",  "height":50.0,
+            "words":[{"w":"Note:"}]
+        },
+        {"d":"ltr",
+            "mode":"card",
+            "words":[{"w":"We have learn that the tanwin is the indefinite article, and it is to be translated as <<a>>, e.g. بَيْتٌ a house. This does not apply to adjectives like مَفْتُوحٌ \"open\", and مَكْصُورٌ \"broken\". "}]
+        },
+        {"d":"ltr",
+            "mode":"lesson", "height":50.0,
+            "words":[
+                {"w":"Vocabulary:"}
             ]
         },
         {
-            "mode": "img-sentence",
-            "img": "3milk.png",
-            "d": "rtl",
+            "mode":"vocab", "d":"rtl",
             "words":[
-                {
-                    "w": "اللَّبَنُ",
-                    "e": "milk"
-                },               
-                {
-                    "w": "حَارٌّ",
-                    "e": "hot"
-                }
-            ]
-        },
-        {
-            "mode": "img-sentence",
-            "img": "3shirt.png",
-            "d": "rtl",
-            "words":[
-                {
-                    "w": "القَمِيْصُ",
-                    "e": "dress"
-                },               
-                {
-                    "w": "نَاظِيْفٌ",
-                    "e": "clean"
-                }
-            ]
-        },
-        {
-            "mode": "img-sentence",
-            "img": "3eng.png",
-            "d": "rtl",
-            "words":[
-                {
-                    "w": "المُهَنْدِسُ",
-                    "e": "engineer"
-                },               
-                {
-                    "w": "وَاقِفٌ",
-                    "e": "standing"
-                }
-            ]
+                {"w":"فَقِرٌ", "e":"poor"},
+                {"w":"غَنِيٌ", "e":"rich"},
+                {"w":"طَوِيلٌ", "e":"tall"},
+                {"w":"قَصِيرٌ", "e":"short"},
+                {"w":"بَارِدٌ", "e":"cold"},
+                {"w":"حَرٌّ", "e":"hot"},
+                {"w":"جَالِسٌ", "e":"sitting"},
+                {"w":"وَاقِفٌ", "e":"standing"},
+                {"w":"جَدِيدٌ", "e":"new"},
+                {"w":"قَدِيمٌ", "e":"old"},
+                {"w":"قَرِيبٌ", "e":"near"},
+                {"w":"بَعِيدٌ", "e":"far away"},
+                {"w":"نَظِيفٌ", "e":"clean"},
+                {"w":"وَسِخٌ", "e":"dirty"},
+                {"w":"صَغِيرُ", "e":"small"},
+                {"w":"كَبِيرٌ", "e":"big"},
+                {"w":"خَفِيفٌ", "e":"light"},
+                {"w":"ثَقِيلٌ", "e":"heavy"},
+                {"w":"الوَرَقُ", "e":"paper","sp":[0,2]},
+                {"w":"المَاهُ", "e":"water","sp":[0,2]},
+                {"w":"التُّفَّاحُ", "e":"apple","sp":[0,2]},
+                {"w":"جَمِيْلٌ", "e":"beautiful"},
+                {"w":"الدُّكَّانُ", "e":"shop","sp":[0,2]},
+                {"w":"حُلْوٌ", "e":"sweet"},
+                {"w":"مَرِيضٌ", "e":"sick"}]
         }
-
+    
     ]
 }

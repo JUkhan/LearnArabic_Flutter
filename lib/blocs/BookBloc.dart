@@ -21,6 +21,7 @@ class BookBloc {
   final _lessonIndexController = BehaviorSubject<int>();
   final _bookmarksController = BehaviorSubject<bool>(seedValue: false);
   final _selectedWord = PublishSubject<JWord>();
+  final _totalPageController = BehaviorSubject<int>();
 
   BookBloc({@required this.rootBloc}) {
     syncWithPref();
@@ -32,6 +33,7 @@ class BookBloc {
   Function(int) get pageIndexAction => _pageIndexController.sink.add;
   Function(int) get lessonIndexAction => _lessonIndexController.sink.add;
 
+  Stream<int> get totalPageStream =>_totalPageController.stream;
   Stream<bool> get bookMarkStream => _bookmarksController.stream;
   Stream<JWord> get selectedWord => _selectedWord.stream;
   Stream<String> get lessonInfo => _lessonIndexController
@@ -105,6 +107,8 @@ class BookBloc {
     selectedLessonIndex = index;
     currentPage = 0;   
     totalPage = await _getTotalPage('$_bookPath/lesson$selectedLessonIndex'); 
+    print('totalPage: $totalPage');
+    _totalPageController.sink.add(totalPage);
     lessonIndexAction(index);
     pageIndexAction(0);
     bookMarkAction(false);
@@ -156,6 +160,7 @@ class BookBloc {
     _lessonIndexController.close();
     _bookmarksController.close();
     _selectedWord.close();
+    _totalPageController.close();
   }
   
   selectWord(JWord word) {

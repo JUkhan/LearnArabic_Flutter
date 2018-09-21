@@ -1,3 +1,4 @@
+
 class BookInfo {
   final int lessons;
   final String description;
@@ -72,28 +73,34 @@ class JWord{
   final String word;
   final String bangla;
   final String english;
-  final int hasStartSubstr;
-  final int hasEndSubstr;
+  //final int hasStartSubstr;
+  //final int hasEndSubstr;
   final int wordSpace;
+  final List<int> sp;
   JWord({
     this.direction,
     this.bangla,
     this.english,
     this.word,
     this.wordSpace,
-    this.hasEndSubstr,
-    this.hasStartSubstr
+    //this.hasEndSubstr,
+    //this.hasStartSubstr,
+    this.sp
   });
   factory JWord.fromJson(Map<String, dynamic> json){
-    
+    List<int> sps;
+    if(json.containsKey('sp')){
+      sps=(json['sp'] as List).cast<int>();
+    }
     return JWord(
       word: getValue<String>(json, 'w', ''),
       direction: getValue<String>(json, 'd', 'rtl'),
       bangla: getValue<String>(json, 'b', ''),
       english: getValue<String>(json, 'e', ''),
       wordSpace: getValue<int>(json, 'ws', 0),
-      hasStartSubstr: getValue<int>(json, 'ss', 0),
-      hasEndSubstr: getValue<int>(json, 'es', 0),
+      //hasStartSubstr: getValue<int>(json, 'ss', 0),
+      //hasEndSubstr: getValue<int>(json, 'es', 0),
+      sp:sps
     );
   }
 
@@ -104,8 +111,9 @@ class JWord{
     english:'',
     word:text,
     wordSpace:0,
-    hasEndSubstr:0,
-    hasStartSubstr:0 );
+    //hasEndSubstr:0,
+    //hasStartSubstr:0 
+    );
   }
   
 }

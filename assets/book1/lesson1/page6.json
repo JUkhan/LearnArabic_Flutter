@@ -1,31 +1,31 @@
 {   
     "lines": [
+       
         {
-            "mode":"lesson", "height":50.0,"d":"rtl",
-            "words":[
-                {"w":"تَمْرِيْنٌ", "e":"Exercise"}
+            "mode":"img-sentence", "img":"merchant.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"مَنْ", "e":"who"},
+                        {"w":"هَذَا؟", "e":"this"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"تَاجِرٌ.", "e":"a merchant"}
+                    ]
+                }
             ]
 
         },
         {
-            "mode":"lesson", "height":50.0,"d":"rtl",
-            "words":[
-                {"w":"اِقْرَأ", "e":"read"},
-                {"w":"وَ", "e":"and"},
-                {"w":"اكْتُبْ", "e":"write"}
-            ]
-
-        },
-        {
-            "mode":"img-sentence", "img":"pen.png",
+            "mode":"img-sentence", "img":"mosque.png",
             "lines":[
                 {
                     "d":"rtl",
                     "words":[
                         {"w":"مَا", "e":"what"},
-                        {"w":"هَذَا؟", "e":"this"}, 
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"قَلَمٌ.", "e":"a pen"}
+                        {"w":"هَذَا؟", "e":"this"},
+                        {"w":"هَذَا", "e":"this"},                       
+                        {"w": "مَسْجِدٌ","e": "a mosque"}
                     ]
                 }
             ]
@@ -36,55 +36,15 @@
             "lines":[
                 {
                     "d":"rtl",
-                    "words":[                       
-                        {"w":"هَذَا", "e":"this"},                       
-                        {"w": "كَلْبٌ.","e": "a dog"}
-                    ]
-                }
-            ]
-
-        },
-        {
-            "mode":"img-sentence", "img":"doctor.png",
-            "lines":[
-                {
-                    "d":"rtl",
                     "words":[
-                        {"w":"مَنْ", "e":"who(is)"},
-                        {"w":"هَذَا ؟", "e":"this"},
+                        {"w":"مَا", "e":"what"},
+                        {"w":"هَذَا؟", "e":"this"},
                         {"w":"هَذَا", "e":"this"},
-                        {"w":"طَبِيْبٌ.", "e":"a doctor"}
+                        {"w":"كَلْبٌ.", "e":"a dog"}
                     ]
                 }
             ]
 
-        },        
-        {
-            "mode":"img-sentence", "img":"camel.png",
-            "lines":[
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"هَذَا", "e":"this"},                       
-                        {"w": "جَمَلٌ","e": "a camel"}
-                    ]
-                }
-            ]
-
-        },
-        {
-            "mode":"img-sentence", "img":"rooster.png",
-            "lines":[
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"أَ", "e":"interogative word"},
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"دِيْكٌ؟", "e":"a rooster"},
-                        {"w":"نَعَمْ.", "e":"yes"}
-                    ]
-                }
-            ]
         },
         {
             "mode":"img-sentence", "img":"cat.png",
@@ -92,59 +52,29 @@
                 {
                     "d":"rtl",
                     "words":[
-                        {"w":"أَ", "e":"interogative word"},
-                        {"w":"هَذَا", "e":"this"},
+                        {"w":"أَهَدَا", "e":"this", "sp":[0,2]},
                         {"w":"كَلْبٌ؟", "e":"a dog"},
                         {"w":"لاَ،", "e":"no"},
                         {"w":"هَذَا", "e":"this"},
-                        {"w":"قِطٌّ.", "e":"cat"}
+                        {"w":"قِطٌّ.", "e":"a cat"}
                     ]
                 }
             ]
+
         },
         {
             "mode":"img-sentence", "img":"donkey.png",
             "lines":[
                 {
                     "d":"rtl",
-                    "words":[
-                        {"w":"أَ", "e":"interogative word"},
+                    "words":[                     
                         {"w":"هَذَا", "e":"this"},
-                        {"w":"حِصَانٌ؟", "e":"a horse"},
-                        {"w":"لاَ،", "e":"no"},
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"هِمَارٌ.", "e":"donkey"}
+                        {"w":"هِمَارٌ", "e":"a donkey"}
+                        
                     ]
                 }
             ]
-        },
-        {
-            "mode":"img-sentence", "img":"boy.png",
-            "lines":[
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"أَ", "e":"interogative word"},
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"وَلَدٌ؟", "e":"a boy"},
-                        {"w":"نَعَمْ.", "e":"yes"}
-                    ]
-                }
-            ]
-        },
-        {
-            "mode":"img-sentence", "img":"man.png",
-            "lines":[
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"مَنْ", "e":"who"},
-                        {"w":"هَذَا ؟", "e":"this"},
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"رَجُلٌ.", "e":"a man"}
-                    ]
-                }
-            ]
+
         }
         
         

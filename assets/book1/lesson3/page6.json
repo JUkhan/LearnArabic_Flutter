@@ -1,84 +1,66 @@
-{ 
-
-    "lines": [
-        {
-            "mode":"lesson", "height":50.0,"d":"rtl",
-            "words":[
-                {"w":"تَمْرِيْنٌ", "e":"Exercise"}
-            ]
-
-        },        
+{
+    "lines":[
         {
             "mode":"qa",
             "words": [
-                {"w": "Read and write each of the following words vocalizing its last later.", "d":"ltr"}               
+                {"w": "Complete each of the following sentences using one of the words given below:", "d":"ltr"},
+                {"w":"جَمِيلٌ", "e":"beautiful"},
+                {"w":"وَسِخٌ", "e":"dirty"},  
+                {"w":"مَفْتُوحٌ", "e":"open"},
+                {"w":"حَرٌّ", "e":"hot"},
+                {"w":"ثَقِيلٌ", "e":"heavy"},  
+                {"w":"خَفِيفٌ", "e":"light"}                 
             ],
             "lines":[
-                {"words":[
-                        {"w":"الْبَاب.", "e":"door"},
-                        {"w":"التَّاجِر.","e":"marchant"},                        
-                        {"w":"النَّجْم.","e":"star"},
-                        {"w":"القَمَر.","e":"moon"},
-                        {"w":"الدِّيك","e":"rooster"},
-                        {"w":"الْمَاء.","e":"water"},
-                        {"w":"السَّرِير.","e":"bed"},
-                        {"w":"المَسْجِد.","e":"mosque"},
-                        {"w":"البَيْت.","e":"house"},
-                        {"w":"الرَّجُل.","e":"man"},
-                        {"w":"السُّكَّر.","e":"sugar"},
-                        {"w":"الوَرَق","e":"paper"}
-                       
-                       
-                    ]
-                }
+                {"mode":"a", "lines":[
+                    { "words":[{"w":"الحَجَر", "e":"the rock","sp":[0,2]}] },
+                    { "words":[{"w":"البَابُ", "e":"the door","sp":[0,2]}] },
+                    { "words":[{"w":"الْقَمَرُ", "e":"the moon","sp":[0,2]}] },
+                    { "words":[{"w":"الوَرَقُ", "e":"the paper","sp":[0,2]}] },
+                    { "words":[{"w":"المِنْدِيْلُ", "e":"the kerchief","sp":[0,2]}] },
+                    { "words":[{"w":"اللَّبَنُ", "e":"milk","sp":[0,2]}] }
+                ]},
+                {"lines":[
+                    { "words":[{"w":"ثَقِيلٌ"}] },
+                    { "words":[{"w":"مَفْتُوحٌ"}] },
+                    { "words":[{"w":"جَمِيلٌ"}] },
+                    { "words":[{"w":"خَفِيفٌ"}] },
+                    { "words":[{"w":"وَسِخٌ"}] },
+                    { "words":[{"w":"حَرٌّ"}] }
+                ]}
             ]
         },
         {
             "mode":"qa",
             "words": [
-                {"w": "Fill in the blank in each of the following sentences with a suitable word:", "d":"ltr"}               
+                {"w": "Fill in the blank in each of the following sentences with a suitable word:", "d":"ltr"}                              
             ],
             "lines":[
-                { "mode":"b", "lines":[
-                    { "words":[{"w":"غَنِيٌ", "e":"rich"}] },
-                    { "words":[{"w":"حُلْوٌ", "e":"sweet"}] },
-                    { "words":[{"w":"مَرِيضٌ", "e":"sick"}] },
-                    { "words":[{"w":"لَذِيذٌ", "e":"delicious"}] },
-                    { "words":[{"w":"طَوِيلٌ", "e":"tall"}] },
-                    { "words":[{"w":"قَصِيرٌ", "e":"short"}] }
-                    ]
-                }
-            ]
-        },
-        {
-            "mode":"qa",
-            "words": [
-                {"w": "Match the following:", "d":"ltr"}               
-            ],
-            "lines":[
-                {"mode":"match", "lines":[
-                    { "words":[{"w":"الطَّالِبُ", "e":"student"}] },
-                    { "words":[{"w":"لَذِيذٌ", "e":"delicious"}] },
-                    { "words":[{"w":"الدُّكَّنُ", "e":"shop"}] },
+                {"mode":"b", "lines":[
+                    { "words":[{"w":"نَظِيفٌ", "e":"clean"}] },
                     { "words":[{"w":"مَكْسُورٌ", "e":"broken"}] },
-                    { "words":[{"w":"التُّفَّاحُ", "e":"apple"}] },
-                    { "words":[{"w":"ثَقِيلٌ", "e":"heavy"}] },
-                    { "words":[{"w":"الْمَاءُ", "e":"water"}] },
-                    { "words":[{"w":"مَفْتُحٌ", "e":"open"}] },
-                    { "words":[{"w":"الحَجَرُ", "e":"rock"}] },
-                    { "words":[{"w":"مَرِيضٌ", "e":"sick"}] },
-                    { "words":[{"w":"القَلَمُ", "e":"pen"}] },
-                    { "words":[{"w":"حَارٌ", "e":"hot"}] }
-                    ]
-                },
-                {"d":"ltr",
-                    "words":[
-                       {"w":"1-5"},{"w":"2-4"} ,{"w":"3-1"} ,{"w":"4-6"} ,{"w":"5-3"} ,{"w":"6-2"}  
-                    ]
-                }
+                    { "words":[{"w":"بَارِدٌ", "e":"cold"}] },
+                    { "words":[{"w":"قَرِيبٌ", "e":"near"}] },
+                    { "words":[{"w":"بَعِيدٌ", "e":"far away"}] },
+                    { "words":[{"w":"وَاقِفٌ", "e":"standing"}] },
+                    { "words":[{"w":"جَالِسٌ", "e":"sitting"}] },
+                    { "words":[{"w":"كَبِيرٌ", "e":"big"}] },
+                    { "words":[{"w":"قَدِيمٌ", "e":"old"}] },
+                    { "words":[{"w":"جَدِيدٌ", "e":"new"}] }
+                ]},
+                {"lines":[
+                    { "words":[{"w":"القَمِيصُ", "e":"dress"}] },
+                    { "words":[{"w":"القَلَمٌ", "e":"pen"}] },
+                    { "words":[{"w":"المَاء", "e":"water"}] },
+                    { "words":[{"w":"البَيْتُ", "e":"house"}] },
+                    { "words":[{"w":"المَسْجِدُ", "e":"mosque"}] },
+                    { "words":[{"w":"الحِصَانُ", "e":"horse"}] },
+                    { "words":[{"w":"الكَلْبُ", "e":"dog"}] },
+                    { "words":[{"w":"الْقَمَرُ", "e":"moon"}] },
+                    { "words":[{"w":"البَيْت", "e":"house"}] },
+                    { "words":[{"w":"القَلَمٌ", "e":"pen"}] }
+                ]}
             ]
         }
-        
-
     ]
 }

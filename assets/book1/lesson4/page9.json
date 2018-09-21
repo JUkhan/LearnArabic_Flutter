@@ -1,44 +1,123 @@
 {
+    "title":{
+        "mode":"lesson", "height":50.0,"d":"rtl",
+        "words":[
+            {"w":"اِقْرَأ", "e":"read"},               
+            {"w":"وَاكْتُبْ", "e":"and write"}
+        ]
+    },
     "lines":[
-        {"mode":"card",
-         "lines":[
-             {"d":"ltr", "words":[{"w":"And a feminine noun is referred to by the pronoun هِيَ whether it denotes a human being, an animal or a thing. e.g."}]},
-             {"words":[{"w":"أَيْنَ آمِنَةُ؟"}]},
-             {"d":"ltr","words":[{"w":"Where is Aminah?"}]},
-             {"words":[{"w":"هِيَ فِي البَيْتِ."}]},
-             {"d":"ltr","words":[{"w":"She is in the house."}]},
-             {"words":[{"w":"أَيْنَ السَّعَةُ؟"}]},
-             {"d":"ltr","words":[{"w":"Where is the watch?"}]},
-             {"words":[{"w":"هِيَ عَلَي السَّرِيرِ."}]},
-             {"d":"ltr","words":[{"w":"It is on the bed"}]},
-             {"d":"ltr","words":[{"w":"\nMost feminine nouns end with a round ta (ة) but there are some which do not have any ending."}]}
-         ]   
-        },
-        {   "d":"ltr",
-            "mode":"lesson", "height":50.0,
-            "words":[{"w":"Note:"}]
-        },
-        {"mode":"card",
+        {"mode":"qa","lines":[
+            {"words":[
+                {"w":"", "e":""}
+            ]}
+        ]},
+        {"mode":"qa",           
             "lines":[
-                {"d":"ltr", "words":[{"w":"a. We have learn that the tanwin is the indefinite article, e.g. بَيْتٌ a house. The rule does not apply to proper nouns. So حَامِدٌ is just \"hamid\", not \"a hamid\".\n\n2. Feminine proper nouns have no tanwin, e.g. فَاطِمَةُ،  زَزْنَبُ،  آمِنَةُ "}]}               
-            ]   
+                {
+                  "lines":[
+                      {"words":[                      
+                        {"w":"مِنْ", "e":"from"},
+                        {"w":"أَيْنَ", "e":"where"},
+                        {"w":"فَاطِمَةُ؟", "e":"fatima"} ,
+                        {"w":"هِيَ", "e":"she"},
+                        {"w":"مِنَ", "e":"from"},
+                        {"w":"الهِنْدِ.", "e":"India"}                       
+                     ]},
+                     {"words":[                      
+                        {"w":"خَرَجَ", "e":"left"},
+                        {"w":"المُدَرِّسُ", "e":"teacher"},
+                        {"w":"مِنَ", "e":"from"} ,
+                        {"w":"الفَصْلِ", "e":"class room"},
+                        {"w":"إِلَي", "e":"to"},
+                        {"w":"المُدِيرِ.", "e":"head master"}                       
+                     ]},
+                     {"words":[                      
+                        {"w":"دَهَبَ", "e":"went"},
+                        {"w":"التَّاجِرُ", "e":"merchant"},
+                        {"w":"إِلَي", "e":"to"} ,
+                        {"w":"الدُّكَّانِ.", "e":"shop"}               
+                     ]},
+                     {"words":[                      
+                        {"w":"خَرَجَ", "e":"left"},
+                        {"w":"حَامِدٌ", "e":"Hamid"},
+                        {"w":"مِنَ", "e":"from"} ,
+                        {"w":"الغُرْفَةِ", "e":"room"},
+                        {"w":"وَذَهَبَ", "e":"and went"},
+                        {"w":"إِلَي", "e":"to"}, 
+                        {"w":"الحَمَّمِ.", "e":"bathroom"}                      
+                     ]},
+                     {"words":[                      
+                        {"w":"مَنْ", "e":"who"},
+                        {"w":"خَرَجَ", "e":"left"},
+                        {"w":"مِنَ", "e":"from"} ,
+                        {"w":"الفَصْلِ؟", "e":"classroom"}                 
+                     ]},
+                     {"words":[                      
+                        {"w":"خَرَجَ", "e":"left"},
+                        {"w":"الطَّالِبُ", "e":"student"},
+                        {"w":"مِنَ", "e":"from"} ,
+                        {"w":"المَدْرَسَةِ", "e":"school"},
+                        {"w":"وَذَهَبَ", "e":"and went"},
+                        {"w":"إِلَي", "e":"to"},
+                        {"w":"السُّوْقِ.", "e":"market"}                      
+                     ]},
+                     {"words":[                      
+                        {"w":"خَدِيْجَةُ", "e":"Khadija"},
+                        {"w":"مِنَ", "e":"from"},
+                        {"w":"الصِّينِ", "e":"China"} ,
+                        {"w":"وَخَالِدٌ", "e":"and Khalid"},
+                        {"w":"مِنَ", "e":"from"},
+                        {"w":"اليَابَانِ.", "e":"Japan"}                       
+                     ]}
+                  ]                    
+                }
+               
+            ]
         },
-        {   "d":"ltr",
-            "mode":"lesson", "height":50.0,
-            "words":[{"w":"Vocabulary:"}]
-        },
-        {  
-            "mode":"vocab", 
-            "words":[
-                {"w":"أَيْنَ", "e":"where"},
-                {"w":"عَلَي", "e":"on"},
-                {"w":"السَّمَءُ", "e":"sky"},
-                {"w":"غُرْفَةٌ", "e":"room"},
-                {"w":"الفَصْلُ", "e":"classroom"},
-                {"w":"الحَمَّامُ", "e":"bathroom"},
-                {"w":"المِرْحَاضُ", "e":"toilet"},
-                {"w":"المَطْبَخُ", "e":"kitchen"},
-                {"w":"فِي", "e":"in"}
+        {"mode":"qa",  
+            "words":[{"w":"Fill in the blank in each of the following sentences with a suitable preposition:", "d":"ltr"},
+            {"w":"مِنْ،", "e":"from", "d":"rtl"},
+            {"w":"إِلَي،", "e":"to", "d":"rtl"},
+            {"w":"فِي،", "e":"in", "d":"rtl"},
+            {"w":"عَلَي،", "e":"on", "d":"rtl"}
+            ],         
+            "lines":[
+                {
+                  "lines":[
+                      {"words":[                      
+                        {"w":"الكِتَابُ", "e":"book"},
+                        {"w":".....", "e":"عَلَي"},
+                        {"w":"المَكْتَبِ.", "e":"table"}                        
+                     ]},
+                     {"words":[                      
+                        {"w":"الطَّالِبُ", "e":"student"},
+                        {"w":".....", "e":"فِي"},
+                        {"w":"الفَصْلِ.", "e":"class room"}                        
+                     ]},
+                     {"words":[                      
+                        {"w":"ذَهَبَ", "e":"went"},
+                        {"w":"حَمِدٌ", "e":"Hamid"},  
+                        {"w":".....", "e":"إِلَي"},
+                        {"w":" الجَامِعَتِ.", "e":"university"}                        
+                     ]},
+                     {"words":[                      
+                        {"w":"خَرَجَ", "e":"left"},
+                        {"w":"المُدِيرُ", "e":"head master"},
+                        {"w":".....", "e":"مِنَ"},
+                        {"w":"المَدْرَسَةِ.", "e":"school"}                        
+                     ]},
+                     {"words":[                      
+                        {"w":"دََهَبَ", "e":"went"},
+                         {"w":"مُحَمَّدٌ", "e":"Muhammad"},
+                        {"w":".....", "e":"مِنَ"},
+                        {"w":"الصِّنِ", "e":"China"},
+                        {"w":".....", "e":"إِلَي"},
+                        {"w":" اليَبَنِ.", "e":"Japan"}                        
+                     ]}
+                  ]                    
+                }
+               
             ]
         }
     ]

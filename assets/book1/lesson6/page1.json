@@ -1,108 +1,42 @@
-{
-    "title":{
-        "mode":"lesson", "d":"rtl", "height":50.0,
-        "words":[
-            {"w":"اَلدَّرْسُ", "e":"lesson"},
-            {"w":"السَّادِسُ", "e":"six"}
-        ]
-    },
-    "videos":[
-        {"id":"J4PaT5ebC5o", "title":"Madinah Arabic Course B1 L6 P1"},
-        {"id":"mSHR8ycXsWI", "title":"Madinah Arabic Course B1 L6 P2"}      
-    ],
-    "lines": [
-        {   
+{"title":{
+    "mode":"lesson", "d":"rtl", "height":50.0,
+    "words":[
+        {"w":"اَلدَّرْسُ", "e":"lesson"},
+        {"w":"السَّادِسُ", "e":"six"}
+    ]
+},
+"videos":[
+    {"id":"J4PaT5ebC5o", "title":"Madinah Arabic Course B1 L6 P1"},
+    {"id":"mSHR8ycXsWI", "title":"Madinah Arabic Course B1 L6 P2"}      
+],
+    
+    "lines":[
+        {   "d":"ltr",
             "mode":"lesson", "height":50.0,
-            "words":[{"w":"هَذِهِ", "e":"this"}]
+            "words":[{"w":"POINTS TO REMEMBER"}]
         },
-        {"words": [               
-                { "w":"هَذَ",  "e": "this"},
-                { "w":"ابْنُ",  "e": "son"},
-                { "w":"حَامِدٍ",  "e": "Hamid"},
-                { "w":"وَهَزِهِ",  "e": "and this"},
-                { "w":"بِنْتُ",  "e": "daughter"},
-                { "w":"يَاسِرٍ.",  "e": "Yasir"}
-            ]
-        },{"mode":"divider"},
-        {"words": [               
-            { "w":"اِبْنُ",  "e": "son"},
-            { "w":"حَامِدٍ",  "e": "Hamid"},
-            { "w":"جَالِسٌ",  "e": "sitting"},
-            { "w":"وَبِنْتُ",  "e": "and daughter"},
-            { "w":"يَاسِرٍ",  "e": "Yasir"},
-            { "w":"وَاقِفَةٌ.",  "e": "standing"}
-        ]
-    },{"mode":"divider"}
-    ,
-    {
-        "mode":"img-sentence", "d":"rtl", "img":"6doctor.png",
-        "lines":[
-        {"words": [
-            {"w":"مَنْ", "e":"who"},
-            {"w":"هَذِهِ؟", "e":"this"}
+        {"d":"ltr","words":[{"w":"In this lesson we learn:\n1. هَذِهِ which is the feminine of هَذَا. It is pronounced هَاذِهِ but the alif is omitted in writing."}]},
+        {"d":"ltr","words":[{"w":"This is a boy and this is a girl."}]},
+        {"words":[{"w":"هَذَا  وَلَدٌ  وَ  هَذِهِ  بِنْتٌ."}]},
+        {"d":"ltr","words":[{"w":"2. Nouns and adjectives are made feminine by adding a <<ة>> at the end. The last letter before this (ة) takes a fathah(a)."}]},
+        {"mode":"vocab", "d":"ltr", "words":[
+            {"w":"مُدَرِّسٌ"}, {"w":"مُدَرِّسَةٌ"},
+            {"w":"mudarris-u-n\n(teacher)"}, {"w":"mudarris-a-t-u-n\n(lady teacher)"}
+           
         ]},
-        {"words": [              
-            
-            {"w":"هَذِهِ", "e":"this"},
-            {"w":"أُخْتُ", "e":"sister"}, 
-            {"w":"المُهَنْدِسِ.", "e":"engineer"}
+        {"d":"ltr","words":[{"w":"Some nouns have a separate form for feminine e.g:"}]},
+        {"mode":"vocab", "words":[
+            {"w":"ابْنٌ", "e":"son"}, {"w":"بِنْتٌ", "e":"daughter"},
+            {"w":"أَخٌ", "e":"brother"}, {"w":"أُخْتٌ", "e":"sister"}           
         ]},
-        {"words": [              
-            
-            {"w":"أَهِيَ", "e":"is she"},
-            {"w":"أَيْضًا", "e":"also"}, 
-            {"w":"مُهَنْدِسَةٌ؟", "e":"engineer"}
-        ]},
-        {"words": [              
-            
-            {"w":"لا،", "e":"no"},
-            {"w":"هِيَ", "e":"she"}, 
-            {"w":"طَبِيبَةٌ.", "e":"doctor"}
+        {"d":"ltr","words":[{"w":"All nouns in Arabic either masculin or feminine. Femenine nouns ans adjectives usually have the ة-ending. But there are some words which do not have this ending. Students when learning a new noun must learn its gender also.\n\nDouble members of the body are usually femenine while single members are masculine, e.g."}]},
+        {"mode":"vocab", "words":[
+            {"w":"Feminine"}, {"w":"Masculine"},
+            {"w":"يَدٌ", "e":"hand"}, {"w":"رَأْسٌ", "e":"head"},
+            {"w":"رِجْلٌ", "e":"leg"}, {"w":"أَنْفٌ", "e":"nose"},
+            {"w":"عَيْنٌ", "e":"eye"}, {"w":"فَمٌ", "e":"mouth"},
+            {"w":"أُذُنٌ", "e":"ear"}, {"w":"وَجْهٌ", "e":"face"}            
         ]}
-    ]
-    },
-    {
-        "mode":"img-sentence", "d":"rtl", "img":"6car.png",
-        "lines":[
-        {"words": [              
-            
-            {"w":"لِمَنْ", "e":"whose"},
-            {"w":"هَذِهِ", "e":"this"}, 
-            {"w":"السَّيَّارَتُ؟", "e":"car"}
-        ]},
-        {"words": [              
-            
-            {"w":"هَذِهِ", "e":"this"},
-            {"w":"سَيَّارَتُ", "e":"car"}, 
-            {"w":" المُدِيرِ.", "e":"director"}
-        ]}
-    ]
-    },
-    {
-        "mode":"img-sentence", "d":"rtl", "img":"6iron.png",
-        "lines":[
-        {"words": [              
-            
-            {"w":"مَا", "e":"what"},
-            {"w":"هَذِهِ؟", "e":"this"}
-        ]},
-        {"words": [              
-            
-            {"w":"هَذِهِ", "e":"this"},
-            {"w":"مِكْوَاةٌ.", "e":"iron (for ironing)"}
-        ]},
-        {"words": [              
-            
-            {"w":"لِمَنْ", "e":"whose"},
-            {"w":"هَذِهِ؟", "e":"this"}
-        ]},
-        {"words": [              
-            
-            {"w":"هَذِهِ", "e":"this"},
-            {"w":"لِخَالِدٍ.", "e":"for Khalid"}
-        ]}
-    ]
-    }   
-        
+
     ]
 }

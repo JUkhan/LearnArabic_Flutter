@@ -1,40 +1,84 @@
-{
-    "lines":[
+{ 
+
+    "lines": [
         {
             "mode":"lesson", "height":50.0,"d":"rtl",
             "words":[
                 {"w":"تَمْرِيْنٌ", "e":"Exercise"}
             ]
 
-        },  
+        },        
         {
             "mode":"qa",
-            "words":[
-                {"w": "Read the following words and write them down bearing in mind the rule regarding the Sun and Moon Letters:", "d":"ltr"}
+            "words": [
+                {"w": "Read and write each of the following words vocalizing its last later.", "d":"ltr"}               
             ],
             "lines":[
-               { 
-                   "words":[                    
-                    {"w": "الدَّفْتَرُ.", "e":"note book"},
-                    {"w": "الأَخُ.", "e":"brother"},
-                    {"w": "الرَّسُولُ.", "e":"massenger"},
-                    {"w": "الوَجْهُ.", "e":"face"},
-                    {"w": "الصَّدِيقُ.", "e":"friend"},
-                    {"w": "القُرْآنُ.", "e":"book"},
-                    {"w": "الصَّلَاتُ.", "e":"prayers"},
-                    {"w": "الكَعْبَةُ.", "e":"kaba"},
-                    {"w": "الرَّأْسُ.", "e":""},
-                    {"w": "الإِصْبَعُ.", "e":""},
-                    {"w": "الصَّابُونُ.", "e":""},
-                    {"w": "الظُّفْرُ.", "e":""},
-                    {"w": "الفَجْرُ.", "e":""},
-                    {"w": "الظُّهْرُ.", "e":""},
-                    {"w": "العَصْرُ.", "e":""},
-                    {"w": "المَغْرِبُ.", "e":""},
-                    {"w": "العِشَاءُ.", "e":""}
-                   ]
+                {"words":[
+                        {"w":"الْبَاب.", "e":"the door","sp":[0,2]},
+                        {"w":"التَّاجِر.","e":"the merchant","sp":[0,2]},                        
+                        {"w":"النَّجْم.","e":"the star","sp":[0,2]},
+                        {"w":"القَمَر.","e":"the moon","sp":[0,2]},
+                        {"w":"الدِّيك","e":"the rooster","sp":[0,2]},
+                        {"w":"الْمَاء.","e":"water","sp":[0,3]},
+                        {"w":"السَّرِير.","e":"the bed","sp":[0,2]},
+                        {"w":"المَسْجِد.","e":"the mosque","sp":[0,2]},
+                        {"w":"البَيْت.","e":"the house","sp":[0,2]},
+                        {"w":"الرَّجُل.","e":"the man","sp":[0,2]},
+                        {"w":"السُّكَّر.","e":"sugar","sp":[0,2]},
+                        {"w":"الوَرَق","e":"the paper","sp":[0,2]}
+                       
+                       
+                    ]
+                }
+            ]
+        },
+        {
+            "mode":"qa",
+            "words": [
+                {"w": "Fill in the blank in each of the following sentences with a suitable word:", "d":"ltr"}               
+            ],
+            "lines":[
+                { "mode":"b", "lines":[
+                    { "words":[{"w":"غَنِيٌ", "e":"rich"}] },
+                    { "words":[{"w":"حُلْوٌ", "e":"sweet"}] },
+                    { "words":[{"w":"مَرِيضٌ", "e":"sick"}] },
+                    { "words":[{"w":"لَذِيذٌ", "e":"delicious"}] },
+                    { "words":[{"w":"طَوِيلٌ", "e":"tall"}] },
+                    { "words":[{"w":"قَصِيرٌ", "e":"short"}] }
+                    ]
+                }
+            ]
+        },
+        {
+            "mode":"qa",
+            "words": [
+                {"w": "Match the following:", "d":"ltr"}               
+            ],
+            "lines":[
+                {"mode":"match", "lines":[
+                    { "words":[{"w":"الطَّالِبُ", "e":"the student","sp":[0,2]}] },
+                    { "words":[{"w":"لَذِيذٌ", "e":"delicious"}] },
+                    { "words":[{"w":"الدُّكَّنُ", "e":"the shop","sp":[0,2]}] },
+                    { "words":[{"w":"مَكْسُورٌ", "e":"broken"}] },
+                    { "words":[{"w":"التُّفَّاحُ", "e":"the apple","sp":[0,2]}] },
+                    { "words":[{"w":"ثَقِيلٌ", "e":"heavy"}] },
+                    { "words":[{"w":"الْمَاءُ", "e":"water","sp":[0,2]}] },
+                    { "words":[{"w":"مَفْتُحٌ", "e":"open"}] },
+                    { "words":[{"w":"الحَجَرُ", "e":"the stone","sp":[0,2]}] },
+                    { "words":[{"w":"مَرِيضٌ", "e":"sick"}] },
+                    { "words":[{"w":"القَلَمُ", "e":"the pen","sp":[0,2]}] },
+                    { "words":[{"w":"حَارٌ", "e":"hot"}] }
+                    ]
+                },
+                {"d":"ltr",
+                    "words":[
+                       {"w":"1-5"},{"w":"2-4"} ,{"w":"3-1"} ,{"w":"4-6"} ,{"w":"5-3"} ,{"w":"6-2"}  
+                    ]
                 }
             ]
         }
+        
+
     ]
 }

@@ -1,171 +1,69 @@
-{
-    "lines":[        
-        
-        {   "d":"ltr",
-            "mode":"lesson", "height":50.0,
-            "words":[{"w":"POINTS TO REMEMBER"}]
-        },
-        {"mode":"padding", "height":5.0},
-        {"d":"ltr",
-            "mode":"card",
-            "words":[{"w":"In this lesson we learn the following patterns:"}]
-        },
+{   
+    "lines": [
+       
         {
-            "mode":"card",
-           "lines":[
-               {"d":"ltr",
-                   "words":[
-                       {"w":"What is this?"}
-                   ]
-               },
-               {                  
-                "words":[
-                    {"w":"مَا هَدَا؟"}
-                ]
-            }
-           ]
-        },
-        {
-            "mode":"card",
-           "lines":[
-               {"d":"ltr",
-                   "words":[
-                       {"w":"This is a book"}
-                   ]
-               },
-               {                  
-                "words":[
-                    {"w":"هَدَا كِتَابٌ."}
-                ]
-            }
-           ]
-        },
-        {
-            "mode":"card",
-           "lines":[
-               {"d":"ltr",
-                   "words":[
-                       {"w":"Is this a house?"}
-                   ]
-               },
-               {                  
-                "words":[
-                    {"w":"أهَدَا بَيْتٌ؟"}
-                ]
-            }
-           ]
-        },
-        {
-            "mode":"card",
-           "lines":[
-               {"d":"ltr",
-                   "words":[
-                       {"w":"Yes, this is a house"}
-                   ]
-               },
-               {                 
-                "words":[
-                    {"w":"نَعَمْ، هَدَا بَيْتٌ."}
-                ]
-            }
-           ]
-        },
-        {
-            "mode":"card",
-           "lines":[
-               {"d":"ltr",
-                   "words":[
-                       {"w":"No, this is a mosque."}
-                   ]
-               },
-               {
-                  
-                "words":[
-                    {"w":"لا، هَدَا مَسْجِدٌ."}
-                ]
-            }
-           ]
-        },
-        {
-            "mode":"card",
-           "lines":[
-               {"d":"ltr",
-                   "words":[
-                       {"w":"Who is this?"}
-                   ]
-               },
-               {
-                  
-                "words":[
-                    {"w":"مَنْ هَدَا؟"}
-                ]
-            }
-           ]
-        },
-        {"d":"ltr",
-            "mode":"lesson", "height":50.0,
-            "words":[{"w":"Note the following:"}]
-        },
-        {
-            "mode":"card",
-           "lines":[
-               {"d":"ltr",
-                   "words":[
-                       {"w":"1. "},
-                       {"w":"هَدَا"},
-                       {"w":" is pronounced هَادَا"},
-                       {"w":" but it is written without the first alif."}
-                   ]
-               }
-               
-           ]
-        },
-        {"d":"ltr",
-            "mode":"card",           
-            "words":[
-                {"w":"2. "},
-                {"w":"Arabic has no word corrosponding to the english \"is\", i.e. arabic has no copula"}               
-            ]             
-           
-        },
-        {"d":"ltr",
-            "mode":"card",           
-            "words":[
-                {"w":"3. "},
-                {"w":"There is no word in Arabic corresponding to \"a\" in English as in \"this is a book\". The n-sound at the end of the Arabic noun(kitabu-n, baitu-n, masjidu-n) is the Arabic indefinite article corresponding to the English \"a\"/\"an\". This n-sound is called tanwin  "}               
-            ]             
-           
-        },
-        {"d":"ltr",
-            "mode":"card",           
-            "words":[
-                {"w":"4. "},
-                {"w":"The particle أ placed at the begining of a statement turns it into a question, e.g."}               
-            ] ,
+            "mode":"img-sentence", "img":"horse.png",
             "lines":[
-                {"d":"ltr",
+                {
+                    "d":"rtl",
                     "words":[
-                        {"w":"This is a house"}
+                        {"w":"أَهَدَا", "e":"this", "sp":[0,2]},
+                        {"w":"هِمَارٌ؟", "e":"a donkey"},
+                        {"w":"لاَ،", "e":"no"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"حِصَانٌ.", "e":"a horse"}
                     ]
-                },
-                {                   
-                 "words":[
-                     {"w":" هَدَا بَيْتٌ."}
-                 ]
-             },
-                {"d":"ltr",
+                }
+            ]
+
+        },
+        {
+            "mode":"img-sentence", "img":"camel.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[                       
+                        {"w":"وَمَا", "e":"and what", "sp":[0,2]},
+                        {"w":"هَذَا؟", "e":"this"},
+                        {"w":"هَذَا", "e":"this"},                       
+                        {"w": "جَمَلٌ","e": "a camel"}
+                    ]
+                }
+            ]
+
+        },
+        {
+            "mode":"img-sentence", "img":"rooster.png",
+            "lines":[
+                {
+                    "d":"rtl",
                     "words":[
-                        {"w":"Is this a house?"}
+                        {"w":"مَا", "e":"what"},
+                        {"w":"هَذَا؟", "e":"this"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"دِيْكٌ.", "e":"a rooster"}
                     ]
-                },
-                {                   
-                 "words":[
-                     {"w":"أهَدَا بَيْتٌ؟"}
-                 ]
-             }
-            ]           
-           
+                }
+            ]
+
+        },        
+        {
+            "mode":"img-sentence", "img":"teacher.png",
+            "lines":[
+                {
+                    "d":"rtl",
+                    "words":[
+                        {"w":"مَنْ", "e":"who"},
+                        {"w":"هَذَا؟", "e":"this"},
+                        {"w":"هَذَا", "e":"this"},
+                        {"w":"مُدَرِّسٌ.", "e":"a teacher"}
+                    ]
+                }
+            ]
+
         }
+        
+        
         
     ]
 }

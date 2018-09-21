@@ -1,131 +1,40 @@
-{   
-    "lines": [
-        {
-            "mode":"lesson", "height":50.0,"d":"rtl",
-            "words":[
-                {"w":"مَا", "e":"what"},
-                {"w":"هَذَا؟", "e":"this"}
-            ]
-        },
-        {
-            "mode":"img-sentence", "img":"house.png",
-            "lines":[
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"مَا", "e":"what"},
-                        {"w":"هَذَا؟", "e":"this"}
-                    ]
-                },
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"بَيْتٌ.", "e":"a house"}
-                    ]
-                },
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"أَ", "e":"interrogative particle"},
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"بَيْتٌ؟", "e":"a house"}
-                    ]
-                },
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"نَعَمُ،", "e":"yes"},
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"بَيْتٌ.", "e":"a house"}
-                    ]
-                }
-            ]
+{
+    "lines":[
+    {
+        "mode":"lesson", "height":50.0, "d":"ltr",
+        "words":[
+            {"w":"Vocabulary:"}
+        ]
+    },
+    {
+        "mode":"vocab", "d":"rtl",
+        "words":[
+            {"w":"وَلَدٌ", "e":"boy"},
+            {"w":"بَيْتٌ", "e":"house"},
+            {"w":"طَالِبٌ", "e":"student"},
+            {"w":"مَسْجِدٌ", "e":"mosque"},
+            {"w":"رَجُلٌ", "e":"man"},
+            {"w":"بَابٌ", "e":"door"},
+            {"w":"تَاجِرٌ", "e":"merchant"},           
+            {"w":"كِتَابٌ", "e":"book"},
+            {"w":"كَلْبٌ", "e":"dog"},
+            {"w":"قَلَمٌ", "e":"pen"},
+            {"w":"قِطٌّ", "e":"cat"},
+            {"w":"مِفْتَاحٌ", "e":"key"},
+            {"w":"هِمَارٌ", "e":"donkey"},
+            {"w":"مَكْتَابٌ", "e":"writing table"},
+            {"w":"حِصَانٌ", "e":"horse"},
+            {"w":"سَرِيْرٌ", "e":"bed"},
+            {"w":"جَمَلٌ", "e":"camel"},
+            {"w":"كُرْسِيٌّ", "e":"chair"},
+            {"w":"دِيْكٌ", "e":"rooster"},
+            {"w":"نَجْمٌ", "e":"star"},
+            {"w":"مُدَرِّسٌ", "e":"teacher"},
+            {"w":"قَمِيْصٌ", "e":"shirt"},
+            {"w":"مِنْدِيْلٌ", "e":"hand kerchief"},
+            {"w":"طَبِيْبٌ", "e":"doctor"}
+        ]
+    }
 
-        },
-        {
-            "mode":"img-sentence", "img":"dress.png",
-            "lines":[
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"مَا", "e":"what"},
-                        {"w":"هَذَا؟", "e":"this"}
-                    ]
-                },
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"قَمِيْصٌ.", "e":"a shirt"}
-                    ]
-                }
-            ]
-
-        },
-        {
-            "mode":"img-sentence", "img":"chair.png",
-            "lines":[
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"أَ", "e":"interogative word"},
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"سَرِيْرٌ؟", "e":"a bed"}
-                    ]
-                },
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"لاَ،", "e":"no"},
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"كُرْسِيٌّ.", "e":"a chair"}
-                    ]
-                }
-            ]
-
-        },
-        {
-            "mode":"img-sentence", "img":"pen.png",
-            "lines":[
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"أَ", "e":"interogative word"},
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"مِفْتَاحٌ؟", "e":"a key"}
-                    ]
-                },
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"لاَ،", "e":"no"},
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"قَلَمٌ.", "e":"a pen"}
-                    ]
-                }
-            ]
-
-        },
-        {
-            "mode":"img-sentence", "img":"star.png",
-            "lines":[
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"مَا", "e":"what"},
-                        {"w":"هَذَا؟", "e":"this"}
-                    ]
-                },
-                {
-                    "d":"rtl",
-                    "words":[                    
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"نَجْمٌ.", "e":"a star"}
-                    ]
-                }
-            ]
-
-        }
-    ]
+]
 }

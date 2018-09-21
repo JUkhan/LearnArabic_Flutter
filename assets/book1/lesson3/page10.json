@@ -1,71 +1,40 @@
 {
     "lines":[
         {
-            "mode":"card",  
+            "mode":"lesson", "height":50.0,"d":"rtl",
+            "words":[
+                {"w":"تَمْرِيْنٌ", "e":"Exercise"}
+            ]
+
+        },  
+        {
+            "mode":"qa",
+            "words":[
+                {"w": "Read the following words and write them down bearing in mind the rule regarding the Sun and Moon Letters:", "d":"ltr"}
+            ],
             "lines":[
-                {"d":"ltr",
-                    "words":[{"w":"The initial vowel (a, i, or u) which is omitted when preceded by a word is called hamazatu l-wasl,  "}]
-                },
-                {
-                   
-                    "words":[{"w":"البَابُ مَفْتُوحٌ."}]
-                },
-                {"d":"ltr",
-                    "words":[{"w":"The door is open."}]
-                },
-                {
-                    
-                    "words":[{"w":"القَلَمُ مَكْصُورٌ."}]
-                },
-                {"d":"ltr",
-                    "words":[{"w":"The pen is broken"}]
+               { 
+                   "words":[                    
+                    {"w": "الدَّفْتَرُ.", "e":"notebook", "sp":[0,2]},
+                    {"w": "الأَخُ.", "e":"brother", "sp":[0,2]},
+                    {"w": "الرَّسُولُ.", "e":"messenger", "sp":[0,2]},
+                    {"w": "الوَجْهُ.", "e":"face", "sp":[0,2]},
+                    {"w": "الصَّدِيقُ.", "e":"friend", "sp":[0,2]},
+                    {"w": "القُرْآنُ.", "e":"the book", "sp":[0,2]},
+                    {"w": "الصَّلَاتُ.", "e":"prayer", "sp":[0,2]},
+                    {"w": "الكَعْبَةُ.", "e":"kaaba", "sp":[0,2]},
+                    {"w": "الرَّأْسُ.", "e":"head", "sp":[0,2]},
+                    {"w": "الإِصْبَعُ.", "e":"finger", "sp":[0,2]},
+                    {"w": "الصَّابُونُ.", "e":"soap", "sp":[0,2]},
+                    {"w": "الظُّفْرُ.", "e":"nail", "sp":[0,2]},
+                    {"w": "الفَجْرُ.", "e":"daylight", "sp":[0,2]},
+                    {"w": "الظُّهْرُ.", "e":"noon", "sp":[0,2]},
+                    {"w": "العَصْرُ.", "e":"age", "sp":[0,2]},
+                    {"w": "المَغْرِبُ.", "e":"sunset", "sp":[0,2]},
+                    {"w": "العِشَاءُ.", "e":"dinner", "sp":[0,2]}
+                   ]
                 }
             ]
-            
-        },
-        {"d":"ltr",
-            "mode":"lesson",  "height":50.0,
-            "words":[{"w":"Note:"}]
-        },
-        {"d":"ltr",
-            "mode":"card",
-            "words":[{"w":"We have learn that the tanwin is the indefinite article, and it is to be translated as <<a>>, e.g. بَيْتٌ a house. This does not apply to adjectives like مَفْتُوحٌ \"open\", and مَكْصُورٌ \"broken\". "}]
-        },
-        {"d":"ltr",
-            "mode":"lesson", "height":50.0,
-            "words":[
-                {"w":"Vocabulary:"}
-            ]
-        },
-        {
-            "mode":"vocab", "d":"rtl",
-            "words":[
-                {"w":"فَقِرٌ", "e":"poor"},
-                {"w":"غَنِيٌ", "e":"rich"},
-                {"w":"طَوِيلٌ", "e":"tall"},
-                {"w":"قَصِيرٌ", "e":"short"},
-                {"w":"بَارِدٌ", "e":"cold"},
-                {"w":"حَرٌّ", "e":"hot"},
-                {"w":"جَالِسٌ", "e":"sitting"},
-                {"w":"وَاقِفٌ", "e":"standing"},
-                {"w":"جَدِيدٌ", "e":"new"},
-                {"w":"قَدِيمٌ", "e":"old"},
-                {"w":"قَرِيبٌ", "e":"near"},
-                {"w":"بَعِيدٌ", "e":"far away"},
-                {"w":"نَظِيفٌ", "e":"clean"},
-                {"w":"وَسِخٌ", "e":"dirty"},
-                {"w":"صَغِيرُ", "e":"small"},
-                {"w":"كَبِيرٌ", "e":"big"},
-                {"w":"خَفِيفٌ", "e":"light"},
-                {"w":"ثَقِيلٌ", "e":"heavy"},
-                {"w":"الوَرَقُ", "e":"paper"},
-                {"w":"المَاهُ", "e":"water"},
-                {"w":"التُّفَّاحُ", "e":"apple"},
-                {"w":"جَمِيْلٌ", "e":"beautiful"},
-                {"w":"الدُّكَّانُ", "e":"shop"},
-                {"w":"حُلوٌ", "e":"sweet"},
-                {"w":"مَرِيضٌ", "e":"sick"}]
         }
-    
     ]
 }

@@ -15,7 +15,7 @@ class BookPage extends StatelessWidget {
     return Scaffold(
       appBar: new AppBar(
         title: StreamBuilder<String>(
-          initialData: 'Pleasure of Allah',
+          initialData: 'Learn Arabic',
           stream: bloc.bookBloc.pageTitle,
           builder: (_, snapshot) => Text(snapshot.data),
         ),
@@ -60,37 +60,6 @@ class BookPage extends StatelessWidget {
       //hasNotch: true,
       child: Row(
         children: <Widget>[
-          /*StreamBuilder<bool>(
-            initialData: false,
-            stream: bloc.bookBloc.hasPrev,
-            builder: (_, snapshot) => IconButton(
-                  tooltip: 'Previous page',
-                  icon: Icon(
-                    Icons.arrow_back,
-                    //color: Colors.pink[500],
-                  ),
-                  onPressed: snapshot.data
-                      ? () {
-                          bloc.bookBloc.prev();
-                          Navigator.pushReplacementNamed(context, '/book');
-                        }
-                      : null,
-                ),
-          ),
-          StreamBuilder<bool>(
-            initialData: false,
-            stream: bloc.bookBloc.hasNext,
-            builder: (_, snapshot) => IconButton(
-                  tooltip: 'Next page',
-                  icon: Icon(Icons.arrow_forward),
-                  onPressed: snapshot.data
-                      ? () {
-                          Navigator.pushReplacementNamed(context, '/book');
-                          bloc.bookBloc.next();
-                        }
-                      : null,
-                ),
-          ),*/
           Expanded(
               child: StreamBuilder<JWord>(
             initialData: JWord.empty(),
@@ -98,7 +67,7 @@ class BookPage extends StatelessWidget {
             builder: (_, snapshot) => snapshot.data.word.isEmpty
                 ? const Text('')
                 : Text(
-                    _getMeaning(snapshot.data),
+                    snapshot.data.english+' '+ _getBanglaText(snapshot.data),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.title,
                   ),
@@ -123,46 +92,7 @@ class BookPage extends StatelessWidget {
     );
   }
 
-  String _getMeaning(JWord word) {
-    StringBuffer buffer = StringBuffer();
-    if (word.word.startsWith('الْ') || word.word.startsWith('ال')) {
-      buffer.write('the ');
-    } else if (word.word.startsWith('وَالْ') || word.word.startsWith('وَال')) {
-      buffer.write('and the ');
-    }
-    buffer.write(word.english);
-    return buffer.toString();
-  }
-
   void _showBottomSheet(BuildContext context, JWord word) {
-    int ss = word.hasStartSubstr;
-    int es = word.hasEndSubstr;
-    var hasAl = false;
-    if (ss == 0) {
-      if (word.word.startsWith('الْ')) {
-        ss = 3;
-        hasAl = true;
-      } else if (word.word.startsWith('ال')) {
-        ss = 2;
-        hasAl = true;
-      } else if (word.word.startsWith('وَالْ')) {
-        ss = 5;
-        hasAl = true;
-      } else if (word.word.startsWith('وَال')) {
-        ss = 4;
-        hasAl = true;
-      }
-    }
-    if (es == 0) {
-      //if(hasAl)es=2;
-    }
-    word = JWord(
-        word: word.word,
-        english: word.english,
-        bangla: word.bangla,
-        hasStartSubstr: ss,
-        hasEndSubstr: es,
-        wordSpace: word.wordSpace);
     showModalBottomSheet(
         context: context,
         builder: (bc) {
@@ -174,142 +104,268 @@ class BookPage extends StatelessWidget {
                 RichText(
                   textDirection: TextDirection.rtl,
                   text: _getTextSpan(context, word),
-                ),
+                ),                
                 Divider(),
-                _getStartSubstring(context, word),
-                _getEndSubstring(context, word),
-                Divider(),
-                _getDetails(context, word),
+                _getEnglish(context, word),
                 Divider(),
                 _getBangla(context, word),
+                _getSplitMeaning(context, word)
               ],
             ),
           );
         });
+  }  
+  //begin split meaning
+  Widget _getSplitMeaning(BuildContext context, JWord word) {
+    if (word.sp == null) return Container();
+    List<Widget> widgets = List<Widget>();
+    widgets.add(Divider(
+      color: Colors.red,
+    ));
+    _setSplitTextWidget(context, word, widgets);
+    return Column(
+      children: widgets,
+    );
+  }  
+  Widget _splitTextWidget({String text, bool hasColor = true, bool hasWordSpac = false}) {
+    Color color;
+    if (hasColor) {
+      switch (text) {
+        case 'وَ':
+          color = Colors.green;
+          break;
+       case 'أَ':case 'أ':
+          color = Colors.lightBlue;
+          break;
+        case 'الْ': case 'ال':case 'اَلْ':
+          color = Colors.cyan;
+          break;
+        case 'لِ':
+          color = Colors.red;
+          break;
+
+        default:
+          color = Colors.orange;
+      }
+      //meaning
+      switch (text) {
+        case 'وَ':
+          text +=' : and এবং';
+          break;
+        case 'أَ':case 'أ':
+           text +=' : interrogative particle প্রশ্নোত্তর কণা';
+          break;
+        case 'الْ':case 'ال':case 'اَلْ':
+          text +=' : the টি';
+          break;
+        case 'لِ':
+          text +=' : for, belongs to জন্য, সম্পর্কিত';
+          break;
+
+        default: text +=' : under construction';
+          
+
+      }
+    }    
+    return Container(child: Text(text, style:TextStyle(color: color, fontSize: 26.0) ,),);
   }
 
-  String _getSubStringMeaning(String val) {
-    switch (val) {
-      case 'الْ':
-      case 'ال':
-        return 'the ';
-      case 'وَالْ':
-      case 'وَال':
-        return 'and the ';
-      default:
-        return '';
-    }
-  }
-
-  Widget _getStartSubstring(BuildContext context, JWord word) {
-    if (word.hasStartSubstr > 0) {
-      var subStr = word.word.substring(0, word.hasStartSubstr);
-      return RichText(
-          text: TextSpan(
-              text: subStr,
-              children: [TextSpan(text: ' : ' + _getSubStringMeaning(subStr))],
-              style: TextStyle(fontSize: 26.0, color: Colors.pinkAccent)));
-    }
-    return Container();
-  }
-
-  Widget _getEndSubstring(BuildContext context, JWord word) {
-    if (word.hasEndSubstr > 0) {
-      var subStr = word.word.substring(word.word.length - word.hasEndSubstr);
-      return RichText(
-          text: TextSpan(
-              text: subStr,
-              children: [TextSpan(text: ' : ' + _getSubStringMeaning(subStr))],
-              style: TextStyle(fontSize: 26.0, color: Colors.redAccent)));
-    }
-    return Container();
-  }
-
-  Widget _getBangla(BuildContext context, JWord word) {
-    var vocabs = {
-      'moon':'চাঁদ','this': 'এই, ইহা','that': 'উহা','yes': 'হাঁ',
-      'no': 'না','what': 'কি','house': 'বাড়ি','open': 'খোলা',
-      'closed': 'বন্ধ','masjid': 'মসজিদ','mosque': 'মসজিদ','bed': 'বিছানা',
-      'book': 'বই','boy': 'বালক','camel': 'উট','cat': 'বিড়াল',
-      'chair': 'চেয়ার','table': 'টেবিল','doctor': 'ডাক্তার','dog': 'কুকুর',
-      'donkey': 'গাধা','door': 'দরজা','horse': 'ঘোড়া','kerchief': 'রূমাল',
-      'key': 'চাবি','man': 'মানুষ','merchant': 'বণিক','pen': 'কলম',
-      'rooster': 'গৃহপালিত মোরগ','shirt': 'জামা','dress': 'জামা','star': 'তারকা',
-      'student': 'ছাত্র','teacher': 'শিক্ষক','imam': 'এমাম','milk': 'দুধ',
-      'stone': 'পাথর','sugar': 'চিনি','far away': 'দূরে','heavy': 'ভারী',
-      'hot': 'গরম','light': 'হালকা','near': 'কাছাকাছি','new': 'নতুন',
-      'old': 'পুরাতন','dirty': 'অপরিচ্ছন্ন','big':'বড়','cold':'ঠাণ্ডা',
-      'beautiful':'সুন্দর','apple':'আপেল','clean':'পরিষ্কার','paper': 'কাগজ',
-      'poor': 'দরিদ্র','rich': 'ধনী','shop': 'দোকান','short': 'খাট',
-      'sick': 'অসুস্থ','sitting': 'বসা','small': 'ছোট','standing': 'দাঁড়ান',
-      'sweet': 'মিষ্টি','tall': 'লম্বা','water': 'পানি', 'where': 'কোথায়',
-      'on': 'উপর','sky': 'আকাশ','class': 'শ্রেণীকক্ষ','room': 'ঘর',
-      'bathroom': 'স্নানকক্ষ','toilet': 'টয়লেট','kitchen': 'রান্নাঘর','in': 'ভিতর',
-      'market': 'বাজার','head master': 'প্রধানশিক্ষক, পরিচালক', 'director': 'প্রধানশিক্ষক, পরিচালক',
-      'school': 'পাঠশালা','niversity': 'বিশ্ববিদ্যালয়','bag': 'থলে','car': 'গাড়ী',
-      'girl': 'মেয়ে','daughter': 'কন্যা','here': 'এখানে','maternal uncle': 'মামা',
-      'messenger': 'বার্তাবহ','name': 'নাম','paternal uncle': 'চাচা','son': 'পুত্র',
-      'street': 'রোড','under': 'নিচে','there': 'সেখানে',
-      //lesson6
-      'bicycle':'সাইকেল','farmer':'কৃষক','coffee':'কফি','fast':'দ্রুতগামী',
-      'cow':'গাভী','fridge':'রেফ্রিজারেটর','ear':'কান','hand':'হাত',
-      'east':'পূর্ব','head':'মাথা','eye':'চোখ','iron (for ironing)':'ইস্ত্রি',
-      'face':'মুখ','leg':'পা','tea':'চা','pot':'পাত্র','mouth':'মুখ','west':'পশ্চিম',
-      'nose':'নাক','window':'জানলা','spoon':'চামচ','whose':'কাহার'
-    };
-
-    String str = '';
-    if (word.english.startsWith('a ')) str = 'একটি  ';
-
-    if (word.bangla.isEmpty) {
-      var keys = vocabs.keys
-          .where((String key) => word.english==key)
-          .toList();
-      if (keys.length > 0) {
-        str += vocabs[keys[0]];
+  void _setSplitTextWidget(BuildContext context, JWord word,  List<Widget> widgets) {
+        
+      int len = word.sp.length;
+      if (len == 1) {        
+        widgets.add(_splitTextWidget(
+            text: word.word.substring(word.sp[0]), hasWordSpac: true));
       } else {
-        var keys = vocabs.keys
-            .where((String key) => word.english.contains(key))
-            .toList();
-        if (keys.length > 0) {
-          str += vocabs[keys[0]];
-        }
+        int i = 0, pairIndex;
+        bool isFirst = true;
+        do {
+          if (isFirst) {
+            isFirst = false;
+            widgets.add(_splitTextWidget(
+              text: word.word.substring(word.sp[i], word.sp[i + 1]),
+            ));
+            pairIndex = i + 1;
+            i += 2;
+          } else {
+            if (word.sp[pairIndex] == word.sp[i] && i + 1 < len) {
+              widgets.add(_splitTextWidget(
+                text: word.word.substring(word.sp[i], word.sp[i + 1]),
+              ));
+              pairIndex = i + 1;
+              i += 2;
+            } else {             
+              if (len % 2 == 0 || i + 1 < len)
+                isFirst = true;
+              else {
+                i++;
+                pairIndex = i;
+              }
+            }
+          }
+        } while (i < len);
+
+        if (len % 2 != 0) {
+          widgets.add(_splitTextWidget(
+              text: word.word.substring(word.sp[len - 1]), hasWordSpac: true));
+        }       
+    } 
+  }
+  //end split meaning
+  TextSpan _textSpan({String text, bool hasColor = true, bool hasWordSpac = false}) {
+    Color color;
+    if (hasColor) {
+      switch (text) {
+        case 'وَ':
+          color = Colors.green;
+          break;
+        case 'أَ': case 'أ':
+          color = Colors.lightBlue;
+          break;
+        case 'الْ':case 'اَلْ': case 'ال':
+          color = Colors.cyan;
+          break;
+        case 'لِ':
+          color = Colors.red;
+          break;
+
+        default:
+          color = Colors.orange;
       }
     }
-
-    //if (word.english.startsWith('the')) str += 'টি';
-    str += word.bangla;
-    return RichText(
-        text: TextSpan(text: str, style: Theme.of(context).textTheme.title));
-  }
-
-  Widget _getDetails(BuildContext context, JWord word) {
-    return RichText(
-        text: TextSpan(
-            text: _getMeaning(
-                word), //word.word.substring(word.hasStartSubstr, word.word.length - word.hasEndSubstr),
-            //children: [TextSpan(text: _getMeaning(word))],
-            style: Theme.of(context).textTheme.title));
+    return TextSpan(
+        text: text, style: hasColor ? TextStyle(color: color) : null);
   }
 
   TextSpan _getTextSpan(BuildContext context, JWord word) {
     final txtSpans = List<TextSpan>();
-    if (word.hasStartSubstr > 0) {
-      txtSpans.add(TextSpan(
-          text: word.word.substring(0, word.hasStartSubstr),
-          style: TextStyle(color: Colors.pinkAccent)));
-    }
-    txtSpans.add(TextSpan(
-      text: word.word
-          .substring(word.hasStartSubstr, word.word.length - word.hasEndSubstr),
-    ));
-    if (word.hasEndSubstr > 0) {
-      txtSpans.add(TextSpan(
-          text: word.word.substring(word.word.length - word.hasEndSubstr),
-          style: TextStyle(color: Colors.redAccent)));
-    }
+    if (word.sp != null) {
+      int len = word.sp.length;
+      if (len == 1) {
+        if (word.sp[0] > 0)
+          txtSpans.add(_textSpan(
+              text: word.word.substring(0, word.sp[0]), hasColor: false));
+        txtSpans.add(_textSpan(
+            text: word.word.substring(word.sp[0]), hasWordSpac: true));
+      } else {
+        int i = 0, pairIndex;
+        bool isFirst = true;
+        do {
+          if (isFirst) {
+            isFirst = false;
+            txtSpans.add(_textSpan(
+              text: word.word.substring(word.sp[i], word.sp[i + 1]),
+            ));
+            pairIndex = i + 1;
+            i += 2;
+          } else {
+            if (word.sp[pairIndex] == word.sp[i] && i + 1 < len) {
+              txtSpans.add(_textSpan(
+                text: word.word.substring(word.sp[i], word.sp[i + 1]),
+              ));
+              pairIndex = i + 1;
+              i += 2;
+            } else {
+              txtSpans.add(_textSpan(
+                  hasColor: false,
+                  text: word.word.substring(word.sp[pairIndex], word.sp[i])));
+              if (len % 2 == 0 || i + 1 < len)
+                isFirst = true;
+              else {
+                i++;
+                pairIndex = i;
+              }
+            }
+          }
+        } while (i < len);
 
+        if (len % 2 != 0) {
+          txtSpans.add(_textSpan(
+              text: word.word.substring(word.sp[len - 1]), hasWordSpac: true));
+        } else if (i < word.word.length && pairIndex < len) {
+          txtSpans.add(_textSpan(
+              hasWordSpac: true,
+              hasColor: false,
+              text: word.word.substring(word.sp[pairIndex])));
+        }
+      }
+    } else {
+      txtSpans
+          .add(_textSpan(text: word.word, hasWordSpac: true, hasColor: false));
+    }
     return TextSpan(
         style: Theme.of(context).textTheme.display1, children: txtSpans);
+  }
+  
+  Widget _getBangla(BuildContext context, JWord word) {
+    String str = _getBanglaText(word);
+    return RichText(
+        text: TextSpan(text: str, style: Theme.of(context).textTheme.title));
+  }
+
+  String _getBanglaText(JWord word) {
+     var vocabs = {'moon letters':'চাঁদ অক্ষর','sun letters':'সূর্য অক্ষর',
+      'moon': 'চাঁদ','sun': 'সূর্য', 'this': 'এই, ইহা', 'that': 'উহা', 'yes': 'হাঁ','who':'কে, কাহারা','notebook':'নোটবই',
+      'Exercise':'অনুশীলন','read':'অধ্যয়ন করা','write':'লেখা','lesson':'পাঠ','first':'প্রথম','second':'দ্বিতীয়','third':'তৃতীয়',
+      'no': 'না', 'what': 'কি', 'house': 'বাড়ি', 'open': 'খোলা','broken':'ভাঙা',
+      'closed': 'বন্ধ', 'masjid': 'মসজিদ', 'mosque': 'মসজিদ', 'bed': 'বিছানা',
+      'book': 'বই', 'boy': 'বালক', 'camel': 'উট', 'cat': 'বিড়াল','engineer':'প্রকৌশলী',
+      'chair': 'চেয়ার', 'table': 'টেবিল', 'doctor': 'ডাক্তার', 'dog': 'কুকুর','noon':'দুপুর',
+      'donkey': 'গাধা', 'door': 'দরজা', 'horse': 'ঘোড়া', 'kerchief': 'রূমাল',
+      'key': 'চাবি', 'man': 'মানুষ', 'merchant': 'বণিক', 'pen': 'কলম','guest':'অতিথি',
+      'rooster': 'গৃহপালিত মোরগ', 'shirt': 'জামা', 'dress': 'জামা','star': 'তারকা',      
+      'student': 'ছাত্র', 'teacher': 'শিক্ষক', 'imam': 'এমাম', 'milk': 'দুধ','air':'বায়ু',
+      'stone': 'পাথর', 'sugar': 'চিনি', 'far away': 'দূরে', 'heavy': 'ভারী','meat':'মাংস',
+      'hot': 'গরম', 'light': 'হালকা', 'near': 'কাছাকাছি', 'new': 'নতুন','chest':'বুক','nail':'নখ',
+      'old': 'পুরাতন', 'dirty': 'অপরিচ্ছন্ন', 'big': 'বড়', 'cold': 'ঠাণ্ডা','bread':'রুটি',
+      'beautiful': 'সুন্দর', 'apple': 'আপেল', 'clean': 'পরিষ্কার','paper': 'কাগজ','finger':'আঙ্গুল',      
+      'poor': 'দরিদ্র', 'rich': 'ধনী', 'shop': 'দোকান', 'short': 'খাট','fish':'মাছ','soap':'সাবান',
+      'sick': 'অসুস্থ', 'sitting': 'বসা', 'small': 'ছোট', 'standing': 'দাঁড়ান','brother':'ভাই',
+      'sweet': 'মিষ্টি', 'tall': 'লম্বা', 'water': 'পানি', 'where': 'কোথায়','flower':'ফুল','daylight':'দিবালোক',
+      'on': 'উপর', 'sky': 'আকাশ', 'class': 'শ্রেণীকক্ষ', 'room': 'ঘর','delicious':'সুস্বাদু',
+      'bathroom': 'স্নানকক্ষ', 'toilet': 'টয়লেট', 'kitchen': 'রান্নাঘর','in': 'ভিতর','kaaba':'কাবা',      
+      'market': 'বাজার', 'head master': 'প্রধানশিক্ষক, পরিচালক','bag': 'থলে','school': 'পাঠশালা', 'dinner':'ডিনার', 
+      'director': 'প্রধানশিক্ষক, পরিচালক','car': 'গাড়ী','niversity': 'বিশ্ববিদ্যালয়','lunch':'দুপুরের খাবার',      
+      'girl': 'মেয়ে', 'daughter': 'কন্যা', 'here': 'এখানে','maternal uncle': 'মামা','friend':'বন্ধু',     
+      'messenger': 'রাসূল', 'name': 'নাম', 'paternal uncle': 'চাচা','son': 'পুত্র','prayer':'প্রার্থনা',      
+      'street': 'রোড', 'under': 'নিচে', 'there': 'সেখানে','father':'বাবা','heaven':'স্বর্গ','sunset':'সূর্যাস্ত',
+      //b1-lesson6
+      'bicycle': 'সাইকেল', 'farmer': 'কৃষক', 'coffee': 'কফি','fast': 'দ্রুতগামী',      
+      'cow': 'গাভী', 'fridge': 'রেফ্রিজারেটর', 'ear': 'কান', 'hand': 'হাত',
+      'east': 'পূর্ব', 'head': 'মাথা', 'eye': 'চোখ','iron (for ironing)': 'ইস্ত্রি',      
+      'face': 'মুখ', 'leg': 'পা', 'tea': 'চা', 'pot': 'পাত্র', 'mouth': 'মুখ','west': 'পশ্চিম',      
+      'nose': 'নাক', 'window': 'জানলা', 'spoon': 'চামচ', 'whose': 'কাহার',
+      //b1-lesson7
+      'she-camel':'উষ্ট্রী','duck':'হাঁস','egg':'ডিম','nurse':'নার্স','hen':'মুরগি',
+    };
+    
+    String str = '';
+    if (word.english.startsWith('a ')) str = 'একটি  ';
+    
+    if (word.bangla.isEmpty) {
+      var keys =
+          vocabs.keys.where((String key) => word.english == key).toList();
+      if (keys.length > 0) {
+        str += vocabs[keys[0]];
+      } else {
+        var keys = vocabs.keys
+            .where((String key) => word.english.contains(key)).toList();                        
+        if (keys.length > 0) {
+          str += vocabs[keys.reduce((val, el)=> val.length<el.length?el:val)];
+        }
+      }
+    }
+    if (word.english.startsWith('and ')) str = 'এবং '+str;
+    if (word.english.startsWith('the ')) str += 'টি';
+    else if (word.english.contains(' the ')) str += 'টি';
+    
+    str += word.bangla;
+    return str;
+  }
+
+  Widget _getEnglish(BuildContext context, JWord word) {
+    return RichText(
+        text: TextSpan(
+            text: word.english, style: Theme.of(context).textTheme.title));
   }
 }
