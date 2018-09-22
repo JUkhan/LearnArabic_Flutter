@@ -199,7 +199,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         text: TextSpan(
             children: line.words
                 .where((d) => d.direction == 'rtl')
-                .map((word) => _getTextSpan(word, word.direction))
+                .map((word) => _getTextSpan(word, word.direction,line.tap))
                 .toList()),
       ));
     }
@@ -216,7 +216,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
             textDirection: _getDirection(line.lines[0].direction),
             text: TextSpan(
                 children: line.lines[0].words
-                    .map((word) => _getTextSpan(word, line.lines[0].direction))
+                    .map((word) => _getTextSpan(word, line.lines[0].direction, line.lines[0].tap))
                     .toList()),
           ));
         }
@@ -249,7 +249,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
           textDirection: _getDirection(line.lines[1].direction),
           text: TextSpan(
               children: line.lines[1].words
-                  .map((word) => _getTextSpan(word, line.lines[1].direction))
+                  .map((word) => _getTextSpan(word, line.lines[1].direction,line.lines[1].tap))
                   .toList()),
         ));
       }
@@ -282,7 +282,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
                 .getTextTheme(_context, line.direction)));
       }
       spans.addAll(
-          l.words.map((word) => _getTextSpan(word, line.direction)).toList());
+          l.words.map((word) => _getTextSpan(word, line.direction, line.tap)).toList());
 
       //after
       if (line.mode == 'a') {
@@ -337,7 +337,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
             style: Theme.of(_context).textTheme.title,
             text: '${_nums[count]}) ',
             children: line.lines[i].words
-                .map((word) => _getTextSpan(word, line.direction))
+                .map((word) => _getTextSpan(word, line.direction, line.tap))
                 .toList()),
       )));
       i++;
@@ -351,7 +351,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
               style: Theme.of(_context).textTheme.title,
               text: '${_nums[count]}) ',
               children: line.lines[i].words
-                  .map((word) => _getTextSpan(word, line.direction))
+                  .map((word) => _getTextSpan(word, line.direction, line.tap))
                   .toList()),
         )));
       }
@@ -382,13 +382,13 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       var rc = List<Widget>();
       rc.add(RichText(
         textDirection: _getDirection(line.direction),
-        text: _getTextSpan(line.words[i], line.direction),
+        text: _getTextSpan(line.words[i], line.direction,line.tap),
       ));
       i++;
       if (i < l) {
         rc.add(RichText(
           textDirection: _getDirection(line.direction),
-          text: _getTextSpan(line.words[i], line.direction),
+          text: _getTextSpan(line.words[i], line.direction,line.tap),
         ));
       }
       i++;
@@ -435,7 +435,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
               textDirection: _getDirection(l.direction),
               text: TextSpan(
                   children: l.words
-                      .map((word) => _getTextSpan(word, l.direction))
+                      .map((word) => _getTextSpan(word, l.direction, l.tap))
                       .toList()),
             );
         }
@@ -495,9 +495,9 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
             text:hasWordSpac? text + WORD_SPACE:text,
             style: hasColor? TextStyle(color: color):null);
   }
-  TextSpan _getTextSpan(JWord word, String direction) {
+  TextSpan _getTextSpan(JWord word, String direction, [int tap=1]) {
     final txtSpans = List<TextSpan>();
-    var gesture = direction == 'rtl' ? _getGesture(word) : null;
+    var gesture = direction == 'rtl' && tap==1  ? _getGesture(word) : null;
     if (word.sp != null) {
       int len = word.sp.length;
       if (len == 1) {
@@ -509,6 +509,8 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       } else {
         int i = 0, pairIndex;
         bool isFirst = true;
+        if(word.sp[0]>0)
+        txtSpans.add(_textSpan(recognizer: gesture, text: word.word.substring(0, word.sp[0]), hasColor: false));
         do {
           if (isFirst) {
             isFirst = false;
@@ -553,11 +555,16 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     } else {
       txtSpans.add(_textSpan(recognizer: gesture, text: word.word , hasWordSpac: true, hasColor: false));
     }
+    //Colors.grey[400]:Colors.black.withOpacity(0.9)
     return TextSpan(
         style: word == _selectedWord
             ? widget.bloc.settingBloc
                 .getTextTheme(_context, direction)
-                .copyWith( background: Paint()..color=widget.bloc.settingBloc.theme == Themes.light?Colors.lime[400]:Colors.purple[400])
+                .copyWith(                  
+                   background: Paint()                   
+                   ..blendMode=widget.bloc.settingBloc.theme == Themes.light?BlendMode.darken:BlendMode.color
+                   ..color=widget.bloc.settingBloc.theme == Themes.light?Colors.lime[400]:Colors.pink[400]
+                   )
             : widget.bloc.settingBloc.getTextTheme(_context, direction),
         children: txtSpans);
   } 
@@ -603,7 +610,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         textDirection: _getDirection(line.direction),
         text: TextSpan(
             children: line.words
-                .map((word) => _getTextSpan(word, line.direction))
+                .map((word) => _getTextSpan(word, line.direction, line.tap))
                 .toList()),
       ),
     );

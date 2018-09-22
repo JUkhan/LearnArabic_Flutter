@@ -3,13 +3,13 @@
         {"mode":"card",
          "lines":[
              {"d":"ltr", "words":[{"w":"And a feminine noun is referred to by the pronoun هِيَ whether it denotes a human being, an animal or a thing. e.g."}]},
-             {"words":[{"w":"أَيْنَ آمِنَةُ؟"}]},
+             {"tap":0,"words":[{"w":"أَيْنَ آمِنَةُ؟"}]},
              {"d":"ltr","words":[{"w":"Where is Aminah?"}]},
-             {"words":[{"w":"هِيَ فِي البَيْتِ."}]},
+             {"tap":0,"words":[{"w":"هِيَ فِي البَيْتِ","sp":[9,11]}]},
              {"d":"ltr","words":[{"w":"She is in the house."}]},
-             {"words":[{"w":"أَيْنَ السَّعَةُ؟"}]},
+             {"tap":0,"words":[{"w":"أَيْنَ السَّعَةُ؟"}]},
              {"d":"ltr","words":[{"w":"Where is the watch?"}]},
-             {"words":[{"w":"هِيَ عَلَي السَّرِيرِ."}]},
+             {"tap":0,"words":[{"w":"هِيَ عَلَي السَّرِيرِ","sp":[11,13]}]},
              {"d":"ltr","words":[{"w":"It is on the bed"}]},
              {"d":"ltr","words":[{"w":"\nMost feminine nouns end with a round ta (ة) but there are some which do not have any ending."}]}
          ]   
@@ -32,12 +32,12 @@
             "words":[
                 {"w":"أَيْنَ", "e":"where"},
                 {"w":"عَلَي", "e":"on"},
-                {"w":"السَّمَءُ", "e":"sky"},
+                {"w":"السَّمَءُ", "e":"sky","sp":[0,2]},
                 {"w":"غُرْفَةٌ", "e":"room"},
-                {"w":"الفَصْلُ", "e":"classroom"},
-                {"w":"الحَمَّامُ", "e":"bathroom"},
-                {"w":"المِرْحَاضُ", "e":"toilet"},
-                {"w":"المَطْبَخُ", "e":"kitchen"},
+                {"w":"الفَصْلُ", "e":"classroom","sp":[0,2]},
+                {"w":"الحَمَّامُ", "e":"bathroom","sp":[0,2]},
+                {"w":"المِرْحَاضُ", "e":"toilet","sp":[0,2]},
+                {"w":"المَطْبَخُ", "e":"kitchen","sp":[0,2]},
                 {"w":"فِي", "e":"in"}
             ]
         }

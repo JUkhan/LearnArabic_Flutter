@@ -2,7 +2,7 @@
     "mode":"lesson", "d":"rtl", "height":50.0,
     "words":[
         {"w":"اَلدَّرْسُ", "e":"lesson"},
-        {"w":"الرَّابِعُ", "e":"four"}
+        {"w":"الرَّابِعُ", "e":"fourth"}
     ]
 },
 "videos":[
@@ -27,27 +27,27 @@
             "mode":"card",
             "lines":[
                 {"d":"ltr","words":[{"w":"In this lesson we will learn the use of prepositions.\n\n 1. Arabic nouns have endings to show their functions in the sentence. The normal ending of a noun is <<-u>> as in"}]},
-                {"words":[{"w":"البَيْتُ جَدِيْدٌ"}]},
-                {"d":"ltr","words":[{"w":"(The house is new). al-baitu jadid-u-n\n"}]},
+                {"tap":0,"words":[{"w":"البَيْتُ جَدِيْدٌ", "sp":[0,2]}]},
+                {"d":"ltr","words":[{"w":"(The house is new).\n al-baitu jadid-u-n\n"}]},
                 {"d":"ltr","words":[{"w":"A noun with the normal ending is said to be in the nominative case. In Arabic it is called مَرْفُوعٌ \n\nAfter a preposition this ending changes to: <<-i>> e.g."}]},             
-                {"words":[{"w":"البَيْتُ"}]},
+                {"tap":0,"words":[{"w":"البَيْتُ","sp":[0,2]}]},
                 {"d":"ltr","words":[{"w":"al-bait-u (the house)"}]},
-                {"words":[{"w":"فِي البَيتِ"}]},
+                {"tap":0,"words":[{"w":"فِي البَيتِ", "sp":[4,6]}]},
                 {"d":"ltr","words":[{"w":"fi l-bait-i (in the house)"}]},
-                {"words":[{"w":"فِي بَيتٍ"}]},
+                {"tap":0,"words":[{"w":"فِي بَيتٍ"}]},
                 {"d":"ltr","words":[{"w":"fi-bait-i-n (in a house)"}]},
-                {"words":[{"w":"المَكْتَبُ"}]},
+                {"tap":0,"words":[{"w":"المَكْتَبُ","sp":[0,2]}]},
                 {"d":"ltr","words":[{"w":"al-maktab-u (the table)"}]},
-                {"words":[{"w":"عَلَي المَكْتَبِ"}]},
+                {"tap":0,"words":[{"w":"عَلَي المَكْتَبِ","sp":[6,8]}]},
                 {"d":"ltr","words":[{"w":"ala l-maktab-i (on the table)\n"}]},
                 {"d":"ltr","words":[{"w":"A noun preceded by a preposition is said to be in the genitive case (in Arabic مَجْرُورٌ ).\n\n2. In this lesson we also learn the two pronouns: هُوَ \"he, it\", and هِيَ \"she, it\".\n\nIn Arabic all nouns are either masculine or feminine.\n\nA masculine noun is referred to by the pronoun هُوَ whether it denotes a human being, and animal or a thing. e.g. "}]},
-                {"words":[{"w":"أَيْنَ الوَلَدُ؟"}]},
+                {"tap":0,"words":[{"w":"أَيْنَ الوَلَدُ؟","sp":[7,9]}]},
                 {"d":"ltr","words":[{"w":"Where is the boy?"}]},
-                {"words":[{"w":"هُوَ فِي المَسْجِدِ."}]},
+                {"tap":0,"words":[{"w":"هُوَ فِي المَسْجِدِ","sp":[9,11]}]},
                 {"d":"ltr","words":[{"w":"He is in the mosque."}]},
-                {"words":[{"w":"أَيْنَ الكِتَبُ؟"}]},
+                {"tap":0,"words":[{"w":"أَيْنَ الكِتَبُ؟","sp":[7,9]}]},
                 {"d":"ltr","words":[{"w":"Where is the book?"}]},
-                {"words":[{"w":"هُوَ عَلَي المَكْتَبِ."}]},
+                {"tap":0,"words":[{"w":"هُوَ عَلَي المَكْتَبِ.","sp":[11,13]}]},
                 {"d":"ltr","words":[{"w":"It is on the table"}]}
 
             ]

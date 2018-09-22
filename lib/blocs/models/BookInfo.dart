@@ -31,6 +31,7 @@ class JLine {
   final String direction;
   final String mode;
   final String img;
+  final int tap;
   bool isHide= false;
   final double height;
   final List<JLine> lines;
@@ -42,7 +43,8 @@ class JLine {
     this.img,
     this.lines,
     this.words,
-    this.height
+    this.height,
+    this.tap
   });
   factory JLine.fromJson(Map<String, dynamic> json){
     var lines=<JLine>[];
@@ -61,6 +63,7 @@ class JLine {
       direction: getValue<String>(json, 'd', 'rtl'),
       mode: getValue<String>(json, 'mode', ''),
       img:  getValue<String>(json, 'img', ''),
+      tap: getValue<int>(json, 'tap', 1),
       height:  getValue<double>(json, 'height', 0.0),
       lines:lines,
       words:words

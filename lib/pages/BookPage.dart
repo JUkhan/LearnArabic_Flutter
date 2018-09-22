@@ -69,7 +69,7 @@ class BookPage extends StatelessWidget {
                 : Text(
                     snapshot.data.english+' '+ _getBanglaText(snapshot.data),
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.title,
+                    style:_isArabic(snapshot.data.english)? Theme.of(context).textTheme.headline:Theme.of(context).textTheme.title,
                   ),
           )),
           StreamBuilder<JWord>(
@@ -296,7 +296,10 @@ class BookPage extends StatelessWidget {
     return TextSpan(
         style: Theme.of(context).textTheme.display1, children: txtSpans);
   }
-  
+  bool _isArabic(String str){
+    if(str.isEmpty)return false;
+    return str.trim().codeUnitAt(0)>1000;
+  }
   Widget _getBangla(BuildContext context, JWord word) {
     String str = _getBanglaText(word);
     return RichText(
@@ -305,9 +308,9 @@ class BookPage extends StatelessWidget {
 
   String _getBanglaText(JWord word) {
      var vocabs = {'moon letters':'চাঁদ অক্ষর','sun letters':'সূর্য অক্ষর',
-      'moon': 'চাঁদ','sun': 'সূর্য', 'this': 'এই, ইহা', 'that': 'উহা', 'yes': 'হাঁ','who':'কে, কাহারা','notebook':'নোটবই',
+      'moon': 'চাঁদ','sun': 'সূর্য', 'this': 'এই, ইহা', 'that': 'উহা', 'yes': 'হাঁ','notebook':'নোটবই',
       'Exercise':'অনুশীলন','read':'অধ্যয়ন করা','write':'লেখা','lesson':'পাঠ','first':'প্রথম','second':'দ্বিতীয়','third':'তৃতীয়',
-      'no': 'না', 'what': 'কি', 'house': 'বাড়ি', 'open': 'খোলা','broken':'ভাঙা',
+      'no': 'না', 'what': 'কি', 'house': 'বাড়ি', 'open': 'খোলা','broken':'ভাঙা','fourth':'চতুর্থ',
       'closed': 'বন্ধ', 'masjid': 'মসজিদ', 'mosque': 'মসজিদ', 'bed': 'বিছানা',
       'book': 'বই', 'boy': 'বালক', 'camel': 'উট', 'cat': 'বিড়াল','engineer':'প্রকৌশলী',
       'chair': 'চেয়ার', 'table': 'টেবিল', 'doctor': 'ডাক্তার', 'dog': 'কুকুর','noon':'দুপুর',
@@ -321,20 +324,30 @@ class BookPage extends StatelessWidget {
       'beautiful': 'সুন্দর', 'apple': 'আপেল', 'clean': 'পরিষ্কার','paper': 'কাগজ','finger':'আঙ্গুল',      
       'poor': 'দরিদ্র', 'rich': 'ধনী', 'shop': 'দোকান', 'short': 'খাট','fish':'মাছ','soap':'সাবান',
       'sick': 'অসুস্থ', 'sitting': 'বসা', 'small': 'ছোট', 'standing': 'দাঁড়ান','brother':'ভাই',
-      'sweet': 'মিষ্টি', 'tall': 'লম্বা', 'water': 'পানি', 'where': 'কোথায়','flower':'ফুল','daylight':'দিবালোক',
-      'on': 'উপর', 'sky': 'আকাশ', 'class': 'শ্রেণীকক্ষ', 'room': 'ঘর','delicious':'সুস্বাদু',
-      'bathroom': 'স্নানকক্ষ', 'toilet': 'টয়লেট', 'kitchen': 'রান্নাঘর','in': 'ভিতর','kaaba':'কাবা',      
+      'sweet': 'মিষ্টি', 'tall': 'লম্বা', 'water': 'পানি','flower':'ফুল','daylight':'দিবালোক',
+      'sky': 'আকাশ', 'classroom': 'শ্রেণীকক্ষ', 'room': 'ঘর','delicious':'সুস্বাদু','watch':'ঘড়ি',
+      'bathroom': 'স্নানকক্ষ', 'toilet': 'টয়লেট', 'kitchen': 'রান্নাঘর','kaaba':'কাবা',      
       'market': 'বাজার', 'head master': 'প্রধানশিক্ষক, পরিচালক','bag': 'থলে','school': 'পাঠশালা', 'dinner':'ডিনার', 
       'director': 'প্রধানশিক্ষক, পরিচালক','car': 'গাড়ী','niversity': 'বিশ্ববিদ্যালয়','lunch':'দুপুরের খাবার',      
       'girl': 'মেয়ে', 'daughter': 'কন্যা', 'here': 'এখানে','maternal uncle': 'মামা','friend':'বন্ধু',     
       'messenger': 'রাসূল', 'name': 'নাম', 'paternal uncle': 'চাচা','son': 'পুত্র','prayer':'প্রার্থনা',      
       'street': 'রোড', 'under': 'নিচে', 'there': 'সেখানে','father':'বাবা','heaven':'স্বর্গ','sunset':'সূর্যাস্ত',
+      //pronouns
+      'he':'তিনি','she':'তিনি','it':'ইহা','whose': 'কাহার','who':'কে, কাহারা','you':'তুমি','i':'আমি',
+      //prepositions
+      'on': 'উপর','in': 'ভিতর','from':'হইতে', 'where': 'কোথায়','to':'দিকে',
+      //Names
+      'Muhammad':'মুহাম্মদ','Yasir':'ইয়াসির','Aminah':'আমিনা','Zaynab':'যয়নব','Omar':'ওমর','Hamid':'হামিদ','Abbas':'আব্বাস','Ali':'আলী',
+      'Fatima':'ফাতিমা','Khadija':'খাদিজা','Khalid':'খালিদ',
+      'China':'চীন','India':'ভারত','Japan':'জাপান','Philippines':'ফিলিপাইন',
+      //verb
+      'went':'চলে গেছে','went out':'বাহিরে গেছে',
       //b1-lesson6
       'bicycle': 'সাইকেল', 'farmer': 'কৃষক', 'coffee': 'কফি','fast': 'দ্রুতগামী',      
       'cow': 'গাভী', 'fridge': 'রেফ্রিজারেটর', 'ear': 'কান', 'hand': 'হাত',
       'east': 'পূর্ব', 'head': 'মাথা', 'eye': 'চোখ','iron (for ironing)': 'ইস্ত্রি',      
       'face': 'মুখ', 'leg': 'পা', 'tea': 'চা', 'pot': 'পাত্র', 'mouth': 'মুখ','west': 'পশ্চিম',      
-      'nose': 'নাক', 'window': 'জানলা', 'spoon': 'চামচ', 'whose': 'কাহার',
+      'nose': 'নাক', 'window': 'জানলা', 'spoon': 'চামচ', 
       //b1-lesson7
       'she-camel':'উষ্ট্রী','duck':'হাঁস','egg':'ডিম','nurse':'নার্স','hen':'মুরগি',
     };
@@ -366,6 +379,6 @@ class BookPage extends StatelessWidget {
   Widget _getEnglish(BuildContext context, JWord word) {
     return RichText(
         text: TextSpan(
-            text: word.english, style: Theme.of(context).textTheme.title));
+            text: word.english, style:_isArabic(word.english)?Theme.of(context).textTheme.headline: Theme.of(context).textTheme.title));
   }
 }
