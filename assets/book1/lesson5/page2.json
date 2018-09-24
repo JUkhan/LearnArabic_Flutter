@@ -1,9 +1,20 @@
 {    
     "lines":[
-        {"mode":"raw", "d":"ltr","words":[{"w":"2. تَحْتَ \"under\". The noun following تَحْتَ is in the genitive case because it is mudaf ilaihi: تَحْتَ المَكْتَبِ، تَحْتَ الكِتَابِ"}]},
-        {"mode":"raw","d":"ltr","words":[{"w":"3. يَا is a vocative particle. A noun following يَا has only one dammah: يَا أُسْتَاذُ، يَا شَيْخُ، يَا بِلآلُ not  يَا بِلآلٌ etc."}]},
-        {"mode":"raw","d":"ltr","words":[{"w":"4. The words اِسْمٌ and اِبْنٌ commence with hamzatu l-wasl. When preceded by a word the initial <<i>> is dropped in pronunciation."}]},
-        {"mode":"raw","d":"ltr","words":[{"w":"اِسْمُ  الْوَلَدِ  بِلآلٌ \n ism-u l-walad-i bilal-u-n \nوَاسْمُ  الْبِنْتِ  آمِنَةُ \nwa sm-u l-bint-i aminat-u\nاِبْنُ الْمُدَرِّسِ طَبِيْبٌ \nibn-u l-mudarris-i tabib-u-n\nوَابْنُ  الإِمَمِ  يَاجِرٌ \nwa bn-u l-imam-i tajir-u-n\nأَيْنَ  ابْنُ  حَامِدٍ \naina bn-u hamid-i-n?"}]},
+        {"d":"ltr","words":[{"w":"2. تَحْتَ \"under\". The noun following تَحْتَ is in the genitive case because it is mudaf ilaihi: تَحْتَ المَكْتَبِ، تَحْتَ الكِتَابِ"}]},
+        {"d":"ltr","words":[{"w":"3. يَا is a vocative particle. A noun following يَا has only one dammah: يَا أُسْتَاذُ، يَا شَيْخُ، يَا بِلآلُ not  يَا بِلآلٌ etc."}]},
+        {"d":"ltr","words":[{"w":"4. The words اِسْمٌ and اِبْنٌ commence with hamzatu l-wasl. When preceded by a word the initial <<i>> is dropped in pronunciation."}]},        
+        {"mode":"card","lines":[            
+            {"tap":0,"words":[{"w":"اِسْمُ  الْوَلَدِ  بِلآلٌ","sp":[8,11]}]},
+            {"d":"ltr","words":[{"w":"ism-u l-walad-i bilal-u-n"}]},
+            {"tap":0,"words":[{"w":"وَاسْمُ  الْبِنْتِ  آمِنَةُ ","sp":[0,2,9,12]}]},
+            {"d":"ltr","words":[{"w":"wa sm-u l-bint-i aminat-u"}]},
+            {"tap":0,"words":[{"w":"اِبْنُ الْمُدَرِّسِ طَبِيْبٌ ","sp":[7,10]}]},
+            {"d":"ltr","words":[{"w":"ibn-u l-mudarris-i tabib-u-n"}]},
+            {"tap":0,"words":[{"w":"وَابْنُ  الإِمَمِ  يَاجِرٌ ","sp":[0,2,9,11]}]},
+            {"d":"ltr","words":[{"w":"wa bn-u l-imam-i tajir-u-n"}]},
+            {"tap":0,"words":[{"w":"أَيْنَ  ابْنُ  حَامِدٍ "}]},
+            {"d":"ltr","words":[{"w":"aina bn-u hamid-i-n?"}]}        
+        ]},
         {   "d":"ltr",
             "mode":"lesson", "height":50.0,
             "words":[{"w":"Vocabulary:"}]

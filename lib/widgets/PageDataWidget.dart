@@ -7,6 +7,7 @@ import '../blocs/models/AsyncData.dart';
 import '../blocs/models/BookInfo.dart';
 import '../blocs/StateMgmtBloc.dart';
 import '../blocs/SettingBloc.dart';
+import 'dart:math' as Math;
 
 class PageDataWidget extends StatefulWidget {
   final AsyncData<JPage> page;
@@ -80,25 +81,26 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     _gestureCounter++;
     return temp;
   }
-
-  int _milis;
+  
+  double startPx;
   bool _hasPage;
-  _dragStart(DragStartDetails details) {
-    _milis = details.sourceTimeStamp.inMilliseconds;
+  _dragStart(DragStartDetails details) {    
+    startPx=details.globalPosition.dx;
     _hasPage = false;
   }
 
   _dragUpdate(DragUpdateDetails details) {
-    if (_hasPage == false &&
-        details.sourceTimeStamp.inMilliseconds > _milis + 150) {
-      _hasPage = true;
-      if (details.delta.dx > 0) {
+    if (_hasPage == false) {      
+      double dx=details.globalPosition.dx;
+      if (startPx<dx&&(dx-startPx)>100) {
+        _hasPage = true;
         Navigator.pushReplacement(
             context,
             SlideRoute(
                 widget: BookPage(), sildeDirection: SlideDirection.Right));
         widget.bloc.bookBloc.prev();
-      } else {
+      } else if(startPx>dx&&(startPx-dx)>100) {
+        _hasPage = true;
         Navigator.pushReplacement(
             context,
             SlideRoute(
@@ -563,7 +565,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
                 .copyWith(                  
                    background: Paint()                   
                    ..blendMode=widget.bloc.settingBloc.theme == Themes.light?BlendMode.darken:BlendMode.color
-                   ..color=widget.bloc.settingBloc.theme == Themes.light?Colors.lime[400]:Colors.pink[400]
+                   ..color=widget.bloc.settingBloc.theme == Themes.light?Colors.lime[400]:Colors.purple[400]
                    )
             : widget.bloc.settingBloc.getTextTheme(_context, direction),
         children: txtSpans);
@@ -580,7 +582,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         textDirection: _getDirection(line.direction),
         text: TextSpan(
             children: line.words
-                .map((word) => _getTextSpan(word, line.direction))
+                .map((word) => _getTextSpan(word, line.direction, line.tap))
                 .toList()),
       ));
     }

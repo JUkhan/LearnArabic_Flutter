@@ -4,7 +4,7 @@
             {"w":"Correct the following phrases:"}]
         },
         {"mode":"divider"}, 
-        {"mode":"qa","lines":[            
+        { "mode":"qa","lines":[            
             {"words":[
             {"w":"القَلَمُ", "e":""},
             {"w":"الطَّالِبِ", "e":""},
@@ -36,7 +36,7 @@
             ]}
         ]},
         {"mode":"lesson", "d":"ltr", "height":50.0, "words":[{"w":"يَا(oh)"}]},
-        {"mode":"qa","lines":[
+        {"tap":0, "mode":"qa","lines":[
             {"words":[
             {"w":"مُحَمَّدٌ"},
             {"w":":"},
@@ -77,10 +77,10 @@
         },
         {"mode":"divider"},
         
-        {
+        {   "tap":0,
             "mode": "img-sentence",
             "img": "book.png",
-            "words":[{"w":"كِتَابُ  مَنْ  هَذَا؟", "e":"who is belongs to this book?"}]
+            "words":[{"w":"كِتَابُ  مَنْ  هَذَا؟"}]
         },
         {
             "mode": "img-sentence",

@@ -307,7 +307,7 @@ class BookPage extends StatelessWidget {
   }
 
   String _getBanglaText(JWord word) {
-     var vocabs = {'moon letters':'চাঁদ অক্ষর','sun letters':'সূর্য অক্ষর',
+     var vocabs = {'Allah':'আল্লাহ','moon letters':'চাঁদ অক্ষর','sun letters':'সূর্য অক্ষর',
       'moon': 'চাঁদ','sun': 'সূর্য', 'this': 'এই, ইহা', 'that': 'উহা', 'yes': 'হাঁ','notebook':'নোটবই',
       'Exercise':'অনুশীলন','read':'অধ্যয়ন করা','write':'লেখা','lesson':'পাঠ','first':'প্রথম','second':'দ্বিতীয়','third':'তৃতীয়',
       'no': 'না', 'what': 'কি', 'house': 'বাড়ি', 'open': 'খোলা','broken':'ভাঙা','fourth':'চতুর্থ',
@@ -337,19 +337,19 @@ class BookPage extends StatelessWidget {
       //prepositions
       'on': 'উপর','in': 'ভিতর','from':'হইতে', 'where': 'কোথায়','to':'দিকে',
       //Names
-      'Muhammad':'মুহাম্মদ','Yasir':'ইয়াসির','Aminah':'আমিনা','Zaynab':'যয়নব','Omar':'ওমর','Hamid':'হামিদ','Abbas':'আব্বাস','Ali':'আলী',
-      'Fatima':'ফাতিমা','Khadija':'খাদিজা','Khalid':'খালিদ',
-      'China':'চীন','India':'ভারত','Japan':'জাপান','Philippines':'ফিলিপাইন',
+      'Muhammad':'মুহাম্মদ','Yasir':'ইয়াসির','Omar':'ওমর','Hamid':'হামিদ','Abbas':'আব্বাস','Ali':'আলী','Saeed':'সাঈদ',
+      'Fatima':'ফাতিমা','Khadija':'খাদিজা','Khalid':'খালিদ','Aminah':'আমিনা','Zaynab':'যয়নব',
+      'China':'চীন','India':'ভারত','Japan':'জাপান','Philippines':'ফিলিপাইন','Iraq':'ইরাক',
       //verb
       'went':'চলে গেছে','went out':'বাহিরে গেছে',
       //b1-lesson6
       'bicycle': 'সাইকেল', 'farmer': 'কৃষক', 'coffee': 'কফি','fast': 'দ্রুতগামী',      
-      'cow': 'গাভী', 'fridge': 'রেফ্রিজারেটর', 'ear': 'কান', 'hand': 'হাত',
+      'cow': 'গাভী', 'fridge': 'রেফ্রিজারেটর', 'ear': 'কান', 'hand': 'হাত','mother':'মাতা',
       'east': 'পূর্ব', 'head': 'মাথা', 'eye': 'চোখ','iron (for ironing)': 'ইস্ত্রি',      
-      'face': 'মুখ', 'leg': 'পা', 'tea': 'চা', 'pot': 'পাত্র', 'mouth': 'মুখ','west': 'পশ্চিম',      
+      'face': 'মুখ', 'leg': 'পা', 'tea': 'চা', 'pot': 'রান্নার পাত্র', 'mouth': 'মুখ','west': 'পশ্চিম',      
       'nose': 'নাক', 'window': 'জানলা', 'spoon': 'চামচ', 
       //b1-lesson7
-      'she-camel':'উষ্ট্রী','duck':'হাঁস','egg':'ডিম','nurse':'নার্স','hen':'মুরগি',
+      'she-camel':'উষ্ট্রী','duck':'হাঁস','egg':'ডিম','nurse':'নার্স','hen':'মুরগি','muazzin':'মুয়াজজিন'
     };
     
     String str = '';
