@@ -7,7 +7,7 @@ import '../blocs/models/AsyncData.dart';
 import '../blocs/models/BookInfo.dart';
 import '../blocs/StateMgmtBloc.dart';
 import '../blocs/SettingBloc.dart';
-import 'dart:math' as Math;
+
 
 class PageDataWidget extends StatefulWidget {
   final AsyncData<JPage> page;
@@ -178,6 +178,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         case 'divider':
           list.add(Divider());
           break;
+        case 'text': list.add(_getText(line));break;
         default:
           list.add(_getReadAndWrite(line));
       }
@@ -399,6 +400,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: rc,
       ));
+      if(line.height==1.0) children.add(Divider());
     } while (i < l);
     return Column(
       children: children,
@@ -432,6 +434,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
             return _getReadAndWrite(line, 0.0);
           case 'vocab':
             return _getVocabMode(l);
+          case 'text': return _getText(line);
           default:
             return RichText(
               textDirection: _getDirection(l.direction),
@@ -466,7 +469,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
           text: TextSpan(
               style: Theme.of(_context).textTheme.title,
               children: line.words
-                  .map<TextSpan>((word) => _getTextSpan(word, line.direction))
+                  .map<TextSpan>((word) => _getTextSpan(word, line.direction, line.tap))
                   .toList()),
         ),
       ),
@@ -499,7 +502,8 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   }
   TextSpan _getTextSpan(JWord word, String direction, [int tap=1]) {
     final txtSpans = List<TextSpan>();
-    var gesture = direction == 'rtl' && tap==1  ? _getGesture(word) : null;
+    if(direction == 'rtl' && !_isArabic(word.word))direction='ltr';
+    var gesture = word.english.isNotEmpty  ? _getGesture(word) : null;
     if (word.sp != null) {
       int len = word.sp.length;
       if (len == 1) {
@@ -604,11 +608,19 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       ),
     ));
   }
-
+  Widget _getText(JLine line) {
+    return Center(child: RichText(
+        textDirection: _getDirection(line.direction),
+        text: TextSpan(
+            children: line.words
+                .map((word) => _getTextSpan(word, line.direction, line.tap))
+                .toList()),
+      ));
+  }
   Widget _getReadAndWrite(JLine line, [double padding = 10.0]) {
     return Container(
       padding: EdgeInsets.all(padding),
-      child: RichText(
+      child:RichText(
         textDirection: _getDirection(line.direction),
         text: TextSpan(
             children: line.words
@@ -616,6 +628,11 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
                 .toList()),
       ),
     );
+  }
+
+  bool _isArabic(String str){
+    if(str.trim().isEmpty)return false;
+    return str.codeUnitAt(0)>1000;
   }
 
   LinearGradient _getGradient() => LinearGradient(

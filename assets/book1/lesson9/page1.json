@@ -3,7 +3,7 @@
         "mode":"lesson", "d":"rtl", "height":50.0,
         "words":[
             {"w":"اَلدَّرْسُ", "e":"lesson"},
-            {"w":"الثَّانِيْ", "e":"two"}
+            {"w":"التَّاسِعُ", "e":"ninth"}
         ]
     },
     "videos":[
@@ -12,16 +12,37 @@
         }       
     ],
     "lines": [
-        
         {
-            
-            "words": [
-                {"w":"New words:"},
-                { "w":"الكلمة الجديدة",  "e": "New Words","b":"নতুন শব্দ", "d": "rtl"}
-               
-            ]
-        }
-        
-        
+            "mode":"lesson", "height":50.0,
+            "words":[{"w":"Part A"}]
+        },
+        {   
+            "mode":"lesson", "height":50.0,
+            "words":[{"w":"POINTS TO REMEMBER"}]
+        },
+        {"d":"ltr", "words":[{"w":"In this lesson we learn:\n\n1. The adjective in Arabic. The adjective in Arabic follows the noun it qualifies, i.e. unlike in English it comes after the noun, e.g."}]},      
+        {"mode":"text",  "words":[{"w":"بَيْتٌ جَدِيدٌ"}]},
+        {"mode":"text","words":[{"w":"A new house"}]},      
+        {"d":"ltr", "words":[{"w":"In Arabic the adjective is called nat (نَعْتٌ) and the noun it qualifies is called manut (مَنْعُوتٌ). The adjective is in agreement with the noun in the following metters:\na) Gender, The adjective of a masculine noun is masculine, and that of a feminine noun is feminine, e.g. "}]},
+        { "mode":"vocab","words":[
+           {"w":"وَلَدٌ  صَغِيرٌ"} , {"w":"بِنْتٌ  صَغِيرَةٌ"},
+           {"w":"a small boy"} , {"w":"a small girl"},
+           {"w":"كِتَابٌ  جَدِيدٌ"} , {"w":"سَيَّارَةٌ  جَدِيدَةٌ"},
+           {"w":"a new book"} , {"w":"a new car"}  
+        ]},
+        {"d":"ltr","words":[{"w":"b) Being definite or indefinite. If the noun is definite the adjective is also definite. And if the noun is indefinite so also is  the adjective, e.g."}]},
+        {"mode":"text","words":[{"w":"بِلَالٌ  مُدَرِّسٌ  جَدِيدٌ"}]}, 
+        {"mode":"text","words":[{"w":"Bilal is a new teacher"}]},
+        {"mode":"text","words":[{"w":"المُدَرِّسُ  الجَدِيدُ  فِي  الفَسْلِ"}]}, 
+        {"mode":"text","words":[{"w":"The new techer is in the class"}]},
+        {"d":"ltr","words":[{"w":"c) Case. The adjective is in the same case as the manuth, e.g."}]},
+        {"mode":"text","words":[{"w":"هَذَا  بَيْتٌ  جَدِيدٌ."}]},
+        {"mode":"text","words":[{"w":".This is a new house\n (bait-u-n jadid-u-n)"}]},
+        {"mode":"text","words":[{"w":"أَنَ  فِي  بَيْتٍ  جَدِيدٍ."}]},
+        {"mode":"text","words":[{"w":".I am in a new house\n (fi bait-i-n jadid-i-n)"}]},
+        {"mode":"text","words":[{"w":"البَيْتُ  الجَدِيدُ  جَمِيلٌ."}]},
+        {"mode":"text","words":[{"w":".The new house is beautiful\n (al-bait-u l-jadid-u)"}]},
+        {"mode":"text","words":[{"w":"مَنْ  فِي  البَيْتِ  الجَدِيدِ؟"}]},
+        {"mode":"text","words":[{"w":"?Who is in the new house\n (fi l-bait-i l-jadid-i)"}]}
     ]
 }

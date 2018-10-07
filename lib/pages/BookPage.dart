@@ -156,7 +156,7 @@ class BookPage extends StatelessWidget {
            text +=' : interrogative particle প্রশ্নোত্তর কণা';
           break;
         case 'الْ':case 'ال':case 'اَلْ':
-          text +=' : the টি';
+          text +=' - اَلْ : the টি';
           break;
         case 'لِ':
           text +=' : for, belongs to জন্য, সম্পর্কিত';
@@ -297,8 +297,8 @@ class BookPage extends StatelessWidget {
         style: Theme.of(context).textTheme.display1, children: txtSpans);
   }
   bool _isArabic(String str){
-    if(str.isEmpty)return false;
-    return str.trim().codeUnitAt(0)>1000;
+    if(str.trim().isEmpty)return false;
+    return str.codeUnitAt(0)>1000;
   }
   Widget _getBangla(BuildContext context, JWord word) {
     String str = _getBanglaText(word);
@@ -309,8 +309,8 @@ class BookPage extends StatelessWidget {
   String _getBanglaText(JWord word) {
      var vocabs = {'Allah':'আল্লাহ','moon letters':'চাঁদ অক্ষর','sun letters':'সূর্য অক্ষর',
       'moon': 'চাঁদ','sun': 'সূর্য', 'this': 'এই, ইহা', 'that': 'উহা', 'yes': 'হাঁ','notebook':'নোটবই',
-      'Exercise':'অনুশীলন','read':'অধ্যয়ন করা','write':'লেখা','lesson':'পাঠ','first':'প্রথম','second':'দ্বিতীয়','third':'তৃতীয়',
-      'no': 'না', 'what': 'কি', 'house': 'বাড়ি', 'open': 'খোলা','broken':'ভাঙা','fourth':'চতুর্থ',
+      'Exercise':'অনুশীলন','read':'অধ্যয়ন করা','write':'লেখা','lesson':'পাঠ','first':'প্রথম','second':'দ্বিতীয়','third':'তৃতীয়','ninth':'নবম',
+      'no': 'না', 'what': 'কি', 'house': 'বাড়ি', 'open': 'খোলা','broken':'ভাঙা','fourth':'চতুর্থ','eighth':'অষ্টম',
       'closed': 'বন্ধ', 'masjid': 'মসজিদ', 'mosque': 'মসজিদ', 'bed': 'বিছানা',
       'book': 'বই', 'boy': 'বালক', 'camel': 'উট', 'cat': 'বিড়াল','engineer':'প্রকৌশলী',
       'chair': 'চেয়ার', 'table': 'টেবিল', 'doctor': 'ডাক্তার', 'dog': 'কুকুর','noon':'দুপুর',
@@ -337,7 +337,7 @@ class BookPage extends StatelessWidget {
       //prepositions
       'on': 'উপর','in': 'ভিতর','from':'হইতে', 'where': 'কোথায়','to':'দিকে',
       //Names
-      'Muhammad':'মুহাম্মদ','Yasir':'ইয়াসির','Omar':'ওমর','Hamid':'হামিদ','Abbas':'আব্বাস','Ali':'আলী','Saeed':'সাঈদ',
+      'Muhammad':'মুহাম্মদ','Yasir':'ইয়াসির','Omar':'ওমর','Hamid':'হামিদ','Abbas':'আব্বাস','Ali':'আলী','Saeed':'সাঈদ','Mahmood':'মাহমুদ',
       'Fatima':'ফাতিমা','Khadija':'খাদিজা','Khalid':'খালিদ','Aminah':'আমিনা','Zaynab':'যয়নব',
       'China':'চীন','India':'ভারত','Japan':'জাপান','Philippines':'ফিলিপাইন','Iraq':'ইরাক',
       //verb
@@ -349,9 +349,14 @@ class BookPage extends StatelessWidget {
       'face': 'মুখ', 'leg': 'পা', 'tea': 'চা', 'pot': 'রান্নার পাত্র', 'mouth': 'মুখ','west': 'পশ্চিম',      
       'nose': 'নাক', 'window': 'জানলা', 'spoon': 'চামচ', 
       //b1-lesson7
-      'she-camel':'উষ্ট্রী','duck':'হাঁস','egg':'ডিম','nurse':'নার্স','hen':'মুরগি','muazzin':'মুয়াজজিন'
+      'she-camel':'উষ্ট্রী','duck':'হাঁস','egg':'ডিম','nurse':'নার্স','hen':'মুরগি','muazzin':'মুয়াজজিন',
+      //b1-lesson8
+      'America':'আমেরিকা','Switzerland':'সুইজর্লণ্ড','knife':'ছুরি','Germany':'জার্মানি','England':'ইংল্যান্ড','hospital':'হাসপাতাল','behind':'পিছনে','in front of':'সামনে','France':'ফ্রান্স','writing board':'লেখার বোর্ড','sat':'বসেছিল',
+      //b1-lesson9
+      'lazy':'অলস','hungry':'ক্ষুধার্ত','thirsty':'তৃষ্ণার্ত','angry':'ক্রুদ্ধ','full':'সম্পূর্ণ','fruit':'ফল','English(language)':'ইংরেজী ভাষা','sparrow':'চড়ুই','difficult':'কঠিন','bird':'পাখি','city':'শহর','Arabic':'আরবি','Cairo':'কায়রো','language':'ভাষা','today':'আজ','easy':'সহজ','why':'কেন','hardworking':'কঠোর পরিশ্রম','cup':'কাপ','famous':'বিখ্যাত',
+      'library':'গ্রন্থাগার','secondary school':'মাধ্যমিক বিদ্যালয়','now':'এখন','minister':'মন্ত্রী','sharp':'তীক্ষ্ন','fan':'পাখা','Indonesia':'ইন্দোনেশিয়া','Kuwait':'কুয়েত',
     };
-    
+     
     String str = '';
     if (word.english.startsWith('a ')) str = 'একটি  ';
     
