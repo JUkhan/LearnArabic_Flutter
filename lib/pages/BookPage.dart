@@ -137,10 +137,10 @@ class BookPage extends StatelessWidget {
        case 'أَ':case 'أ':
           color = Colors.lightBlue;
           break;
-        case 'الْ': case 'ال':case 'اَلْ':
+        case 'الْ':case 'ال':case 'اَلْ':case 'لْ':case 'ل':
           color = Colors.cyan;
           break;
-        case 'لِ':
+        case 'لِ':case 'بِ':
           color = Colors.red;
           break;
 
@@ -155,10 +155,10 @@ class BookPage extends StatelessWidget {
         case 'أَ':case 'أ':
            text +=' : interrogative particle প্রশ্নোত্তর কণা';
           break;
-        case 'الْ':case 'ال':case 'اَلْ':
+        case 'الْ':case 'ال':case 'اَلْ':case 'لْ':case 'ل':
           text +=' - اَلْ : the টি';
           break;
-        case 'لِ':
+        case 'لِ':case 'بِ':
           text +=' : for, belongs to জন্য, সম্পর্কিত';
           break;
 
@@ -222,10 +222,10 @@ class BookPage extends StatelessWidget {
         case 'أَ': case 'أ':
           color = Colors.lightBlue;
           break;
-        case 'الْ':case 'اَلْ': case 'ال':
+        case 'الْ':case 'اَلْ': case 'ال':case 'لْ':case 'ل':
           color = Colors.cyan;
           break;
-        case 'لِ':
+        case 'لِ': case 'بِ':
           color = Colors.red;
           break;
 

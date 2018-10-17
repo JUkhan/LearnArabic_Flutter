@@ -1,11 +1,5 @@
 {
-    "title":{
-        "mode":"lesson", "d":"rtl", "height":50.0,
-        "words":[
-            {"w":"اَلدَّرْسُ", "e":"lesson"},
-            {"w":"الثَّانِيْ", "e":"two"}
-        ]
-    },
+    
     "videos":[
         {
             "id":"BmThP21jAk4", "title":"Madinah Arabic Course B1 L10 P1"
@@ -15,16 +9,32 @@
         }        
     ],
     "lines": [
-        
         {
-            
-            "words": [
-                {"w":"New words:"},
-                { "w":"الكلمة الجديدة",  "e": "New Words","b":"নতুন শব্দ", "d": "rtl"}
-               
+            "mode":"lesson", "d":"rtl", "height":50.0,
+            "words":[
+                {"w":"POINTS TO REMEMBER"}
             ]
-        }
-        
+        },
+        {"d":"ltr","words": [{"w":"In this lesson we learn:\n\n1. The possessive pronoun: "}]},
+        {"mode":"text","words": [{"w":"ي، هَا، هُ، كَ"}]},
+        {"mode":"text","words": [{"w":"كِتَابُكَ"}]},
+        {"mode":"text","d":"ltr","words": [{"w":"kitab-u-ka (your book). Here \"your\" is for masculine singular "}]},
+        {"mode":"text","words": [{"w":"كِتَابُهُ"}]},
+        {"mode":"text","d":"ltr","words": [{"w":"kitab-u-hu (his book)"}]},
+        {"mode":"text","words": [{"w":"كِتَابُهَا"}]},
+        {"mode":"text","d":"ltr","words": [{"w":"kitab-u-ha (her book)"}]},
+        {"mode":"text","words": [{"w":"كِتَابِي"}]},
+        {"mode":"text","d":"ltr","words": [{"w":"kitab-i (my book)"}]},
+        {"d":"ltr","words": [{"w":"These pronouns are not full-fledged words. They are like suffixes attached to the nouns."}]},
+        {"d":"ltr","words": [{"w":"As we have seen \"your book\" is كِتَابُكَ and \"his book\" is كِتَابُهُ. The word for \"father\" is أَبٌ and for \"brother\" is أَخٌ. \"Your brother\" is أَخُوكَ (akhuu-ka) and not أَخُكَ (akhuka)\n\nAn extra waw و has to be added between the mudaf and the mudaf ilaihi. In the same way \"his father\" is not أَبُهُ (abuhu) but أَبُوهُ (abuuhu) "}]},
+        {"d":"ltr","words": [{"w":"Note the following:"}]},
+        {"mode":"text","d":"ltr","words": [{"w":"\"Muhammad's house\" is "}]},
+        {"mode":"text","words": [{"w":"بَيْتُ  مُحَمَّدٍ"}]},
+        {"mode":"text","d":"ltr","words": [{"w":"But \"Muhammad's father\" is"}]},
+        {"mode":"text","words": [{"w":"أَبُو  مُحَمَّدٍ"}]},
+        {"mode":"text","d":"ltr","words": [{"w":"And \"Muhammad's brother\" is"}]}, 
+        {"mode":"text","words": [{"w":"أَخُو  مُحَمَّدٍ"}]},               
+        {"mode":"text","d":"ltr","words": [{"w":"\n\"My father\" and \"my brother\" have no extra waw, e.g. أَخِي،  أَبِي \n\nThe nouns which take this extra waw whwn they are mudaf are four words. You have learn two, and you will learn the other two in future أنْ شَاءَ اللَّهُ "}]}
         
     ]
 }

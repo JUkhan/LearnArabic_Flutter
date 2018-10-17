@@ -31,8 +31,8 @@ class JLine {
   final String direction;
   final String mode;
   final String img;
-  final int tap;
-  bool isHide= false;
+  final int lineno;
+  bool isHide= false;  
   final double height;
   final List<JLine> lines;
   final List<JWord> words;
@@ -44,7 +44,7 @@ class JLine {
     this.lines,
     this.words,
     this.height,
-    this.tap
+    this.lineno,
   });
   factory JLine.fromJson(Map<String, dynamic> json){
     var lines=<JLine>[];
@@ -63,7 +63,7 @@ class JLine {
       direction: getValue<String>(json, 'd', 'rtl'),
       mode: getValue<String>(json, 'mode', ''),
       img:  getValue<String>(json, 'img', ''),
-      tap: getValue<int>(json, 'tap', 1),
+      lineno: getValue<int>(json, 'lineno', 1),
       height:  getValue<double>(json, 'height', 0.0),
       lines:lines,
       words:words
@@ -75,9 +75,7 @@ class JWord{
   final String direction;
   final String word;
   final String bangla;
-  final String english;
-  //final int hasStartSubstr;
-  //final int hasEndSubstr;
+  final String english;  
   final int wordSpace;
   final List<int> sp;
   JWord({
@@ -85,9 +83,7 @@ class JWord{
     this.bangla,
     this.english,
     this.word,
-    this.wordSpace,
-    //this.hasEndSubstr,
-    //this.hasStartSubstr,
+    this.wordSpace,    
     this.sp
   });
   factory JWord.fromJson(Map<String, dynamic> json){
@@ -100,9 +96,7 @@ class JWord{
       direction: getValue<String>(json, 'd', 'rtl'),
       bangla: getValue<String>(json, 'b', ''),
       english: getValue<String>(json, 'e', ''),
-      wordSpace: getValue<int>(json, 'ws', 0),
-      //hasStartSubstr: getValue<int>(json, 'ss', 0),
-      //hasEndSubstr: getValue<int>(json, 'es', 0),
+      wordSpace: getValue<int>(json, 'ws', 0),      
       sp:sps
     );
   }
@@ -114,8 +108,6 @@ class JWord{
     english:'',
     word:text,
     wordSpace:0,
-    //hasEndSubstr:0,
-    //hasStartSubstr:0 
     );
   }
   

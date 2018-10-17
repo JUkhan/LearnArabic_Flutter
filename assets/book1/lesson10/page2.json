@@ -1,44 +1,12 @@
 {   
     "lines": [
-        
-        {
-            
-            "words": [
-                {"w": "I love your brother"},
-                {
-                    "w": "أخيك",
-                    "m": "your brother",
-                    "d": "rtl"
-                },
-                {
-                    "w": "أحب",
-                    "m": "i love",
-                    "d": "rtl"
-                }
-            ]
-        },
-        {
-            "mode": "list",
-            "words":[{"w":"This is a test title"}],
-            "lines":[
-                {
-                    "words":[{"w":"One"}]
-                },
-                {
-                    "words":[{"w":"Two"}]
-                },
-                {
-                    "words":[{"w":"Three"}]
-                }
-            ]
-        },
-        {
-            "nom":1,
-            "words":[{"w":"1."},{"w":"What is this?"},{"ws":100, "bbd":1, "a":"This is blank"}, {"w":"هذا؟", "m":"this", "d": "rtl"},{"w":"ما","m":"what","d": "rtl" }]
-        },
-        {
-            "nom":1,
-            "words":[{"w":"2."},{"w":"What is this?"},{"ws":100, "bbd":1, "a":"This is blank"}, {"w":"هذا؟", "m":"this", "d": "rtl"},{"w":"ما","m":"what","d": "rtl" }]
-        }
+        {"d":"ltr", "words": [{"w":"3. We have already learnt that the word عِنْدَ meaning \"with\" is also used to convey the idea of \"to have\", e.g. أعِنْدَكَ قَلَمٌ؟ \"Have you a pen?\" (literally, \"Is there a pen with you?\") "}]},
+        {"d":"ltr","words": [{"w":"4. We have already learnt the preposition لِ meaning \"belongs to\". When it is attached to the pronouns it takes fathah  (لَ) : لَكَ \"belongs to you\", لَهُ \"belongs to him\", لَهَا \"belongs to her\"; but لِي \"belongs to me\", has kasra.\n\nNote:"}]},
+        {"d":"ltr","words": [{"w":"لِي أَخٌ means \"I have a brother\", literally \"a brother belongs to me.\"\n\n لِي فَمٌ means \"with- I have mouth\", literally \"a mouth belongs to me.\"\n\nIt is wrong to say حِنْدِي  فَمٌ / حِنْدِي أَخٌ because حِنْدَ is used with thins which are separable, and relations and parts of the body are not of this nature."}]},
+        {"d":"ltr","words": [{"w":"5. We have learn ذَهَبَ \"he went\". Now we learn ذَهَبْتَ \"you went\" (masculine singular) and ذَهَبْتُ \"I went\" (both masculine and feminine)."}]},
+        {"mode":"text","d":"ltr","words": [{"w":"Did you go to school today?"}]},
+        {"mode":"text","words": [{"w":"أَذَهَبْتَ إِلَي المَدْرَسَةِ اليَوْمَ؟"}]},
+        {"mode":"text","d":"ltr","words": [{"w":"Yes, I went"}]},
+        {"mode":"text","words": [{"w":"نَعَمْ، ذَهَبْتُ"}]}
     ]
 }

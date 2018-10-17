@@ -1,15 +1,15 @@
 {
     "lines": [
-        
-        {
-            
-            "words": [
-                {"w":"New words:"},
-                { "w":"الكلمة الجديدة",  "e": "New Words","b":"নতুন শব্দ", "d": "rtl"}
-               
-            ]
-        },
-        {"d":"rtl", "mic":1, "words":[
+        {"d":"ltr","words": [{"w":"6. We have learnt that feminine proper nouns have no tanwin e.g. مَرْيَمُ،  آمِنَةُ \n\nLikewise, masculine proper nouns with ة- ending also have no tanwin, e.g. حَمْزَةُ، أُسَامَةُ، مُعَاوِيَةُ"}]},
+        {"d":"ltr","words": [{"w":"7. مَعَ Means \"with\" To understand the difference between مَعَ and عِنْدَ remember that you say"}]},
+        {"mode":"text","words": [{"w":"المُدَرِّسُ عِنْدَ المُدِيرِ"}]},
+        {"d":"ltr","words": [{"w":"\"The teacher is with the headmaster\" it means that the teacher has gone to the headmaster's office, and he is with there, but المُدَرِّسُ مَعَ المُدِيرِ doesn't have this restriction. He can be with the headmaster anywhere.\n\nNote that the noun after مَعَ has <<-i>> ending."}]},
+        {"d":"ltr","words":[{"w":"8. بِالْجَامِعَةِ \"at the university\". بِ is a preposition meaning \"at\", \"in\". "}]},
+        {"mode":"text","words":[{"w":"الجَممعَةُ الإسْلَامِيَّةُ بِالْمَدِينَةِ المُنَوَّرَةُ", "sp":[27,29]}]},
+        {"d":"ltr","words":[{"w":"Islamic University at Madinah Munawwaeah"}]},        
+        {"d":"ltr","words":[{"w":"9. In lesson 1 we have learnt that مَا means \"what\". This word is also used as a negative particle. so مَا عِنْدِي سَيَّرَةٌ means \"I don't have a car\", \"I have no car\"."}]},
+        {"d":"ltr","mode":"lesson","height":40.0, "words": [ {"w":"Vocabulary:"}]},
+        {"mode":"vocab","words":[
             {"w":"الزَّمِيلُ","e":"colleague, classmate","b":""},
             {"w":"الزَّوْجُ","e":"husband","b":""},
             {"w":"الطِفْلُ","e":"child","b":""},
