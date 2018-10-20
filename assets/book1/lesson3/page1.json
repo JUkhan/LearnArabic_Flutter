@@ -15,10 +15,12 @@
     ]
 },
 "videos": [
+    {"title":"Bangla Lecture"}, 
     {"id": "SJ-9JJvWE74","title": "Madinah Arabic Course B1 L3 P1"},
     {"id": "osfI0iYWdJo","title": "Madinah Arabic Course B1 L3 P2"},
     {"id": "bGqWZO6gP7g","title": "Madinah Arabic Course B1 L3 P3"},
     {"id": "WHjoIkrxkaU","title": "Madinah Arabic Course B1 L3 P4"},
+    {"title":"English Lecture"}, 
     {"id":"_PEznFtElsU", "title":"Defininte noun and hamza explained"},
     {"id":"zx-Pf2g0s3w", "title":"Sentences with al"}
 ],

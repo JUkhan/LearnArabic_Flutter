@@ -7,9 +7,12 @@
         ]
     },
     "videos":[
-        {
-            "id":"e47MzRp93vA", "title":"Madinah Arabic Course B1 L9"
-        }       
+        {"title":"Bangla Lecture"}, 
+        {"id":"e47MzRp93vA", "title":"Madinah Arabic Course B1 L9"},
+        {"title":"English Lecture"}, 
+        {"id":"1J6DvgKAw8E", "title":"ADJECTIVE AND ADJECTIVE CLAUSE"},
+        {"id":"mu7b6D3F78g", "title":"ADJECTIVES AND ATTAHCED PRONOUN"},
+        {"id":"IVX6FSFpOfI", "title":"ATTACHED PRONOUN SONG BY BROTHER ASIF"}       
     ],
     "lines": [
         {

@@ -6,12 +6,14 @@
     ]
 },
 "videos":[
+    {"title":"Bangla Lecture"}, 
     {"id":"VNRaFYvWAr8", "title":"Madinah Arabic Course B1 L4 P1"},
     {"id":"2wguAA4vqNk", "title":"Madinah Arabic Course B1 L4 P2"},
     {"id":"49o7tIiJNkw", "title":"Madinah Arabic Course B1 L4 P3"},
     {"id":"DzgOUh756c4", "title":"Madinah Arabic Course B1 L4 P4"},
     {"id":"vrW43O291OQ", "title":"Madinah Arabic Course B1 L4 P5"},
     {"id":"AJn-RgoowAQ", "title":"Madinah Arabic Course B1 L4 P6"},
+    {"title":"English Lecture"}, 
     {"id":"WPJZkozGSjM", "title":"INTRODUCTION TO ARABIC PRONOUN"},
     {"id":"6x99vb1dLoo", "title":"INTRODUCTION TO HARF 1"},
     {"id":"Cbwxv7u2WW0", "title":"sentence with shibhu jumla"},

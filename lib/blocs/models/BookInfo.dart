@@ -64,7 +64,7 @@ class JLine {
       mode: getValue<String>(json, 'mode', ''),
       img:  getValue<String>(json, 'img', ''),
       lineno: getValue<int>(json, 'lineno', 1),
-      height:  getValue<double>(json, 'height', 0.0),
+      height:  getValue<double>(json, 'height', 40.0),
       lines:lines,
       words:words
       );

@@ -11,7 +11,7 @@ dependencies:
   rxdart: ^0.18.1  
   flutter_webview_plugin: ^0.2.1+2
   shared_preferences: ^0.4.2
-  
+  flutter_tts: 
 
 dev_dependencies:
   flutter_test:

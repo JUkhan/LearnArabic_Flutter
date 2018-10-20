@@ -6,9 +6,11 @@
     ]
 },
 "videos":[
-    {
-        "id":"pRhJStz27PM", "title":"Madinah Arabic Course B1 L7"
-    }       
+    {"title":"Bangla Lecture"}, 
+    {"id":"pRhJStz27PM", "title":"Madinah Arabic Course B1 L7"},
+    {"title":"English Lecture"}, 
+    {"id":"UVNRwlMS9po", "title":"lesson on tilka and badal"},
+    {"id":"5pTByFhM2-E", "title":"Revisiting the building blocks"}        
 ],
     
     "lines":[

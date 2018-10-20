@@ -5,19 +5,19 @@
         {"mode":"text","words": [{"w":"المُدَرِّسُ عِنْدَ المُدِيرِ"}]},
         {"d":"ltr","words": [{"w":"\"The teacher is with the headmaster\" it means that the teacher has gone to the headmaster's office, and he is with there, but المُدَرِّسُ مَعَ المُدِيرِ doesn't have this restriction. He can be with the headmaster anywhere.\n\nNote that the noun after مَعَ has <<-i>> ending."}]},
         {"d":"ltr","words":[{"w":"8. بِالْجَامِعَةِ \"at the university\". بِ is a preposition meaning \"at\", \"in\". "}]},
-        {"mode":"text","words":[{"w":"الجَممعَةُ الإسْلَامِيَّةُ بِالْمَدِينَةِ المُنَوَّرَةُ", "sp":[27,29]}]},
+        {"mode":"text","words":[{"w":"الجَمِعَةُ الإسْلَامِيَّةُ بِالْمَدِينَةِ المُنَوَّرَةُ", "sp":[27,29]}]},
         {"d":"ltr","words":[{"w":"Islamic University at Madinah Munawwaeah"}]},        
         {"d":"ltr","words":[{"w":"9. In lesson 1 we have learnt that مَا means \"what\". This word is also used as a negative particle. so مَا عِنْدِي سَيَّرَةٌ means \"I don't have a car\", \"I have no car\"."}]},
         {"d":"ltr","mode":"lesson","height":40.0, "words": [ {"w":"Vocabulary:"}]},
         {"mode":"vocab","words":[
-            {"w":"الزَّمِيلُ","e":"colleague, classmate","b":""},
-            {"w":"الزَّوْجُ","e":"husband","b":""},
-            {"w":"الطِفْلُ","e":"child","b":""},
-            {"w":"الفَتَي","e":"young man","b":""},
-            {"w":"وَاحِدٌ","e":"one","b":""},
-            {"w":"حَدِيقَةٌ","e":"Garden","b":""},
-            {"w":"نَافِذَةٌ","e":"window","b":""},
-            {"w":"حَقِيبَةٌ","e":"Baggage","b":""}
+            {"w":"الزَّمِيلُ","e":"colleague, classmate"},
+            {"w":"الزَّوْجُ","e":"husband"},
+            {"w":"الطِّفْلُ","e":"child"},
+            {"w":"الفَتَي","e":"young man"},
+            {"w":"وَاحِدٌ","e":"one"},
+            {"w":"حَدِيقَةٌ","e":"garden"},
+            {"w":"نَافِذَةٌ","e":"window"},
+            {"w":"حَقِيبَةٌ","e":"baggage"}
             
             ]}
         

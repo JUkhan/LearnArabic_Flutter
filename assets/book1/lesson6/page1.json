@@ -6,8 +6,11 @@
     ]
 },
 "videos":[
+    {"title":"Bangla Lecture"}, 
     {"id":"J4PaT5ebC5o", "title":"Madinah Arabic Course B1 L6 P1"},
-    {"id":"mSHR8ycXsWI", "title":"Madinah Arabic Course B1 L6 P2"}      
+    {"id":"mSHR8ycXsWI", "title":"Madinah Arabic Course B1 L6 P2"},
+    {"title":"English Lecture"}, 
+    {"id":"5LPPnLWa44k", "title":"MADINA BOOK 1 -- haadihi and harf jarr li"}       
 ],
     
     "lines":[

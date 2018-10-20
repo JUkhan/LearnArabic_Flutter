@@ -7,9 +7,11 @@
         ]
     },
     "videos":[
+        {"title":"Bangla Lecture"}, 
         {
             "id":"OxtEkJdFyiU", "title":"Madinah Arabic Course B1 L2"
         },
+        {"title":"English Lecture"}, 
         {"id":"JDe5s4knlnE", "title":"HADHA AND DHALIKA هذا و ذلك"}       
     ],
     "lines":[        

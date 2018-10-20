@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import '../blocs/util.dart';
 import '../pages/BookPage.dart';
 import './SlideRoute.dart';
 import '../widgets/VideoPlay.dart';
@@ -7,7 +8,7 @@ import '../blocs/models/AsyncData.dart';
 import '../blocs/models/BookInfo.dart';
 import '../blocs/StateMgmtBloc.dart';
 import '../blocs/SettingBloc.dart';
-
+import 'package:flutter_tts/flutter_tts.dart';
 
 class PageDataWidget extends StatefulWidget {
   final AsyncData<JPage> page;
@@ -23,6 +24,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   JWord _selectedWord;
   static const String WORD_SPACE = '  ';
   BuildContext _context;
+  FlutterTts flutterTts;
   int _gestureCounter = 0;
   var _nums = [
     '٠',
@@ -45,28 +47,50 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     '١٧',
     '١٨',
     '١٩',
-    '٢٠'
+    '٢٠',
+    '٢١',
+    '٢٢'
   ];
   @override
   void initState() {
     super.initState();
+    if(widget.bloc.bookBloc.tts){   
+      flutterTts = FlutterTts();
+      initTts();
+    }
   }
+  initTts() async {
+    await flutterTts.setLanguage("en-US");
 
+    await flutterTts.setSpeechRate(0.7);
+
+    await flutterTts.setVolume(1.0);
+
+    await flutterTts.setPitch(1.5);
+  }
   @override
   void dispose() {
     print('dispose all recognizers: ${_gestureList.length}');
     _gestureList.forEach((ges) => ges.dispose());
     _gestureList.clear();
+    if(flutterTts!=null){
+      flutterTts.stop();
+      print('tts stop');
+    } 
     super.dispose();
   }
-
+  _speak(String text) async {
+     await flutterTts.speak(text); 
+     setState(() {});   
+  }
   _getGesture(JWord word) {
     if (_gestureCounter < _gestureList.length) {
       final temp = _gestureList[_gestureCounter];
       temp.onTap = () {
         widget.bloc.bookBloc.selectWord(word);
         _selectedWord = word;
-        setState(() {});
+        if(!_isArabic(word.english) && widget.bloc.bookBloc.tts) _speak(word.english);
+        else setState(() {});
       };
       _gestureCounter++;
       return temp;
@@ -138,17 +162,22 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       list.add(_getLessonMode(page.title));
     }
     page.videos.forEach((v) {
-      list.add(Card(
-        child: ListTile(
-          leading: Icon(Icons.play_circle_filled),
-          title: Text(v.title),
-          onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) => VideoPlay(
-                    title: v.title,
-                    videoId: v.id,
-                  ))),
-        ),
-      ));
+      if((v.id==null ||v.id.isEmpty) && v.title.isNotEmpty){
+        list.add(_getLessonMode(JLine(height: 40.0,words:[JWord(word: v.title, english:"")])));
+      }
+      else{
+        list.add(Card(
+          child: ListTile(
+            leading: Icon(Icons.play_circle_filled),
+            title: Text(v.title),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => VideoPlay(
+                      title: v.title,
+                      videoId: v.id,
+                    ))),
+          ),
+        ));
+      }
     });
     page.lines.forEach((line) {
       switch (line.mode) {
@@ -483,25 +512,11 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     return direction == 'rtl' ? TextDirection.rtl : TextDirection.ltr;
   }
   
-  TextSpan _textSpan({String text, dynamic recognizer, bool hasColor=true, bool hasWordSpac=false}){
-      Color color;
-      if(hasColor){
-        switch (text) {
-          case 'وَ':color=Colors.green;break;
-          case 'أَ':case 'أ': color=Colors.lightBlue;break;
-          case 'الْ':case 'ال': case 'اَلْ':case 'لْ':case 'ل': color=Colors.cyan;break;
-          case 'لِ':case 'بِ':color=Colors.red;break;
-
-          default:color=Colors.orange;
-        }        
-      }  
-      /*color: widget.bloc.settingBloc.theme == Themes.light
-                        ? Colors.blue[400]
-                        : Colors.pink[400] */   
+  TextSpan _textSpan({String text, dynamic recognizer, bool hasColor=true, bool hasWordSpac=false}){         
       return TextSpan(
             recognizer: recognizer,
             text:hasWordSpac? text + WORD_SPACE:text,
-            style: hasColor? TextStyle(color: color):null);
+            style: hasColor? TextStyle(color: Util.getColor(text)):null);
   }
   TextSpan _getTextSpan(JWord word, String direction) {
     final txtSpans = List<TextSpan>();

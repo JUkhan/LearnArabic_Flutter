@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../blocs/util.dart';
 import '../widgets/DrawerWidget.dart';
 import '../blocs/AppStateProvider.dart';
 import '../blocs/StateMgmtBloc.dart';
@@ -8,10 +9,11 @@ import '../widgets/LoadingWidget.dart';
 import '../widgets/JErrorWidget.dart';
 import '../widgets/PageDataWidget.dart';
 
-class BookPage extends StatelessWidget {
+class BookPage extends StatelessWidget {  
+  
   @override
   Widget build(BuildContext context) {
-    final bloc = AppStateProvider.of(context);
+    final bloc = AppStateProvider.of(context);    
     return Scaffold(
       appBar: new AppBar(
         title: StreamBuilder<String>(
@@ -91,8 +93,8 @@ class BookPage extends StatelessWidget {
       ),
     );
   }
-
-  void _showBottomSheet(BuildContext context, JWord word) {
+  
+  void _showBottomSheet(BuildContext context, JWord word) {       
     showModalBottomSheet(
         context: context,
         builder: (bc) {
@@ -130,44 +132,10 @@ class BookPage extends StatelessWidget {
   Widget _splitTextWidget({String text, bool hasColor = true, bool hasWordSpac = false}) {
     Color color;
     if (hasColor) {
-      switch (text) {
-        case 'وَ':
-          color = Colors.green;
-          break;
-       case 'أَ':case 'أ':
-          color = Colors.lightBlue;
-          break;
-        case 'الْ':case 'ال':case 'اَلْ':case 'لْ':case 'ل':
-          color = Colors.cyan;
-          break;
-        case 'لِ':case 'بِ':
-          color = Colors.red;
-          break;
-
-        default:
-          color = Colors.orange;
-      }
-      //meaning
-      switch (text) {
-        case 'وَ':
-          text +=' : and এবং';
-          break;
-        case 'أَ':case 'أ':
-           text +=' : interrogative particle প্রশ্নোত্তর কণা';
-          break;
-        case 'الْ':case 'ال':case 'اَلْ':case 'لْ':case 'ل':
-          text +=' - اَلْ : the টি';
-          break;
-        case 'لِ':case 'بِ':
-          text +=' : for, belongs to জন্য, সম্পর্কিত';
-          break;
-
-        default: text +=' : under construction';
-          
-
-      }
+      color = Util.getColor(text);      
+      text = Util.getText(text);
     }    
-    return Container(child: Text(text, style:TextStyle(color: color, fontSize: 26.0) ,),);
+    return Container(child: Text(text, style:TextStyle(color: color, fontSize: 18.0) ,),);
   }
 
   void _setSplitTextWidget(BuildContext context, JWord word,  List<Widget> widgets) {
@@ -212,64 +180,48 @@ class BookPage extends StatelessWidget {
     } 
   }
   //end split meaning
-  TextSpan _textSpan({String text, bool hasColor = true, bool hasWordSpac = false}) {
-    Color color;
-    if (hasColor) {
-      switch (text) {
-        case 'وَ':
-          color = Colors.green;
-          break;
-        case 'أَ': case 'أ':
-          color = Colors.lightBlue;
-          break;
-        case 'الْ':case 'اَلْ': case 'ال':case 'لْ':case 'ل':
-          color = Colors.cyan;
-          break;
-        case 'لِ': case 'بِ':
-          color = Colors.red;
-          break;
-
-        default:
-          color = Colors.orange;
-      }
-    }
+  TextSpan _textSpan({String text, bool hasColor = true, bool hasWordSpac = false}) {    
     return TextSpan(
-        text: text, style: hasColor ? TextStyle(color: color) : null);
+        text: text, style: hasColor ? TextStyle(color: Util.getColor(text)) : null);
   }
-
   TextSpan _getTextSpan(BuildContext context, JWord word) {
     final txtSpans = List<TextSpan>();
+    String str=word.word.replaceAll('؟', '').replaceAll('.', '');    
     if (word.sp != null) {
       int len = word.sp.length;
       if (len == 1) {
-        if (word.sp[0] > 0)
-          txtSpans.add(_textSpan(
-              text: word.word.substring(0, word.sp[0]), hasColor: false));
+        txtSpans.add(_textSpan( text: str.substring(0, word.sp[0]), hasColor: false));
         txtSpans.add(_textSpan(
-            text: word.word.substring(word.sp[0]), hasWordSpac: true));
+            
+            text: str.substring(word.sp[0]),
+            hasWordSpac: true));
       } else {
         int i = 0, pairIndex;
         bool isFirst = true;
+        if(word.sp[0]>0)
+        txtSpans.add(_textSpan( text: str.substring(0, word.sp[0]), hasColor: false));
         do {
           if (isFirst) {
             isFirst = false;
             txtSpans.add(_textSpan(
-              text: word.word.substring(word.sp[i], word.sp[i + 1]),
-            ));
+                
+                text: str.substring(word.sp[i], word.sp[i + 1]),
+                ));
             pairIndex = i + 1;
             i += 2;
           } else {
-            if (word.sp[pairIndex] == word.sp[i] && i + 1 < len) {
+            if (word.sp[pairIndex] == word.sp[i] && i+1<len) {
               txtSpans.add(_textSpan(
-                text: word.word.substring(word.sp[i], word.sp[i + 1]),
-              ));
+                  
+                  text: str.substring(word.sp[i], word.sp[i + 1]),
+                  ));
               pairIndex = i + 1;
               i += 2;
             } else {
               txtSpans.add(_textSpan(
                   hasColor: false,
-                  text: word.word.substring(word.sp[pairIndex], word.sp[i])));
-              if (len % 2 == 0 || i + 1 < len)
+                  text: str.substring(word.sp[pairIndex], word.sp[i])));
+              if (len % 2 == 0||i+1<len)
                 isFirst = true;
               else {
                 i++;
@@ -278,24 +230,25 @@ class BookPage extends StatelessWidget {
             }
           }
         } while (i < len);
-
         if (len % 2 != 0) {
           txtSpans.add(_textSpan(
-              text: word.word.substring(word.sp[len - 1]), hasWordSpac: true));
-        } else if (i < word.word.length && pairIndex < len) {
+              
+              text: str.substring(word.sp[len - 1]),
+              hasWordSpac: true));
+        } else if (i < str.length && pairIndex < len) {
           txtSpans.add(_textSpan(
-              hasWordSpac: true,
-              hasColor: false,
-              text: word.word.substring(word.sp[pairIndex])));
+               hasWordSpac: true,hasColor: false,
+              text: str.substring(word.sp[pairIndex])));
         }
       }
     } else {
-      txtSpans
-          .add(_textSpan(text: word.word, hasWordSpac: true, hasColor: false));
+      txtSpans.add(_textSpan( text: str , hasWordSpac: true, hasColor: false));
     }
+    //Colors.grey[400]:Colors.black.withOpacity(0.9)
     return TextSpan(
-        style: Theme.of(context).textTheme.display1, children: txtSpans);
+        style: Theme.of(context).textTheme.display1, children: txtSpans);    
   }
+  
   bool _isArabic(String str){
     if(str.trim().isEmpty)return false;
     return str.codeUnitAt(0)>1000;
@@ -355,6 +308,8 @@ class BookPage extends StatelessWidget {
       //b1-lesson9
       'lazy':'অলস','hungry':'ক্ষুধার্ত','thirsty':'তৃষ্ণার্ত','angry':'ক্রুদ্ধ','full':'সম্পূর্ণ','fruit':'ফল','English(language)':'ইংরেজী ভাষা','sparrow':'চড়ুই','difficult':'কঠিন','bird':'পাখি','city':'শহর','Arabic':'আরবি','Cairo':'কায়রো','language':'ভাষা','today':'আজ','easy':'সহজ','why':'কেন','hardworking':'কঠোর পরিশ্রম','cup':'কাপ','famous':'বিখ্যাত',
       'library':'গ্রন্থাগার','secondary school':'মাধ্যমিক বিদ্যালয়','now':'এখন','minister':'মন্ত্রী','sharp':'তীক্ষ্ন','fan':'পাখা','Indonesia':'ইন্দোনেশিয়া','Kuwait':'কুয়েত',
+      //b1-lesson10
+      'classmate':'সহপাঠী','husband':'স্বামী','child':'শিশু','young man':'যুবক','one':'এক','garden':'বাগান','with':'সঙ্গে','also':'এছাড়াও','Urdu':'উর্দু'
     };
      
     String str = '';

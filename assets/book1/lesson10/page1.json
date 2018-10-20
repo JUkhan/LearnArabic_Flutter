@@ -1,12 +1,13 @@
 {
     
     "videos":[
-        {
-            "id":"BmThP21jAk4", "title":"Madinah Arabic Course B1 L10 P1"
-        },
-        {
-            "id":"UssOjlJW3ik", "title":"Madinah Arabic Course B1 L10 P2"
-        }        
+        {"title":"Bangla Lecture"}, 
+        {"id":"BmThP21jAk4", "title":"Madinah Arabic Course B1 L10 P1"},
+        {"id":"UssOjlJW3ik", "title":"Madinah Arabic Course B1 L10 P2"},
+        {"title":"English Lecture"}, 
+        {"id":"O9H7hYcSk3E","title":"lesson on attached pronouns AND asmaul khamsa"},
+        {"id":"Cqy48gHtCTs","title":"LESSON ON ATTACHED PRONOUNS CONTD"},
+        {"id":"_QX4vpkkKgY","title":"introduction to mafoolun bihi"}       
     ],
     "lines": [
         {
@@ -17,13 +18,13 @@
         },
         {"d":"ltr","words": [{"w":"In this lesson we learn:\n\n1. The possessive pronoun: "}]},
         {"mode":"text","words": [{"w":"ي، هَا، هُ، كَ"}]},
-        {"mode":"text","words": [{"w":"كِتَابُكَ"}]},
+        {"mode":"text","words": [{"w":"كِتَابُكَ","sp":[7]}]},
         {"mode":"text","d":"ltr","words": [{"w":"kitab-u-ka (your book). Here \"your\" is for masculine singular "}]},
-        {"mode":"text","words": [{"w":"كِتَابُهُ"}]},
+        {"mode":"text","words": [{"w":"كِتَابُهُ","sp":[7]}]},
         {"mode":"text","d":"ltr","words": [{"w":"kitab-u-hu (his book)"}]},
-        {"mode":"text","words": [{"w":"كِتَابُهَا"}]},
+        {"mode":"text","words": [{"w":"كِتَابُهَا","sp":[7]}]},
         {"mode":"text","d":"ltr","words": [{"w":"kitab-u-ha (her book)"}]},
-        {"mode":"text","words": [{"w":"كِتَابِي"}]},
+        {"mode":"text","words": [{"w":"كِتَابِي","sp":[7]}]},
         {"mode":"text","d":"ltr","words": [{"w":"kitab-i (my book)"}]},
         {"d":"ltr","words": [{"w":"These pronouns are not full-fledged words. They are like suffixes attached to the nouns."}]},
         {"d":"ltr","words": [{"w":"As we have seen \"your book\" is كِتَابُكَ and \"his book\" is كِتَابُهُ. The word for \"father\" is أَبٌ and for \"brother\" is أَخٌ. \"Your brother\" is أَخُوكَ (akhuu-ka) and not أَخُكَ (akhuka)\n\nAn extra waw و has to be added between the mudaf and the mudaf ilaihi. In the same way \"his father\" is not أَبُهُ (abuhu) but أَبُوهُ (abuuhu) "}]},

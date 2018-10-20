@@ -13,12 +13,13 @@ class SettingPage extends StatefulWidget {
 class _SettingPageState extends State<SettingPage> {
   double fontSize = 1.0;
   StateMgmtBloc bloc=null;
-
+  bool tts=false;
   @override
   Widget build(BuildContext context) {    
     if(bloc==null){
       bloc=AppStateProvider.of(context);
       fontSize=bloc.settingBloc.getFontSize();
+      tts=bloc.bookBloc.tts;
     }
     return Scaffold(
       drawer: DrawerWidget(bloc),
@@ -32,12 +33,22 @@ class _SettingPageState extends State<SettingPage> {
           SizedBox(
             height: 10.0,
           ),
-          getFontSize(context)
+          getFontSize(context),
+          Card(child:ListTile(
+            leading: Icon(tts?Icons.mic: Icons.mic_off),
+            title: Text('English TTS'),
+            trailing: Switch(value:tts ,onChanged: ttsValueChanged,),
+          ))
         ],
       ),
     );
   }
-
+  ttsValueChanged(bool value){  
+    bloc.bookBloc.setTTS(value);  
+    setState(() {
+          tts=value;
+        });
+  }
   valueChange(double value) {
     if (value >= 1.5 && value <= 2.4) {
       value = 2.0;
