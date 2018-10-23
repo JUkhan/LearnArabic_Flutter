@@ -33,14 +33,14 @@ class DrawerWidget extends StatelessWidget {
               )),
           getTile(context, 'Home', Icons.home, '/'),
          
-          getTile(context, 'Book1', Icons.favorite, '/book1'),
+          getTile(context, 'Madinah Arabic Reader Book 1', Icons.book, '/book1', block.bookBloc.isBookNo(1)),
          
-          getTile(context, 'Book2', Icons.favorite, '/book2'),
+          getTile(context, 'Madinah Arabic Reader Book 2', Icons.book, '/book2', block.bookBloc.isBookNo(2)),
           Divider(),
           getTile(context, 'Book Marks', Icons.star, '/markbook'),
         
           getTile(context, 'Settings', Icons.settings, '/setting'),
-         
+          getTile(context, 'Rate Apps', Icons.thumb_up, '/setting'),
         ],
       ),
     );

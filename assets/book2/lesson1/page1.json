@@ -1,93 +1,18 @@
 {
     "videos":[
-        {
-            "id":"RXLwATGwQ-M", "title":"ARABIC ALPHABETS"
-        },
-        {
-            "id":"70QgvVXhJZY", "title":"Arabic vowel signs"
-        }
+        {"title":"Bangla Lecture"},
+        {"id":"RXLwATGwQ-M", "title":"ARABIC ALPHABETS"},
+        {"title":"English Lecture"},
+        {"id":"70QgvVXhJZY", "title":"Arabic vowel signs"}
     ],
     "lines": [
-        
-        {
-            
-            "words": [
-                {"w": "I love your brother"},
-                {
-                    "w": "أخيك",
-                    "m": "your brother",
-                    "d": "rtl"
-                },
-                {
-                    "w": "أحب",
-                    "m": "i love",
-                    "d": "rtl"
-                }
-            ]
-        },
-        {
-            "mode": "list",
-            "words":[{"w":"This is a test title"}],
-            "lines":[
-                {
-                    "words":[{"w":"One"}]
-                },
-                {
-                    "words":[{"w":"Two"}]
-                },
-                {
-                    "words":[{"w":"Three"}]
-                }
-            ]
-        },
-        {
-            "nom":1,
-            "words":[{"w":"1."},{"w":"What is this?"},{"ws":100, "bbd":1, "a":"This is blank"}, {"w":"هذا؟", "m":"this", "d": "rtl"},{"w":"ما","m":"what","d": "rtl" }]
-        },
-        {
-            "nom":1,
-            "words":[{"w":"2."},{"w":"What is this?"},{"ws":100, "bbd":1, "a":"This is blank"}, {"w":"هذا؟", "m":"this", "d": "rtl"},{"w":"ما","m":"what","d": "rtl" }]
-        },
-        {
-            "d": "rtl","mic":1,"mode":"table","cols":2,"border":1, "lineno":1,"bgcrows":1,
-            "lines":[
-                {
-                   "mic":1,
-                    "words":[ 
-                        {"w": "مَنْ", "e":"who","b":""},
-                        {"w": "هَذَا", "e":"this","b":""},
-                        {"w": "الرَّجُلُ", "e":"man","b":""},
-                        {"w": "وَ", "e":"and","b":""},
-                        {"w": "مَنْ", "e":"who","b":""},
-                        {"w": "ذَلِكَ", "e":"that","b":""},
-                        {"w": "الرَّجُلُ؟", "e":"man","b":""}                
-                    ]
-                },
-                {   "mic":1, "ans":1,
-                    "words":[                 
-                        {  "a":"هَذَا"}                   
-                    ]
-                } ,
-                {
-                    "mic":1,
-                     "words":[ 
-                         {"w": "مَنْ", "e":"who","b":""},
-                         {"w": "هَذَا", "e":"this","b":""},
-                         {"w": "الرَّجُلُ", "e":"man","b":""},
-                         {"w": "وَ", "e":"and","b":""},
-                         {"w": "مَنْ", "e":"who","b":""},
-                         {"w": "ذَلِكَ", "e":"that","b":""},
-                         {"w": "الرَّجُلُ؟", "e":"man","b":""}                
-                     ]
-                 },
-                 {   "mic":1,"ans":1,
-                     "words":[                 
-                         {  "a":"هَذَا"}                   
-                     ]
-                 } 
-            ]
-            
-        }
-        
+        {"mode":"lesson","words":[{"w":"Points to Remember"}] },
+        {"d":"ltr","words":[{"w":"This is a revision lesson. It contains only two new words:"}]},
+        {"mode":"text","words":[{"w":"فِيهِ / فِيهَا","sp":[0,3,3,5,8,11,11]},{"w":"and"},{"w":"أُحِبُّ"}]},
+        {"d":"ltr","words":[{"w":"1. فِي means \"in it\", e.g. "}]},
+        {"d":"ltr","mode":"text", "words":[{"w":"Who is in the house?"}]},
+        {"mode":"text", "words":[{"w":"مَنْ"},{"w":"فِي"},{"w":"البَيتِ؟","sp":[0,2]}]},
+        {"d":"ltr","mode":"text", "words":[{"w":"There are my father and mother in it."}]},
+        {"mode":"text", "words":[{"w":"فِيهِ","sp":[0,3,3,5],"e":"in it"},{"w":"أَبِي","sp":[4],"e":"father"},{"w":"وَأُمِّي.","e":"mother","sp":[0,2,7,8]}]}
     ]
 }

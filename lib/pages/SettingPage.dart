@@ -29,16 +29,24 @@ class _SettingPageState extends State<SettingPage> {
       body: ListView(
         padding: const EdgeInsets.all(10.0),
         children: <Widget>[
-          getTheme(context),
-          SizedBox(
-            height: 10.0,
-          ),
+          getTheme(context),          
           getFontSize(context),
           Card(child:ListTile(
             leading: Icon(tts?Icons.mic: Icons.mic_off),
             title: Text('English TTS'),
             trailing: Switch(value:tts ,onChanged: ttsValueChanged,),
-          ))
+          )),
+          Card(
+            child: ListTile(
+            leading: new CircleAvatar(
+              //radius: 50.0,
+                backgroundImage: AssetImage('assets/images/slide.png'),
+              ),
+              title: Text("How to navigate book's page?"),
+              subtitle: Text('Please slide your finger from\nright to left / left to right'),
+          )
+          ),
+          
         ],
       ),
     );

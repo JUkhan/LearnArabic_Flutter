@@ -61,23 +61,18 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   }
   initTts() async {
     await flutterTts.setLanguage("en-US");
-
     await flutterTts.setSpeechRate(0.7);
-
     await flutterTts.setVolume(1.0);
-
-    await flutterTts.setPitch(1.5);
+    await flutterTts.setPitch(1.5);    
   }
   @override
   void dispose() {
-    print('dispose all recognizers: ${_gestureList.length}');
+    super.dispose();    
     _gestureList.forEach((ges) => ges.dispose());
     _gestureList.clear();
     if(flutterTts!=null){
-      flutterTts.stop();
-      print('tts stop');
-    } 
-    super.dispose();
+      flutterTts.stop();      
+    }    
   }
   _speak(String text) async {
      await flutterTts.speak(text); 
@@ -85,21 +80,22 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   }
   _getGesture(JWord word) {
     if (_gestureCounter < _gestureList.length) {
-      final temp = _gestureList[_gestureCounter];
-      temp.onTap = () {
+      var temp = _gestureList[_gestureCounter];
+      /*temp.onTap = () {
         widget.bloc.bookBloc.selectWord(word);
         _selectedWord = word;
         if(!_isArabic(word.english) && widget.bloc.bookBloc.tts) _speak(word.english);
         else setState(() {});
-      };
+      };*/
       _gestureCounter++;
       return temp;
     }
-    final temp = TapGestureRecognizer();
+    var temp = TapGestureRecognizer();
     temp.onTap = () {
       widget.bloc.bookBloc.selectWord(word);
-      _selectedWord = word;
-      setState(() {});
+      _selectedWord = word;      
+      if(!_isArabic(word.english) && widget.bloc.bookBloc.tts) _speak(word.english);
+      else setState(() {});
     };
     _gestureList.add(temp);
     _gestureCounter++;
@@ -163,7 +159,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     }
     page.videos.forEach((v) {
       if((v.id==null ||v.id.isEmpty) && v.title.isNotEmpty){
-        list.add(_getLessonMode(JLine(height: 40.0,words:[JWord(word: v.title, english:"")])));
+        list.add(_getLessonMode(JLine(height: 45.0,words:[JWord(word: v.title, english:"")])));
       }
       else{
         list.add(Card(
@@ -627,13 +623,16 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     ));
   }
   Widget _getText(JLine line) {
-    return Center(child: RichText(
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10.0),
+      child: Center(
+      child: RichText(
         textDirection: _getDirection(line.direction),
         text: TextSpan(
             children: line.words
                 .map((word) => _getTextSpan(word, line.direction))
                 .toList()),
-      ));
+      )));
   }
   Widget _getReadAndWrite(JLine line, [double padding = 10.0]) {
     return Container(

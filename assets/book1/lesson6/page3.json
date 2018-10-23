@@ -2,8 +2,7 @@
     
     "lines": [
         {   
-            "mode":"lesson", "height":50.0,
-            "words":[{"w":"هَذِهِ", "e":"this"}]
+            "mode":"lesson", "words":[{"w":"هَذِهِ", "e":"this"}]
         },
         {"words": [               
                 { "w":"هَذَ",  "e": "this"},

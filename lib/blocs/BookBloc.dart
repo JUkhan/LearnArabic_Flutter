@@ -28,8 +28,7 @@ class BookBloc {
 
   BookBloc({@required this.rootBloc}) {
     syncWithPref();        
-  }
-  
+  }  
 
   Function(bool) get bookMarkAction => _bookmarksController.sink.add;
   Function(String) get bookNameAction => _bookNameController.sink.add;
@@ -70,8 +69,7 @@ class BookBloc {
         setData<String>(_bookPath, _bookName);
         setData<int>(selectedLessonIndex, _lessonIndex);
         setData<int>(index, _pageIndex);
-
-        print(path);
+        
         return Observable.fromFuture(_loadPageData(path))
             .map((data) => AsyncData.loaded(data))
             .onErrorReturn(AsyncData.error('Insha Allah, coming soon!'))
@@ -96,21 +94,20 @@ class BookBloc {
     });
   }
 
-  Future<int> _getTotalPage(String path) {
-    print(path);
+  Future<int> _getTotalPage(String path) {    
     return rootBundle.loadString('assets$path/info.json').then((data) {
       const JsonCodec json = const JsonCodec();
-      var res = json.decode(data)['pages'] as int;
-      print('totalPage:' + res.toString());
+      var res = json.decode(data)['pages'] as int;      
       return res;
     });
   }
-
-  moveToLesson(int index) async {
+  isBookNo(int no){
+    return _bookPath=='/book$no';
+  }
+  moveToLesson(int index) async {    
     selectedLessonIndex = index;
     currentPage = 0;
-    totalPage = await _getTotalPage('$_bookPath/lesson$selectedLessonIndex');
-    print('totalPage: $totalPage');
+    totalPage = await _getTotalPage('$_bookPath/lesson$selectedLessonIndex');    
     _totalPageController.sink.add(totalPage);
     lessonIndexAction(index);
     pageIndexAction(0);

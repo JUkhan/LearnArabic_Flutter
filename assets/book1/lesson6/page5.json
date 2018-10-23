@@ -1,6 +1,6 @@
 {
     "title":{
-        "mode":"lesson", "height":50.0,"d":"rtl",
+        "mode":"lesson","d":"rtl",
         "words":[
             {"w":"اِقْرَأ", "e":"read"},               
             {"w":"وَاكْتُبْ", "e":"and write"}
@@ -37,7 +37,7 @@
             ]},
             {"words":[
                 {"w":"هَذِهِ", "e":"this"},               
-                {"w":"أَمُّ", "e":"mother"},
+                {"w":"أُمُّ", "e":"mother"},
                 {"w":"يَاسِرٍ .", "e":"Yasir"}
             ]},
             {"words":[
