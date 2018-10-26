@@ -260,7 +260,7 @@ class BookPage extends StatelessWidget {
   }
 
   String _getBanglaText(JWord word) {
-     var vocabs = {'Allah':'আল্লাহ','moon letters':'চাঁদ অক্ষর','sun letters':'সূর্য অক্ষর',
+     var vocabs = {'Allah':'আল্লাহ','moon letters':'চাঁদ অক্ষর','sun letters':'সূর্য অক্ষর','which':'যেটি',
       'moon': 'চাঁদ','sun': 'সূর্য', 'this': 'এই, ইহা', 'that': 'উহা', 'yes': 'হাঁ','notebook':'নোটবই',
       'Exercise':'অনুশীলন','read':'অধ্যয়ন করা','write':'লেখা','lesson':'পাঠ','first':'প্রথম','second':'দ্বিতীয়','third':'তৃতীয়','ninth':'নবম',
       'no': 'না', 'what': 'কি', 'house': 'বাড়ি', 'open': 'খোলা','broken':'ভাঙা','fourth':'চতুর্থ','eighth':'অষ্টম',

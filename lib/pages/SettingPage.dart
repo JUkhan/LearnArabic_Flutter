@@ -12,6 +12,7 @@ class SettingPage extends StatefulWidget {
 
 class _SettingPageState extends State<SettingPage> {
   double fontSize = 1.0;
+  double wordSpace=2.0;
   StateMgmtBloc bloc=null;
   bool tts=false;
   @override
@@ -19,6 +20,7 @@ class _SettingPageState extends State<SettingPage> {
     if(bloc==null){
       bloc=AppStateProvider.of(context);
       fontSize=bloc.settingBloc.getFontSize();
+      wordSpace=bloc.settingBloc.getWordSpace();
       tts=bloc.bookBloc.tts;
     }
     return Scaffold(
@@ -30,7 +32,8 @@ class _SettingPageState extends State<SettingPage> {
         padding: const EdgeInsets.all(10.0),
         children: <Widget>[
           getTheme(context),          
-          getFontSize(context),
+          getFontSize(context),          
+          getWordSpace(context),
           Card(child:ListTile(
             leading: Icon(tts?Icons.mic: Icons.mic_off),
             title: Text('English TTS'),
@@ -72,7 +75,40 @@ class _SettingPageState extends State<SettingPage> {
     });
     bloc.settingBloc.setFontSize(value);
   }
-
+  wordSpaceValueChange(double value){
+    if (value >= 1.5 && value <= 2.4) {
+      value = 2.0;
+    } else if (value >= 2.5 && value <= 3.4) {
+      value = 3.0;
+    }else {
+      value = 1.0;
+    }
+    setState(() {
+      wordSpace = value;
+    });
+    bloc.settingBloc.setWordSpace(value);
+  }
+  Widget getWordSpace(BuildContext context){
+    var space='';
+    for (var i = 0.0; i < wordSpace; i++) {
+      space+=' ';
+    }
+    return Card(child:Column(children: <Widget>[
+   ListTile(leading: Icon(Icons.graphic_eq), title: Text('WORD SPACE')),
+          Slider(
+              min: 1.0,
+              max: 3.0,
+              value: wordSpace,
+              onChanged: (value) {
+                setState(() {
+                  wordSpace = value;
+                });
+              },
+              onChangeEnd: wordSpaceValueChange,
+            ) ,
+            Text('اْلأَوَّلُ'+space+'اَلدَّرْسُ', style: bloc.settingBloc.getTextTheme(context, 'rtl'),)
+          ]));
+  }
   Widget getFontSize(BuildContext context) => Card(
         child: Column(
           children: <Widget>[
@@ -100,11 +136,11 @@ class _SettingPageState extends State<SettingPage> {
         child: Column(
           children: <Widget>[
             ListTile(
-              leading: Icon(Icons.graphic_eq),
+              leading: Icon(Icons.chrome_reader_mode),
               title: const Text('THEME'),
             ),
             Divider(),
-            new RadioListTile<Themes>(
+            RadioListTile<Themes>(
               value: Themes.light,
               groupValue: DynamicThemeWidget.of(context).theme,
               onChanged: (value) {
@@ -114,7 +150,7 @@ class _SettingPageState extends State<SettingPage> {
               },
               title: new Text("Light"),
             ),
-            new RadioListTile<Themes>(
+            RadioListTile<Themes>(
               value: Themes.dark,
               groupValue: DynamicThemeWidget.of(context).theme,
               onChanged: (value) {

@@ -37,4 +37,20 @@ class Util {
     }
     return text;
   }
+
+  static alert({BuildContext context, String message }){
+    showDialog(
+        context: context,
+        builder: (_) =>
+            AlertDialog(
+              title: Text('Info'),
+              content: Text(message), actions: <Widget>[              
+              new FlatButton(
+                child: new Text("Close"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ]));
+  }
 }

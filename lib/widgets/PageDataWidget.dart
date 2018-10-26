@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../blocs/util.dart';
 import '../pages/BookPage.dart';
 import './SlideRoute.dart';
-import '../widgets/VideoPlay.dart';
 import '../blocs/models/AsyncData.dart';
 import '../blocs/models/BookInfo.dart';
 import '../blocs/StateMgmtBloc.dart';
@@ -21,8 +21,7 @@ class PageDataWidget extends StatefulWidget {
 
 class _ViewPageDataWidgetState extends State<PageDataWidget> {
   final _gestureList = List<TapGestureRecognizer>();
-  JWord _selectedWord;
-  static const String WORD_SPACE = '  ';
+  JWord _selectedWord;  
   BuildContext _context;
   FlutterTts flutterTts;
   int _gestureCounter = 0;
@@ -51,6 +50,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     '٢١',
     '٢٢'
   ];
+  var wordSpace='';
   @override
   void initState() {
     super.initState();
@@ -58,6 +58,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       flutterTts = FlutterTts();
       initTts();
     }
+    wordSpace=widget.bloc.settingBloc.wordSpace;
   }
   initTts() async {
     await flutterTts.setLanguage("en-US");
@@ -147,10 +148,22 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       ),
     );
   }
+  Future<Null> _launchUrl( String url) async {    
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: true,
+        forceWebView: true,
+        enableJavaScript: true,
+      );
+    } else {
+     Util.alert(context:context, message: 'Could not launch $url');
+    }
+  }
 
   List<Widget> _getListItem(JPage page) {
     final list = List<Widget>();
-
+    
     if (page == null) {
       return list;
     }
@@ -166,11 +179,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
           child: ListTile(
             leading: Icon(Icons.play_circle_filled),
             title: Text(v.title),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => VideoPlay(
-                      title: v.title,
-                      videoId: v.id,
-                    ))),
+            onTap:(){_launchUrl('https://youtube.com/embed/${v.id}');},            
           ),
         ));
       }
@@ -302,13 +311,13 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       var spans = List<TextSpan>();
       if(line.lineno==1){
       spans.add(TextSpan(
-          text: _nums[lineNo] + ')' + WORD_SPACE,
+          text: _nums[lineNo] + ')' + wordSpace,
           style: widget.bloc.settingBloc.getTextTheme(_context, 'ltr')));
       }
       //before
       if (line.mode == 'b') {
         spans.add(TextSpan(
-            text: '..........' + WORD_SPACE,
+            text: '..........' + wordSpace,
             style: widget.bloc.settingBloc
                 .getTextTheme(_context, line.direction)));
       }
@@ -511,7 +520,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   TextSpan _textSpan({String text, dynamic recognizer, bool hasColor=true, bool hasWordSpac=false}){         
       return TextSpan(
             recognizer: recognizer,
-            text:hasWordSpac? text + WORD_SPACE:text,
+            text:hasWordSpac? text + wordSpace:text,
             style: hasColor? TextStyle(color: Util.getColor(text)):null);
   }
   TextSpan _getTextSpan(JWord word, String direction) {

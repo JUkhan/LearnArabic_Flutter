@@ -8,9 +8,13 @@ enum Themes { light, dark }
 class SettingBloc {
   Themes theme = Themes.dark;
   double _fontSize = 2.0;
+  double _wordSpace=2.0;
   SettingBloc() {
-    _loadFontSize().then((value) {
+    _loadKeyData(_fontKey).then((value) {
       _fontSize = value;
+    });
+    _loadKeyData(_wordSpaceKey).then((value) {
+      _wordSpace = value;
     });
   }
   void setFontSize(double value) async {
@@ -19,10 +23,20 @@ class SettingBloc {
     prefs.setDouble(_fontKey, value);
   }
 
+  void setWordSpace(double value) async {
+    _wordSpace = value;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setDouble(_wordSpaceKey, value);
+  }
+
   double getFontSize() {
     return _fontSize;
   }
 
+  double getWordSpace() {
+    return _wordSpace;
+  }
+  String get wordSpace{var s=''; for(var i=0.0;i<_wordSpace;i++)s+=' '; return s;}
   TextStyle getTextTheme(BuildContext context, String direction) {
     if (direction == 'ltr') {
       if (_fontSize == 1.0)
@@ -42,8 +56,9 @@ class SettingBloc {
   }
 
   static const String _fontKey = "fontKey";
-  Future<double> _loadFontSize() async {
+  static const String _wordSpaceKey = "wsKey";
+  Future<double> _loadKeyData(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return (prefs.getDouble(_fontKey) ?? 2.0);
+    return (prefs.getDouble(key) ?? 2.0);
   }
 }
