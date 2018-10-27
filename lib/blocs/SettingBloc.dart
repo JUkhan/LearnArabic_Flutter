@@ -8,9 +8,9 @@ enum Themes { light, dark }
 class SettingBloc {
   Themes theme = Themes.dark;
   double _fontSize = 2.0;
-  double _wordSpace=2.0;
+  double _wordSpace=1.0;
   SettingBloc() {
-    _loadKeyData(_fontKey).then((value) {
+    _loadKeyData(_fontKey, 2.0).then((value) {
       _fontSize = value;
     });
     _loadKeyData(_wordSpaceKey).then((value) {
@@ -57,8 +57,8 @@ class SettingBloc {
 
   static const String _fontKey = "fontKey";
   static const String _wordSpaceKey = "wsKey";
-  Future<double> _loadKeyData(String key) async {
+  Future<double> _loadKeyData(String key,[double size=1.0]) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return (prefs.getDouble(key) ?? 2.0);
+    return (prefs.getDouble(key) ?? size);
   }
 }

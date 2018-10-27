@@ -21,6 +21,7 @@ class PageDataWidget extends StatefulWidget {
 
 class _ViewPageDataWidgetState extends State<PageDataWidget> {
   final _gestureList = List<TapGestureRecognizer>();
+  
   JWord _selectedWord;  
   BuildContext _context;
   FlutterTts flutterTts;
@@ -58,7 +59,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       flutterTts = FlutterTts();
       initTts();
     }
-    wordSpace=widget.bloc.settingBloc.wordSpace;
+    wordSpace=widget.bloc.settingBloc.wordSpace;    
   }
   initTts() async {
     await flutterTts.setLanguage("en-US");
@@ -66,22 +67,26 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     await flutterTts.setVolume(1.0);
     await flutterTts.setPitch(1.5);    
   }
+
   @override
-  void dispose() {
-    super.dispose();    
+  void dispose() {       
     _gestureList.forEach((ges) => ges.dispose());
     _gestureList.clear();
+    
     if(flutterTts!=null){
       flutterTts.stop();      
-    }    
+    } 
+    super.dispose();    
   }
   _speak(String text) async {
      await flutterTts.speak(text); 
      setState(() {});   
   }
+  
   _getGesture(JWord word) {
     if (_gestureCounter < _gestureList.length) {
-      var temp = _gestureList[_gestureCounter];
+      var temp =  _gestureList[_gestureCounter];
+      
       /*temp.onTap = () {
         widget.bloc.bookBloc.selectWord(word);
         _selectedWord = word;
@@ -135,8 +140,14 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   Widget build(BuildContext context) {
     _gestureCounter = 0;
     _context = context;
-
-    return AnimatedOpacity(
+    return GestureDetector(
+        child: ListView(
+          children: _getListItem(widget.page.data),
+        ),
+        onHorizontalDragStart: _dragStart,
+        onHorizontalDragUpdate: _dragUpdate,
+      );
+    /*return AnimatedOpacity(
       opacity: widget.page.asyncStatus == AsyncStatus.loaded ? 1.0 : 0.0,
       duration: const Duration(milliseconds: 500),
       child: GestureDetector(
@@ -146,7 +157,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         onHorizontalDragStart: _dragStart,
         onHorizontalDragUpdate: _dragUpdate,
       ),
-    );
+    );*/
   }
   Future<Null> _launchUrl( String url) async {    
     if (await canLaunch(url)) {
@@ -644,6 +655,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       )));
   }
   Widget _getReadAndWrite(JLine line, [double padding = 10.0]) {
+    
     return Container(
       padding: EdgeInsets.all(padding),
       child:RichText(

@@ -6,7 +6,7 @@ import './SettingBloc.dart';
 class StateMgmtBloc{
   BookBloc bookBloc;
   SettingBloc settingBloc;
-
+  bool homePage=false;
   final _navStreamController=StreamController<String>.broadcast();
   StreamSubscription<String> _navSubscription;
   Function(String) get navAction=>_navStreamController.sink.add;
@@ -14,6 +14,7 @@ class StateMgmtBloc{
   StateMgmtBloc(){
     _navSubscription=_navStreamController.stream.listen((path){
       print(path+'--');
+      
       switch (path) {
         case '/book1':
         case '/book2':
@@ -21,7 +22,8 @@ class StateMgmtBloc{
           bookBloc.bookNameAction(path);
           
           break;
-        default:
+        default: homePage=path=='/';      
+         
       }
       
     });

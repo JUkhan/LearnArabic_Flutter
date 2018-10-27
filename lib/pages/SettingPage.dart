@@ -12,8 +12,8 @@ class SettingPage extends StatefulWidget {
 
 class _SettingPageState extends State<SettingPage> {
   double fontSize = 1.0;
-  double wordSpace=2.0;
-  StateMgmtBloc bloc=null;
+  double wordSpace=1.0;
+  StateMgmtBloc bloc;
   bool tts=false;
   @override
   Widget build(BuildContext context) {    
@@ -46,7 +46,7 @@ class _SettingPageState extends State<SettingPage> {
                 backgroundImage: AssetImage('assets/images/slide.png'),
               ),
               title: Text("How to navigate book's page?"),
-              subtitle: Text('Please slide your finger from\nright to left / left to right'),
+              subtitle: Text('Ans: Please slide your finger from\nright to left / left to right'),
           )
           ),
           

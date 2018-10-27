@@ -15,6 +15,7 @@ class BookBloc {
   int currentPage = 0;
   int totalPage = 0;
   int totalLesson = 0;
+  
   String _bookPath = '';
   BookMarks _bm;
   bool tts=false;
