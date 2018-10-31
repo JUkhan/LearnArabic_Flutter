@@ -21,7 +21,7 @@ class PageDataWidget extends StatefulWidget {
 
 class _ViewPageDataWidgetState extends State<PageDataWidget> {
   final _gestureList = List<TapGestureRecognizer>();
-  
+  ScrollController _scrollController;
   JWord _selectedWord;  
   BuildContext _context;
   FlutterTts flutterTts;
@@ -54,7 +54,9 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   var wordSpace='';
   @override
   void initState() {
-    super.initState();
+    super.initState();  
+    _scrollController=ScrollController();  
+    Util.initId();
     if(widget.bloc.bookBloc.tts){   
       flutterTts = FlutterTts();
       initTts();
@@ -75,7 +77,8 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     
     if(flutterTts!=null){
       flutterTts.stop();      
-    } 
+    }    
+    _scrollController?.dispose();
     super.dispose();    
   }
   _speak(String text) async {
@@ -98,8 +101,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     }
     var temp = TapGestureRecognizer();
     temp.onTap = () {
-      widget.bloc.bookBloc.selectWord(word);
-      _selectedWord = word;      
+      _selectWord(word);      
       if(!_isArabic(word.english) && widget.bloc.bookBloc.tts) _speak(word.english);
       else setState(() {});
     };
@@ -107,12 +109,18 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     _gestureCounter++;
     return temp;
   }
-  
+  _selectWord(JWord word){
+    widget.bloc.bookBloc.selectWord(word);
+    _selectedWord = word;  
+    if(_scrollController.offset>0.0){
+     widget.bloc.bookBloc.setOffset(_scrollController.offset);
+    }
+  }
   double startPx;
   bool _hasPage;
   _dragStart(DragStartDetails details) {    
     startPx=details.globalPosition.dx;
-    _hasPage = false;
+    _hasPage = false;    
   }
 
   _dragUpdate(DragUpdateDetails details) {
@@ -142,6 +150,8 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     _context = context;
     return GestureDetector(
         child: ListView(
+          //scrollDirection: A,
+          controller: _scrollController,
           children: _getListItem(widget.page.data),
         ),
         onHorizontalDragStart: _dragStart,
@@ -534,7 +544,16 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
             text:hasWordSpac? text + wordSpace:text,
             style: hasColor? TextStyle(color: Util.getColor(text)):null);
   }
+  
   TextSpan _getTextSpan(JWord word, String direction) {
+    if(word.english.isNotEmpty){      
+      if(_selectedWord==null && widget.bloc.bookBloc.hasSelectedWord(word.id)){
+        _selectWord(word);
+        if(widget.bloc.bookBloc.scrollOffset>0.0)
+        _scrollController.animateTo(widget.bloc.bookBloc.scrollOffset, duration: new Duration(seconds: 2), curve: Curves.ease);
+        
+      }
+    }
     final txtSpans = List<TextSpan>();
     if(direction == 'rtl' && !_isArabic(word.word))direction='ltr';
     var gesture = word.english.isNotEmpty  ? _getGesture(word) : null;

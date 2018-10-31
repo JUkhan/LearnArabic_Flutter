@@ -53,4 +53,12 @@ class Util {
               )
             ]));
   }
+  static int id=0;
+  static initId(){
+    return id=1;
+  }
+  static int getId(){
+    id++;
+    return id;
+  }
 }

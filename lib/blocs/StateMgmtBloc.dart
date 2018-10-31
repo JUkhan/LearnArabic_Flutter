@@ -18,7 +18,11 @@ class StateMgmtBloc{
       switch (path) {
         case '/book1':
         case '/book2':
-        case '/book3':        
+        case '/book3': 
+        case '/book4':
+        case '/book5': 
+        case '/book6':
+        case '/book7':      
           bookBloc.bookNameAction(path);
           
           break;

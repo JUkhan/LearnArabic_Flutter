@@ -15,7 +15,8 @@ class BookBloc {
   int currentPage = 0;
   int totalPage = 0;
   int totalLesson = 0;
-  
+  double scrollOffset;
+  String wordIndex;
   String _bookPath = '';
   BookMarks _bm;
   bool tts=false;
@@ -171,6 +172,7 @@ class BookBloc {
 
   selectWord(JWord word) {
     _selectedWord.sink.add(word);
+    setWordIndex(word.id);
   }
 
   Future<T> loadData<T>(String key, T defaultValue) async {
@@ -183,6 +185,7 @@ class BookBloc {
       if (value is int) prefs.setInt(key, value);
       else if (value is String) prefs.setString(key, value);
       else if (value is bool) prefs.setBool(key, value);
+      else if (value is double) prefs.setDouble(key, value);
     });
   }
 
@@ -212,8 +215,20 @@ class BookBloc {
       totalPage = await _getTotalPage('$_bookPath/lesson$selectedLessonIndex');
       findBookMark();
     }
+    wordIndex = await loadData<String>(_wordIndex, '');
+    scrollOffset = await loadData<double>(_scrollOffset, 0.0);    
   }
-
+  void setWordIndex(int index){    
+    wordIndex='$index$selectedLessonIndex$currentPage';
+    setData(wordIndex, _wordIndex);    
+  }
+  void setOffset(double offset){    
+    scrollOffset=offset;
+    setData(offset, _scrollOffset);
+  }
+  hasSelectedWord(int index){
+    return wordIndex=='$index$selectedLessonIndex$currentPage';
+  }
   void findBookMark() {
     bookMarkAction(_bm.find(
         int.parse(_bookPath.substring(5)), selectedLessonIndex, currentPage));
@@ -246,4 +261,6 @@ class BookBloc {
   static const String _bookMarks = '#BM#';
   static const String _totalLesson = '#tl#';
   static const String _tts = '#tts#';
+  static const String _wordIndex="wi";
+  static const String _scrollOffset="soff";
 }

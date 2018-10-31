@@ -286,7 +286,7 @@ class BookPage extends StatelessWidget {
       'messenger': 'রাসূল', 'name': 'নাম', 'paternal uncle': 'চাচা','son': 'পুত্র','prayer':'প্রার্থনা',      
       'street': 'রোড', 'under': 'নিচে', 'there': 'সেখানে','father':'বাবা','heaven':'স্বর্গ','sunset':'সূর্যাস্ত',
       //pronouns
-      'he':'তিনি','she':'তিনি','it':'ইহা','whose': 'কাহার','who':'কে, কাহারা','you':'তুমি','i':'আমি',
+      'he':'তিনি','she':'তিনি','it':'ইহা','whose': 'কাহার','who':'কে, কাহারা','you':'তুমি',
       //prepositions
       'on': 'উপর','in': 'ভিতর','from':'হইতে', 'where': 'কোথায়','to':'দিকে',
       //Names
@@ -302,14 +302,18 @@ class BookPage extends StatelessWidget {
       'face': 'মুখ', 'leg': 'পা', 'tea': 'চা', 'pot': 'রান্নার পাত্র', 'mouth': 'মুখ','west': 'পশ্চিম',      
       'nose': 'নাক', 'window': 'জানলা', 'spoon': 'চামচ', 
       //b1-lesson7
-      'she-camel':'উষ্ট্রী','duck':'হাঁস','egg':'ডিম','nurse':'নার্স','hen':'মুরগি','muazzin':'মুয়াজজিন',
+      'she-camel':'উষ্ট্রী','duck':'হাঁস','egg':'ডিম','nurse':'নার্স','hen':'মুরগি','muazzin':'মুয়াজজিন','sister':'বোন',
       //b1-lesson8
       'America':'আমেরিকা','Switzerland':'সুইজর্লণ্ড','knife':'ছুরি','Germany':'জার্মানি','England':'ইংল্যান্ড','hospital':'হাসপাতাল','behind':'পিছনে','in front of':'সামনে','France':'ফ্রান্স','writing board':'লেখার বোর্ড','sat':'বসেছিল',
       //b1-lesson9
       'lazy':'অলস','hungry':'ক্ষুধার্ত','thirsty':'তৃষ্ণার্ত','angry':'ক্রুদ্ধ','full':'সম্পূর্ণ','fruit':'ফল','English(language)':'ইংরেজী ভাষা','sparrow':'চড়ুই','difficult':'কঠিন','bird':'পাখি','city':'শহর','Arabic':'আরবি','Cairo':'কায়রো','language':'ভাষা','today':'আজ','easy':'সহজ','why':'কেন','hardworking':'কঠোর পরিশ্রম','cup':'কাপ','famous':'বিখ্যাত',
       'library':'গ্রন্থাগার','secondary school':'মাধ্যমিক বিদ্যালয়','now':'এখন','minister':'মন্ত্রী','sharp':'তীক্ষ্ন','fan':'পাখা','Indonesia':'ইন্দোনেশিয়া','Kuwait':'কুয়েত',
       //b1-lesson10
-      'classmate':'সহপাঠী','husband':'স্বামী','child':'শিশু','young man':'যুবক','one':'এক','garden':'বাগান','with':'সঙ্গে','also':'এছাড়াও','Urdu':'উর্দু'
+      'classmate':'সহপাঠী','husband':'স্বামী','child':'শিশু','young man':'যুবক','one':'এক','garden':'বাগান','with':'সঙ্গে','also':'এছাড়াও','Urdu':'উর্দু',
+      //b2-lesson1
+      'for':'জন্য','belongs to':'সম্পর্কিত',      
+      //end short key length
+      'i':'আমি',
     };
      
     String str = '';

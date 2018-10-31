@@ -1,4 +1,6 @@
 
+import '../util.dart';
+
 class BookInfo {
   final int lessons;
   final String description;
@@ -78,6 +80,7 @@ class JWord{
   final String english;  
   final int wordSpace;
   final List<int> sp;
+  final int id;
   JWord({
     this.direction,
     this.bangla,
@@ -85,7 +88,8 @@ class JWord{
     this.word,
     this.wordSpace,    
     this.sp
-  });
+  }):id=Util.getId();
+
   factory JWord.fromJson(Map<String, dynamic> json){
     List<int> sps;
     if(json.containsKey('sp')){
