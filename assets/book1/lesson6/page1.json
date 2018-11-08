@@ -13,11 +13,7 @@
     {"id":"5LPPnLWa44k", "title":"MADINA BOOK 1 -- haadihi and harf jarr li"}       
 ],
     
-    "lines":[
-        {   "d":"ltr",
-            "mode":"lesson", "height":50.0,
-            "words":[{"w":"POINTS TO REMEMBER"}]
-        },
+    "lines":[        
         {"d":"ltr","words":[{"w":"In this lesson we learn:\n1. هَذِهِ which is the feminine of هَذَا. It is pronounced هَاذِهِ but the alif is omitted in writing."}]},
         {"d":"ltr","words":[{"w":"This is a boy and this is a girl."}]},
         {"tap":0,"words":[{"w":"هَذَا  وَلَدٌ  وَهَذِهِ  بِنْتٌ.","sp":[15,17]}]},

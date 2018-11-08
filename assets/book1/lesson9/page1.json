@@ -18,11 +18,7 @@
         {
             "mode":"lesson", "height":50.0,
             "words":[{"w":"Part A"}]
-        },
-        {   
-            "mode":"lesson", "height":50.0,
-            "words":[{"w":"POINTS TO REMEMBER"}]
-        },
+        },        
         {"d":"ltr", "words":[{"w":"In this lesson we learn:\n\n1. The adjective in Arabic. The adjective in Arabic follows the noun it qualifies, i.e. unlike in English it comes after the noun, e.g."}]},      
         {"mode":"text",  "words":[{"w":"بَيْتٌ جَدِيدٌ"}]},
         {"mode":"text","words":[{"w":"A new house"}]},      

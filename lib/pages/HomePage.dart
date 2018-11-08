@@ -10,8 +10,7 @@ import '../widgets/DrawerWidget.dart';
 class HomePage extends StatelessWidget {
   bool isRedirected = false;
   Future<void> redirect(BuildContext context) async {
-    new Future.delayed(const Duration(milliseconds: 100), () {
-      print('redirected....');
+    new Future.delayed(const Duration(milliseconds: 100), () {      
       Navigator.pushReplacementNamed(context, '/book');
     });
   }

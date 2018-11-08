@@ -5,8 +5,7 @@
         {"title":"English Lecture"},
         {"id":"4l-qhHrZedw", "title":"LEARNING MUBTADA KHABAR"}
     ],
-    "lines": [
-        {"mode":"lesson","words":[{"w":"Points to Remember"}] },
+    "lines": [       
         {"d":"ltr","words":[{"w":"This is a revision lesson. It contains only two new words:"}]},
         {"mode":"text","words":[{"w":"فِيهِ / فِيهَا","sp":[0,3,3,5,8,11,11]},{"w":"and"},{"w":"أُحِبُّ"}]},
         {"d":"ltr","words":[{"w":"1. فِي means \"in it\", e.g. "}]},

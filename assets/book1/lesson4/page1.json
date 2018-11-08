@@ -20,11 +20,7 @@
     {"id":"8wy2wt_RndY", "title":"INTRODUCTION TO GENDER"},
     {"id":"FECKc1OdKbY", "title":"questions and answers"}             
 ],
-    "lines":[
-        {   "d":"ltr",
-            "mode":"lesson", "height":50.0,
-            "words":[{"w":"POINTS TO REMEMBER"}]
-        },        
+    "lines":[                
         {
             "mode":"card",
             "lines":[

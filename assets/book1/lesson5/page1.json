@@ -19,11 +19,7 @@
     {"id":"mWdzeZXLD5Q", "title":"conversation based on idaafa"}       
 ],
    
-    "lines":[
-        {   "d":"ltr",
-            "mode":"lesson", "height":50.0,
-            "words":[{"w":"POINTS TO REMEMBER"}]
-        },
+    "lines":[        
         {
             "mode":"card","d":"ltr",
             "words":[{"w":"In this lesson we learn the following:"}],

@@ -14,13 +14,7 @@
         {"title":"English Lecture"}, 
         {"id":"JDe5s4knlnE", "title":"HADHA AND DHALIKA هذا و ذلك"}       
     ],
-    "lines":[        
-        
-        { "d":"ltr",
-            "mode":"lesson", "height":50.0,
-            "words":[{"w":"POINTS TO REMEMBER"}]
-        },
-        {"mode":"padding", "height":5.0},
+    "lines":[
         { "d":"ltr",
             "mode":"card",
             "words":[{"w":"In this lesson, we learn the use of ذَلِكَ meaning \"that\", and وَ meaning \"and\", e.g. "}]

@@ -3,11 +3,7 @@
         {
             "mode":"lesson", "height":50.0,
             "words":[{"w":"Part B"}]
-        },
-        {   
-            "mode":"lesson", "height":50.0,
-            "words":[{"w":"POINTS TO REMEMBER"}]
-        },
+        },        
         {"d":"ltr","words":[{"w":"In this part we learn:\n\n1. Adjective qualifying a definite noun, e.g."}]},
         {"mode":"text","d":"ltr", "words":[{"w":"where is the new teacher?"}]},
         {"mode":"text","words":[{"w":"أَيْنَ","e":"where"},{"w":"الْمُدَرِّسُ","e":"teacher","sp":[0,3]},{"w":"الْجَدِيدُ؟","e":"new","sp":[0,3]}]},
