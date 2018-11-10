@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Util {
   static Color getColor(String text) {
@@ -60,5 +61,15 @@ class Util {
   static int getId(){
     id++;
     return id;
+  }
+  static Future<Null> launchUrl( String url) async {    
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: true,
+        forceWebView: true,
+        enableJavaScript: true,
+      );
+    } 
   }
 }

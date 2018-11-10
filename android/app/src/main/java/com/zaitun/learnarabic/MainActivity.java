@@ -1,4 +1,4 @@
-package com.example.pleasureofallah;
+package com.zaitun.learnarabic;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

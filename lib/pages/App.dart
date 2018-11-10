@@ -30,7 +30,7 @@ class _AppState extends State<App> {
                 bloc: widget.block,
                 defaultTheme: Themes.light,
                 themedWidgetBuilder: (context, theme) => new MaterialApp(
-                      title: 'Pleasure of Allah',
+                      title: 'Learn Arabic',
                       theme: theme,
                       initialRoute: '/',
                       routes: {

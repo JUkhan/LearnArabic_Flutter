@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pleasure_of_allah/blocs/util.dart';
 import '../blocs/StateMgmtBloc.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -40,7 +41,8 @@ class DrawerWidget extends StatelessWidget {
           getTile(context, 'Book Marks', Icons.star, '/markbook'),
         
           getTile(context, 'Settings', Icons.settings, '/setting'),
-          getTile(context, 'Rate Apps', Icons.thumb_up, '/setting'),
+          getTile(context, 'Rate Apps', Icons.thumb_up, '/rateApps'),
+          getTile(context, 'আল হাদীস (Al Hadith)', Icons.thumb_up, '/alhadith'),
         ],
       ),
     );
@@ -56,6 +58,10 @@ class DrawerWidget extends StatelessWidget {
         block.navAction(navigateTo);
         if (navigateTo.startsWith('/book'))
           Navigator.pushReplacementNamed(context, '/lessons');
+        else if(navigateTo.startsWith('/rateApps'))
+          Util.launchUrl('https://play.google.com/store/apps/details?id=com.zaitun.learnarabic');
+        else if(navigateTo.startsWith('/alhadith'))
+          Util.launchUrl('https://play.google.com/store/apps/details?id=com.ihadis.ihadis&hl=en');
         else
           Navigator.pushReplacementNamed(context, navigateTo);
       },

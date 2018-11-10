@@ -169,18 +169,18 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       ),
     );*/
   }
-  Future<Null> _launchUrl( String url) async {    
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        forceSafariVC: true,
-        forceWebView: true,
-        enableJavaScript: true,
-      );
-    } else {
-     Util.alert(context:context, message: 'Could not launch $url');
-    }
-  }
+  // Future<Null> _launchUrl( String url) async {    
+  //   if (await canLaunch(url)) {
+  //     await launch(
+  //       url,
+  //       forceSafariVC: true,
+  //       forceWebView: true,
+  //       enableJavaScript: true,
+  //     );
+  //   } else {
+  //    Util.alert(context:context, message: 'Could not launch $url');
+  //   }
+  // }
 
   List<Widget> _getListItem(JPage page) {
     final list = List<Widget>();
@@ -200,7 +200,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
           child: ListTile(
             leading: Icon(Icons.play_circle_filled),
             title: Text(v.title),
-            onTap:(){_launchUrl('https://youtube.com/embed/${v.id}');},            
+            onTap:(){Util.launchUrl('https://youtube.com/embed/${v.id}');},            
           ),
         ));
       }
