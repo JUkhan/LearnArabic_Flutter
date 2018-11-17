@@ -1,9 +1,10 @@
 {
     "videos":[
         {"title":"Bangla Lecture"},
-        {"id":"YLBOQsnr240", "title":"Madinah Arabic Course B1 L11"},
+        {"id":"YLBOQsnr240", "title":"Madinah Arabic Course B2 L1"},
         {"title":"English Lecture"},
-        {"id":"4l-qhHrZedw", "title":"LEARNING MUBTADA KHABAR"}
+        {"id":"4l-qhHrZedw", "title":"Learning Mubtada Khabar"},
+        {"id":"VjgugKl9HnY","title":"Understanding Case Ending"}
     ],
     "lines": [       
         {"d":"ltr","words":[{"w":"This is a revision lesson. It contains only two new words:"}]},

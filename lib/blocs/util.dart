@@ -11,7 +11,7 @@ class Util {
       
       case 'فِي':case 'لَ':case 'لِ':case 'بِ':color = Colors.red;break;
       
-      case 'تَ':case 'تِ': case 'تُ':case 'هِ':
+      case 'تَ':case 'تِ': case 'تُ':case 'هِ':case 'كِ':
       case 'كَ':case 'هُ':case 'هَا':case 'ي':color=Colors.indigoAccent[400];break;
       default:color = Colors.orange;
     }
@@ -27,7 +27,7 @@ class Util {
       case 'بِ':text +=' : in, at মধ্যে';break;
       case 'فِي':text +=' : in মধ্যে';break;
       
-      case 'كَ':case 'تَ':case 'تِ':text +=' : you/your তুমি/তোমার';break;      
+      case 'كَ':case 'تَ':case 'تِ': case 'كِ': text +=' : you/your তুমি/তোমার';break;      
       case 'هِ':case 'هُ':text +=' : him/his/it তাকে/তাহার/এটা';break;
       case 'هَا':text +=' : her তাকে/তাহার';break;
       case 'ي':text +=' : me/my আমাকে/আমার';break;

@@ -31,18 +31,10 @@ android {
         applicationId "com.zaitun.learnarabic"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 3
+        versionCode 4
         versionName "book1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-
-    // buildTypes {
-    //     release {
-    //         // TODO: Add your own signing config for the release build.
-    //         // Signing with the debug keys for now, so `flutter run --release` works.
-    //         signingConfig signingConfigs.debug
-    //     }
-    // }
+    }    
     signingConfigs {
         release {
             keyAlias keystoreProperties['keyAlias']
