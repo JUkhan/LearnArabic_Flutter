@@ -49,7 +49,10 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     '١٩',
     '٢٠',
     '٢١',
-    '٢٢'
+    '٢٢',
+    '٢٣',
+    '٢٤',
+    '٢٥'
   ];
   var wordSpace = '';
   @override

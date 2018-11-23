@@ -56,6 +56,7 @@ class BookPage extends StatelessWidget {
   }
 
   Widget _navBar(StateMgmtBloc bloc, BuildContext context) {
+   
     return BottomAppBar(
       //color: Colors.black45,
       //elevation: 37.0,
@@ -68,8 +69,9 @@ class BookPage extends StatelessWidget {
             stream: bloc.bookBloc.selectedWord,
             builder: (_, snapshot) => snapshot.data.word.isEmpty
                 ? const Text('')
-                : Text(
+                : Text(                    
                     snapshot.data.english+' '+ _getBanglaText(snapshot.data),
+                    textDirection: _isArabic(snapshot.data.english)?TextDirection.rtl:TextDirection.ltr,
                     textAlign: TextAlign.center,
                     style:_isArabic(snapshot.data.english)? Theme.of(context).textTheme.headline:Theme.of(context).textTheme.title,
                   ),
@@ -307,11 +309,12 @@ class BookPage extends StatelessWidget {
       'America':'আমেরিকা','Switzerland':'সুইজর্লণ্ড','knife':'ছুরি','Germany':'জার্মানি','England':'ইংল্যান্ড','hospital':'হাসপাতাল','behind':'পিছনে','in front of':'সামনে','France':'ফ্রান্স','writing board':'লেখার বোর্ড','sat':'বসেছিল',
       //b1-lesson9
       'lazy':'অলস','hungry':'ক্ষুধার্ত','thirsty':'তৃষ্ণার্ত','angry':'ক্রুদ্ধ','full':'সম্পূর্ণ','fruit':'ফল','English(language)':'ইংরেজী ভাষা','sparrow':'চড়ুই','difficult':'কঠিন','bird':'পাখি','city':'শহর','Arabic':'আরবি','Cairo':'কায়রো','language':'ভাষা','today':'আজ','easy':'সহজ','why':'কেন','hardworking':'কঠোর পরিশ্রম','cup':'কাপ','famous':'বিখ্যাত',
-      'library':'গ্রন্থাগার','secondary school':'মাধ্যমিক বিদ্যালয়','now':'এখন','minister':'মন্ত্রী','sharp':'তীক্ষ্ন','fan':'পাখা','Indonesia':'ইন্দোনেশিয়া','Kuwait':'কুয়েত','example':'উদাহরণ',
+      'library':'গ্রন্থাগার','secondary school':'মাধ্যমিক বিদ্যালয়','now':'এখন','minister':'মন্ত্রী','sharp':'তীক্ষ্ন','fan':'পাখা','Indonesia':'ইন্দোনেশিয়া','Kuwait':'কুয়েত','example':'উদাহরণ','field':'মাঠ','they':'তাহারা',
       //b1-lesson10
-      'classmate':'সহপাঠী','husband':'স্বামী','child':'শিশু','young man':'যুবক','one':'এক','garden':'বাগান','with':'সঙ্গে','also':'এছাড়াও','Urdu':'উর্দু','condition':'অবস্থা','Amina':'আমিনা','peace':'শান্তি',
+      'classmate':'সহপাঠী','husband':'স্বামী','child':'শিশু','young man':'যুবক','one':'এক','garden':'বাগান','with':'সঙ্গে','also':'এছাড়াও','Urdu':'উর্দু','condition':'অবস্থা','Amina':'আমিনা','peace':'শান্তি','pilgrim':'তীর্থযাত্রী',
       //b2-lesson1
       'for':'জন্য','belongs to':'সম্পর্কিত','after':'পরে', 'Malaysia':'মাল্যাশিয়া', 'young lady':'তরুণী','maternity hospital':'প্রসূতি - হাসপাতাল','aunt':'কাকী','tree':'গাছ','Syria':'সিরিয়া','inspector':'পরিদর্শক','Sir':'জনাব', 'Madam':'ভদ্রমহিলা','strong':'শক্তিশালী','weak':'দুর্বল','scholar':'পণ্ডিত',"praise":"প্রশংসা",'Madinah':'মদীনা', 'secondary':'মাধ্যমিক', 'medium':'মধ্যম',
+      'restaurant':'রেস্তোরাঁ','these':'এইগুলো, এই সকল',
       //end short key length
       'i':'আমি','oh':'ওহ,ইয়া'
     };
