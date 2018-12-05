@@ -270,7 +270,7 @@ class BookPage extends StatelessWidget {
       'book': 'বই', 'boy': 'বালক', 'camel': 'উট', 'cat': 'বিড়াল','engineer':'প্রকৌশলী',
       'chair': 'চেয়ার', 'table': 'টেবিল', 'doctor': 'ডাক্তার', 'dog': 'কুকুর','noon':'দুপুর',
       'donkey': 'গাধা', 'door': 'দরজা', 'horse': 'ঘোড়া', 'kerchief': 'রূমাল',
-      'key': 'চাবি', 'man': 'মানুষ', 'merchant': 'বণিক', 'pen': 'কলম','guest':'অতিথি',
+      'key': 'চাবি', 'man': 'মানুষ','men': 'মানুষ','merchant': 'বণিক', 'pen': 'কলম','guest':'অতিথি',
       'rooster': 'গৃহপালিত মোরগ', 'shirt': 'জামা', 'dress': 'জামা','star': 'তারকা',      
       'student': 'ছাত্র', 'teacher': 'শিক্ষক', 'imam': 'এমাম', 'milk': 'দুধ','air':'বায়ু',
       'stone': 'পাথর', 'sugar': 'চিনি', 'far away': 'দূরে', 'heavy': 'ভারী','meat':'মাংস',
@@ -293,8 +293,8 @@ class BookPage extends StatelessWidget {
       'on': 'উপর','in': 'ভিতর','from':'হইতে', 'where': 'কোথায়','to':'দিকে',
       //Names
       'Muhammad':'মুহাম্মদ','Yasir':'ইয়াসির','Omar':'ওমর','Hamid':'হামিদ','Abbas':'আব্বাস','Ali':'আলী','Saeed':'সাঈদ','Mahmood':'মাহমুদ',
-      'Fatima':'ফাতিমা','Khadija':'খাদিজা','Khalid':'খালিদ','Aminah':'আমিনা','Zaynab':'যয়নব',
-      'China':'চীন','India':'ভারত','Japan':'জাপান','Philippines':'ফিলিপাইন','Iraq':'ইরাক',
+      'Fatima':'ফাতিমা','Khadija':'খাদিজা','Khalid':'খালিদ','Aminah':'আমিনা','Zaynab':'যয়নব','Bilal':'বিলাল',
+      'China':'চীন','India':'ভারত','Japan':'জাপান','Philippines':'ফিলিপাইন','Iraq':'ইরাক','Leila':'লেইলা',
       //verb
       'went':'চলে গেছে','went out':'বাহিরে গেছে',
       //b1-lesson6
@@ -312,9 +312,9 @@ class BookPage extends StatelessWidget {
       'library':'গ্রন্থাগার','secondary school':'মাধ্যমিক বিদ্যালয়','now':'এখন','minister':'মন্ত্রী','sharp':'তীক্ষ্ন','fan':'পাখা','Indonesia':'ইন্দোনেশিয়া','Kuwait':'কুয়েত','example':'উদাহরণ','field':'মাঠ','they':'তাহারা',
       //b1-lesson10
       'classmate':'সহপাঠী','husband':'স্বামী','child':'শিশু','young man':'যুবক','one':'এক','garden':'বাগান','with':'সঙ্গে','also':'এছাড়াও','Urdu':'উর্দু','condition':'অবস্থা','Amina':'আমিনা','peace':'শান্তি','pilgrim':'তীর্থযাত্রী',
-      //b2-lesson1
-      'for':'জন্য','belongs to':'সম্পর্কিত','after':'পরে', 'Malaysia':'মাল্যাশিয়া', 'young lady':'তরুণী','maternity hospital':'প্রসূতি - হাসপাতাল','aunt':'কাকী','tree':'গাছ','Syria':'সিরিয়া','inspector':'পরিদর্শক','Sir':'জনাব', 'Madam':'ভদ্রমহিলা','strong':'শক্তিশালী','weak':'দুর্বল','scholar':'পণ্ডিত',"praise":"প্রশংসা",'Madinah':'মদীনা', 'secondary':'মাধ্যমিক', 'medium':'মধ্যম',
-      'restaurant':'রেস্তোরাঁ','these':'এইগুলো, এই সকল',
+      //b2-lesson1-lesson2
+      'for':'জন্য','belongs to':'সম্পর্কিত','after':'পরে', 'Malaysia':'মাল্যাশিয়া', 'young lady':'তরুণী','maternity hospital':'প্রসূতি - হাসপাতাল','aunt':'ফুফি,খালা','tree':'গাছ','Syria':'সিরিয়া','inspector':'পরিদর্শক','Sir':'জনাব', 'Madam':'ভদ্রমহিলা','strong':'শক্তিশালী','weak':'দুর্বল','scholar':'পণ্ডিত',"praise":"প্রশংসা",'Madinah':'মদীনা', 'secondary':'মাধ্যমিক', 'medium':'মধ্যম',
+      'restaurant':'রেস্তোরাঁ','these':'এইগুলো, এই সকল','village':'গ্রাম','Turkey':'তুরস্ক','muslim':'মুসলমান','elementary':'প্রাথমিক','wife':'স্ত্রী','woman':'নারী','women':'নারী','young ladies':'তরুণ মহিলা','Mariam':'মারিয়াম','their':'তাদের','those':'যাহারা, সেগুলো',
       //end short key length
       'i':'আমি','oh':'ওহ,ইয়া'
     };

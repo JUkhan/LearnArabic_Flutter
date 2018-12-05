@@ -11,8 +11,11 @@ class Util {
       
       case 'فِي':case 'لَ':case 'لِ':case 'بِ':color = Colors.red;break;
       
-      case 'تَ':case 'تِ': case 'تُ':case 'هِ':case 'كِ':case 'هُمْ':
-      case 'كَ':case 'هُ':case 'هَا':case 'ي':color=Colors.indigoAccent[400];break;
+      case 'هِ':case 'كِ':case 'هُمْ':case 'هُنَّ':case 'كَ':case 'هُ':case 'هَا':case 'ي':
+      //subject/doer      
+      case 'نَ':case 'تَ':case 'تِ':case 'تُ':case 'نَا':case 'وا':
+        color=Colors.indigoAccent[400];break;       
+
       default:color = Colors.orange;
     }
     return color;
@@ -27,13 +30,24 @@ class Util {
       case 'بِ':text +=' : in, at মধ্যে';break;
       case 'فِي':text +=' : in মধ্যে';break;
       
-      case 'كَ':case 'تَ':case 'تِ': case 'كِ': text +=' : you/your তুমি/তোমার';break;      
+      case 'كَ': text +=' : you/your তুমি/তোমার (masculine/পুংলিঙ্গ)';break;  
+      case 'كِ': text +=' : you/your তুমি/তোমার (feminine/স্ত্রীলিঙ্গ)';break;     
       case 'هِ':case 'هُ':text +=' : him/his/it তাকে/তাহার/এটা';break;
       case 'هَا':text +=' : her তাকে/তাহার';break;
       case 'ي':text +=' : me/my আমাকে/আমার';break;
-      case 'تُ': text +=' : i আমি';break;
+      
       case 'الَّذِي':text +=' : who/which কে/যাহা';break;
-      case 'هُمْ':text +=' : they/their তাহারা/তাদের';break;
+      case 'هُمْ':text +=' : they/their তাহারা/তাদের (masculine/পুংলিঙ্গ)';break;
+      case 'هُنَّ':text +=' : they/their তাহারা/তাদের (feminine/স্ত্রীলিঙ্গ)';break;
+      
+      //subject/doer
+      case 'نَ':text +=' : [subject/doer] they তাহারা (feminine/স্ত্রীলিঙ্গ)';break;
+      case 'وا':text +=' : [subject/doer] they তাহারা (masculine/পুংলিঙ্গ)';break;
+      case 'تَ': text +=' : [subject/doer] you তুমি (masculine/পুংলিঙ্গ)';break;  
+      case 'تِ': text +=' : [subject/doer] you তুমি (feminine/স্ত্রীলিঙ্গ)';break;      
+      case 'تُ': text +=' : [subject/doer] i আমি';break;
+      case 'نَا':text +=' : [subject/doer] we আমরা';break;
+
       default: text +=' : under construction';       
     
     }

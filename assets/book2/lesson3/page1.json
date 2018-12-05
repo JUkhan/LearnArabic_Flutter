@@ -1,8 +1,7 @@
 {
     "videos":[
         {"title":"Bangla Lecture"},
-        {"id":"5axfNAFB3HU", "title":"Madinah Arabic Course B1 L3 P1"},
-        {"id":"AiPUZhotAcg", "title":"Madinah Arabic Course B1 L3 P2"},
+        {"id":"5axfNAFB3HU", "title":"Madinah Arabic Course B1 L3 P1"},        
         {"title":"English Lecture"},
         {"id":"2I57PINd9VY", "title":"Practicising Feminine فعل And اسم موصول"},
         {"id":"uvcb_ZfLs2U", "title":"Introduction To Plurals"},
@@ -23,7 +22,7 @@
         {"d":"ltr","mode":"lesson","words":[{"w":"pattern: فُعُولٌ"}]},
         {"mode":"vocab","words":[{"w":"نَجْمٌ","e":"star"},{"w":"نُجُومٌ"},{"w":"شَيْخٌ","e":"old man,learned person,scholar"},{"w":"شُيُوخٌ"},{"w":"ضَيْفٌ","e":"guest"},{"w":"ضُيُوفٌ"}]},
         {"d":"ltr","mode":"lesson","words":[{"w":"pattern: فُعَلَاءُ"}]},
-        {"mode":"vocab","words":[{"w":"زَمِيلٌ","e":"classmate"},{"w":"زُمَلَاءُ"},{"w":"فَقَيرٌ","e":"poor"},{"w":"فُقَرَاءُ"}]},
+        {"mode":"vocab","words":[{"w":"زَمِيلٌ","e":"classmate"},{"w":"زُمَلَاءُ"},{"w":"فَقِيرٌ","e":"poor"},{"w":"فُقَرَاءُ"}]},
         {"d":"ltr","mode":"lesson","words":[{"w":"pattern: أَفْعِلَاءُ"}]},
         {"mode":"vocab","words":[{"w":"غَنِيٌ","e":"rich"},{"w":"أَغْنِيَاءُ"},{"w":"صَدِيقٌ","e":"friend"},{"w":"أَضْدِقَاءُ"},{"w":"طَبِيبٌ","e":"doctor"},{"w":"أَطِبَّاءُ"}]},
         {"d":"ltr","words":[{"w":"Note:We know that noun ends with single damma is a diptote (A diptote is a noun that reflects the nominative case with the ضمة vowel, and both accusative and genitive cases with the فتحة vowel)."}]},
