@@ -1,15 +1,11 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import '../blocs/SettingBloc.dart';
-import '../blocs/StateMgmtBloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:learn_arabic/blocs/appService.dart';
+import 'package:learn_arabic/blocs/util.dart';
 
 class AppTheme {
   static get dark {
     final originalTextTheme = ThemeData.dark().textTheme;
-    final originalBody1 = originalTextTheme.body1;    
+    final originalBody1 = originalTextTheme.body1;
     return ThemeData.dark().copyWith(
         primaryColor: Colors.grey[800],
         accentColor: Colors.cyan[300],
@@ -23,19 +19,17 @@ class AppTheme {
   }
 
   static get light {
-   return ThemeData.light();
+    return ThemeData.light();
   }
 }
 
 typedef Widget ThemedWidgetBuilder(BuildContext context, ThemeData theme);
-//enum Themes { light, dark }
 
 class DynamicThemeWidget extends StatefulWidget {
   final ThemedWidgetBuilder themedWidgetBuilder;
   final Themes defaultTheme;
-  final StateMgmtBloc bloc;
 
-  DynamicThemeWidget({Key key, this.bloc, this.defaultTheme, this.themedWidgetBuilder})
+  DynamicThemeWidget({Key key, this.defaultTheme, this.themedWidgetBuilder})
       : super(key: key);
 
   @override
@@ -48,7 +42,6 @@ class DynamicThemeWidget extends StatefulWidget {
 }
 
 class DynamicThemeWidgetState extends State<DynamicThemeWidget> {
-  static const String _themeKey = "apptheme";
   Themes theme;
   @override
   void initState() {
@@ -56,10 +49,10 @@ class DynamicThemeWidgetState extends State<DynamicThemeWidget> {
       theme = Themes.light;
     } else
       theme = widget.defaultTheme;
-    loadThem().then((value) {
+
+    AppService.getFromPref(AppService.prefkey_theme, 0).then((value) {
       setState(() {
-        theme= value == 'light' ? Themes.light : Themes.dark;  
-        widget.bloc.settingBloc.theme=theme;
+        theme = value == 0 ? Themes.light : Themes.dark;
       });
     });
     super.initState();
@@ -74,16 +67,9 @@ class DynamicThemeWidgetState extends State<DynamicThemeWidget> {
     setState(() {
       this.theme = theme;
     });
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString(_themeKey, Themes.dark == theme ? 'dark' : 'light');
   }
 
   _getThem() {
     return theme == Themes.light ? AppTheme.light : AppTheme.dark;
-  }
-
-  Future<String> loadThem() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return (prefs.getString(_themeKey) ?? 'light');
   }
 }

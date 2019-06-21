@@ -1,19 +1,23 @@
+import 'dart:async';
+
+import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../blocs/util.dart';
-import '../pages/BookPage.dart';
-import './SlideRoute.dart';
-import '../blocs/models/AsyncData.dart';
-import '../blocs/models/BookInfo.dart';
-import '../blocs/StateMgmtBloc.dart';
-import '../blocs/SettingBloc.dart';
+import 'package:learn_arabic/blocs/actionTypes.dart';
+import 'package:learn_arabic/blocs/models/AsyncData.dart';
+import 'package:learn_arabic/blocs/models/BookInfo.dart';
+import 'package:learn_arabic/blocs/models/bookModel.dart';
+
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:learn_arabic/blocs/util.dart';
+import 'package:learn_arabic/pages/BookPage.dart';
+import 'package:learn_arabic/widgets/SlideRoute.dart';
 
 class PageDataWidget extends StatefulWidget {
   final AsyncData<JPage> page;
-  final StateMgmtBloc bloc;
+  //final StateMgmtBloc bloc;
 
-  PageDataWidget(this.bloc, this.page);
+  PageDataWidget(this.page);
   @override
   _ViewPageDataWidgetState createState() => new _ViewPageDataWidgetState();
 }
@@ -24,6 +28,8 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   JWord _selectedWord;
   BuildContext _context;
   FlutterTts flutterTts;
+  BookModel bookModel;
+  StreamSubscription bookModelSubscription;
   int _gestureCounter = 0;
   var _nums = [
     '٠',
@@ -58,12 +64,16 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   void initState() {
     super.initState();
     _scrollController = ScrollController();
-    Util.initId();
-    if (widget.bloc.bookBloc.tts) {
-      flutterTts = FlutterTts();
-      initTts();
-    }
-    wordSpace = widget.bloc.settingBloc.wordSpace;
+
+    _selectedWord = null;
+    bookModelSubscription = store().select<BookModel>('book').listen((data) {
+      this.bookModel = data;
+      wordSpace = data.getWordSpace;
+      if (data.tts) {
+        flutterTts = FlutterTts();
+        initTts();
+      }
+    });
   }
 
   initTts() async {
@@ -75,11 +85,12 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
   @override
   void dispose() {
+    bookModelSubscription.cancel();
     _gestureList.forEach((ges) => ges.dispose());
     _gestureList.clear();
 
     if (flutterTts != null) {
-     flutterTts.stop();
+      flutterTts.stop();
     }
     _scrollController?.dispose();
     super.dispose();
@@ -93,20 +104,13 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   _getGesture(JWord word) {
     if (_gestureCounter < _gestureList.length) {
       var temp = _gestureList[_gestureCounter];
-
-      /*temp.onTap = () {
-        widget.bloc.bookBloc.selectWord(word);
-        _selectedWord = word;
-        if(!_isArabic(word.english) && widget.bloc.bookBloc.tts) _speak(word.english);
-        else setState(() {});
-      };*/
       _gestureCounter++;
       return temp;
     }
     var temp = TapGestureRecognizer();
     temp.onTap = () {
       _selectWord(word);
-      if (!_isArabic(word.english) && widget.bloc.bookBloc.tts)
+      if (!_isArabic(word.english) && bookModel.tts)
         _speak(word.english);
       else
         setState(() {});
@@ -117,11 +121,10 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   }
 
   _selectWord(JWord word) {
-    widget.bloc.bookBloc.selectWord(word);
     _selectedWord = word;
-    if (_scrollController.offset > 0.0) {
-      widget.bloc.bookBloc.setOffset(_scrollController.offset);
-    }
+    dispatch(
+        actionType: ActionTypes.SELECT_WORD,
+        payload: {'word': word, 'offset': _scrollController.offset});
   }
 
   double startPx;
@@ -140,14 +143,16 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
             context,
             SlideRoute(
                 widget: BookPage(), sildeDirection: SlideDirection.Right));
-        widget.bloc.bookBloc.prev();
+
+        dispatch(actionType: ActionTypes.SLIDE_PAGE, payload: true);
       } else if (startPx > dx && (startPx - dx) > 100) {
         _hasPage = true;
         Navigator.pushReplacement(
             context,
             SlideRoute(
                 widget: BookPage(), sildeDirection: SlideDirection.Left));
-        widget.bloc.bookBloc.next();
+
+        dispatch(actionType: ActionTypes.SLIDE_PAGE, payload: false);
       }
     }
   }
@@ -165,9 +170,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       onHorizontalDragStart: _dragStart,
       onHorizontalDragUpdate: _dragUpdate,
     );
-    
   }
-  
 
   List<Widget> _getListItem(JPage page) {
     final list = List<Widget>();
@@ -322,12 +325,12 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       );
     }
     return Container(
-        padding: EdgeInsets.all(padding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: widgets,
-        ),
-      );
+      padding: EdgeInsets.all(padding),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: widgets,
+      ),
+    );
   }
 
   void _setWidget(List<Widget> widgets, JLine line) {
@@ -338,14 +341,14 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       if (line.lineno == 1) {
         spans.add(TextSpan(
             text: _nums[lineNo] + ')' + wordSpace,
-            style: widget.bloc.settingBloc.getTextTheme(_context, 'ltr')));
+            style: Util.getTextTheme(_context, 'ltr', bookModel.fontSize)));
       }
       //before
       if (line.mode == 'b') {
         spans.add(TextSpan(
             text: '..........' + wordSpace,
-            style: widget.bloc.settingBloc
-                .getTextTheme(_context, line.direction)));
+            style: Util.getTextTheme(
+                _context, line.direction, bookModel.fontSize)));
       }
       spans.addAll(
           l.words.map((word) => _getTextSpan(word, line.direction)).toList());
@@ -353,9 +356,9 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       //after
       if (line.mode == 'a') {
         spans.add(TextSpan(
-            text: '............',
-            style: widget.bloc.settingBloc
-                .getTextTheme(_context, line.direction)));
+          text: '............',
+          //style: widget.bloc.settingBloc.getTextTheme(_context, line.direction)
+        ));
       }
       widgets.add(RichText(
         textDirection: _getDirection(line.direction),
@@ -434,7 +437,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   }
 
   double _getHeight(double height) {
-    final fontSize = widget.bloc.settingBloc.getFontSize();
+    final fontSize = 3.0; //as widget.bloc.settingBloc.getFontSize();
     if (fontSize == 3.0) return height + height * 0.10;
     if (fontSize == 4.0) return height + height * 0.35;
     return height;
@@ -524,7 +527,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       height: _getHeight(line.height),
       width: double.infinity,
       decoration: BoxDecoration(
-          gradient: widget.bloc.settingBloc.theme == Themes.light
+          gradient: bookModel.theme == Themes.light
               ? _getGradient()
               : _getGradient2()),
       child: Center(
@@ -557,12 +560,14 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
   TextSpan _getTextSpan(JWord word, String direction) {
     if (word.english.isNotEmpty) {
-      if (_selectedWord == null &&
-          widget.bloc.bookBloc.hasSelectedWord(word.id)) {
-        _selectWord(word);
-        if (widget.bloc.bookBloc.scrollOffset > 0.0)
-          _scrollController.animateTo(widget.bloc.bookBloc.scrollOffset,
-              duration: new Duration(seconds: 2), curve: Curves.ease);
+      if (_selectedWord == null && bookModel.hasSelectedWord(word.id)) {
+        _selectedWord = word;
+        bookModel.selectedWord = word;
+
+        if (bookModel.scrollOffset > 0.0) {
+          _scrollController.animateTo(bookModel.scrollOffset,
+              duration: new Duration(seconds: 1), curve: Curves.ease);
+        }
       }
     }
     final txtSpans = List<TextSpan>();
@@ -639,20 +644,19 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
           hasColor: false));
     }
     //Colors.grey[400]:Colors.black.withOpacity(0.9)
+
     return TextSpan(
         style: word == _selectedWord
-            ? widget.bloc.settingBloc
-                .getTextTheme(_context, direction)
+            ? Util.getTextTheme(_context, direction, bookModel.fontSize)
                 .copyWith(
                     background: Paint()
-                      ..blendMode =
-                          widget.bloc.settingBloc.theme == Themes.light
-                              ? BlendMode.darken
-                              : BlendMode.color
-                      ..color = widget.bloc.settingBloc.theme == Themes.light
+                      ..blendMode = bookModel.theme == Themes.dark
+                          ? BlendMode.darken
+                          : BlendMode.color
+                      ..color = bookModel.theme == Themes.light
                           ? Colors.lime[400]
                           : Colors.purple[400])
-            : widget.bloc.settingBloc.getTextTheme(_context, direction),
+            : Util.getTextTheme(_context, direction, bookModel.fontSize),
         children: txtSpans);
   }
 
@@ -722,15 +726,6 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   }
 
   LinearGradient _getGradient() => LinearGradient(
-        //begin: Alignment.centerRight,
-        //end: Alignment.centerLeft,
-        begin: FractionalOffset.topCenter,
-        end: FractionalOffset.bottomCenter,
-        stops: [0.1, 0.9],
-        colors: [Colors.pink.withOpacity(0.4), Colors.pink.withOpacity(0.7)],
-      );
-
-  LinearGradient _getGradient2() => LinearGradient(
         begin: FractionalOffset.topCenter,
         end: FractionalOffset.bottomCenter,
         stops: [0.1, 0.5, 0.7, 0.9],
@@ -739,6 +734,17 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
           Colors.blue[700],
           Colors.blue[600],
           Colors.blue[400]
+        ],
+      );
+  LinearGradient _getGradient2() => LinearGradient(
+        begin: FractionalOffset.topCenter,
+        end: FractionalOffset.bottomCenter,
+        stops: [0.1, 0.5, 0.7, 0.9],
+        colors: [
+          Colors.black12,
+          Colors.black54,
+          Colors.black54,
+          Colors.black12
         ],
       );
 }

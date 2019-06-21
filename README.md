@@ -17,3 +17,5 @@ flutter build apk
 flutter install
 ```
 
+## Books
+https://archive.org/details/DrV.AbdurRahim.MadinahArabicReader/page/n83

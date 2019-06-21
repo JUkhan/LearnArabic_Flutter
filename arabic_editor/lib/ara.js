@@ -144,13 +144,6 @@ function transcrire() {
     else if (car.endsWith('8')) {
         car = car.replace('8', '\u0652');
     }
-    else if (car.endsWith('9')) {
-        car = car.replace('9', '؟');
-    }
-    else if (car.endsWith('0')) {
-        car = car.replace('0', '٠');
-    }
-
     document.conversion.saisie.value = car;
     var obj = document.conversion.saisie;
     obj.focus();
@@ -179,10 +172,10 @@ function map() {
         })
     } else {
         res = arr.map(line => {
-            return { words: line.split(/\s+/).map(w => ({w})) }
+            return { words: line.split(/\s+/).map(w => ({w,e:''})) }
         })
     }
     console.log(res)
-    return JSON.stringify(res)
+    return res.map(_=>JSON.stringify(_)).join(',\n')
 }
 

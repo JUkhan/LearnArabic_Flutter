@@ -1,7 +1,9 @@
+import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
-import '../blocs/StateMgmtBloc.dart';
-import '../widgets/DrawerWidget.dart';
-import '../blocs/AppStateProvider.dart';
+import 'package:learn_arabic/blocs/actionTypes.dart';
+import 'package:learn_arabic/blocs/models/Bookmarks.dart';
+import 'package:learn_arabic/blocs/models/bookModel.dart';
+import 'package:learn_arabic/widgets/DrawerWidget.dart';
 
 class BookMarkPage extends StatefulWidget {
   @override
@@ -11,43 +13,54 @@ class BookMarkPage extends StatefulWidget {
 class _BookMarkPageState extends State<BookMarkPage> {
   @override
   Widget build(BuildContext context) {
-    final bloc = AppStateProvider.of(context);
-
     return Scaffold(
-        drawer: DrawerWidget(bloc),
+        drawer: DrawerWidget(),
         appBar: AppBar(
           title: const Text('Bookmarks'),
         ),
         body: AnimatedOpacity(
           opacity: 1.0,
           duration: const Duration(milliseconds: 1000),
-          child: ListView(
-            children: _getItems(bloc, context),
+          child: StreamBuilder(
+            stream: store().select<BookModel>('book'),
+            builder: (BuildContext context, AsyncSnapshot<BookModel> snapshot) {
+              if (snapshot.hasData) {
+                return ListView(
+                  children: _getItems(snapshot.data.books, context),
+                );
+              }
+              return Container();
+            },
           ),
         ));
   }
 
-  List<Widget> _getItems(StateMgmtBloc bloc, BuildContext context) {
+  List<Widget> _getItems(List<BMBook> books, BuildContext context) {
     var items = List<Widget>();
-    for (var book in bloc.bookBloc.books) {
-      items.add(ListTile(selected: true, title: Text('Book ${book.id}'),));
+    for (var book in books) {
+      items.add(ListTile(
+        selected: true,
+        title: Text('Book ${book.id}'),
+      ));
       for (var lesson in book.lessons) {
         for (var page in lesson.pages) {
           items.add(ListTile(
             leading: CircleAvatar(
-                child: Text('${lesson.id}',),
-              ) ,
-              title: Text('Lesson ${lesson.id}'),
-              subtitle: Text('Page $page'),
-              trailing: Icon(Icons.arrow_forward),
-              onTap: (){
-                //print('Book${book.id}, lesson${lesson.id}, page$page');
-                bloc.bookBloc.openBookMark(book.id, lesson.id, page);
-                Navigator.pushReplacementNamed(context, '/book');
-              },
+              child: Text(
+                '${lesson.id}',
+              ),
+            ),
+            title: Text('Lesson ${lesson.id}'),
+            subtitle: Text('Page $page'),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {
+              dispatch(
+                  actionType: ActionTypes.BOOK_MARK_TO_PAGE,
+                  payload: [lesson.id, page]);
+              Navigator.pushReplacementNamed(context, '/book');
+            },
           ));
         }
-        
       }
     }
     return items;

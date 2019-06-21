@@ -1,9 +1,12 @@
+import 'dart:async';
+
+import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
-import '../blocs/AppStateProvider.dart';
-import '../widgets/DrawerWidget.dart';
-import '../widgets/DynamicThemeWidget.dart';
-import '../blocs/StateMgmtBloc.dart';
-import '../blocs/SettingBloc.dart';
+import 'package:learn_arabic/blocs/actionTypes.dart';
+import 'package:learn_arabic/blocs/models/bookModel.dart';
+import 'package:learn_arabic/blocs/util.dart';
+import 'package:learn_arabic/widgets/DrawerWidget.dart';
+import 'package:learn_arabic/widgets/DynamicThemeWidget.dart';
 
 class SettingPage extends StatefulWidget {
   @override
@@ -11,55 +14,73 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
-  double fontSize = 1.0;
-  double wordSpace=1.0;
-  StateMgmtBloc bloc;
-  bool tts=false;
+  double fontSize = 2.0;
+  double wordSpace = 1.0;
+  bool tts = false;
+  StreamSubscription streamSubscription;
   @override
-  Widget build(BuildContext context) {    
-    if(bloc==null){
-      bloc=AppStateProvider.of(context);
-      fontSize=bloc.settingBloc.getFontSize();
-      wordSpace=bloc.settingBloc.getWordSpace();
-      tts=bloc.bookBloc.tts;
-    }
+  void initState() {
+    streamSubscription =
+        store().select<BookModel>('book').take(1).listen((book) {
+      setState(() {
+        fontSize = book.fontSize;
+        wordSpace = book.wordSpace;
+        tts = book.tts;
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    streamSubscription.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerWidget(bloc),
+      drawer: DrawerWidget(),
       appBar: AppBar(
         title: Text('Settings'),
       ),
       body: ListView(
         padding: const EdgeInsets.all(10.0),
         children: <Widget>[
-          getTheme(context),          
-          getFontSize(context),          
+          getTheme(context),
+          getFontSize(context),
           getWordSpace(context),
-          Card(child:ListTile(
-            leading: Icon(tts?Icons.mic: Icons.mic_off),
+          Card(
+              child: ListTile(
+            leading: Icon(tts ? Icons.mic : Icons.mic_off),
             title: Text('English TTS'),
-            trailing: Switch(value:tts ,onChanged: ttsValueChanged,),
+            trailing: Switch(
+              value: tts,
+              onChanged: ttsValueChanged,
+            ),
           )),
           Card(
-            child: ListTile(
+              child: ListTile(
             leading: new CircleAvatar(
               //radius: 50.0,
-                backgroundImage: AssetImage('assets/images/slide.png'),
-              ),
-              title: Text("How to navigate book's page?"),
-              subtitle: Text('Ans: Please slide your finger from\nright to left / left to right'),
-          )
-          ),
-          
+              backgroundImage: AssetImage('assets/images/slide.png'),
+            ),
+            title: Text("How to navigate book's page?"),
+            subtitle: Text(
+                'Ans: Please slide your finger from\nright to left / left to right'),
+          )),
         ],
       ),
     );
   }
-  ttsValueChanged(bool value){  
-    bloc.bookBloc.setTTS(value);  
+
+  ttsValueChanged(bool value) {
+    dispatch(actionType: ActionTypes.SET_TTS, payload: value);
     setState(() {
-          tts=value;
-        });
+      tts = value;
+    });
   }
+
   valueChange(double value) {
     if (value >= 1.5 && value <= 2.4) {
       value = 2.0;
@@ -73,42 +94,49 @@ class _SettingPageState extends State<SettingPage> {
     setState(() {
       fontSize = value;
     });
-    bloc.settingBloc.setFontSize(value);
+    dispatch(actionType: ActionTypes.SET_FONTSIZE, payload: value);
   }
-  wordSpaceValueChange(double value){
+
+  wordSpaceValueChange(double value) {
     if (value >= 1.5 && value <= 2.4) {
       value = 2.0;
     } else if (value >= 2.5 && value <= 3.4) {
       value = 3.0;
-    }else {
+    } else {
       value = 1.0;
     }
     setState(() {
       wordSpace = value;
     });
-    bloc.settingBloc.setWordSpace(value);
+    dispatch(actionType: ActionTypes.SET_WORDSPACE, payload: value);
   }
-  Widget getWordSpace(BuildContext context){
-    var space='';
+
+  Widget getWordSpace(BuildContext context) {
+    var space = '';
     for (var i = 0.0; i < wordSpace; i++) {
-      space+=' ';
+      space += ' ';
     }
-    return Card(child:Column(children: <Widget>[
-   ListTile(leading: Icon(Icons.graphic_eq), title: Text('WORD SPACE')),
-          Slider(
-              min: 1.0,
-              max: 3.0,
-              value: wordSpace,
-              onChanged: (value) {
-                setState(() {
-                  wordSpace = value;
-                });
-              },
-              onChangeEnd: wordSpaceValueChange,
-            ) ,
-            Text('اْلأَوَّلُ'+space+'اَلدَّرْسُ', style: bloc.settingBloc.getTextTheme(context, 'rtl'),)
-          ]));
+    return Card(
+        child: Column(children: <Widget>[
+      ListTile(leading: Icon(Icons.graphic_eq), title: Text('WORD SPACE')),
+      Slider(
+        min: 1.0,
+        max: 3.0,
+        value: wordSpace,
+        onChanged: (value) {
+          setState(() {
+            wordSpace = value;
+          });
+        },
+        onChangeEnd: wordSpaceValueChange,
+      ),
+      Text(
+        'اْلأَوَّلُ' + space + 'اَلدَّرْسُ',
+        style: Util.getTextTheme(context, 'rtl', fontSize),
+      )
+    ]));
   }
+
   Widget getFontSize(BuildContext context) => Card(
         child: Column(
           children: <Widget>[
@@ -128,7 +156,10 @@ class _SettingPageState extends State<SettingPage> {
               },
               onChangeEnd: valueChange,
             ),
-            Text('اَلدَّرْسُ اْلأَوَّلُ', style: bloc.settingBloc.getTextTheme(context, 'rtl'),)
+            Text(
+              'اَلدَّرْسُ اْلأَوَّلُ',
+              style: Util.getTextTheme(context, 'rtl', fontSize),
+            )
           ],
         ),
       );
@@ -145,8 +176,8 @@ class _SettingPageState extends State<SettingPage> {
               groupValue: DynamicThemeWidget.of(context).theme,
               onChanged: (value) {
                 DynamicThemeWidget.of(context).setTheme(Themes.light);
-                bloc.settingBloc.theme=Themes.light;
-
+                dispatch(
+                    actionType: ActionTypes.SET_THEME, payload: Themes.light);
               },
               title: new Text("Light"),
             ),
@@ -155,7 +186,8 @@ class _SettingPageState extends State<SettingPage> {
               groupValue: DynamicThemeWidget.of(context).theme,
               onChanged: (value) {
                 DynamicThemeWidget.of(context).setTheme(Themes.dark);
-                bloc.settingBloc.theme=Themes.dark;
+                dispatch(
+                    actionType: ActionTypes.SET_THEME, payload: Themes.dark);
               },
               title: new Text("Dark"),
             ),

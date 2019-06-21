@@ -1,16 +1,20 @@
+import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
-import '../blocs/AppStateProvider.dart';
-import '../blocs/models/BookInfo.dart';
-import '../widgets/DrawerWidget.dart';
-import '../blocs/StateMgmtBloc.dart';
-import '../widgets/LoadingWidget.dart';
-import '../widgets/JErrorWidget.dart';
-import '../blocs/models/AsyncData.dart';
+import 'package:learn_arabic/blocs/actionTypes.dart';
+import 'package:learn_arabic/blocs/models/AsyncData.dart';
+import 'package:learn_arabic/blocs/models/BookInfo.dart';
+import 'package:learn_arabic/blocs/models/bookModel.dart';
+import 'package:learn_arabic/widgets/DrawerWidget.dart';
+import 'package:learn_arabic/widgets/JErrorWidget.dart';
+import 'package:learn_arabic/widgets/LoadingWidget.dart';
 
 class BookLessonsPage extends StatelessWidget {
+  final bookInfo$ =
+      store().select<BookModel>('book').map((data) => data.lessons);
+
   @override
   Widget build(BuildContext context) {
-    final bloc = AppStateProvider.of(context);
+    //final bloc = AppStateProvider.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -18,46 +22,49 @@ class BookLessonsPage extends StatelessWidget {
       ),
       body: StreamBuilder<AsyncData<BookInfo>>(
         initialData: AsyncData.loading(),
-        stream: bloc.bookBloc.bookInfo,
+        //stream: bloc.bookBloc.bookInfo,
+        stream: bookInfo$,
         builder: (_, snapshot) {
           return Container(
-            child:Stack(
+            child: Stack(
               children: <Widget>[
                 LoadingWidget(snapshot.data),
                 JErrorWidget(snapshot.data),
-                LessonWidget(bloc, snapshot.data)
-
+                LessonWidget(snapshot.data)
               ],
-            ) ,
-            );
+            ),
+          );
         },
       ),
-      drawer: DrawerWidget(bloc),
+      drawer: DrawerWidget(),
     );
   }
-
 }
 
 class LessonWidget extends StatelessWidget {
-  final StateMgmtBloc bloc;
+  //final StateMgmtBloc bloc;
   final AsyncData book;
-  LessonWidget(this.bloc, this.book);
+  LessonWidget(this.book);
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
-      opacity: book.asyncStatus==AsyncStatus.loaded?1.0:0.0,
+      opacity: book.asyncStatus == AsyncStatus.loaded ? 1.0 : 0.0,
       duration: const Duration(milliseconds: 1000),
       child: ListView.builder(
-        itemCount: book.data?.lessons??0,
+        itemCount: book.data?.lessons ?? 0,
         itemBuilder: (context, index) => ListTile(
               leading: CircleAvatar(
-                child: Text('${index+1}',),
-              ) ,
-              title: Text('Lesson ${index+1}'),
+                child: Text(
+                  '${index + 1}',
+                ),
+              ),
+              title: Text('Lesson ${index + 1}'),
               trailing: Icon(Icons.arrow_forward),
-              selected: bloc.bookBloc.selectedLessonIndex==index+1,
-              onTap: (){
-                bloc.bookBloc.moveToLesson(index+1);                
+              //selected: bloc.bookBloc.selectedLessonIndex == index + 1,
+              onTap: () {
+                //bloc.bookBloc.moveToLesson(index + 1);
+                dispatch(
+                    actionType: ActionTypes.SET_LESSON_NO, payload: index + 1);
                 Navigator.pushReplacementNamed(context, '/page');
               },
             ),

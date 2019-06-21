@@ -13,8 +13,9 @@ class AsyncData<T> {
   factory AsyncData.loaded(T data) =>
       AsyncData(data: data, asyncStatus: AsyncStatus.loaded);
 
-  factory AsyncData.loading() => AsyncData(asyncStatus: AsyncStatus.loading);
+  factory AsyncData.loading({T data}) =>
+      AsyncData(asyncStatus: AsyncStatus.loading, data: data);
 
-  factory AsyncData.error(String errorMessage) =>
-      AsyncData(asyncStatus: AsyncStatus.error, errorMessage: errorMessage);
+  factory AsyncData.error(String errorMessage, {T data}) => AsyncData(
+      asyncStatus: AsyncStatus.error, errorMessage: errorMessage, data: data);
 }

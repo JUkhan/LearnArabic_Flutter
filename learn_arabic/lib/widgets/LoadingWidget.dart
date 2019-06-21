@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../blocs/models/AsyncData.dart';
+import 'package:learn_arabic/blocs/models/AsyncData.dart';
 
 class LoadingWidget extends StatelessWidget {
   final AsyncData asyncData;

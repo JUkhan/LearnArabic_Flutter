@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../blocs/models/AsyncData.dart';
+import 'package:learn_arabic/blocs/models/AsyncData.dart';
 
 class JErrorWidget extends StatelessWidget {
   final AsyncData asyncData;
@@ -7,7 +7,7 @@ class JErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
-      opacity: asyncData.asyncStatus==AsyncStatus.error?1.0:0.0,
+      opacity: asyncData.asyncStatus == AsyncStatus.error ? 1.0 : 0.0,
       duration: const Duration(milliseconds: 300),
       child: Container(
         alignment: FractionalOffset.center,
@@ -21,12 +21,14 @@ class JErrorWidget extends StatelessWidget {
             ),
             Container(
               padding: new EdgeInsets.only(top: 16.0),
-              child:asyncData.asyncStatus==AsyncStatus.error? Text(
-                asyncData.errorMessage,
-                style: new TextStyle(
-                  color: Colors.red[300],
-                ),
-              ):null,
+              child: asyncData.asyncStatus == AsyncStatus.error
+                  ? Text(
+                      asyncData.errorMessage,
+                      style: new TextStyle(
+                        color: Colors.red[300],
+                      ),
+                    )
+                  : null,
             )
           ],
         ),
