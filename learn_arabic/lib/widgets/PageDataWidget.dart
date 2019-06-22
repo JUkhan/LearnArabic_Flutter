@@ -437,7 +437,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   }
 
   double _getHeight(double height) {
-    final fontSize = 3.0; //as widget.bloc.settingBloc.getFontSize();
+    final fontSize = bookModel.fontSize;
     if (fontSize == 3.0) return height + height * 0.10;
     if (fontSize == 4.0) return height + height * 0.35;
     return height;
@@ -649,13 +649,30 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         style: word == _selectedWord
             ? Util.getTextTheme(_context, direction, bookModel.fontSize)
                 .copyWith(
-                    background: Paint()
+                shadows: [
+                  Shadow(
+                    color: bookModel.theme == Themes.light
+                        ? Colors.yellow
+                        : Colors.blue,
+                    blurRadius: 10.0,
+                    offset: Offset(5.0, 5.0),
+                  ),
+                  Shadow(
+                    color: bookModel.theme == Themes.light
+                        ? Colors.yellowAccent
+                        : Colors.yellow,
+                    blurRadius: 10.0,
+                    offset: Offset(-5.0, 5.0),
+                  ),
+                ],
+                /*background: Paint()
                       ..blendMode = bookModel.theme == Themes.dark
-                          ? BlendMode.darken
+                          ? BlendMode.srcOver
                           : BlendMode.color
                       ..color = bookModel.theme == Themes.light
                           ? Colors.lime[400]
-                          : Colors.purple[400])
+                          : Colors.purple[400]*/
+              )
             : Util.getTextTheme(_context, direction, bookModel.fontSize),
         children: txtSpans);
   }
@@ -744,7 +761,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
           Colors.black12,
           Colors.black54,
           Colors.black54,
-          Colors.black12
+          Colors.black26
         ],
       );
 }
