@@ -1,128 +1,179 @@
-{   
-    "lines": [
-        {
-            "mode":"lesson", "height":50.0,"d":"rtl",
-            "words":[               
-                {"w":"مَا", "e":"what"},
-                {"w":"هَذَا؟", "e":"this"}
-            ]
+{"title":{
+    "mode":"lesson", "d":"rtl", "height":50.0,
+    "words":[
+        {"w":"اَلدَّرْسُ", "e":"lesson"},
+        {"w":"اْلأَوَّلُ", "e":"first"}
+    ]
+},
+"videos":[  
+    {"title":"Bangla Lecture"},         
+    {"id":"wvpnmd0Tid4", "title":"Madinah Arabic Course B1 L1 P1"},
+    {"id":"f9HvGxlT5w0", "title":"Madinah Arabic Course B1 L1 P2"},        
+    {"id":"IF59zX37VO0", "title":"Madinah Arabic Course B1 L1 P3"},
+    {"title":"English Lecture"},    
+    {"id":"RXLwATGwQ-M", "title":"Arabic Alphabets"},
+    {"id":"70QgvVXhJZY", "title":"Arabic vowel signs"},        
+    {"id":"hxmMMGJzofo", "title":"Demonstrative pronoun HADHA هذا"}],
+    "lines":[         
+        
+        {"d":"ltr",
+            "mode":"card",
+            "words":[{"w":"In this lesson we learn the following patterns:"}]
         },
         {
-            "mode":"img-sentence", "img":"house.png",
-            "lines":[
-                {
-                    "d":"rtl",
-                    "words":[                       
-                        {"w":"مَا", "e":"what"},
-                        {"w":"هَذَا؟", "e":"this"}
-                    ]
-                },
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"بَيْتٌ.", "e":"a house"}
-                    ]
-                },
-                {
-                    "d":"rtl",
-                    "words":[                        
-                        {"w":"أَهَذَا", "e":"this", "sp":[0,2]},
-                        {"w":"بَيْتٌ؟", "e":"a house"}
-                    ]
-                },
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"نَعَمُ،", "e":"yes"},
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"بَيْتٌ.", "e":"a house"}
-                    ]
-                }
-            ]
-
+            "mode":"card",
+           "lines":[
+               {"d":"ltr",
+                   "words":[{"w":"What is this?"}]
+               },
+               {                  
+                "words":[{"w":"مَا", "e":"what"},{"w":"هَذَا ؟", "e":"this"}]
+            }
+           ]
         },
         {
-            "mode":"img-sentence", "img":"dress.png",
-            "lines":[
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"مَا", "e":"what"},
-                        {"w":"هَذَا؟", "e":"this"}
-                    ]
-                },
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"قَمِيْصٌ.", "e":"a shirt"}
-                    ]
-                }
-            ]
-
+            "mode":"card",
+           "lines":[
+               {"d":"ltr",
+                   "words":[
+                       {"w":"This is a book"}
+                   ]
+               },
+               {                  
+                "words":[
+                    {"w":"هَذَا", "e":"this"},{"w":"كِتَابٌ .","e":"book"}
+                ]
+            }
+           ]
         },
         {
-            "mode":"img-sentence", "img":"chair.png",
-            "lines":[
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"أَهَدَا", "e":"this", "sp":[0,2]},
-                        {"w":"سَرِيْرٌ؟", "e":"a bed"}
-                    ]
-                },
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"لاَ،", "e":"no"},
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"كُرْسِيٌّ.", "e":"a chair"}
-                    ]
-                }
-            ]
-
+            "mode":"card",
+           "lines":[
+               {"d":"ltr",
+                   "words":[
+                       {"w":"Is this a house?"}
+                   ]
+               },
+               {                  
+                "words":[
+                    {"w":"أهَذَا" , "e":"this", "sp":[0,1]}, {"w":"بَيْتٌ ؟", "e":"house"}
+                ]
+            }
+           ]
         },
         {
-            "mode":"img-sentence", "img":"pen.png",
-            "lines":[
-                {
-                    "d":"rtl",
-                    "words":[                       
-                        {"w":"أَهَدَا", "e":"this", "sp":[0,2]},
-                        {"w":"مِفْتَاحٌ؟", "e":"a key"}
-                    ]
-                },
-                {
-                    "d":"rtl",
-                    "words":[
-                        {"w":"لاَ،", "e":"no"},
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"قَلَمٌ.", "e":"a pen"}
-                    ]
-                }
-            ]
-
+            "mode":"card",
+           "lines":[
+               {"d":"ltr",
+                   "words":[
+                       {"w":"Yes, this is a house"}
+                   ]
+               },
+               {                 
+                "words":[
+                    {"w":"نَعَمْ،", "e":"yes"},
+                    {"w":"هَذَا", "e":"this"},
+                    {"w":"بَيْتٌ .", "e":"house"}
+                ]
+            }
+           ]
         },
         {
-            "mode":"img-sentence", "img":"star.png",
+            "mode":"card",
+           "lines":[
+               {"d":"ltr",
+                   "words":[
+                       {"w":"No, this is a mosque."}
+                   ]
+               },
+               {
+                  
+                "words":[
+                    {"w":"لا،", "e":"no"}, {"w":"هَذَا", "e":"this"}, {"w":"مَسْجِدٌ .", "e":"masjid"}
+                ]
+            }
+           ]
+        },
+        {
+            "mode":"card",
+           "lines":[
+               {"d":"ltr",
+                   "words":[
+                       {"w":"Who is this?"}
+                   ]
+               },
+               {
+                  
+                "words":[
+                    {"w":"مَنْ", "e":"who"},{"w":"هَذَا ؟", "e":"this"}
+                ]
+            }
+           ]
+        },
+        {"d":"ltr",
+            "mode":"lesson", "height":50.0,
+            "words":[{"w":"Note the following:"}]
+        },
+        {
+            "mode":"card",
+           "lines":[
+               {"d":"ltr",
+                   "words":[
+                       {"w":"1. "},
+                       {"w":"هَذَا"},
+                       {"w":" is pronounced هَازَا"},
+                       {"w":" but it is written without the first alif."}
+                   ]
+               }
+               
+           ]
+        },
+        {"d":"ltr",
+            "mode":"card",           
+            "words":[
+                {"w":"2. "},
+                {"w":"Arabic has no word corrosponding to the english \"is\", i.e. arabic has no copula"}               
+            ]             
+           
+        },
+        {"d":"ltr",
+            "mode":"card",           
+            "words":[
+                {"w":"3. "},
+                {"w":"There is no word in Arabic corresponding to \"a\" in English as in \"this is a book\". The n-sound at the end of the Arabic noun(kitabu-n, baitu-n, masjidu-n) is the Arabic indefinite article corresponding to the English \"a\"/\"an\". This n-sound is called tanwin  "}               
+            ]             
+           
+        },
+        {"d":"ltr",
+            "mode":"card",           
+            "words":[
+                {"w":"4. "},
+                {"w":"The particle أ placed at the begining of a statement turns it into a question, e.g."}               
+            ] ,
             "lines":[
-                {
-                    "d":"rtl",
+                {"d":"ltr",
                     "words":[
-                        {"w":"مَا", "e":"what"},
-                        {"w":"هَذَا؟", "e":"this"}
+                        {"w":"This is a house"}
                     ]
                 },
-                {
-                    "d":"rtl",
-                    "words":[                    
-                        {"w":"هَذَا", "e":"this"},
-                        {"w":"نَجْمٌ.", "e":"a star"}
+                {                   
+                 "words":[
+                     {"w":"هَذَا", "e":"this"}, {"w":"بَيْتٌ .", "e":"house"}
+                 ]
+             },
+                {"d":"ltr",
+                    "words":[
+                        {"w":"Is this a house?"}
                     ]
-                }
-            ]
-
+                },
+                {                   
+                 "words":[                    
+                     {"w":"أهَذَا" , "e":"this", "sp":[0,1]}, {"w":"بَيْتٌ ؟", "e":"house"}
+                 ]
+             }
+            ]           
+           
         }
+        
     ]
 }

@@ -1,116 +1,210 @@
 {
-    "lines": [
+    "title": {
+        "mode": "lesson",
+        "height": 50.0,
+        "words": [
+            {
+                "w": "Absolute beginning - part2"
+            }
+        ]
+    },
+    "videos": [
         {
-            "mode": "lesson",
-            "height": 50.0,
-            "d": "ltr",
-            "words": [
-                {
-                    "w": "Vocabulary:"
-                }
-            ]
+            "id": "j-UdzYyFztI",
+            "title": "Surah Fatiha with brief practical tajweed"
         },
         {
-            "mode": "vocab",
-            "d": "rtl",
-            "words": [
-                {
-                    "w": "وَلَدٌ",
-                    "e": "boy"
-                },
-                {
-                    "w": "بَيْتٌ",
-                    "e": "house"
-                },
-                {
-                    "w": "طَالِبٌ",
-                    "e": "student"
-                },
-                {
-                    "w": "مَسْجِدٌ",
-                    "e": "mosque"
-                },
-                {
-                    "w": "رَجُلٌ",
-                    "e": "man"
-                },
-                {
-                    "w": "بَابٌ",
-                    "e": "door"
-                },
-                {
-                    "w": "تَاجِرٌ",
-                    "e": "merchant"
-                },
-                {
-                    "w": "كِتَابٌ",
-                    "e": "book"
-                },
-                {
-                    "w": "كَلْبٌ",
-                    "e": "dog"
-                },
-                {
-                    "w": "قَلَمٌ",
-                    "e": "pen"
-                },
-                {
-                    "w": "قِطٌّ",
-                    "e": "cat"
-                },
-                {
-                    "w": "مِفْتَاحٌ",
-                    "e": "key"
-                },
-                {
-                    "w": "حِمَارٌ",
-                    "e": "donkey"
-                },
-                {
-                    "w": "مَكْتَابٌ",
-                    "e": "writing table"
-                },
-                {
-                    "w": "حِصَانٌ",
-                    "e": "horse"
-                },
-                {
-                    "w": "سَرِيْرٌ",
-                    "e": "bed"
-                },
-                {
-                    "w": "جَمَلٌ",
-                    "e": "camel"
-                },
-                {
-                    "w": "كُرْسِيٌّ",
-                    "e": "chair"
-                },
-                {
-                    "w": "دِيْكٌ",
-                    "e": "rooster"
-                },
-                {
-                    "w": "نَجْمٌ",
-                    "e": "star"
-                },
-                {
-                    "w": "مُدَرِّسٌ",
-                    "e": "teacher"
-                },
-                {
-                    "w": "قَمِيْصٌ",
-                    "e": "shirt"
-                },
-                {
-                    "w": "مِنْدِيْلٌ",
-                    "e": "hand kerchief"
-                },
-                {
-                    "w": "طَبِيْبٌ",
-                    "e": "doctor"
-                }
-            ]
+            "id": "b4EZAzOsxLU",
+            "title": "Surah Naas with brief practical tajweed"
+        },
+        {
+            "id": "yaSRfVmwtBI",
+            "title": "Surah Falaq with brief practical tajweed"
+        },
+        {
+            "id": "KbSQSJJwuL4",
+            "title": "Surah Ikhlaas with brief practical tajweed"
+        },
+        {
+            "id": "gRxBCCdhIhg",
+            "title": "Surah Lahab with brief practical tajweed"
+        },
+        {
+            "id": "6ap9qBkyUxo",
+            "title": "Surah Nasr with brief practical Tajweed"
+        },
+        {
+            "id": "ssxbE7C4GVM",
+            "title": "Surah Kaafiroon with brief practical tajweed"
+        },
+        {
+            "id": "OxTkeGsraOE",
+            "title": "Surah Kawther with brief practical Tajweed"
+        },
+        {
+            "id": "vLmHkWDlQHE",
+            "title": "Surah Maa'oon with brief practical Tajweed"
+        },
+        {
+            "id": "WW2Bsml4caA",
+            "title": "Surah Quraish with brief practical Tajweed"
+        },
+        {
+            "id": "-5AL_dnN6Dk",
+            "title": "Surah Feel with brief practical Tajweed"
+        },
+        {
+            "id": "AhcQMPEcKcw",
+            "title": "Surah Humazah with brief practical Tajweed"
+        },
+        {
+            "id": "ReJ1luZjHTw",
+            "title": "Surah Al-Asr with brief practical tajweed"
+        },
+        {
+            "id": "rGVI5B0Vom8",
+            "title": "Surah at-takaathur with brief practical Tajweed"
+        },
+        {
+            "id": "ExWGmcpfieE",
+            "title": "Surah Al-qaari'ah with brief practical Tajweed"
+        },
+        {
+            "id": "JPokt_kUZj4",
+            "title": "Surah Al-Aadiyaat with brief practical Tajweed"
+        },
+        {
+            "id": "IYOuL7yZeXs",
+            "title": "Surah Az-Zilzaal with brief practical Tajweed"
+        },
+        {
+            "id": "YXhla5xurI4",
+            "title": "Surah Al-Bayyinah Part 1 with brief practical Tajweed"
+        },
+        {
+            "id": "dPVKStKBVOk",
+            "title": "Surah Al-Bayyinah Part 2 with brief practical Tajweed"
+        },
+        {
+            "id": "LXSUQY2EpQ8",
+            "title": "Surah Al-Qadr with brief practical Tajweed"
+        },
+        {
+            "id": "U13TfyafPb8",
+            "title": "Surah Al-Alaq with Brief practical Tajweed"
+        },
+        {
+            "id": "4Cljpvs8zbk",
+            "title": "Surah At-Teen with brief practical Tajweed"
+        },
+        {
+            "id": "4QPsSq4yc98",
+            "title": "Surah Alam Nashrah with brief practical Tajweed"
+        },
+        {
+            "id": "mZssywsef4g",
+            "title": "Surah Ad-Duha with brief practical Tajweed"
+        },
+        {
+            "id": "BhSnfgGhcQs",
+            "title": "Surah Al-Layl Part 1 with brief practical Tajweed"
+        },
+        {
+            "id": "dJnWzna3ikk",
+            "title": "Surah Al-Layl Part 2 with brief practical Tajweed"
+        },
+        {
+            "id": "dpJ4XbAHs6Y",
+            "title": "Surah Ash-Shams with brief practical Tajweed"
+        },
+        {
+            "id": "mCsrqitES_A",
+            "title": "Surah Al-Balad Part 1 with brief practical Tajweed"
+        },
+        {
+            "id": "e162xAPGwIw",
+            "title": "Surah Al-Balad Part 2 with brief practical tajweed"
+        },
+        {
+            "id": "DqXxyI_o4Yk",
+            "title": "Surah Al-Fajr Part 1 with brief practical Tajweed"
+        },
+        {
+            "id": "7jGbilX0nGE",
+            "title": "Surah Al-Fajr Part 2 with brief practical Tajweed"
+        },
+        {
+            "id": "4ziFL305v28",
+            "title": "Surah Al-Fajr Part 3 with brief practical Tajweed"
+        },
+        {
+            "id": "kKRQNAPtIVE",
+            "title": "Surah Al-Ghaushiyah with brief practical Tajweed"
+        },
+        {
+            "id": "1pzQ5kq9PU8",
+            "title": "Surah Al-A'laa with brief practical Tajweed"
+        },
+        {
+            "id": "zoNpEEHF8RA",
+            "title": "Surah At-Taariq with brief Practical Tajweed"
+        },
+        {
+            "id": "phgxMa8PBgA",
+            "title": "Surah Al-Burooj Part 1 with brief practical Tajweed"
+        },
+        {
+            "id": "EsWD-G7OKk8",
+            "title": "Surah Al-Burooj Part 2 with brief practical Tajweed"
+        },
+        {
+            "id": "jtn560eu6bo",
+            "title": "Surah Al-Inshiqaaq Part 1 with brief practical Tajweed"
+        },
+        {
+            "id": "lx9ylJspUJE",
+            "title": "Surah Al-Inshiqaaq Part 2 with brief practical Tajweed"
+        },
+        {
+            "id": "GLKlBS2Knbw",
+            "title": "Surah Al-Mutaffifeen Part 1 with brief practical Tajweed"
+        },
+        {
+            "id": "_DKEJjVloec",
+            "title": "Surah Al-Mutaffifeen Part 2 with brief practical Tajweed"
+        },
+        {
+            "id": "otbKPWoTZOE",
+            "title": "Surah Al-Infitaur with brief practical Tajweed"
+        },
+        {
+            "id": "ztYtA0Eo6Uc",
+            "title": "Surah At-Takweer with brief practical Tajweed"
+        },
+        {
+            "id": "Sug4KWLhwbo",
+            "title": "Surah Abas Part 1 with brief practical Tajweed"
+        },
+        {
+            "id": "YAakl5QYOEs",
+            "title": "Surah Abas part 2 with brief practical Tajweed"
+        },
+        {
+            "id": "Ybo1rbQvD6s",
+            "title": "Surah An-Naa-zi'aat part 1 with brief practical Tajweed"
+        },
+        {
+            "id": "OpGp3R-Sg3E",
+            "title": "Surah An-Naa-zi'aat part 2 with brief practical Tajweed"
+        },
+        {
+            "id": "A5cNvRQ8o6k",
+            "title": "Surah An-Naba Part 1 with brief practical Tajweed"
+        },
+        {
+            "id": "iGjw7z2TkCg",
+            "title": "Surah An-Naba Part 2 with brief practical Tajweed"
         }
-    ]
+    ],
+    "lines": []
 }

@@ -1,139 +1,148 @@
-{
+{    
     "lines": [
         {
-            "mode": "img-sentence",
-            "img": "merchant.png",
-            "lines": [
+            "mode":"lesson", "height":50.0,"d":"rtl",
+            "words":[
+                {"w":"هَذَا", "e":"this"}
+            ]
+        },
+        
+        {
+            "mode":"img-sentence", "d":"rtl", "img":"house.png",
+            "words": [               
+                
                 {
-                    "d": "rtl",
-                    "words": [
-                        {
-                            "w": "مَنْ",
-                            "e": "who"
-                        },
-                        {
-                            "w": "هَذَا؟",
-                            "e": "this"
-                        },
-                        {
-                            "w": "هَذَا",
-                            "e": "this"
-                        },
-                        {
-                            "w": "تَاجِرٌ.",
-                            "e": "a merchant"
-                        }
-                    ]
+                    "w": "هَذَا",
+                    "e": "this"                
+                },
+                {
+                    "w": "بَيْتٌ",
+                    "e": "a house"                                       
+                }
+            ]
+        },
+
+        {
+            "mode":"img-sentence", "d":"rtl", "img":"mosque.png",
+            "words": [               
+                
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "مَسْجِدٌ",
+                    "e": "a mosque"
+                                      
                 }
             ]
         },
         {
-            "mode": "img-sentence",
-            "img": "mosque.png",
-            "lines": [
+            "mode":"img-sentence", "d":"rtl", "img":"door.png",
+            "words": [               
+                
                 {
-                    "d": "rtl",
-                    "words": [
-                        {
-                            "w": "مَا",
-                            "e": "what"
-                        },
-                        {
-                            "w": "هَذَا؟",
-                            "e": "this"
-                        },
-                        {
-                            "w": "هَذَا",
-                            "e": "this"
-                        },
-                        {
-                            "w": "مَسْجِدٌ",
-                            "e": "a mosque"
-                        }
-                    ]
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "بَابٌ",
+                    "e": "a door"
+                                      
                 }
             ]
         },
         {
-            "mode": "img-sentence",
-            "img": "dog.png",
-            "lines": [
+            "mode":"img-sentence", "d":"rtl", "img":"book.png",
+            "words": [               
+                
                 {
-                    "d": "rtl",
-                    "words": [
-                        {
-                            "w": "مَا",
-                            "e": "what"
-                        },
-                        {
-                            "w": "هَذَا؟",
-                            "e": "this"
-                        },
-                        {
-                            "w": "هَذَا",
-                            "e": "this"
-                        },
-                        {
-                            "w": "كَلْبٌ.",
-                            "e": "a dog"
-                        }
-                    ]
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "كِتَابٌ",
+                    "e": "a book"
+                                      
                 }
             ]
         },
         {
-            "mode": "img-sentence",
-            "img": "cat.png",
-            "lines": [
+            "mode":"img-sentence", "d":"rtl", "img":"pen.png",
+            "words": [               
+                
                 {
-                    "d": "rtl",
-                    "words": [
-                        {
-                            "w": "أَهَدَا",
-                            "e": "this",
-                            "sp": [
-                                0,
-                                2
-                            ]
-                        },
-                        {
-                            "w": "كَلْبٌ؟",
-                            "e": "a dog"
-                        },
-                        {
-                            "w": "لاَ،",
-                            "e": "no"
-                        },
-                        {
-                            "w": "هَذَا",
-                            "e": "this"
-                        },
-                        {
-                            "w": "قِطٌّ.",
-                            "e": "a cat"
-                        }
-                    ]
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "قَلَمٌ",
+                    "e": "a pen"
+                                      
                 }
             ]
         },
         {
-            "mode": "img-sentence",
-            "img": "donkey.png",
-            "lines": [
+            "mode":"img-sentence", "d":"rtl", "img":"key.png",
+            "words": [               
+                
                 {
-                    "d": "rtl",
-                    "words": [
-                        {
-                            "w": "هَذَا",
-                            "e": "this"
-                        },
-                        {
-                            "w": "حِمَارٌ",
-                            "e": "a donkey"
-                        }
-                    ]
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "مِفْتَاحٌ",
+                    "e": "a key"
+                                      
+                }
+            ]
+        },
+        {
+            "mode":"img-sentence", "d":"rtl", "img":"table.png",
+            "words": [               
+                
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "مَكْتَبٌ",
+                    "e": "a table"
+                                      
+                }
+            ]
+        },
+        {
+            "mode":"img-sentence", "d":"rtl", "img":"bed.png",
+            "words": [               
+                
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "سَرِيْرٌ",
+                    "e": "a bed"
+                                      
+                }
+            ]
+        },
+        {
+            "mode":"img-sentence", "d":"rtl", "img":"chair.png",
+            "words": [             
+                
+                {
+                    "w": "هَذَا",
+                    "e": "this"                    
+                },
+                {
+                    "w": "كُرْسِيٌّ",
+                    "e": "a chair"
+                                      
                 }
             ]
         }
+
+        
     ]
 }

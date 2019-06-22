@@ -1,148 +1,42 @@
-{    
-    "lines": [
+{
+    "title": {
+        "mode": "lesson",
+        "height": 50.0,
+        "words": [
+            {
+                "w": "Absolute beginning - part3"
+            }
+        ]
+    },
+    "videos": [
         {
-            "mode":"lesson", "height":50.0,"d":"rtl",
-            "words":[
-                {"w":"هَذَا", "e":"this"}
-            ]
-        },
-        
-        {
-            "mode":"img-sentence", "d":"rtl", "img":"house.png",
-            "words": [               
-                
-                {
-                    "w": "هَذَا",
-                    "e": "this"                
-                },
-                {
-                    "w": "بَيْتٌ",
-                    "e": "a house"                                       
-                }
-            ]
-        },
-
-        {
-            "mode":"img-sentence", "d":"rtl", "img":"mosque.png",
-            "words": [               
-                
-                {
-                    "w": "هَذَا",
-                    "e": "this"                    
-                },
-                {
-                    "w": "مَسْجِدٌ",
-                    "e": "a mosque"
-                                      
-                }
-            ]
+            "id": "-k_hVKo8cUc",
+            "title": "1st Juz Surah Baqarah, page 3-4 with brief practical Tajweed"
         },
         {
-            "mode":"img-sentence", "d":"rtl", "img":"door.png",
-            "words": [               
-                
-                {
-                    "w": "هَذَا",
-                    "e": "this"                    
-                },
-                {
-                    "w": "بَابٌ",
-                    "e": "a door"
-                                      
-                }
-            ]
+            "id": "b8fW8229UAY",
+            "title": "1st Juz Surah Baqarah page 4-PART 1 with brief practical Tajweed"
         },
         {
-            "mode":"img-sentence", "d":"rtl", "img":"book.png",
-            "words": [               
-                
-                {
-                    "w": "هَذَا",
-                    "e": "this"                    
-                },
-                {
-                    "w": "كِتَابٌ",
-                    "e": "a book"
-                                      
-                }
-            ]
+            "id": "5Dh2VPV49Qc",
+            "title": "1st Juz Surah Baqarah page-4 PART 2 with brief practical Tajweed"
         },
         {
-            "mode":"img-sentence", "d":"rtl", "img":"pen.png",
-            "words": [               
-                
-                {
-                    "w": "هَذَا",
-                    "e": "this"                    
-                },
-                {
-                    "w": "قَلَمٌ",
-                    "e": "a pen"
-                                      
-                }
-            ]
+            "id": "MgZ8MdZgxik",
+            "title": "1st Juz Surah Baqarah page-5 PART 1 with brief practical Tajweed"
         },
         {
-            "mode":"img-sentence", "d":"rtl", "img":"key.png",
-            "words": [               
-                
-                {
-                    "w": "هَذَا",
-                    "e": "this"                    
-                },
-                {
-                    "w": "مِفْتَاحٌ",
-                    "e": "a key"
-                                      
-                }
-            ]
+            "id": "w2j3Fi1yGww",
+            "title": "1st Juz Surah Baqarah, page-5 PART 2 with brief practical Tajweed"
         },
         {
-            "mode":"img-sentence", "d":"rtl", "img":"table.png",
-            "words": [               
-                
-                {
-                    "w": "هَذَا",
-                    "e": "this"                    
-                },
-                {
-                    "w": "مَكْتَبٌ",
-                    "e": "a table"
-                                      
-                }
-            ]
+            "id": "3SegS6R85LA",
+            "title": "1st Juz Surah Baqarah, page-6 PART 1 with brief practical Tajweed"
         },
         {
-            "mode":"img-sentence", "d":"rtl", "img":"bed.png",
-            "words": [               
-                
-                {
-                    "w": "هَذَا",
-                    "e": "this"                    
-                },
-                {
-                    "w": "سَرِيْرٌ",
-                    "e": "a bed"
-                                      
-                }
-            ]
-        },
-        {
-            "mode":"img-sentence", "d":"rtl", "img":"chair.png",
-            "words": [             
-                
-                {
-                    "w": "هَذَا",
-                    "e": "this"                    
-                },
-                {
-                    "w": "كُرْسِيٌّ",
-                    "e": "a chair"
-                                      
-                }
-            ]
+            "id": "8r92aYi8qWo",
+            "title": "1st Juz Surah Baqarah, page-7 PART 1 with brief practical Tajweed"
         }
-
-        
-    ]
+    ],
+    "lines": []
 }
