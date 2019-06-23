@@ -60,6 +60,10 @@ class BookState extends BaseState<BookModel> {
         state.tts = action.payload;
         AppService.saveInPref(state.tts, AppService.prefkey_tts);
         return BookModel.clone(state);
+      case ActionTypes.SET_LANDSCAPE:
+        state.isLandscape = action.payload;
+        AppService.saveInPref(state.isLandscape, AppService.prefkey_landscape);
+        return BookModel.clone(state);
       case ActionTypes.SET_THEME:
         state.theme = action.payload;
         AppService.saveInPref(state.theme.index, AppService.prefkey_theme);

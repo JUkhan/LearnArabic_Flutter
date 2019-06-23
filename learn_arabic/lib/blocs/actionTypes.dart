@@ -15,6 +15,7 @@ class ActionTypes {
   static const String SET_WORDSPACE = 'wordSpace';
   static const String SET_FONTSIZE = 'fontSize';
   static const String SET_TTS = 'tts';
+  static const String SET_LANDSCAPE = 'landscape';
   static const String SET_THEME = 'theme';
   static const String BOOK_MARK_TO_PAGE = 'bmtp';
 }

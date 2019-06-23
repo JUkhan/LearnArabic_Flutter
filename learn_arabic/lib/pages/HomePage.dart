@@ -29,8 +29,7 @@ class HomePage extends StatelessWidget {
       ),
       body: StreamBuilder<String>(
           initialData: '',
-          stream:
-              store().select<BookModel>('book').map((book) => book.lessonInfo),
+          stream: select<BookModel>('book').map((book) => book.lessonInfo),
           builder: (_, snapshot) {
             if (snapshot.data.isNotEmpty && isFirstTime) {
               //if (!isRedirected) {

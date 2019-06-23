@@ -21,6 +21,7 @@ class BookModel {
     book.scrollOffset = obj.scrollOffset;
     book.selectedWord = obj.selectedWord;
     book.theme = obj.theme;
+    book.isLandscape = obj.isLandscape;
     return book;
   }
 
@@ -33,6 +34,7 @@ class BookModel {
   String bookPath = '';
   BookMarks bm = BookMarks();
   bool tts = false;
+  bool isLandscape = false;
   AsyncData<BookInfo> lessons;
   AsyncData<JPage> pageData;
   JWord selectedWord;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:async';
 
@@ -190,4 +191,21 @@ class Util {
 
     return Theme.of(context).textTheme.title;
   }
+
+  static setDeviceOrientation(bool isLandscape) {
+    if (isLandscape) {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ]);
+    } else {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitDown,
+        DeviceOrientation.portraitUp,
+      ]);
+    }
+  }
+
+  static String videoId = '';
+  static String videoTitle = '';
 }

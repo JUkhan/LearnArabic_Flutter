@@ -57,6 +57,7 @@ class AppService {
   static const String prefkey_bookMarks = '#BM#';
   static const String prefkey_totalLesson = '#tl#';
   static const String prefkey_tts = '#tts#';
+  static const String prefkey_landscape = 'landscape';
   static const String prefkey_wordIndex = "wi";
   static const String prefkey_scrollOffset = "soff";
   static const String prefkey_wordSpace = "wordSpace";

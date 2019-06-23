@@ -17,15 +17,16 @@ class _SettingPageState extends State<SettingPage> {
   double fontSize = 2.0;
   double wordSpace = 1.0;
   bool tts = false;
+  bool isLandscape = false;
   StreamSubscription streamSubscription;
   @override
   void initState() {
-    streamSubscription =
-        store().select<BookModel>('book').take(1).listen((book) {
+    streamSubscription = select<BookModel>('book').take(1).listen((book) {
       setState(() {
         fontSize = book.fontSize;
         wordSpace = book.wordSpace;
         tts = book.tts;
+        isLandscape = book.isLandscape;
       });
     });
     super.initState();
@@ -65,9 +66,18 @@ class _SettingPageState extends State<SettingPage> {
               //radius: 50.0,
               backgroundImage: AssetImage('assets/images/slide.png'),
             ),
-            title: Text("How to navigate book's page?"),
+            title: Text("How to navigate book's pages?"),
             subtitle: Text(
                 'Ans: Please slide your finger from\nright to left / left to right'),
+          )),
+          Card(
+              child: ListTile(
+            leading: Icon(isLandscape ? Icons.landscape : Icons.portrait),
+            title: Text(isLandscape ? 'Landscape' : 'Protrait'),
+            trailing: Switch(
+              value: isLandscape,
+              onChanged: landscapeValueChanged,
+            ),
           )),
         ],
       ),
@@ -75,9 +85,17 @@ class _SettingPageState extends State<SettingPage> {
   }
 
   ttsValueChanged(bool value) {
-    dispatch(actionType: ActionTypes.SET_TTS, payload: value);
+    dispatch(ActionTypes.SET_LANDSCAPE, value);
     setState(() {
       tts = value;
+    });
+  }
+
+  landscapeValueChanged(bool value) {
+    dispatch(ActionTypes.SET_LANDSCAPE, value);
+    Util.setDeviceOrientation(value);
+    setState(() {
+      isLandscape = value;
     });
   }
 
@@ -94,7 +112,7 @@ class _SettingPageState extends State<SettingPage> {
     setState(() {
       fontSize = value;
     });
-    dispatch(actionType: ActionTypes.SET_FONTSIZE, payload: value);
+    dispatch(ActionTypes.SET_FONTSIZE, value);
   }
 
   wordSpaceValueChange(double value) {
@@ -108,7 +126,7 @@ class _SettingPageState extends State<SettingPage> {
     setState(() {
       wordSpace = value;
     });
-    dispatch(actionType: ActionTypes.SET_WORDSPACE, payload: value);
+    dispatch(ActionTypes.SET_WORDSPACE, value);
   }
 
   Widget getWordSpace(BuildContext context) {
@@ -176,8 +194,7 @@ class _SettingPageState extends State<SettingPage> {
               groupValue: DynamicThemeWidget.of(context).theme,
               onChanged: (value) {
                 DynamicThemeWidget.of(context).setTheme(Themes.light);
-                dispatch(
-                    actionType: ActionTypes.SET_THEME, payload: Themes.light);
+                dispatch(ActionTypes.SET_THEME, Themes.light);
               },
               title: new Text("Light"),
             ),
@@ -186,8 +203,7 @@ class _SettingPageState extends State<SettingPage> {
               groupValue: DynamicThemeWidget.of(context).theme,
               onChanged: (value) {
                 DynamicThemeWidget.of(context).setTheme(Themes.dark);
-                dispatch(
-                    actionType: ActionTypes.SET_THEME, payload: Themes.dark);
+                dispatch(ActionTypes.SET_THEME, Themes.dark);
               },
               title: new Text("Dark"),
             ),

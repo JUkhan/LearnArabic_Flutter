@@ -11,7 +11,7 @@ import 'package:learn_arabic/widgets/LoadingWidget.dart';
 import 'package:learn_arabic/widgets/PageDataWidget.dart';
 import 'package:rxdart/rxdart.dart';
 
-Observable<BookModel> book$() => store().select<BookModel>('book');
+Observable<BookModel> book$() => select<BookModel>('book');
 
 class BookPage extends StatelessWidget {
   final pageTitle$ = book$().map((book) => book.pageTitle);
@@ -19,7 +19,7 @@ class BookPage extends StatelessWidget {
   final bookMark$ = book$().map((book) => book.hasBookMark);
 
   void bookMarkHandler() {
-    dispatch(actionType: ActionTypes.ADD_BOOKMARK);
+    dispatch(ActionTypes.ADD_BOOKMARK);
   }
 
   @override

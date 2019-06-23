@@ -19,10 +19,8 @@ class BookEffects extends BaseEffect {
         .map((data) => Action(
             type: ActionTypes.LOOD_BOOKInfo, payload: AsyncData.loaded(data)))
         .doOnError((error, stacktrace) {
-      dispatch(
-          actionType: ActionTypes.LOOD_BOOKInfo,
-          payload:
-              AsyncData.error('Insha Allah, coming soon!', data: BookInfo()));
+      dispatch(ActionTypes.LOOD_BOOKInfo,
+          AsyncData.error('Insha Allah, coming soon!', data: BookInfo()));
     });
   }
 
@@ -39,9 +37,8 @@ class BookEffects extends BaseEffect {
     return action$
         .ofType(ActionTypes.SET_PAGE_No)
         .map((action) {
-          dispatch(
-              actionType: ActionTypes.SET_PAGE_DATA,
-              payload: AsyncData.loading(data: JPage(lines: [], videos: [])));
+          dispatch(ActionTypes.SET_PAGE_DATA,
+              AsyncData.loading(data: JPage(lines: [], videos: [])));
           return action;
         })
         .withLatestFrom<BookModel, String>(store$.select('book'),
@@ -51,8 +48,8 @@ class BookEffects extends BaseEffect {
             type: ActionTypes.SET_PAGE_DATA, payload: AsyncData.loaded(data)))
         .doOnError((error, stacktrace) {
           dispatch(
-              actionType: ActionTypes.SET_PAGE_DATA,
-              payload: AsyncData.error('Insha Allah, coming soon!',
+              ActionTypes.SET_PAGE_DATA,
+              AsyncData.error('Insha Allah, coming soon!',
                   data: JPage(lines: [], videos: [])));
         });
   }
@@ -68,8 +65,8 @@ class BookEffects extends BaseEffect {
             type: ActionTypes.SET_PAGE_DATA, payload: AsyncData.loaded(data)))
         .doOnError((error, stacktrace) {
       dispatch(
-          actionType: ActionTypes.SET_PAGE_DATA,
-          payload: AsyncData.error('Insha Allah, coming soon!',
+          ActionTypes.SET_PAGE_DATA,
+          AsyncData.error('Insha Allah, coming soon!',
               data: JPage(lines: [], videos: [])));
     });
   }
@@ -145,7 +142,9 @@ class BookEffects extends BaseEffect {
         await AppService.getFromPref<bool>(AppService.prefkey_tts, false);
     int theme = await AppService.getFromPref<int>(AppService.prefkey_theme, 0);
     book.theme = theme == 0 ? Themes.light : Themes.dark;
-
+    book.isLandscape =
+        await AppService.getFromPref<bool>(AppService.prefkey_landscape, false);
+    Util.setDeviceOrientation(book.isLandscape);
     return book;
   }
 
@@ -158,8 +157,7 @@ class BookEffects extends BaseEffect {
 
     AppService.saveInPref(book.pageIndex, AppService.prefkey_pageIndex);
     AppService.saveInPref(book.lessonIndex, AppService.prefkey_lessonIndex);
-    dispatch(
-        actionType: ActionTypes.CHANGE_AFTER_PAGE_CALCULATION, payload: book);
+    dispatch(ActionTypes.CHANGE_AFTER_PAGE_CALCULATION, book);
     var pdata = await AppService.loadPageData(
         '${book.bookPath}/lesson${book.lessonIndex}/page${book.pageIndex}');
     return pdata;

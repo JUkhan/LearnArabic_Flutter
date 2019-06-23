@@ -6,6 +6,7 @@ import 'package:learn_arabic/pages/BookPage.dart';
 import 'package:learn_arabic/pages/BookmarkPage.dart';
 import 'package:learn_arabic/pages/HomePage.dart';
 import 'package:learn_arabic/pages/Pages.dart';
+import 'package:learn_arabic/pages/PlayerPage.dart';
 import 'package:learn_arabic/pages/SettingPage.dart';
 import 'package:learn_arabic/widgets/DynamicThemeWidget.dart';
 
@@ -41,7 +42,8 @@ class _AppState extends State<App> {
                     '/lessons': (_) => BookLessonsPage(),
                     '/setting': (_) => SettingPage(),
                     '/page': (_) => Pages(),
-                    '/markbook': (_) => BookMarkPage()
+                    '/markbook': (_) => BookMarkPage(),
+                    '/player': (_) => PlayerPage()
                   },
                 )));
   }

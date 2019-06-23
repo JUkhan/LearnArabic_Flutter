@@ -66,7 +66,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     _scrollController = ScrollController();
 
     _selectedWord = null;
-    bookModelSubscription = store().select<BookModel>('book').listen((data) {
+    bookModelSubscription = select<BookModel>('book').listen((data) {
       this.bookModel = data;
       wordSpace = data.getWordSpace;
       if (data.tts) {
@@ -122,9 +122,8 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
   _selectWord(JWord word) {
     _selectedWord = word;
-    dispatch(
-        actionType: ActionTypes.SELECT_WORD,
-        payload: {'word': word, 'offset': _scrollController.offset});
+    dispatch(ActionTypes.SELECT_WORD,
+        {'word': word, 'offset': _scrollController.offset});
   }
 
   double startPx;
@@ -144,7 +143,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
             SlideRoute(
                 widget: BookPage(), sildeDirection: SlideDirection.Right));
 
-        dispatch(actionType: ActionTypes.SLIDE_PAGE, payload: true);
+        dispatch(ActionTypes.SLIDE_PAGE, true);
       } else if (startPx > dx && (startPx - dx) > 100) {
         _hasPage = true;
         Navigator.pushReplacement(
@@ -152,7 +151,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
             SlideRoute(
                 widget: BookPage(), sildeDirection: SlideDirection.Left));
 
-        dispatch(actionType: ActionTypes.SLIDE_PAGE, payload: false);
+        dispatch(ActionTypes.SLIDE_PAGE, false);
       }
     }
   }
@@ -191,7 +190,10 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
             leading: Icon(Icons.play_circle_filled),
             title: Text(v.title),
             onTap: () {
-              Util.launchUrl('https://youtube.com/embed/${v.id}');
+              Util.videoId = v.id;
+              Util.videoTitle = v.title;
+              Navigator.pushNamed(context, '/player');
+              // Util.launchUrl('https://youtube.com/embed/${v.id}');
             },
           ),
         ));

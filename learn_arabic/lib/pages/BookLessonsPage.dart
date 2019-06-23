@@ -9,8 +9,7 @@ import 'package:learn_arabic/widgets/JErrorWidget.dart';
 import 'package:learn_arabic/widgets/LoadingWidget.dart';
 
 class BookLessonsPage extends StatelessWidget {
-  final bookInfo$ =
-      store().select<BookModel>('book').map((data) => data.lessons);
+  final bookInfo$ = select<BookModel>('book').map((data) => data.lessons);
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +62,7 @@ class LessonWidget extends StatelessWidget {
               //selected: bloc.bookBloc.selectedLessonIndex == index + 1,
               onTap: () {
                 //bloc.bookBloc.moveToLesson(index + 1);
-                dispatch(
-                    actionType: ActionTypes.SET_LESSON_NO, payload: index + 1);
+                dispatch(ActionTypes.SET_LESSON_NO, index + 1);
                 Navigator.pushReplacementNamed(context, '/page');
               },
             ),

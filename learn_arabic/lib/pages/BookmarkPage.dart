@@ -22,7 +22,7 @@ class _BookMarkPageState extends State<BookMarkPage> {
           opacity: 1.0,
           duration: const Duration(milliseconds: 1000),
           child: StreamBuilder(
-            stream: store().select<BookModel>('book'),
+            stream: select<BookModel>('book'),
             builder: (BuildContext context, AsyncSnapshot<BookModel> snapshot) {
               if (snapshot.hasData) {
                 return ListView(
@@ -54,9 +54,7 @@ class _BookMarkPageState extends State<BookMarkPage> {
             subtitle: Text('Page $page'),
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
-              dispatch(
-                  actionType: ActionTypes.BOOK_MARK_TO_PAGE,
-                  payload: [lesson.id, page]);
+              dispatch(ActionTypes.BOOK_MARK_TO_PAGE, [lesson.id, page]);
               Navigator.pushReplacementNamed(context, '/book');
             },
           ));

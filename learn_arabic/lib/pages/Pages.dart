@@ -5,10 +5,8 @@ import 'package:learn_arabic/blocs/models/bookModel.dart';
 import 'package:learn_arabic/widgets/DrawerWidget.dart';
 
 class Pages extends StatelessWidget {
-  final pageTitle$ =
-      store().select<BookModel>('book').map((book) => book.pageTitle);
-  final totalPage$ =
-      store().select<BookModel>('book').map((book) => book.totalPage);
+  final pageTitle$ = select<BookModel>('book').map((book) => book.pageTitle);
+  final totalPage$ = select<BookModel>('book').map((book) => book.totalPage);
   @override
   Widget build(BuildContext context) {
     //final bloc = AppStateProvider.of(context);
@@ -39,9 +37,7 @@ class Pages extends StatelessWidget {
                     //selected: bloc.bookBloc.selectedLessonIndex==index+1,
                     onTap: () {
                       //bloc.bookBloc.moveToPage(index + 1);
-                      dispatch(
-                          actionType: ActionTypes.SET_PAGE_No,
-                          payload: index + 1);
+                      dispatch(ActionTypes.SET_PAGE_No, index + 1);
                       Navigator.pushReplacementNamed(context, '/book');
                     },
                   ),

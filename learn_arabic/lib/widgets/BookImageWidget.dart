@@ -11,9 +11,7 @@ class BookImageWidget extends StatefulWidget {
 
 class _BookImageWidgetState extends State<BookImageWidget> {
   void _onTab() {
-    dispatch(
-        actionType: ActionTypes.CHANGE_BOOK_NAME,
-        payload: '/${widget.bookName}');
+    dispatch(ActionTypes.CHANGE_BOOK_NAME, '/${widget.bookName}');
     Navigator.pushReplacementNamed(context, '/lessons');
   }
 

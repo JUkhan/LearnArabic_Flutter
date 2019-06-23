@@ -5,10 +5,8 @@ import 'package:learn_arabic/blocs/models/bookModel.dart';
 import 'package:learn_arabic/blocs/util.dart';
 
 class DrawerWidget extends StatelessWidget {
-  final bookName$ =
-      store().select<BookModel>('book').map((book) => book.bookName);
-  final lessonInfo$ =
-      store().select<BookModel>('book').map((book) => book.lessonInfo);
+  final bookName$ = select<BookModel>('book').map((book) => book.bookName);
+  final lessonInfo$ = select<BookModel>('book').map((book) => book.lessonInfo);
 
   @override
   Widget build(BuildContext context) {
@@ -74,8 +72,7 @@ class DrawerWidget extends StatelessWidget {
       leading: Icon(icon),
       onTap: () {
         if (navigateTo.startsWith('/book')) {
-          dispatch(
-              actionType: ActionTypes.CHANGE_BOOK_NAME, payload: navigateTo);
+          dispatch(ActionTypes.CHANGE_BOOK_NAME, navigateTo);
           Navigator.pushReplacementNamed(context, '/lessons');
         } else if (navigateTo.startsWith('/rateApps'))
           Util.launchUrl(
