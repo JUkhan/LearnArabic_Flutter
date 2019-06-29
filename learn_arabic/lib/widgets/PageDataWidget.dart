@@ -11,6 +11,7 @@ import 'package:learn_arabic/blocs/models/bookModel.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:learn_arabic/blocs/util.dart';
 import 'package:learn_arabic/pages/BookPage.dart';
+import 'package:learn_arabic/pages/PlayerPage.dart';
 import 'package:learn_arabic/widgets/SlideRoute.dart';
 
 class PageDataWidget extends StatefulWidget {
@@ -67,7 +68,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
     _selectedWord = null;
     bookModelSubscription = select<BookModel>('book').listen((data) {
-      this.bookModel = data;
+      bookModel = data;
       wordSpace = data.getWordSpace;
       if (data.tts) {
         flutterTts = FlutterTts();
@@ -187,12 +188,20 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       } else {
         list.add(Card(
           child: ListTile(
-            leading: Icon(Icons.play_circle_filled),
+            leading: Icon(
+              Icons.play_circle_filled,
+              color: bookModel.videoId == v.id ? Colors.red : null,
+            ),
             title: Text(v.title),
             onTap: () {
-              Util.videoId = v.id;
-              Util.videoTitle = v.title;
-              Navigator.pushNamed(context, '/player');
+              dispatch(ActionTypes.SET_VIDEO_ID, v.id);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => PlayerPage(
+                            video: v,
+                            videoList: page.videos,
+                          )));
               // Util.launchUrl('https://youtube.com/embed/${v.id}');
             },
           ),

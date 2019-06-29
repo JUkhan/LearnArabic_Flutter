@@ -72,6 +72,10 @@ class BookState extends BaseState<BookModel> {
         state.lessonIndex = action.payload[0];
         state.pageIndex = action.payload[1];
         return BookModel.clone(state);
+      case ActionTypes.SET_VIDEO_ID:
+        state.videoId = action.payload;
+        AppService.saveInPref(state.videoId, AppService.prefkey_videoid);
+        return BookModel.clone(state);
       default:
         return state;
     }

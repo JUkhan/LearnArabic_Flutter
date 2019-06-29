@@ -205,7 +205,4 @@ class Util {
       ]);
     }
   }
-
-  static String videoId = '';
-  static String videoTitle = '';
 }

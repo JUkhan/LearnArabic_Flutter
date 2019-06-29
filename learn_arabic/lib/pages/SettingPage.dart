@@ -85,7 +85,7 @@ class _SettingPageState extends State<SettingPage> {
   }
 
   ttsValueChanged(bool value) {
-    dispatch(ActionTypes.SET_LANDSCAPE, value);
+    dispatch(ActionTypes.SET_TTS, value);
     setState(() {
       tts = value;
     });

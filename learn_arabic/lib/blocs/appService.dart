@@ -63,4 +63,5 @@ class AppService {
   static const String prefkey_wordSpace = "wordSpace";
   static const String prefkey_fontSize = "fontSize";
   static const String prefkey_theme = "theme";
+  static const String prefkey_videoid = "vid";
 }

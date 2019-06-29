@@ -22,6 +22,7 @@ class BookModel {
     book.selectedWord = obj.selectedWord;
     book.theme = obj.theme;
     book.isLandscape = obj.isLandscape;
+    book.videoId = obj.videoId;
     return book;
   }
 
@@ -32,6 +33,7 @@ class BookModel {
   double scrollOffset;
   String wordIndex;
   String bookPath = '';
+  String videoId = '';
   BookMarks bm = BookMarks();
   bool tts = false;
   bool isLandscape = false;

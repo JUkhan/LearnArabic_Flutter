@@ -144,6 +144,8 @@ class BookEffects extends BaseEffect {
     book.theme = theme == 0 ? Themes.light : Themes.dark;
     book.isLandscape =
         await AppService.getFromPref<bool>(AppService.prefkey_landscape, false);
+    book.videoId =
+        await AppService.getFromPref<String>(AppService.prefkey_videoid, '');
     Util.setDeviceOrientation(book.isLandscape);
     return book;
   }

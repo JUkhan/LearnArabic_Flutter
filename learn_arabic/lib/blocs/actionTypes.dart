@@ -17,5 +17,6 @@ class ActionTypes {
   static const String SET_TTS = 'tts';
   static const String SET_LANDSCAPE = 'landscape';
   static const String SET_THEME = 'theme';
+  static const String SET_VIDEO_ID = 'vid';
   static const String BOOK_MARK_TO_PAGE = 'bmtp';
 }
