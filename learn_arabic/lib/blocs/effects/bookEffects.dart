@@ -11,11 +11,11 @@ import 'package:learn_arabic/blocs/util.dart';
 import 'package:rxdart/rxdart.dart';
 
 class BookEffects extends BaseEffect {
-  Observable<Action> effectForChangeBookName(Actions action$, Store store$) {
+  Stream<Action> effectForChangeBookName(Actions action$, Store store$) {
     return action$
-        .ofType(ActionTypes.CHANGE_BOOK_NAME)
+        .whereType(ActionTypes.CHANGE_BOOK_NAME)
         .flatMap((action) =>
-            Observable.fromFuture(AppService.loadBookInfo(action.payload)))
+            Stream.fromFuture(AppService.loadBookInfo(action.payload)))
         .map((data) => Action(
             type: ActionTypes.LOOD_BOOKInfo, payload: AsyncData.loaded(data)))
         .doOnError((error, stacktrace) {
@@ -24,18 +24,18 @@ class BookEffects extends BaseEffect {
     });
   }
 
-  Observable<Action> effectForSetLessonNo(Actions action$, Store store$) {
+  Stream<Action> effectForSetLessonNo(Actions action$, Store store$) {
     return action$
-        .ofType(ActionTypes.SET_LESSON_NO)
+        .whereType(ActionTypes.SET_LESSON_NO)
         .withLatestFrom<BookModel, String>(
             store$.select('book'), (a, b) => '${b.bookPath}/lesson${a.payload}')
-        .flatMap((path) => Observable.fromFuture(AppService.getTotalPage(path)))
+        .flatMap((path) => Stream.fromFuture(AppService.getTotalPage(path)))
         .map((data) => Action(type: ActionTypes.SET_TOTAL_PAGE, payload: data));
   }
 
-  Observable<Action> effectForSetPageNo(Actions action$, Store store$) {
+  Stream<Action> effectForSetPageNo(Actions action$, Store store$) {
     return action$
-        .ofType(ActionTypes.SET_PAGE_No)
+        .whereType(ActionTypes.SET_PAGE_No)
         .map((action) {
           dispatch(ActionTypes.SET_PAGE_DATA,
               AsyncData.loading(data: JPage(lines: [], videos: [])));
@@ -43,7 +43,7 @@ class BookEffects extends BaseEffect {
         })
         .withLatestFrom<BookModel, String>(store$.select('book'),
             (a, b) => '${b.bookPath}/lesson${b.lessonIndex}/page${a.payload}')
-        .flatMap((path) => Observable.fromFuture(AppService.loadPageData(path)))
+        .flatMap((path) => Stream.fromFuture(AppService.loadPageData(path)))
         .map((data) => Action(
             type: ActionTypes.SET_PAGE_DATA, payload: AsyncData.loaded(data)))
         .doOnError((error, stacktrace) {
@@ -54,13 +54,13 @@ class BookEffects extends BaseEffect {
         });
   }
 
-  Observable<Action> effectForSlidePage(Actions action$, Store store$) {
+  Stream<Action> effectForSlidePage(Actions action$, Store store$) {
     return action$
-        .ofType(ActionTypes.SLIDE_PAGE)
+        .whereType(ActionTypes.SLIDE_PAGE)
         .withLatestFrom<BookModel, Map<String, dynamic>>(
             store$.select('book'), (a, b) => {'book': b, 'isPrev': a.payload})
-        .flatMap((map) => Observable.fromFuture(
-            calculatePageMove(map['book'], map['isPrev'])))
+        .flatMap((map) =>
+            Stream.fromFuture(calculatePageMove(map['book'], map['isPrev'])))
         .map((data) => Action(
             type: ActionTypes.SET_PAGE_DATA, payload: AsyncData.loaded(data)))
         .doOnError((error, stacktrace) {
@@ -71,21 +71,21 @@ class BookEffects extends BaseEffect {
     });
   }
 
-  Observable<Action> effectForAddBookmark(Actions action$, Store store$) {
+  Stream<Action> effectForAddBookmark(Actions action$, Store store$) {
     return action$
-        .ofType(ActionTypes.ADD_BOOKMARK)
+        .whereType(ActionTypes.ADD_BOOKMARK)
         .withLatestFrom<BookModel, BookModel>(
             store$.select('book'), (a, b) => b)
         .flatMap((book) {
       AppService.saveInPref(book.bm.toJson(), AppService.prefkey_bookMarks);
-      return Observable.empty();
+      return Stream.empty();
     });
   }
 
-  Observable<Action> effectForInit(Actions action$, Store store$) {
+  Stream<Action> effectForInit(Actions action$, Store store$) {
     return action$
-        .ofType(ActionTypes.INIT)
-        .flatMap((book) => Observable.fromFuture(syncWithPref(BookModel())))
+        .whereType(ActionTypes.INIT)
+        .flatMap((book) => Stream.fromFuture(syncWithPref(BookModel())))
         .map((book) =>
             Action(type: ActionTypes.SYNC_WITH_PREFERENCE, payload: book))
         .doOnError((error, stacktrace) {
@@ -93,7 +93,7 @@ class BookEffects extends BaseEffect {
     });
   }
 
-  List<Observable<Action>> registerEffects(Actions action$, Store store$) {
+  List<Stream<Action>> registerEffects(Actions action$, Store store$) {
     return [
       effectForChangeBookName(action$, store$),
       effectForSetLessonNo(action$, store$),

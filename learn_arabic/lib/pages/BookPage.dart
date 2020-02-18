@@ -9,9 +9,8 @@ import 'package:learn_arabic/widgets/DrawerWidget.dart';
 import 'package:learn_arabic/widgets/JErrorWidget.dart';
 import 'package:learn_arabic/widgets/LoadingWidget.dart';
 import 'package:learn_arabic/widgets/PageDataWidget.dart';
-import 'package:rxdart/rxdart.dart';
 
-Observable<BookModel> book$() => select<BookModel>('book');
+Stream<BookModel> book$() => select<BookModel>('book');
 
 class BookPage extends StatelessWidget {
   final pageTitle$ = book$().map((book) => book.pageTitle);
@@ -41,9 +40,9 @@ class BookPage extends StatelessWidget {
                 initialData: false,
                 stream: bookMark$,
                 builder: (_, snapshot) => Icon(
-                      Icons.star,
-                      color: snapshot.data ? Colors.pink[400] : null,
-                    ),
+                  Icons.star,
+                  color: snapshot.data ? Colors.pink[400] : null,
+                ),
               ))
         ], //Icon(Icons.star, color: Colors.pink[400],),)],
       ),
@@ -387,7 +386,7 @@ class BookPage extends StatelessWidget {
       'America': 'আমেরিকা',
       'Switzerland': 'সুইজর্ল��্ড',
       'knife': 'ছুরি',
-      'Germany': 'জার্মানি',
+      'Germany': 'জার��মানি',
       'England': 'ইংল্যান্ড',
       'hospital': 'হাসপাতাল',
       'behind': 'পিছনে',

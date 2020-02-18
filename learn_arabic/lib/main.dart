@@ -11,3 +11,6 @@ void main() {
 //export PATH="$PATH:/Users/jukhan/development/flutter/bin"
 //flutter build apk
 //flutter install
+//flutter build apk --target-platform android-arm,android-arm64,android-x64 --split-per-abi
+//flutter build appbundle --target-platform android-arm,android-arm64,android-x64
+// /Users/jukhan/key.jks
