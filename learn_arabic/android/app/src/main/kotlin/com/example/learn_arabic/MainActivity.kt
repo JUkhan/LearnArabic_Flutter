@@ -1,4 +1,4 @@
-package com.example.learn_arabic
+package com.example.learnarabic
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
