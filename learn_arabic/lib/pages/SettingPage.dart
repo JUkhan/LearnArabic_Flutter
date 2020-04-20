@@ -1,9 +1,7 @@
-import 'dart:async';
-
 import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_arabic/blocs/actionTypes.dart';
-import 'package:learn_arabic/blocs/models/bookModel.dart';
+import 'package:learn_arabic/blocs/models/MemoModel.dart';
 import 'package:learn_arabic/blocs/util.dart';
 import 'package:learn_arabic/widgets/DrawerWidget.dart';
 import 'package:learn_arabic/widgets/DynamicThemeWidget.dart';
@@ -18,15 +16,15 @@ class _SettingPageState extends State<SettingPage> {
   double wordSpace = 1.0;
   bool tts = false;
   bool isLandscape = false;
-  StreamSubscription streamSubscription;
+  //StreamSubscription streamSubscription;
   @override
   void initState() {
-    streamSubscription = select<BookModel>('book').take(1).listen((book) {
+    select<MemoModel>('memo').take(1).listen((memo) {
       setState(() {
-        fontSize = book.fontSize;
-        wordSpace = book.wordSpace;
-        tts = book.tts;
-        isLandscape = book.isLandscape;
+        fontSize = memo.fontSize;
+        wordSpace = memo.wordSpace;
+        tts = memo.tts;
+        isLandscape = memo.isLandscape;
       });
     });
     super.initState();
@@ -34,7 +32,7 @@ class _SettingPageState extends State<SettingPage> {
 
   @override
   void dispose() {
-    streamSubscription.cancel();
+    //streamSubscription.cancel();
     super.dispose();
   }
 

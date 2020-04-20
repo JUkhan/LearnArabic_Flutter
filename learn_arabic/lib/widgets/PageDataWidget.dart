@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:learn_arabic/blocs/actionTypes.dart';
 import 'package:learn_arabic/blocs/models/AsyncData.dart';
 import 'package:learn_arabic/blocs/models/BookInfo.dart';
+import 'package:learn_arabic/blocs/models/MemoModel.dart';
 import 'package:learn_arabic/blocs/models/bookModel.dart';
 
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:learn_arabic/blocs/util.dart';
 import 'package:learn_arabic/pages/BookPage.dart';
 import 'package:learn_arabic/pages/PlayerPage.dart';
+import 'package:learn_arabic/widgets/CircleWidget.dart';
 import 'package:learn_arabic/widgets/SlideRoute.dart';
 
 class PageDataWidget extends StatefulWidget {
@@ -24,14 +26,15 @@ class PageDataWidget extends StatefulWidget {
 }
 
 class _ViewPageDataWidgetState extends State<PageDataWidget> {
-  final _gestureList = List<TapGestureRecognizer>();
+  //final _gestureList = List<TapGestureRecognizer>();
   ScrollController _scrollController;
-  JWord _selectedWord;
+  //JWord _selectedWord;
   BuildContext _context;
   FlutterTts flutterTts;
-  BookModel bookModel;
-  StreamSubscription bookModelSubscription;
-  int _gestureCounter = 0;
+  BookModel _bookModel;
+  StreamSubscription _bookModelSubscription, _memoSubscription;
+
+  //int _gestureCounter = 0;
   var _nums = [
     '٠',
     '١',
@@ -61,21 +64,29 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     '٢٥'
   ];
   var wordSpace = '';
+  MemoModel _memo;
   @override
   void initState() {
     super.initState();
     _scrollController = ScrollController();
-
-    _selectedWord = null;
-    bookModelSubscription = select<BookModel>('book').listen((data) {
-      bookModel = data;
+    _scrollController.addListener(_scrollListener);
+    _bookModelSubscription = select<BookModel>('book').listen((data) {
+      _bookModel = data;
+    });
+    _memoSubscription = select<MemoModel>('memo').listen((data) {
+      _memo = data;
       wordSpace = data.getWordSpace;
-      if (data.tts) {
+      if (data.tts && flutterTts == null) {
         flutterTts = FlutterTts();
         initTts();
       }
     });
   }
+
+  bool hasSelectedWord(int id) => _memo?.wordIndex == getWordIndex(id);
+
+  String getWordIndex(int id) =>
+      '$id${_bookModel.lessonIndex}${_bookModel.pageIndex}';
 
   initTts() async {
     await flutterTts.setLanguage("en-US");
@@ -86,9 +97,10 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
   @override
   void dispose() {
-    bookModelSubscription.cancel();
-    _gestureList.forEach((ges) => ges.dispose());
-    _gestureList.clear();
+    _bookModelSubscription.cancel();
+    _memoSubscription.cancel();
+    //_gestureList.forEach((ges) => ges.dispose());
+    //_gestureList.clear();
 
     if (flutterTts != null) {
       flutterTts.stop();
@@ -99,32 +111,39 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
   _speak(String text) async {
     await flutterTts.speak(text);
+    //var lan = await flutterTts.getLanguages;
+    //print(lan);
     setState(() {});
   }
 
   _getGesture(JWord word) {
-    if (_gestureCounter < _gestureList.length) {
+    /*if (_gestureCounter < _gestureList.length) {
       var temp = _gestureList[_gestureCounter];
       _gestureCounter++;
       return temp;
-    }
-    var temp = TapGestureRecognizer();
-    temp.onTap = () {
-      _selectWord(word);
-      if (!_isArabic(word.english) && bookModel.tts)
-        _speak(word.english);
-      else
-        setState(() {});
-    };
-    _gestureList.add(temp);
-    _gestureCounter++;
-    return temp;
+    }*/
+    return TapGestureRecognizer()
+      ..onTap = () {
+        _selectWord(word);
+        if (!_isArabic(word.english) && _memo.tts)
+          _speak(word.english);
+        else
+          setState(() {});
+      };
+    //_gestureList.add(temp);
+    //_gestureCounter++;
   }
 
   _selectWord(JWord word) {
-    _selectedWord = word;
     dispatch(ActionTypes.SELECT_WORD,
-        {'word': word, 'offset': _scrollController.offset});
+        {'word': word, 'wordIndex': getWordIndex(word.id)});
+  }
+
+  _scrollListener() {
+    dispatch(ActionTypes.SET_SCROLL_OFFSET, {
+      'scroll': _scrollController.offset,
+      'refPerScroll': '${_bookModel.lessonIndex}${_bookModel.pageIndex}'
+    });
   }
 
   double startPx;
@@ -159,7 +178,6 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
   @override
   Widget build(BuildContext context) {
-    _gestureCounter = 0;
     _context = context;
     return GestureDetector(
       child: ListView(
@@ -173,11 +191,25 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   }
 
   List<Widget> _getListItem(JPage page) {
+    Future.delayed(Duration(seconds: 1), () {
+      if (_memo.scrollOffset > 0.0 &&
+          _memo.pageIndexPerScroll ==
+              '${_bookModel.lessonIndex}${_bookModel.pageIndex}') {
+        _scrollController.removeListener(_scrollListener);
+        _scrollController?.animateTo(_memo.scrollOffset,
+            duration: new Duration(seconds: 1), curve: Curves.ease);
+        Future.delayed(Duration(seconds: 1), () {
+          _scrollController.addListener(_scrollListener);
+        });
+      }
+    });
+
     final list = List<Widget>();
 
     if (page == null) {
       return list;
     }
+
     if (page.title != null) {
       list.add(_getLessonMode(page.title));
     }
@@ -188,21 +220,28 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       } else {
         list.add(Card(
           child: ListTile(
-            leading: Icon(
+            /*leading: Icon(
               Icons.play_circle_filled,
-              color: bookModel.videoId == v.id ? Colors.red : null,
+              color: _memo.videoId == v.id ? Colors.red : null,
+            )*/
+            leading: CircleProgressWidget(
+              vid: v.id,
+              theme: _memo.theme,
             ),
             title: Text(v.title),
-            onTap: () {
+            onTap: () async {
+              var id = _memo.videoId;
               dispatch(ActionTypes.SET_VIDEO_ID, v.id);
-              Navigator.push(
+
+              await Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => PlayerPage(
                             video: v,
                             videoList: page.videos,
+                            lessRanSeconds:
+                                id == v.id ? _memo.lessRanSeconds : 0,
                           )));
-              // Util.launchUrl('https://youtube.com/embed/${v.id}');
             },
           ),
         ));
@@ -352,14 +391,14 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       if (line.lineno == 1) {
         spans.add(TextSpan(
             text: _nums[lineNo] + ')' + wordSpace,
-            style: Util.getTextTheme(_context, 'ltr', bookModel.fontSize)));
+            style: Util.getTextTheme(_context, 'ltr', _memo.fontSize)));
       }
       //before
       if (line.mode == 'b') {
         spans.add(TextSpan(
             text: '..........' + wordSpace,
-            style: Util.getTextTheme(
-                _context, line.direction, bookModel.fontSize)));
+            style:
+                Util.getTextTheme(_context, line.direction, _memo.fontSize)));
       }
       spans.addAll(
           l.words.map((word) => _getTextSpan(word, line.direction)).toList());
@@ -414,7 +453,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         maxLines: 7,
         textDirection: _getDirection(line.direction),
         text: TextSpan(
-            style: Theme.of(_context).textTheme.title,
+            style: Theme.of(_context).textTheme.headline,
             text: '${_nums[count]}) ',
             children: line.lines[i].words
                 .map((word) => _getTextSpan(word, line.direction))
@@ -428,7 +467,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
           maxLines: 7,
           textDirection: _getDirection(line.direction),
           text: TextSpan(
-              style: Theme.of(_context).textTheme.title,
+              style: Theme.of(_context).textTheme.headline,
               text: '${_nums[count]}) ',
               children: line.lines[i].words
                   .map((word) => _getTextSpan(word, line.direction))
@@ -448,7 +487,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   }
 
   double _getHeight(double height) {
-    final fontSize = bookModel.fontSize;
+    final fontSize = _memo.fontSize;
     if (fontSize == 3.0) return height + height * 0.10;
     if (fontSize == 4.0) return height + height * 0.35;
     return height;
@@ -538,14 +577,13 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       height: _getHeight(line.height),
       width: double.infinity,
       decoration: BoxDecoration(
-          gradient: bookModel.theme == Themes.light
-              ? _getGradient()
-              : _getGradient2()),
+          gradient:
+              _memo.theme == Themes.light ? _getGradient() : _getGradient2()),
       child: Center(
         child: RichText(
           textDirection: _getDirection(line.direction),
           text: TextSpan(
-              style: Theme.of(_context).textTheme.title,
+              style: Theme.of(_context).textTheme.headline,
               children: line.words
                   .map<TextSpan>((word) => _getTextSpan(word, line.direction))
                   .toList()),
@@ -571,13 +609,9 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
   TextSpan _getTextSpan(JWord word, String direction) {
     if (word.english.isNotEmpty) {
-      if (_selectedWord == null && bookModel.hasSelectedWord(word.id)) {
-        _selectedWord = word;
-        bookModel.selectedWord = word;
-
-        if (bookModel.scrollOffset > 0.0) {
-          _scrollController.animateTo(bookModel.scrollOffset,
-              duration: new Duration(seconds: 1), curve: Curves.ease);
+      if (hasSelectedWord(word.id)) {
+        if (_memo.selectedWord == null) {
+          dispatch(ActionTypes.SELECT_WORD_ONLY, word);
         }
       }
     }
@@ -655,36 +689,28 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
           hasColor: false));
     }
     //Colors.grey[400]:Colors.black.withOpacity(0.9)
-
+    //gesture = word.english.isNotEmpty ? _getGesture(word) : null;
     return TextSpan(
-        style: word == _selectedWord
-            ? Util.getTextTheme(_context, direction, bookModel.fontSize)
-                .copyWith(
+        style: hasSelectedWord(word.id)
+            ? Util.getTextTheme(_context, direction, _memo.fontSize).copyWith(
                 shadows: [
                   Shadow(
-                    color: bookModel.theme == Themes.light
+                    color: _memo.theme == Themes.light
                         ? Colors.yellow
                         : Colors.blue,
                     blurRadius: 10.0,
                     offset: Offset(5.0, 5.0),
                   ),
                   Shadow(
-                    color: bookModel.theme == Themes.light
+                    color: _memo.theme == Themes.light
                         ? Colors.yellowAccent
                         : Colors.yellow,
                     blurRadius: 10.0,
                     offset: Offset(-5.0, 5.0),
                   ),
                 ],
-                /*background: Paint()
-                      ..blendMode = bookModel.theme == Themes.dark
-                          ? BlendMode.srcOver
-                          : BlendMode.color
-                      ..color = bookModel.theme == Themes.light
-                          ? Colors.lime[400]
-                          : Colors.purple[400]*/
               )
-            : Util.getTextTheme(_context, direction, bookModel.fontSize),
+            : Util.getTextTheme(_context, direction, _memo.fontSize),
         children: txtSpans);
   }
 

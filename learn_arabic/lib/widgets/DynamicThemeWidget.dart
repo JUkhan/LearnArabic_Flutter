@@ -14,8 +14,8 @@ class AppTheme {
         backgroundColor: Colors.grey[800],
         textTheme: originalTextTheme.copyWith(
             body1: originalBody1.copyWith(decorationColor: Colors.transparent),
-            title:
-                originalTextTheme.title.copyWith(color: Colors.indigo[100])));
+            headline: originalTextTheme.headline
+                .copyWith(color: Colors.indigo[100])));
   }
 
   static get light {
@@ -36,8 +36,8 @@ class DynamicThemeWidget extends StatefulWidget {
   DynamicThemeWidgetState createState() => new DynamicThemeWidgetState();
 
   static DynamicThemeWidgetState of(BuildContext context) {
-    return context
-        .ancestorStateOfType(const TypeMatcher<DynamicThemeWidgetState>());
+    //return context.ancestorStateOfType(const TypeMatcher<DynamicThemeWidgetState>());
+    return context.findAncestorStateOfType();
   }
 }
 

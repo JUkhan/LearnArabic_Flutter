@@ -1,0 +1,54 @@
+{
+  "title": {
+    "mode": "lesson",
+    "height": 50.0,
+    "words": [
+      {
+        "w": "Absolute beginner - part1"
+      }
+    ]
+  },
+  "videos": [
+    {
+      "id": "jlrIGb_MFZE",
+      "title": "Lesson 1"
+    },
+    {
+      "id": "lC4NIFTNs0o",
+      "title": "Lesson 1 Exercise 1"
+    },
+    {
+      "id": "tvWzh3yYULs",
+      "title": "Lesson 1 Exercise 2"
+    },
+    {
+      "id": "Aff9zKXWspg",
+      "title": "Lesson 2"
+    },
+    {
+      "id": "F2aoUMrh2I0",
+      "title": "Lesson 2 Exercise 1"
+    },
+    {
+      "id": "tjalW90AN_Q",
+      "title": "Lesson 2 Exercise 2"
+    },
+    {
+      "id": "HQ5OLrUjwLQ",
+      "title": "Lesson 3"
+    },
+    {
+      "id": "0eq937U14zI",
+      "title": "Lesson 3 Exercise 1"
+    },
+    {
+      "id": "R5y9cBvu2HQ",
+      "title": "Letters Part1 (after lesson 3)"
+    },
+    {
+      "id": "phrRnHwQfwE",
+      "title": "Letters Part2 (after lesson 3)"
+    }
+  ],
+  "lines": []
+}

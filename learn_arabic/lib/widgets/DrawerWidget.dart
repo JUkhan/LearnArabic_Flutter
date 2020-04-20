@@ -18,7 +18,9 @@ class DrawerWidget extends StatelessWidget {
                 initialData: '',
                 //stream: block.bookBloc.bookName,
                 stream: bookName$,
-                builder: (_, snapshot) => Text(snapshot.data ?? ''),
+                builder: (_, snapshot) => Text(
+                    snapshot.data?.replaceFirst('0', 'Absolute Beginners') ??
+                        ''),
               ),
               accountEmail: StreamBuilder<String>(
                   initialData: '',
@@ -40,6 +42,12 @@ class DrawerWidget extends StatelessWidget {
                 backgroundImage: AssetImage('assets/launcher.png'),
               )),
           getTile(context, 'Home', Icons.home, '/'),
+          getTile(
+            context,
+            'Absolute Beginners',
+            Icons.book,
+            '/book0',
+          ),
           getTile(
             context,
             'Madinah Arabic Reader Book 1',

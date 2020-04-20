@@ -21,6 +21,8 @@ class BookState extends BaseState<BookModel> {
       case ActionTypes.SET_LESSON_NO:
         state.lessonIndex = action.payload;
         state.pageIndex = 0;
+        AppService.saveInPref(action.payload, AppService.prefkey_lessonIndex);
+        AppService.saveInPref(1, AppService.prefkey_pageIndex);
         yield BookModel.clone(state);
         break;
       case ActionTypes.SET_TOTAL_PAGE:
@@ -29,6 +31,7 @@ class BookState extends BaseState<BookModel> {
         break;
       case ActionTypes.SET_PAGE_No:
         state.pageIndex = action.payload;
+        AppService.saveInPref(action.payload, AppService.prefkey_pageIndex);
         yield BookModel.clone(state);
         break;
       case ActionTypes.SET_PAGE_DATA:
@@ -36,7 +39,7 @@ class BookState extends BaseState<BookModel> {
         yield BookModel.clone(state);
         break;
       case ActionTypes.SYNC_WITH_PREFERENCE:
-        yield action.payload;
+        yield action.payload['book'];
         break;
       case ActionTypes.CHANGE_AFTER_PAGE_CALCULATION:
         yield BookModel.clone(action.payload);
@@ -47,7 +50,7 @@ class BookState extends BaseState<BookModel> {
             BookMarks.getJson(state.bm), AppService.prefkey_bookMarks);
         yield BookModel.clone(state);
         break;
-      case ActionTypes.SELECT_WORD:
+      /*case ActionTypes.SELECT_WORD:
         state.wordIndex =
             '${action.payload['word'].id}${state.lessonIndex}${state.pageIndex}';
         state.scrollOffset = action.payload['offset'];
@@ -82,17 +85,17 @@ class BookState extends BaseState<BookModel> {
         state.theme = action.payload;
         AppService.saveInPref(state.theme.index, AppService.prefkey_theme);
         yield BookModel.clone(state);
-        break;
+        break;*/
       case ActionTypes.BOOK_MARK_TO_PAGE:
         state.lessonIndex = action.payload[0];
         state.pageIndex = action.payload[1];
         yield BookModel.clone(state);
         break;
-      case ActionTypes.SET_VIDEO_ID:
+      /*case ActionTypes.SET_VIDEO_ID:
         state.videoId = action.payload;
         AppService.saveInPref(state.videoId, AppService.prefkey_videoid);
         yield BookModel.clone(state);
-        break;
+        break;*/
       default:
         yield state;
     }

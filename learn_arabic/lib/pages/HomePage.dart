@@ -43,6 +43,7 @@ class HomePage extends StatelessWidget {
               padding: EdgeInsets.all(10.0),
               childAspectRatio: 7.0 / 9.0,
               children: <Widget>[
+                BookImageWidget('book0'),
                 BookImageWidget('book1'),
                 BookImageWidget('book2'),
                 BookImageWidget('book3'),

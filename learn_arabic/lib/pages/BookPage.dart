@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:learn_arabic/blocs/actionTypes.dart';
 import 'package:learn_arabic/blocs/models/AsyncData.dart';
 import 'package:learn_arabic/blocs/models/BookInfo.dart';
+import 'package:learn_arabic/blocs/models/MemoModel.dart';
 import 'package:learn_arabic/blocs/models/bookModel.dart';
 import 'package:learn_arabic/blocs/util.dart';
 import 'package:learn_arabic/widgets/DrawerWidget.dart';
@@ -10,12 +11,15 @@ import 'package:learn_arabic/widgets/JErrorWidget.dart';
 import 'package:learn_arabic/widgets/LoadingWidget.dart';
 import 'package:learn_arabic/widgets/PageDataWidget.dart';
 
-Stream<BookModel> book$() => select<BookModel>('book');
+Stream<BookModel> _book$ = select<BookModel>('book');
 
 class BookPage extends StatelessWidget {
-  final pageTitle$ = book$().map((book) => book.pageTitle);
-  final pageData$ = book$().map((book) => book.pageData);
-  final bookMark$ = book$().map((book) => book.hasBookMark);
+  final pageTitle$ = _book$.map((book) => book.pageTitle);
+  final pageData$ = _book$.map((book) => book.pageData);
+  final bookMark$ = _book$.map((book) => book.hasBookMark);
+  final selectedWord$ = select<MemoModel>('memo')
+      .map((memo) => memo.selectedWord)
+      .where((book) => book != null);
 
   void bookMarkHandler() {
     dispatch(ActionTypes.ADD_BOOKMARK);
@@ -77,10 +81,7 @@ class BookPage extends StatelessWidget {
           Expanded(
               child: StreamBuilder<JWord>(
             initialData: JWord.empty(),
-            stream: store()
-                .select<BookModel>('book')
-                .map((book) => book.selectedWord)
-                .where((book) => book != null),
+            stream: selectedWord$,
             builder: (_, snapshot) => snapshot.data.word.isEmpty
                 ? const Text('')
                 : Text(
@@ -96,10 +97,7 @@ class BookPage extends StatelessWidget {
           )),
           StreamBuilder<JWord>(
               initialData: JWord.empty(),
-              stream: store()
-                  .select<BookModel>('book')
-                  .map((book) => book.selectedWord)
-                  .where((word) => word != null),
+              stream: selectedWord$,
               builder: (_, snapshot) {
                 if (snapshot.data.word.isNotEmpty) {
                   return IconButton(
@@ -150,6 +148,7 @@ class BookPage extends StatelessWidget {
     ));
     _setSplitTextWidget(context, word, widgets);
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: widgets,
     );
   }

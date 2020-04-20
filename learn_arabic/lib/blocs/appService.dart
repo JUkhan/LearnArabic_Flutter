@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AppService {
   static Future<T> getFromPref<T>(String key, T defaultValue) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
     return (prefs.get(key) as T) ?? defaultValue;
   }
 
@@ -24,8 +25,9 @@ class AppService {
   }
 
   static Future<JPage> loadPageData(String path) {
-    Util.initId();
+    //Util.initId();
     return rootBundle.loadString('assets$path.json').then((data) {
+      Util.initId();
       const JsonCodec json = const JsonCodec();
       var res = JPage.fromJson(json.decode(data));
       return res;
@@ -36,7 +38,6 @@ class AppService {
     return rootBundle.loadString('assets$path/info.json').then((data) {
       const JsonCodec json = const JsonCodec();
       var res = BookInfo.fromJson(json.decode(data));
-      //totalLesson = res.lessons;
       saveInPref(path, prefkey_bookName);
       saveInPref(res.lessons, prefkey_totalLesson);
       return res;
@@ -64,4 +65,5 @@ class AppService {
   static const String prefkey_fontSize = "fontSize";
   static const String prefkey_theme = "theme";
   static const String prefkey_videoid = "vid";
+  static const String prefkey_less_ran_times = 'slrt';
 }

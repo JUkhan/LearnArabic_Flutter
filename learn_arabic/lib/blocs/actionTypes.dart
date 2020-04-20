@@ -9,7 +9,7 @@ class ActionTypes {
   static const String CHANGE_AFTER_PAGE_CALCULATION = 'capc';
   static const String SLIDE_PAGE = 'slidePage';
   static const String ADD_BOOKMARK = 'addBookmark';
-  static const String INIT = '@INIT';
+  static const String INIT = '@@INIT';
   static const String SYNC_WITH_PREFERENCE = 'syncWithPref';
   static const String SELECT_WORD = 'select_word';
   static const String SET_WORDSPACE = 'wordSpace';
@@ -19,4 +19,8 @@ class ActionTypes {
   static const String SET_THEME = 'theme';
   static const String SET_VIDEO_ID = 'vid';
   static const String BOOK_MARK_TO_PAGE = 'bmtp';
+  static const String BOOK_MARK_DIFF_BOOK = 'bmodb';
+  static const String SAVE_LESS_RUNNING_TIME = 'slrt';
+  static const String SET_SCROLL_OFFSET = 'ssoffset';
+  static const String SELECT_WORD_ONLY = 'swo';
 }

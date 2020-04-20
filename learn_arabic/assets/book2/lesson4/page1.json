@@ -1,28 +1,55 @@
 {
-    "videos":[
-        {"title":"Bangla Lecture"},
-        {"id":"YLBOQsnr240", "title":"Madinah Arabic Course B1 L11"},
-        {"title":"English Lecture"},
-        {"id":"4l-qhHrZedw", "title":"LEARNING MUBTADA KHABAR"}
-    ],
-    "lines": [
-       {"d":"ltr", "words":[{"w":"In this lesson we learn the following:\n\n1. The plural of أَنْتَ \"you\" (masculine singular) is أَنْتُمْ "}]},
-       {"mode":"text", "words":[{"w":"Who are you"}]},
-       {"mode":"text", "words":[{"w":"مَنْ أَنْتَ؟"}]},
-       {"d":"ltr", "words":[{"w":"The plural oh كَ \"your\" is كُمْ, e.g. "}]},
-       {"mode":"text","d":"ltr","words":[{"w":"Brothers, where is your house?"}]},
-       {"mode":"text", "words":[{"w":"أَيْنَ بَيْتُكُمْ يَا إِخْوَانُ؟"}]},
-       {"d":"ltr","words":[{"w":"2.  The plural of أَنَا \"I\" نَحْنُ . Like أَنَا its plural نَحْنُ refers to both the masculine and feminine, e.g "}]},
-       {"mode":"text","words":[{"w":"We are Muslims (masculine)"}]},
-       {"mode":"text","words":[{"w":"نَحْنُ مُسْلِمُونَ."}]},
-       {"mode":"text","words":[{"w":"We are Muslims (feminine)"}]},
-       {"mode":"text","words":[{"w":"نَحْنُ مُسْلِمَاةٌ."}]},
-       {"d":"ltr","words":[{"w":"We have learnt that بَيْتِي means \"my house\". Now we learn that \"our house\" بَيْتُنَا  e.g."}]},
-       {"d":"ltr","mode":"text","words":[{"w":"Allah is you Loard."}]},
-       {"mode":"text","words":[{"w":"اللهُ رَبُّنَا."}]},
-       {"d":"ltr","mode":"text","words":[{"w":"Islam is our faith."}]},
-       {"mode":"text","words":[{"w":"الإسْلَامُ دِيْنُنَا."}]},
-       {"mode":"text","words":[{"w":"We are Muslims (masculine)"}]}
-       
-       ]
+  "videos": [
+    { "title": "Bangla Lecture" },
+    { "id": "YLBOQsnr240", "title": "Madinah Arabic Course B1 L11" },
+    { "title": "English Lecture" },
+    { "id": "4l-qhHrZedw", "title": "LEARNING MUBTADA KHABAR" }
+  ],
+  "lines": [
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "In this lesson we learn the following:\n\n1. The plural of أَنْتَ \"you\" (masculine singular) is أَنْتُمْ "
+        }
+      ]
+    },
+    { "mode": "text", "words": [{ "w": "Who are you" }] },
+    { "mode": "text", "words": [{ "w": "مَنْ أَنْتَ؟" }] },
+    {
+      "d": "ltr",
+      "words": [{ "w": "The plural of كَ \"your\" is كُمْ, e.g. " }]
+    },
+    {
+      "mode": "text",
+      "d": "ltr",
+      "words": [{ "w": "Brothers, where is your house?" }]
+    },
+    { "mode": "text", "words": [{ "w": "أَيْنَ بَيْتُكُمْ يَا إِخْوَانُ؟" }] },
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "2.  The plural of أَنَا \"I\" نَحْنُ . Like أَنَا its plural نَحْنُ refers to both the masculine and feminine, e.g "
+        }
+      ]
+    },
+    { "mode": "text", "words": [{ "w": "We are Muslims (masculine)" }] },
+    { "mode": "text", "words": [{ "w": "نَحْنُ مُسْلِمُونَ." }] },
+    { "mode": "text", "words": [{ "w": "We are Muslims (feminine)" }] },
+    { "mode": "text", "words": [{ "w": "نَحْنُ مُسْلِمَاةٌ." }] },
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "We have learnt that بَيْتِي means \"my house\". Now we learn that \"our house\" بَيْتُنَا  e.g."
+        }
+      ]
+    },
+    { "d": "ltr", "mode": "text", "words": [{ "w": "Allah is you Loard." }] },
+    { "mode": "text", "words": [{ "w": "اللهُ رَبُّنَا." }] },
+    { "d": "ltr", "mode": "text", "words": [{ "w": "Islam is our faith." }] },
+    { "mode": "text", "words": [{ "w": "الإسْلَامُ دِيْنُنَا." }] },
+    { "mode": "text", "words": [{ "w": "We are Muslims (masculine)" }] }
+  ]
 }

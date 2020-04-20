@@ -26,7 +26,8 @@ class _BookMarkPageState extends State<BookMarkPage> {
             builder: (BuildContext context, AsyncSnapshot<BookModel> snapshot) {
               if (snapshot.hasData) {
                 return ListView(
-                  children: _getItems(snapshot.data.books, context),
+                  children: _getItems(
+                      snapshot.data.books, snapshot.data.bookPath, context),
                 );
               }
               return Container();
@@ -35,7 +36,8 @@ class _BookMarkPageState extends State<BookMarkPage> {
         ));
   }
 
-  List<Widget> _getItems(List<BMBook> books, BuildContext context) {
+  List<Widget> _getItems(
+      List<BMBook> books, String bookPath, BuildContext context) {
     var items = List<Widget>();
     for (var book in books) {
       items.add(ListTile(
@@ -54,7 +56,12 @@ class _BookMarkPageState extends State<BookMarkPage> {
             subtitle: Text('Page $page'),
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
-              dispatch(ActionTypes.BOOK_MARK_TO_PAGE, [lesson.id, page]);
+              if (bookPath == '/book${book.id}')
+                dispatch(
+                    ActionTypes.BOOK_MARK_TO_PAGE, [lesson.id, page, book.id]);
+              else
+                dispatch(ActionTypes.BOOK_MARK_DIFF_BOOK,
+                    [book.id, page, lesson.id]);
               Navigator.pushReplacementNamed(context, '/book');
             },
           ));

@@ -6,6 +6,7 @@ import 'package:learn_arabic/blocs/appService.dart';
 import 'package:learn_arabic/blocs/models/AsyncData.dart';
 import 'package:learn_arabic/blocs/models/BookInfo.dart';
 import 'package:learn_arabic/blocs/models/Bookmarks.dart';
+import 'package:learn_arabic/blocs/models/MemoModel.dart';
 import 'package:learn_arabic/blocs/models/bookModel.dart';
 import 'package:learn_arabic/blocs/util.dart';
 import 'package:rxdart/rxdart.dart';
@@ -93,6 +94,20 @@ class BookEffects extends BaseEffect {
     });
   }
 
+  Stream<Action> effectForBookMerkToDiffBook(Actions action$, Store store$) {
+    return action$
+        .whereType(ActionTypes.BOOK_MARK_DIFF_BOOK)
+        .withLatestFrom<BookModel, Map<String, dynamic>>(
+            store$.select('book'), (a, b) => {'book': b, 'payload': a.payload})
+        .flatMap((map) =>
+            Stream.fromFuture(loadBookInfo(map['payload'], map['book'])))
+        .map((book) =>
+            Action(type: ActionTypes.SYNC_WITH_PREFERENCE, payload: book))
+        .doOnError((error, stacktrace) {
+      print(error.toString());
+    });
+  }
+
   List<Stream<Action>> registerEffects(Actions action$, Store store$) {
     return [
       effectForChangeBookName(action$, store$),
@@ -101,10 +116,24 @@ class BookEffects extends BaseEffect {
       effectForSlidePage(action$, store$),
       effectForInit(action$, store$),
       effectForAddBookmark(action$, store$),
+      effectForBookMerkToDiffBook(action$, store$)
     ];
   }
 
-  Future<BookModel> syncWithPref(BookModel book) async {
+  Future<BookModel> loadBookInfo(payload, BookModel bmodel) async {
+    bmodel.bookPath = '/book${payload[0]}';
+    BookInfo bookInfo = await AppService.loadBookInfo(bmodel.bookPath);
+    bmodel.totalLesson = bookInfo.lessons;
+    bmodel.pageIndex = payload[1];
+    bmodel.lessonIndex = payload[2];
+    bmodel.totalPage = await AppService.getTotalPage(
+        '${bmodel.bookPath}/lesson${bmodel.lessonIndex}');
+    bmodel.pageData = AsyncData.loaded(await AppService.loadPageData(
+        '${bmodel.bookPath}/lesson${bmodel.lessonIndex}/page${bmodel.pageIndex}'));
+    return BookModel.clone(bmodel);
+  }
+
+  Future<Map<String, dynamic>> syncWithPref(BookModel book) async {
     String bmData =
         await AppService.getFromPref<String>(AppService.prefkey_bookMarks, '');
     if (bmData.isNotEmpty) {
@@ -129,25 +158,44 @@ class BookEffects extends BaseEffect {
       book.pageData = AsyncData.loaded(await AppService.loadPageData(
           '${book.bookPath}/lesson${book.lessonIndex}/page${book.pageIndex}'));
     }
-    book.wordIndex =
+
+    var wordIndex =
         await AppService.getFromPref<String>(AppService.prefkey_wordIndex, '');
 
-    book.scrollOffset = await AppService.getFromPref<double>(
-        AppService.prefkey_scrollOffset, 0.0);
-    book.fontSize =
+    var _scrollOffset = (await AppService.getFromPref<String>(
+            AppService.prefkey_scrollOffset, '0.0-00'))
+        .split('-');
+    var fontSize =
         await AppService.getFromPref<double>(AppService.prefkey_fontSize, 2.0);
-    book.wordSpace =
+    var wordSpace =
         await AppService.getFromPref<double>(AppService.prefkey_wordSpace, 1.0);
-    book.tts =
-        await AppService.getFromPref<bool>(AppService.prefkey_tts, false);
-    int theme = await AppService.getFromPref<int>(AppService.prefkey_theme, 0);
-    book.theme = theme == 0 ? Themes.light : Themes.dark;
-    book.isLandscape =
+    var tts = await AppService.getFromPref<bool>(AppService.prefkey_tts, false);
+    int _theme = await AppService.getFromPref<int>(AppService.prefkey_theme, 0);
+    var theme = _theme == 0 ? Themes.light : Themes.dark;
+
+    var isLandscape =
         await AppService.getFromPref<bool>(AppService.prefkey_landscape, false);
-    book.videoId =
+    var videoId =
         await AppService.getFromPref<String>(AppService.prefkey_videoid, '');
-    Util.setDeviceOrientation(book.isLandscape);
-    return book;
+    Util.setDeviceOrientation(isLandscape);
+    var vtp = (await AppService.getFromPref<String>(
+            AppService.prefkey_less_ran_times, '0-0.0'))
+        .split('-');
+    return {
+      'book': book,
+      'memo': MemoModel(
+          wordIndex: wordIndex,
+          scrollOffset: double.parse(_scrollOffset[0]),
+          pageIndexPerScroll: _scrollOffset[1],
+          fontSize: fontSize,
+          wordSpace: wordSpace,
+          tts: tts,
+          theme: theme,
+          isLandscape: isLandscape,
+          lessRanSeconds: int.parse(vtp[0]),
+          videoProgress: double.parse(vtp[1]),
+          videoId: videoId)
+    };
   }
 
   Future<JPage> calculatePageMove(BookModel book, bool isPerv) async {

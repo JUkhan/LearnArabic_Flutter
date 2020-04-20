@@ -1,0 +1,54 @@
+{
+  "title": {
+    "mode": "lesson",
+    "height": 50.0,
+    "words": [
+      {
+        "w": "Absolute beginner - part1"
+      }
+    ]
+  },
+  "videos": [
+    {
+      "id": "bFZpyxwIeFw",
+      "title": "Lesson 21 Exercise 2"
+    },
+    {
+      "id": "y145R36wks4",
+      "title": "Lesson -21 Exercise 3"
+    },
+    {
+      "id": "EF8wNJxnMeo",
+      "title": "Lesson 22 Part 1"
+    },
+    {
+      "id": "z1pMwYoPpqk",
+      "title": "Lesson 22 Part 2"
+    },
+    {
+      "id": "KhGxK7z8BXc",
+      "title": "Lesson 22 Part 3"
+    },
+    {
+      "id": "WxBlmFX7ETc",
+      "title": "Lesson 23"
+    },
+    {
+      "id": "2pc4leifa8k",
+      "title": "Lesson 24"
+    },
+    {
+      "id": "jNSOhshS9zM",
+      "title": "Lesson 25 Part 1"
+    },
+    {
+      "id": "3_umigLrIBE",
+      "title": "Lesson 25 Part 2"
+    },
+    {
+      "id": "1up5m2r2p_Y",
+      "title": "Lesson 25 Part 3"
+    }
+  ],
+  "lines": []
+}
