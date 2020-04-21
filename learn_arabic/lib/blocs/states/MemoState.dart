@@ -73,6 +73,16 @@ class MemoState extends BaseState<MemoModel> {
       case ActionTypes.SELECT_WORD_ONLY:
         yield state.copyWith(selectedWord: action.payload);
         break;
+      case ActionTypes.LECTURE_CATEGORY:
+        AppService.saveInPref<int>(
+            action.payload, ActionTypes.LECTURE_CATEGORY);
+        yield state.copyWith(lectureCategory: action.payload);
+        break;
+      case ActionTypes.WORDMEANING_CATEGORY:
+        AppService.saveInPref<int>(
+            action.payload, ActionTypes.WORDMEANING_CATEGORY);
+        yield state.copyWith(wordMeaningCategory: action.payload);
+        break;
       default:
         yield state;
     }

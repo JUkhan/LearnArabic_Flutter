@@ -85,7 +85,13 @@ class BookPage extends StatelessWidget {
             builder: (_, snapshot) => snapshot.data.word.isEmpty
                 ? const Text('')
                 : Text(
-                    snapshot.data.english + ' ' + _getBanglaText(snapshot.data),
+                    (Util.wordMeanCategory == 1
+                        ? snapshot.data.english
+                        : Util.wordMeanCategory == 2
+                            ? _getBanglaText(snapshot.data)
+                            : snapshot.data.english +
+                                ' ' +
+                                _getBanglaText(snapshot.data)),
                     textDirection: _isArabic(snapshot.data.english)
                         ? TextDirection.rtl
                         : TextDirection.ltr,
@@ -129,14 +135,44 @@ class BookPage extends StatelessWidget {
                   text: _getTextSpan(context, word),
                 ),
                 Divider(),
-                _getEnglish(context, word),
-                Divider(),
-                _getBangla(context, word),
-                _getSplitMeaning(context, word)
+                Util.wordMeanCategory == 1
+                    ? getEnglishOnly(context, word)
+                    : Util.wordMeanCategory == 2
+                        ? getBanglaOnly(context, word)
+                        : getBoth(context, word)
               ],
             ),
           );
         });
+  }
+
+  Widget getBoth(BuildContext context, JWord word) {
+    return Column(
+      children: <Widget>[
+        _getEnglish(context, word),
+        Divider(),
+        _getBangla(context, word),
+        _getSplitMeaning(context, word)
+      ],
+    );
+  }
+
+  Widget getBanglaOnly(BuildContext context, JWord word) {
+    return Column(
+      children: <Widget>[
+        _getBangla(context, word),
+        _getSplitMeaning(context, word)
+      ],
+    );
+  }
+
+  Widget getEnglishOnly(BuildContext context, JWord word) {
+    return Column(
+      children: <Widget>[
+        _getEnglish(context, word),
+        _getSplitMeaning(context, word)
+      ],
+    );
   }
 
   //begin split meaning
@@ -158,7 +194,7 @@ class BookPage extends StatelessWidget {
     Color color;
     if (hasColor) {
       color = Util.getColor(text);
-      text = Util.getText(text);
+      text = Util.getSplitedText(Util.getText(text));
     }
     return Container(
       child: Text(

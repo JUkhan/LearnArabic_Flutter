@@ -125,6 +125,10 @@ class _PlayerPageState extends State<PlayerPage> {
                   _controller.seekTo(Duration(seconds: widget.lessRanSeconds));
               },
               onEnded: (data) {
+                // if (_controller.value.isFullScreen) {
+                //   _controller.toggleFullScreenMode();
+                //   setState(() {});
+                // }
                 selectVideo(widget.videoList[
                     (widget.videoList.indexOf(selectedVideo) + 1) %
                         widget.videoList.length]);

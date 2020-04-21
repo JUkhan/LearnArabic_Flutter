@@ -16,6 +16,8 @@ class _SettingPageState extends State<SettingPage> {
   double wordSpace = 1.0;
   bool tts = false;
   bool isLandscape = false;
+  int lectureCategory = 1;
+  int wordMeaningCategory = 1;
   //StreamSubscription streamSubscription;
   @override
   void initState() {
@@ -25,6 +27,8 @@ class _SettingPageState extends State<SettingPage> {
         wordSpace = memo.wordSpace;
         tts = memo.tts;
         isLandscape = memo.isLandscape;
+        lectureCategory = memo.lectureCategory;
+        wordMeaningCategory = memo.wordMeaningCategory;
       });
     });
     super.initState();
@@ -36,6 +40,11 @@ class _SettingPageState extends State<SettingPage> {
     super.dispose();
   }
 
+  final List<Item> _items = [
+    Item("English", 1),
+    Item("Bengali", 2),
+    Item("Both", 3)
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +55,39 @@ class _SettingPageState extends State<SettingPage> {
       body: ListView(
         padding: const EdgeInsets.all(10.0),
         children: <Widget>[
-          getTheme(context),
+          //getTheme(context),
+          getOptions(
+              title: 'Theme',
+              items: [Item("Light", Themes.light), Item("Dark", Themes.dark)],
+              groupValue: DynamicThemeWidget.of(context).theme,
+              icon: Icons.ac_unit,
+              onChange: (value) {
+                DynamicThemeWidget.of(context).setTheme(value);
+                dispatch(ActionTypes.SET_THEME, value);
+              }),
+          getOptions(
+              title: 'Lecture Series',
+              items: _items,
+              groupValue: lectureCategory,
+              icon: Icons.language,
+              onChange: (value) {
+                setState(() {
+                  lectureCategory = value;
+                });
+                dispatch(ActionTypes.LECTURE_CATEGORY, value);
+              }),
+          getOptions(
+              title: 'Word Meaning',
+              items: _items,
+              groupValue: wordMeaningCategory,
+              icon: Icons.wb_auto,
+              onChange: (value) {
+                setState(() {
+                  wordMeaningCategory = value;
+                });
+                Util.wordMeanCategory = value;
+                dispatch(ActionTypes.WORDMEANING_CATEGORY, value);
+              }),
           getFontSize(context),
           getWordSpace(context),
           Card(
@@ -58,16 +99,7 @@ class _SettingPageState extends State<SettingPage> {
               onChanged: ttsValueChanged,
             ),
           )),
-          Card(
-              child: ListTile(
-            leading: new CircleAvatar(
-              //radius: 50.0,
-              backgroundImage: AssetImage('assets/images/slide.png'),
-            ),
-            title: Text("How to navigate book's pages?"),
-            subtitle: Text(
-                'Ans: Please slide your finger from\nright to left / left to right'),
-          )),
+
           Card(
               child: ListTile(
             leading: Icon(isLandscape ? Icons.landscape : Icons.portrait),
@@ -184,28 +216,67 @@ class _SettingPageState extends State<SettingPage> {
           children: <Widget>[
             ListTile(
               leading: Icon(Icons.chrome_reader_mode),
-              title: const Text('THEME'),
+              title: const Text('Theme'),
             ),
             Divider(),
-            RadioListTile<Themes>(
-              value: Themes.light,
-              groupValue: DynamicThemeWidget.of(context).theme,
-              onChanged: (value) {
-                DynamicThemeWidget.of(context).setTheme(Themes.light);
-                dispatch(ActionTypes.SET_THEME, Themes.light);
-              },
-              title: new Text("Light"),
-            ),
-            RadioListTile<Themes>(
-              value: Themes.dark,
-              groupValue: DynamicThemeWidget.of(context).theme,
-              onChanged: (value) {
-                DynamicThemeWidget.of(context).setTheme(Themes.dark);
-                dispatch(ActionTypes.SET_THEME, Themes.dark);
-              },
-              title: new Text("Dark"),
-            ),
+            Row(children: [
+              Radio(
+                value: Themes.light,
+                groupValue: DynamicThemeWidget.of(context).theme,
+                onChanged: (value) {
+                  DynamicThemeWidget.of(context).setTheme(Themes.light);
+                  dispatch(ActionTypes.SET_THEME, Themes.light);
+                },
+                //title: new Text("Light"),
+              ),
+              Text('Light'),
+              Radio(
+                value: Themes.dark,
+                groupValue: DynamicThemeWidget.of(context).theme,
+                onChanged: (value) {
+                  DynamicThemeWidget.of(context).setTheme(Themes.dark);
+                  dispatch(ActionTypes.SET_THEME, Themes.dark);
+                },
+                //title: new Text("Dark"),
+              ),
+              Text('Dark')
+            ])
           ],
         ),
       );
+
+  Widget getOptions(
+          {List<Item> items,
+          String title,
+          dynamic groupValue,
+          IconData icon,
+          Function onChange}) =>
+      Card(
+        child: Column(
+          children: <Widget>[
+            ListTile(
+              leading: Icon(icon),
+              title: Text(title),
+            ),
+            Divider(),
+            Row(
+                children: items
+                    .map((item) => Row(children: <Widget>[
+                          Radio(
+                            value: item.value,
+                            groupValue: groupValue,
+                            onChanged: onChange,
+                          ),
+                          Text(item.name)
+                        ]))
+                    .toList()),
+          ],
+        ),
+      );
+}
+
+class Item {
+  final String name;
+  final dynamic value;
+  Item(this.name, this.value);
 }

@@ -6,6 +6,7 @@ import 'dart:async';
 enum Themes { light, dark }
 
 class Util {
+  static int wordMeanCategory = 1;
   static Color getColor(String text) {
     Color color;
     switch (text) {
@@ -53,6 +54,21 @@ class Util {
         color = Colors.orange;
     }
     return color;
+  }
+
+  static String getSplitedText(String text) {
+    if (wordMeanCategory == 3) return text;
+    if (wordMeanCategory == 1) {
+      var ss = text.replaceAll(RegExp(r'[অ-৺]'), '').trim();
+      if (ss.endsWith(',')) {
+        return ss.substring(0, ss.length - 1);
+      }
+      return ss;
+    }
+    if (wordMeanCategory == 2) {
+      return text.replaceAll(RegExp(r'[a-zA-Z]'), '');
+    }
+    return '';
   }
 
   static String getText(String text) {

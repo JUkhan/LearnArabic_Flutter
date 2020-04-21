@@ -23,4 +23,6 @@ class ActionTypes {
   static const String SAVE_LESS_RUNNING_TIME = 'slrt';
   static const String SET_SCROLL_OFFSET = 'ssoffset';
   static const String SELECT_WORD_ONLY = 'swo';
+  static const String LECTURE_CATEGORY = 'lc';
+  static const String WORDMEANING_CATEGORY = 'wmc';
 }

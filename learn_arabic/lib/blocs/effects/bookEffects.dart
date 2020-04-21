@@ -181,6 +181,11 @@ class BookEffects extends BaseEffect {
     var vtp = (await AppService.getFromPref<String>(
             AppService.prefkey_less_ran_times, '0-0.0'))
         .split('-');
+
+    var lc = await AppService.getFromPref<int>(ActionTypes.LECTURE_CATEGORY, 1);
+    var wmc =
+        await AppService.getFromPref<int>(ActionTypes.WORDMEANING_CATEGORY, 1);
+    Util.wordMeanCategory = wmc;
     return {
       'book': book,
       'memo': MemoModel(
@@ -194,6 +199,8 @@ class BookEffects extends BaseEffect {
           isLandscape: isLandscape,
           lessRanSeconds: int.parse(vtp[0]),
           videoProgress: double.parse(vtp[1]),
+          lectureCategory: lc,
+          wordMeaningCategory: wmc,
           videoId: videoId)
     };
   }

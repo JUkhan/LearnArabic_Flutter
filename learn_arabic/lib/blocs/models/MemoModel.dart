@@ -14,6 +14,8 @@ class MemoModel {
   final bool isLandscape;
   final double videoProgress;
   final String pageIndexPerScroll;
+  final int wordMeaningCategory;
+  final int lectureCategory;
 
   MemoModel(
       {this.lessRanSeconds,
@@ -27,6 +29,8 @@ class MemoModel {
       this.scrollOffset,
       this.wordIndex,
       this.videoProgress,
+      this.lectureCategory,
+      this.wordMeaningCategory,
       this.wordSpace});
 
   MemoModel copyWith(
@@ -41,6 +45,8 @@ class MemoModel {
       double videoProgress,
       String pageIndexPerScroll,
       String wordIndex,
+      int lectureCategory,
+      int wordMeaningCategory,
       double wordSpace}) {
     return MemoModel(
         lessRanSeconds: lessRanSeconds ?? this.lessRanSeconds,
@@ -53,6 +59,8 @@ class MemoModel {
         scrollOffset: scrollOffset ?? this.scrollOffset,
         isLandscape: isLandscape ?? this.isLandscape,
         wordSpace: wordSpace ?? this.wordSpace,
+        lectureCategory: lectureCategory ?? this.lectureCategory,
+        wordMeaningCategory: wordMeaningCategory ?? this.wordMeaningCategory,
         pageIndexPerScroll: pageIndexPerScroll ?? this.pageIndexPerScroll,
         tts: tts ?? this.tts);
   }

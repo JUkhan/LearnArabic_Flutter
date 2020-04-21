@@ -213,7 +213,18 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     if (page.title != null) {
       list.add(_getLessonMode(page.title));
     }
-    page.videos.forEach((v) {
+    List<JVideo> videos = page.videos;
+    if (_bookModel?.bookName != 'Book 0' && videos.length > 2) {
+      if (_memo?.lectureCategory == 1) {
+        videos = page.videos.sublist(
+            page.videos.indexWhere((el) => el.title == 'English Lecture'));
+      } else if (_memo?.lectureCategory == 2) {
+        videos = page.videos.sublist(
+            page.videos.indexWhere((el) => el.title == 'Bangla Lecture'),
+            page.videos.indexWhere((el) => el.title == 'English Lecture'));
+      }
+    }
+    videos.forEach((v) {
       if ((v.id == null || v.id.isEmpty) && v.title.isNotEmpty) {
         list.add(_getLessonMode(
             JLine(height: 45.0, words: [JWord(word: v.title, english: "")])));

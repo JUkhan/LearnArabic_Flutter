@@ -38,20 +38,33 @@ class HomePage extends StatelessWidget {
               //}
               return LoadingWidget(AsyncData(asyncStatus: AsyncStatus.loading));
             }
-            return GridView.count(
-              crossAxisCount: 2,
-              padding: EdgeInsets.all(10.0),
-              childAspectRatio: 7.0 / 9.0,
-              children: <Widget>[
-                BookImageWidget('book0'),
-                BookImageWidget('book1'),
-                BookImageWidget('book2'),
-                BookImageWidget('book3'),
-                BookImageWidget('book4'),
-                BookImageWidget('book5'),
-                BookImageWidget('book6'),
-              ],
-            );
+            return Column(children: <Widget>[
+              Card(
+                  child: ListTile(
+                leading: new CircleAvatar(
+                  //radius: 50.0,
+                  backgroundImage: AssetImage('assets/images/slide.png'),
+                ),
+                title: Text("How to navigate book's pages?"),
+                subtitle: Text(
+                    'Please slide your finger from\nright to left / left to right'),
+              )),
+              Expanded(
+                  child: GridView.count(
+                crossAxisCount: 2,
+                padding: EdgeInsets.all(10.0),
+                childAspectRatio: 7.0 / 9.0,
+                children: <Widget>[
+                  BookImageWidget('book0'),
+                  BookImageWidget('book1'),
+                  BookImageWidget('book2'),
+                  BookImageWidget('book3'),
+                  BookImageWidget('book4'),
+                  BookImageWidget('book5'),
+                  BookImageWidget('book6'),
+                ],
+              )),
+            ]);
           }),
       drawer: DrawerWidget(),
     );
