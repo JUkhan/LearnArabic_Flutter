@@ -1,94 +1,101 @@
 {
-    "lines": [
+  "lines": [
+    {
+      "mode": "img-sentence",
+      "img": "teacher2.png",
+      "lines": [
         {
-            "mode": "img-sentence",            
-            "img": "teacher2.png",
-            "lines": [
-                {"d": "rtl",
-                    "words": [
-                        {
-                            "w": "مَنْ",
-                            "e": "who"
-                        },
-                        {
-                            "w": "هَذَا",
-                            "e": "this"
-                        },
-                        {
-                            "w": "وَمَنْ", "sp":[0,2],
-                            "e": "and who"
-                        },
-                        {
-                            "w": "ذَلِكَ؟",
-                            "e": "that"
-                        }
-                    ]
-                },
-                {"d": "rtl",
-                    "words": [
-                        {
-                            "w": "هَذَا",
-                            "e": "this"
-                        },
-                        {
-                            "w": "مُدَرِّسٌ",
-                            "e": "a teacher"
-                        },
-                        {
-                            "w": "وَذَلِكَ",
-                            "e": "and that"
-                        },
-                        {
-                            "w": "إِمَامٌ .",
-                            "e": "a imam"
-                        }
-                    ]
-                }
-            ]
+          "d": "rtl",
+          "words": [
+            {
+              "w": "مَنْ",
+              "e": "who"
+            },
+            {
+              "w": "هَذَا",
+              "e": "this"
+            },
+            {
+              "w": "وَمَنْ",
+              "sp": [0, 2],
+              "e": "and who"
+            },
+            {
+              "w": "ذَلِكَ؟",
+              "e": "that"
+            }
+          ]
         },
         {
-            "mode":"img-sentence", "d":"rtl", "img":"stone.png",
-            "words": [               
-                
-                {
-                    "w": "مَا",
-                    "e": "what"                    
-                },
-                {
-                    "w": "ذَلِكَ ؟",
-                    "e": "that"                                        
-                },
-                {
-                    "w": "ذَلِكَ",
-                    "e": "that"                                        
-                },
-                {
-                    "w": "حَجَرٌ .",
-                    "e": "a stone"                                        
-                }
-            ]
-        },
-        {
-            "mode":"img-sentence", "d":"rtl", "img":"milk.png",
-            "words": [               
-                
-                {
-                    "w": "هَذَا",
-                    "e": "this"                    
-                },
-                {
-                    "w": "سُكَّرٌ",
-                    "e": "sugar"                                        
-                },
-                {
-                    "w": "وَذَلِكَ",
-                    "e": "and that"                                        
-                },
-                {
-                    "w": "لَبَنٌ.",
-                    "e": "milk"                                        
-                }
-            ]
+          "d": "rtl",
+          "words": [
+            {
+              "w": "هَذَا",
+              "e": "this"
+            },
+            {
+              "w": "مُدَرِّسٌ",
+              "e": "a teacher"
+            },
+            {
+              "w": "وَذَلِكَ",
+              "sp": [0, 2],
+              "e": "and that"
+            },
+            {
+              "w": "إِمَامٌ .",
+              "e": "a imam"
+            }
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "mode": "img-sentence",
+      "d": "rtl",
+      "img": "stone.png",
+      "words": [
+        {
+          "w": "مَا",
+          "e": "what"
+        },
+        {
+          "w": "ذَلِكَ ؟",
+          "e": "that"
+        },
+        {
+          "w": "ذَلِكَ",
+          "e": "that"
+        },
+        {
+          "w": "حَجَرٌ .",
+          "e": "a stone"
+        }
+      ]
+    },
+    {
+      "mode": "img-sentence",
+      "d": "rtl",
+      "img": "milk.png",
+      "words": [
+        {
+          "w": "هَذَا",
+          "e": "this"
+        },
+        {
+          "w": "سُكَّرٌ",
+          "e": "sugar"
+        },
+        {
+          "w": "وَذَلِكَ",
+          "sp": [0, 2],
+          "e": "and that"
+        },
+        {
+          "w": "لَبَنٌ.",
+          "e": "milk"
+        }
+      ]
+    }
+  ]
 }

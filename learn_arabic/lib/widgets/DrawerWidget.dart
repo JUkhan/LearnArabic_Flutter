@@ -2,7 +2,8 @@ import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_arabic/blocs/actionTypes.dart';
 import 'package:learn_arabic/blocs/models/bookModel.dart';
-import 'package:learn_arabic/blocs/util.dart';
+import 'package:learn_arabic/pages/RateApp.dart';
+//import 'package:learn_arabic/blocs/util.dart';
 
 class DrawerWidget extends StatelessWidget {
   final bookName$ = select<BookModel>('book').map((book) => book.bookName);
@@ -66,7 +67,7 @@ class DrawerWidget extends StatelessWidget {
           getTile(context, 'Book Marks', Icons.star, '/markbook'),
           getTile(context, 'Settings', Icons.settings, '/setting'),
           getTile(context, 'Rate Apps', Icons.thumb_up, '/rateApps'),
-          getTile(context, 'আল হাদীস (Al Hadith)', Icons.thumb_up, '/alhadith'),
+          //getTile(context, 'আল হাদীস (Al Hadith)', Icons.thumb_up, '/alhadith'),
         ],
       ),
     );
@@ -78,16 +79,21 @@ class DrawerWidget extends StatelessWidget {
     return ListTile(
       title: Text(title),
       leading: Icon(icon),
-      onTap: () {
+      onTap: () async {
         if (navigateTo.startsWith('/book')) {
           dispatch(ActionTypes.CHANGE_BOOK_NAME, navigateTo);
           Navigator.pushReplacementNamed(context, '/lessons');
-        } else if (navigateTo.startsWith('/rateApps'))
-          Util.launchUrl(
-              'https://play.google.com/store/apps/details?id=com.zaitun.learnarabic');
-        else if (navigateTo.startsWith('/alhadith'))
+        } else if (navigateTo.startsWith('/rateApps')) {
+          await Navigator.push(
+              context, MaterialPageRoute(builder: (context) => RateApp()));
+        }
+
+        // Util.launchUrl(
+        //  'https://play.google.com/store/apps/details?id=com.zaitun.learnarabic');
+        /*else if (navigateTo.startsWith('/alhadith'))
           Util.launchUrl(
               'https://play.google.com/store/apps/details?id=com.ihadis.ihadis&hl=en');
+              */
         else
           Navigator.pushReplacementNamed(context, navigateTo);
       },

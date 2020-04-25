@@ -21,3 +21,6 @@ void main() {
 //keytool -genkeypair -alias mykey -keyalg RSA -keysize 2048 -validity 10000 -keystore keystore.jks
 //keytool -export -rfc -alias upload -file upload_certificate.pem -keystore keystore.jks
 //flutter devices
+//flutter pub get
+//export PUB_HOSTED_URL=https://pub.flutter-io.cn
+//export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn

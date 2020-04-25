@@ -211,39 +211,6 @@ class _SettingPageState extends State<SettingPage> {
           ],
         ),
       );
-  Widget getTheme(BuildContext context) => Card(
-        child: Column(
-          children: <Widget>[
-            ListTile(
-              leading: Icon(Icons.chrome_reader_mode),
-              title: const Text('Theme'),
-            ),
-            Divider(),
-            Row(children: [
-              Radio(
-                value: Themes.light,
-                groupValue: DynamicThemeWidget.of(context).theme,
-                onChanged: (value) {
-                  DynamicThemeWidget.of(context).setTheme(Themes.light);
-                  dispatch(ActionTypes.SET_THEME, Themes.light);
-                },
-                //title: new Text("Light"),
-              ),
-              Text('Light'),
-              Radio(
-                value: Themes.dark,
-                groupValue: DynamicThemeWidget.of(context).theme,
-                onChanged: (value) {
-                  DynamicThemeWidget.of(context).setTheme(Themes.dark);
-                  dispatch(ActionTypes.SET_THEME, Themes.dark);
-                },
-                //title: new Text("Dark"),
-              ),
-              Text('Dark')
-            ])
-          ],
-        ),
-      );
 
   Widget getOptions(
           {List<Item> items,
@@ -259,17 +226,11 @@ class _SettingPageState extends State<SettingPage> {
               title: Text(title),
             ),
             Divider(),
-            Row(
-                children: items
-                    .map((item) => Row(children: <Widget>[
-                          Radio(
-                            value: item.value,
-                            groupValue: groupValue,
-                            onChanged: onChange,
-                          ),
-                          Text(item.name)
-                        ]))
-                    .toList()),
+            JRadio(
+              items: items,
+              groupValue: groupValue,
+              onChanged: onChange,
+            ),
           ],
         ),
       );
@@ -279,4 +240,36 @@ class Item {
   final String name;
   final dynamic value;
   Item(this.name, this.value);
+}
+
+class JRadio extends StatelessWidget {
+  final List<Item> items;
+  final Function onChanged;
+  final dynamic groupValue;
+  const JRadio({Key key, this.items, this.onChanged, this.groupValue})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+        children: items
+            .map((item) => Row(children: <Widget>[
+                  InkWell(
+                    onTap: () {
+                      onChanged(item.value);
+                    },
+                    child: Row(
+                      children: <Widget>[
+                        Radio(
+                          value: item.value,
+                          groupValue: groupValue,
+                          onChanged: onChanged,
+                        ),
+                        Text(item.name)
+                      ],
+                    ),
+                  )
+                ]))
+            .toList());
+  }
 }

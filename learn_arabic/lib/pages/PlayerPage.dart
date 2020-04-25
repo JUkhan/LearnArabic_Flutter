@@ -3,13 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:learn_arabic/blocs/actionTypes.dart';
 import 'package:learn_arabic/blocs/models/BookInfo.dart';
 import 'package:learn_arabic/blocs/util.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'package:webview_flutter/webview_flutter.dart';
 
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+//import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class PlayerPage extends StatefulWidget {
   final JVideo video;
   final List<JVideo> videoList;
-  final int lessRanSeconds;
+  final double lessRanSeconds;
   PlayerPage({Key key, this.video, this.videoList, this.lessRanSeconds})
       : super(key: key);
 
@@ -17,244 +20,160 @@ class PlayerPage extends StatefulWidget {
 }
 
 class _PlayerPageState extends State<PlayerPage> {
-  JVideo selectedVideo;
-  YoutubePlayerController _controller;
-  double _volume = 100;
-  bool _muted = false;
-  bool _isPlayerReady = false;
-  YoutubeMetaData _videoMetaData;
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  String rawHtml = '''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script language="JavaScript" type="text/javascript" src="https://www.youtube.com/iframe_api"></script> 
+     
+</head>
+<body style="margin:0;padding:0;background-color: black;">
+   
+    <div id="player"></div> 
+    
+    <script language="JavaScript" type="text/javascript">
+       
+  var player,tid, iframe, vid='#VID#', videos=[#VARR#], second=#TIME#;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      playerVars: { 'autoplay': 1 },
+      videoId: vid,
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange,
+          'onError': onPlayerError
+        }
+    });
+  }
+  window.onresize=function(){
+    iframe.width=screen.width+ 'px';
+  };
+  
+  function onPlayerError(){
+    player.loadVideoById(vid);
+  }
+  function onPlayerReady(event) {
+    iframe=document.getElementById('player');
+    iframe.width=screen.width+ 'px';
+    event.target.seekTo(second);
+    tid=setInterval(function(){
+        onPlayerStateChange({data:player.getPlayerState()})
+    },1000);
+  }
+  function dispose(){
+      clearInterval(tid);
+  }
+  function onPlayerStateChange(event) {
+    if (event.data == 0) {
+        var index=videos.indexOf(vid)+1;
+        vid=videos[index%videos.length];
+        player.loadVideoById(vid);
+        Print.postMessage(vid);
+    } else if (event.data == 1/*||event.data == 2||event.data == 3*/) {
+      Print.postMessage(player.getCurrentTime()+'###'+player.getDuration()+'###'+vid);
+    } 
+  }
+   </script>
+</body>
+</html>
+''';
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
+
+  _loadHtmlFromAssets(WebViewController controller) async {
+    //String fileText = await rootBundle.loadString('assets/index.html');
+
+    final String contentBase64 = base64Encode(const Utf8Encoder().convert(
+        rawHtml
+            .replaceFirst(RegExp(r'#VID#'), widget.video.id, 450)
+            .replaceFirst(
+                RegExp(r'#VARR#'),
+                widget.videoList
+                    .where((e) => e.id != null)
+                    .map((v) => '\'${v.id}\'')
+                    .join(','),
+                450)
+            .replaceFirst(
+                RegExp(r'#TIME#'), widget.lessRanSeconds.toString(), 450)));
+    await controller.loadUrl('data:text/html;base64,$contentBase64');
+  }
+
   @override
   void initState() {
-    selectedVideo = widget.video;
-    _controller = YoutubePlayerController(
-      initialVideoId: selectedVideo.id,
-      flags: YoutubePlayerFlags(
-        mute: false,
-        autoPlay: true,
-        disableDragSeek: false,
-        loop: false,
-        isLive: false,
-        forceHideAnnotation: true,
-        forceHD: false,
-        enableCaption: true,
-      ),
-    )..addListener(listener);
-    //_controller.seekTo(Duration(seconds: widget.lessRanSeconds));
-    _videoMetaData = YoutubeMetaData();
+    Util.setDeviceOrientation(true);
     super.initState();
-  }
-
-  int _second = 0;
-  void listener() {
-    if (_isPlayerReady && mounted && !_controller.value.isFullScreen) {
-      setState(() {
-        _videoMetaData = _controller.metadata;
-      });
-    }
-    if (_second != _controller.value.position.inSeconds) {
-      dispatch(ActionTypes.SAVE_LESS_RUNNING_TIME, {
-        'totalTime': _controller.metadata.duration.inSeconds,
-        'ranTime': _second
-      });
-    }
-    _second = _controller.value.position.inSeconds;
-  }
-
-  void selectVideo(JVideo video) {
-    dispatch(ActionTypes.SET_VIDEO_ID, video.id);
-    setState(() {
-      selectedVideo = video;
-    });
-    _controller.load(video.id);
-  }
-
-  @override
-  void deactivate() {
-    // Pauses video while navigating to next page.
-    _controller.pause();
-    super.deactivate();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          title: Text(selectedVideo.title),
-        ),
-        body: ListView(
-          children: <Widget>[
-            YoutubePlayer(
-              controller: _controller,
-              showVideoProgressIndicator: true,
-              progressIndicatorColor: Colors.blueAccent,
-              topActions: <Widget>[
-                SizedBox(width: 8.0),
-                Expanded(
-                  child: Text(
-                    _controller.metadata.title,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(
-                    Icons.settings,
-                    color: Colors.white,
-                    size: 25.0,
-                  ),
-                  onPressed: () {
-                    Util.showSnackBar(_scaffoldKey, 'Settings Tapped!');
-                  },
-                ),
-              ],
-              onReady: () {
-                _isPlayerReady = true;
-                if (widget.lessRanSeconds > 0)
-                  _controller.seekTo(Duration(seconds: widget.lessRanSeconds));
-              },
-              onEnded: (data) {
-                // if (_controller.value.isFullScreen) {
-                //   _controller.toggleFullScreenMode();
-                //   setState(() {});
-                // }
-                selectVideo(widget.videoList[
-                    (widget.videoList.indexOf(selectedVideo) + 1) %
-                        widget.videoList.length]);
-                Util.showSnackBar(_scaffoldKey, 'Next Video Started!');
-              },
-            ),
-            Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      _space,
-                      _text('Title', _videoMetaData.title),
-                      _space,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.skip_previous),
-                            onPressed: _isPlayerReady
-                                ? () {
-                                    selectVideo(widget.videoList[(widget
-                                                .videoList
-                                                .indexOf(selectedVideo) -
-                                            1) %
-                                        widget.videoList.length]);
-                                  }
-                                : null,
-                          ),
-                          IconButton(
-                            icon: Icon(
-                              _controller.value.isPlaying
-                                  ? Icons.pause
-                                  : Icons.play_arrow,
-                            ),
-                            onPressed: _isPlayerReady
-                                ? () {
-                                    _controller.value.isPlaying
-                                        ? _controller.pause()
-                                        : _controller.play();
-                                    setState(() {});
-                                  }
-                                : null,
-                          ),
-                          IconButton(
-                            icon: Icon(
-                                _muted ? Icons.volume_off : Icons.volume_up),
-                            onPressed: _isPlayerReady
-                                ? () {
-                                    _muted
-                                        ? _controller.unMute()
-                                        : _controller.mute();
-                                    setState(() {
-                                      _muted = !_muted;
-                                    });
-                                  }
-                                : null,
-                          ),
-                          FullScreenButton(
-                            controller: _controller,
-                            color: Colors.blueAccent,
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.skip_next),
-                            onPressed: _isPlayerReady
-                                ? () => selectVideo(widget.videoList[
-                                    (widget.videoList.indexOf(selectedVideo) +
-                                            1) %
-                                        widget.videoList.length])
-                                : null,
-                          ),
-                        ],
-                      ),
-                      _space,
-                      Row(
-                        children: <Widget>[
-                          Text(
-                            "Volume",
-                            style: TextStyle(fontWeight: FontWeight.w300),
-                          ),
-                          Expanded(
-                            child: Slider(
-                              inactiveColor: Colors.transparent,
-                              value: _volume,
-                              min: 0.0,
-                              max: 100.0,
-                              divisions: 10,
-                              label: '${(_volume).round()}',
-                              onChanged: _isPlayerReady
-                                  ? (value) {
-                                      setState(() {
-                                        _volume = value;
-                                      });
-                                      _controller.setVolume(_volume.round());
-                                    }
-                                  : null,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ]))
-          ],
-        ));
+      body: Builder(builder: (BuildContext context) {
+        return SafeArea(
+          child: WebView(
+            initialUrl: 'about:blank', //'https://flutter.dev',
+            javascriptMode: JavascriptMode.unrestricted,
+            onWebViewCreated: (WebViewController webViewController) {
+              _controller.complete(webViewController);
+              _loadHtmlFromAssets(webViewController);
+            },
+
+            javascriptChannels: <JavascriptChannel>[
+              JavascriptChannel(
+                  name: 'Print',
+                  onMessageReceived: (mm) {
+                    print(mm.message + '---------->>');
+                    var arr = mm.message.split('###');
+                    if (arr.length == 3) {
+                      dispatch(ActionTypes.SAVE_LESS_RUNNING_TIME, {
+                        'totalTime': double.parse(arr[1]),
+                        'ranTime': double.parse(arr[0])
+                      });
+                    } else {
+                      dispatch(ActionTypes.SET_VIDEO_ID, arr[0]);
+                    }
+                  })
+            ].toSet(),
+            /* navigationDelegate: (NavigationRequest request) {
+              if (request.url.startsWith('https://www.youtube.com/')) {
+                print('blocking navigation to $request}');
+                return NavigationDecision.prevent;
+              }
+              print('allowing navigation to $request');
+              return NavigationDecision.navigate;
+            },
+            onPageStarted: (String url) {
+              print('-----------------Page started loading: $url');
+            },
+            onPageFinished: (String url) {
+              print('~~~~~~~~~~~~~~~~~~~~~~~~Page finished loading: $url');
+            },*/
+            //gestureNavigationEnabled: true,
+          ),
+        );
+      }),
+      floatingActionButton: favoriteButton(),
+    );
   }
 
-  Widget get _space => SizedBox(
-        height: 10,
-      );
-  Widget _text(String title, String value) {
-    return RichText(
-      text: TextSpan(
-        text: '$title : ',
-        style: TextStyle(
-          color: Colors.blueAccent,
-          fontWeight: FontWeight.bold,
-        ),
-        children: [
-          TextSpan(
-            text: value ?? '',
-            style: TextStyle(
-              color: Colors.blueAccent,
-              fontWeight: FontWeight.w300,
-            ),
-          ),
-        ],
-      ),
-    );
+  Widget favoriteButton() {
+    return FutureBuilder<WebViewController>(
+        future: _controller.future,
+        builder: (BuildContext context,
+            AsyncSnapshot<WebViewController> controller) {
+          if (controller.hasData) {
+            return FloatingActionButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                controller.data.evaluateJavascript('dispose();');
+                Util.setDeviceOrientation(false);
+              },
+              child: const Icon(Icons.arrow_back),
+            );
+          }
+          return Container();
+        });
   }
 }

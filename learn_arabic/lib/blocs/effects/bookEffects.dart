@@ -197,7 +197,7 @@ class BookEffects extends BaseEffect {
           tts: tts,
           theme: theme,
           isLandscape: isLandscape,
-          lessRanSeconds: int.parse(vtp[0]),
+          lessRanSeconds: double.parse(vtp[0]),
           videoProgress: double.parse(vtp[1]),
           lectureCategory: lc,
           wordMeaningCategory: wmc,

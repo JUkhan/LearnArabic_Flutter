@@ -224,6 +224,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
             page.videos.indexWhere((el) => el.title == 'English Lecture'));
       }
     }
+
     videos.forEach((v) {
       if ((v.id == null || v.id.isEmpty) && v.title.isNotEmpty) {
         list.add(_getLessonMode(
@@ -249,7 +250,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
                   MaterialPageRoute(
                       builder: (context) => PlayerPage(
                             video: v,
-                            videoList: page.videos,
+                            videoList: videos,
                             lessRanSeconds:
                                 id == v.id ? _memo.lessRanSeconds : 0,
                           )));

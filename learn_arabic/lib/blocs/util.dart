@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'dart:async';
+//import 'package:url_launcher/url_launcher.dart';
+//import 'dart:async';
 
 enum Themes { light, dark }
 
@@ -178,7 +178,7 @@ class Util {
     return id;
   }
 
-  static Future<Null> launchUrl(String url) async {
+  /*static Future<Null> launchUrl(String url) async {
     if (await canLaunch(url)) {
       await launch(
         url,
@@ -187,7 +187,7 @@ class Util {
         enableJavaScript: true,
       );
     }
-  }
+  }*/
 
   static TextStyle getTextTheme(
       BuildContext context, String direction, double _fontSize) {

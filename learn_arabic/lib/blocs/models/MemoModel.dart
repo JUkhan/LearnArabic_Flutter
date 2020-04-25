@@ -2,7 +2,7 @@ import 'package:learn_arabic/blocs/models/BookInfo.dart';
 import 'package:learn_arabic/blocs/util.dart';
 
 class MemoModel {
-  final int lessRanSeconds;
+  final double lessRanSeconds;
   final String videoId;
   final bool tts;
   final double fontSize;
@@ -34,7 +34,7 @@ class MemoModel {
       this.wordSpace});
 
   MemoModel copyWith(
-      {int lessRanSeconds,
+      {double lessRanSeconds,
       String videoId,
       bool tts,
       double fontSize,
