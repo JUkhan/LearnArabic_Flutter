@@ -81,6 +81,25 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         initTts();
       }
     });
+    if (Util.isFirstRender) {
+      _animateScroll();
+      Util.isFirstRender = false;
+    }
+  }
+
+  void _animateScroll() {
+    Future.delayed(Duration(seconds: 1), () {
+      if (_memo.scrollOffset > 0.0 &&
+          _memo.pageIndexPerScroll ==
+              '${_bookModel.lessonIndex}${_bookModel.pageIndex}') {
+        _scrollController?.removeListener(_scrollListener);
+        _scrollController?.animateTo(_memo.scrollOffset,
+            duration: new Duration(seconds: 1), curve: Curves.ease);
+        Future.delayed(Duration(seconds: 1), () {
+          _scrollController?.addListener(_scrollListener);
+        });
+      }
+    });
   }
 
   bool hasSelectedWord(int id) => _memo?.wordIndex == getWordIndex(id);
@@ -99,8 +118,6 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   void dispose() {
     _bookModelSubscription.cancel();
     _memoSubscription.cancel();
-    //_gestureList.forEach((ges) => ges.dispose());
-    //_gestureList.clear();
 
     if (flutterTts != null) {
       flutterTts.stop();
@@ -117,21 +134,14 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   }
 
   _getGesture(JWord word) {
-    /*if (_gestureCounter < _gestureList.length) {
-      var temp = _gestureList[_gestureCounter];
-      _gestureCounter++;
-      return temp;
-    }*/
     return TapGestureRecognizer()
       ..onTap = () {
         _selectWord(word);
-        if (!_isArabic(word.english) && _memo.tts)
+        if (!Util.isArabic(word.english) && _memo.tts)
           _speak(word.english);
         else
           setState(() {});
       };
-    //_gestureList.add(temp);
-    //_gestureCounter++;
   }
 
   _selectWord(JWord word) {
@@ -141,7 +151,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
   _scrollListener() {
     dispatch(ActionTypes.SET_SCROLL_OFFSET, {
-      'scroll': _scrollController.offset,
+      'scroll': _scrollController?.offset ?? 0.0,
       'refPerScroll': '${_bookModel.lessonIndex}${_bookModel.pageIndex}'
     });
   }
@@ -191,19 +201,6 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   }
 
   List<Widget> _getListItem(JPage page) {
-    Future.delayed(Duration(seconds: 1), () {
-      if (_memo.scrollOffset > 0.0 &&
-          _memo.pageIndexPerScroll ==
-              '${_bookModel.lessonIndex}${_bookModel.pageIndex}') {
-        _scrollController.removeListener(_scrollListener);
-        _scrollController?.animateTo(_memo.scrollOffset,
-            duration: new Duration(seconds: 1), curve: Curves.ease);
-        Future.delayed(Duration(seconds: 1), () {
-          _scrollController.addListener(_scrollListener);
-        });
-      }
-    });
-
     final list = List<Widget>();
 
     if (page == null) {
@@ -214,14 +211,14 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       list.add(_getLessonMode(page.title));
     }
     List<JVideo> videos = page.videos;
-    if (_bookModel?.bookName != 'Book 0' && videos.length > 2) {
+    var eindex = page.videos.indexWhere((el) => el.title == 'English Lecture');
+    if (_bookModel?.bookName != 'Book 0' && videos.length > 2 && eindex > 0) {
       if (_memo?.lectureCategory == 1) {
-        videos = page.videos.sublist(
-            page.videos.indexWhere((el) => el.title == 'English Lecture'));
+        videos = page.videos.sublist(eindex);
       } else if (_memo?.lectureCategory == 2) {
         videos = page.videos.sublist(
             page.videos.indexWhere((el) => el.title == 'Bangla Lecture'),
-            page.videos.indexWhere((el) => el.title == 'English Lecture'));
+            eindex);
       }
     }
 
@@ -232,25 +229,22 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       } else {
         list.add(Card(
           child: ListTile(
-            /*leading: Icon(
-              Icons.play_circle_filled,
-              color: _memo.videoId == v.id ? Colors.red : null,
-            )*/
             leading: CircleProgressWidget(
               vid: v.id,
               theme: _memo.theme,
             ),
             title: Text(v.title),
-            onTap: () async {
+            onTap: () {
               var id = _memo.videoId;
               dispatch(ActionTypes.SET_VIDEO_ID, v.id);
 
-              await Navigator.push(
+              Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => PlayerPage(
                             video: v,
                             videoList: videos,
+                            progress: _memo.videoProgress,
                             lessRanSeconds:
                                 id == v.id ? _memo.lessRanSeconds : 0,
                           )));
@@ -628,7 +622,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       }
     }
     final txtSpans = List<TextSpan>();
-    if (direction == 'rtl' && !_isArabic(word.word)) direction = 'ltr';
+    if (direction == 'rtl' && !Util.isArabic(word.word)) direction = 'ltr';
     var gesture = word.english.isNotEmpty ? _getGesture(word) : null;
     if (word.sp != null) {
       int len = word.sp.length;
@@ -784,11 +778,6 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
                 .toList()),
       ),
     );
-  }
-
-  bool _isArabic(String str) {
-    if (str.trim().isEmpty) return false;
-    return str.codeUnitAt(0) > 1000;
   }
 
   LinearGradient _getGradient() => LinearGradient(

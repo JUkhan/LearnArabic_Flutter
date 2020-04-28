@@ -14,6 +14,7 @@ import 'package:learn_arabic/widgets/PageDataWidget.dart';
 Stream<BookModel> _book$ = select<BookModel>('book');
 
 class BookPage extends StatelessWidget {
+  //static Stream<BookModel> _book$ = select<BookModel>('book');
   final pageTitle$ = _book$.map((book) => book.pageTitle);
   final pageData$ = _book$.map((book) => book.pageData);
   final bookMark$ = _book$.map((book) => book.hasBookMark);
@@ -92,11 +93,11 @@ class BookPage extends StatelessWidget {
                             : snapshot.data.english +
                                 ' ' +
                                 _getBanglaText(snapshot.data)),
-                    textDirection: _isArabic(snapshot.data.english)
+                    textDirection: Util.isArabic(snapshot.data.english)
                         ? TextDirection.rtl
                         : TextDirection.ltr,
                     textAlign: TextAlign.center,
-                    style: _isArabic(snapshot.data.english)
+                    style: Util.isArabic(snapshot.data.english)
                         ? Theme.of(context).textTheme.headline
                         : Theme.of(context).textTheme.title,
                   ),
@@ -314,11 +315,6 @@ class BookPage extends StatelessWidget {
     //Colors.grey[400]:Colors.black.withOpacity(0.9)
     return TextSpan(
         style: Theme.of(context).textTheme.display1, children: txtSpans);
-  }
-
-  bool _isArabic(String str) {
-    if (str.trim().isEmpty) return false;
-    return str.codeUnitAt(0) > 1000;
   }
 
   Widget _getBangla(BuildContext context, JWord word) {
@@ -545,7 +541,7 @@ class BookPage extends StatelessWidget {
     return RichText(
         text: TextSpan(
             text: word.english,
-            style: _isArabic(word.english)
+            style: Util.isArabic(word.english)
                 ? Theme.of(context).textTheme.headline
                 : Theme.of(context).textTheme.title));
   }

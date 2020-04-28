@@ -56,10 +56,11 @@ class Util {
     return color;
   }
 
+  static bool isFirstRender = true;
   static String getSplitedText(String text) {
     if (wordMeanCategory == 3) return text;
     if (wordMeanCategory == 1) {
-      var ss = text.replaceAll(RegExp(r'[অ-৺]'), '').trim();
+      var ss = text.replaceAll(RegExp(r'[অ-৺ং]'), '').trim();
       if (ss.endsWith(',')) {
         return ss.substring(0, ss.length - 1);
       }
@@ -178,17 +179,6 @@ class Util {
     return id;
   }
 
-  /*static Future<Null> launchUrl(String url) async {
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        forceSafariVC: true,
-        forceWebView: true,
-        enableJavaScript: true,
-      );
-    }
-  }*/
-
   static TextStyle getTextTheme(
       BuildContext context, String direction, double _fontSize) {
     if (direction == 'ltr') {
@@ -222,24 +212,8 @@ class Util {
     }
   }
 
-  static void showSnackBar(GlobalKey<ScaffoldState> key, String message) {
-    key.currentState.showSnackBar(
-      SnackBar(
-        content: Text(
-          message,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontWeight: FontWeight.w300,
-            fontSize: 16.0,
-          ),
-        ),
-        backgroundColor: Colors.blueAccent,
-        behavior: SnackBarBehavior.floating,
-        elevation: 1.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50.0),
-        ),
-      ),
-    );
+  static bool isArabic(String str) {
+    if (str.trim().isEmpty) return false;
+    return str.codeUnitAt(0) > 1000;
   }
 }

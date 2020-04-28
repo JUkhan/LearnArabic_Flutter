@@ -11,7 +11,7 @@ description: Madinah Arabic Books.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.1.1
+version: 1.1.2+19
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -29,7 +29,8 @@ dependencies:
   ajwah_bloc: ^1.8.4
   #youtube_player: ^3.4.1
   #youtube_player_flutter: 6.1.0+7
-  webview_flutter: ^0.3.20+2
+  #webview_flutter: ^0.3.20+2
+  flutter_youtube_view: ^1.1.8
 
 dev_dependencies:
   flutter_test:

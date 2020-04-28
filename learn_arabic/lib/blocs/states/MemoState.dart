@@ -4,15 +4,7 @@ import 'package:learn_arabic/blocs/appService.dart';
 import 'package:learn_arabic/blocs/models/MemoModel.dart';
 
 class MemoState extends BaseState<MemoModel> {
-  MemoState()
-      : super(
-            name: 'memo',
-            initialState: MemoModel(
-                lessRanSeconds: 0,
-                wordSpace: 1.0,
-                tts: false,
-                fontSize: 2.0,
-                isLandscape: false));
+  MemoState() : super(name: 'memo', initialState: MemoModel.init());
   @override
   Stream<MemoModel> mapActionToState(MemoModel state, Action action) async* {
     switch (action.type) {

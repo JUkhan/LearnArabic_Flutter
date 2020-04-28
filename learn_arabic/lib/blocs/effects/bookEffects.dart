@@ -186,6 +186,8 @@ class BookEffects extends BaseEffect {
     var wmc =
         await AppService.getFromPref<int>(ActionTypes.WORDMEANING_CATEGORY, 1);
     Util.wordMeanCategory = wmc;
+    //print('-----------------------book-effects-----------------');
+    //print('lc=$lc and wmc=$wmc');
     return {
       'book': book,
       'memo': MemoModel(

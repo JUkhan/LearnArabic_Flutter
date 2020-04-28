@@ -42,7 +42,7 @@ class _BookMarkPageState extends State<BookMarkPage> {
     for (var book in books) {
       items.add(ListTile(
         selected: true,
-        title: Text('Book ${book.id}'),
+        title: Text(book.id == 0 ? 'Absolute Biginners' : 'Book ${book.id}'),
       ));
       for (var lesson in book.lessons) {
         for (var page in lesson.pages) {

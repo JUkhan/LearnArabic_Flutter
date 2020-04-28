@@ -1,7 +1,6 @@
 import 'package:learn_arabic/blocs/models/AsyncData.dart';
 import 'package:learn_arabic/blocs/models/BookInfo.dart';
 import 'package:learn_arabic/blocs/models/Bookmarks.dart';
-//import 'package:learn_arabic/blocs/util.dart';
 
 class BookModel {
   static clone(BookModel obj) {
@@ -14,15 +13,6 @@ class BookModel {
     book.totalPage = obj.totalPage;
     book.bookPath = obj.bookPath;
     book.bm = obj.bm;
-    //book.tts = obj.tts;
-    //book.fontSize = obj.fontSize;
-    //book.wordSpace = obj.wordSpace;
-    //book.wordIndex = obj.wordIndex;
-    //book.scrollOffset = obj.scrollOffset;
-    //book.selectedWord = obj.selectedWord;
-    //book.theme = obj.theme;
-    //book.isLandscape = obj.isLandscape;
-    //book.videoId = obj.videoId;
     return book;
   }
 
@@ -30,27 +20,10 @@ class BookModel {
   int pageIndex = 0;
   int totalPage = 0;
   int totalLesson = 0;
-  //double scrollOffset;
-  //String wordIndex;
   String bookPath = '';
-  //String videoId = '';
   BookMarks bm = BookMarks();
-  //bool tts = false;
-  //bool isLandscape = false;
   AsyncData<BookInfo> lessons;
   AsyncData<JPage> pageData;
-  //JWord selectedWord;
-  //preference
-
-  //Themes theme = Themes.dark;
-  //double fontSize = 2.0;
-  //double wordSpace = 1.0;
-
-  /*String get getWordSpace {
-    var s = '';
-    for (var i = 0.0; i < wordSpace; i++) s += ' ';
-    return s;
-  }*/
 
   String get lessonInfo =>
       lessonIndex >= 0 ? 'Lesson $lessonIndex page $pageIndex was reading' : '';
@@ -63,7 +36,5 @@ class BookModel {
   bool addBookMark() =>
       bm?.add(int.parse(bookPath.substring(5)), lessonIndex, pageIndex);
 
-  //bool hasSelectedWord(int index) =>
-  //wordIndex == '$index$lessonIndex$pageIndex';
   List<BMBook> get books => bm.bids..sort((a, b) => a.id - b.id);
 }
