@@ -87,8 +87,8 @@ class BookEffects extends BaseEffect {
     return action$
         .whereType(ActionTypes.INIT)
         .flatMap((book) => Stream.fromFuture(syncWithPref(BookModel())))
-        .map((book) =>
-            Action(type: ActionTypes.SYNC_WITH_PREFERENCE, payload: book))
+        .map((data) =>
+            Action(type: ActionTypes.SYNC_WITH_PREFERENCE, payload: data))
         .doOnError((error, stacktrace) {
       print(error.toString());
     });
@@ -101,8 +101,8 @@ class BookEffects extends BaseEffect {
             store$.select('book'), (a, b) => {'book': b, 'payload': a.payload})
         .flatMap((map) =>
             Stream.fromFuture(loadBookInfo(map['payload'], map['book'])))
-        .map((book) =>
-            Action(type: ActionTypes.SYNC_WITH_PREFERENCE, payload: book))
+        .map((book) => Action(
+            type: ActionTypes.SYNC_WITH_PREFERENCE, payload: {'book': book}))
         .doOnError((error, stacktrace) {
       print(error.toString());
     });

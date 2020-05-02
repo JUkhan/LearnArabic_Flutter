@@ -10,9 +10,8 @@ class PlayerPage extends StatefulWidget {
   final JVideo video;
   final List<JVideo> videoList;
   final double lessRanSeconds;
-  final double progress;
-  PlayerPage(
-      {Key key, this.video, this.videoList, this.lessRanSeconds, this.progress})
+
+  PlayerPage({Key key, this.video, this.videoList, this.lessRanSeconds})
       : super(key: key);
 
   _PlayerPageState createState() => _PlayerPageState();
@@ -81,8 +80,7 @@ class _PlayerPageState extends State<PlayerPage>
           params: YoutubeParam(
             videoId: widget.video.id,
             showUI: true,
-            startSeconds:
-                widget.progress >= 100 ? 1 : widget.lessRanSeconds, // <option>
+            startSeconds: widget.lessRanSeconds, // <option>
             autoPlay: true,
             showYoutube: true,
             showFullScreen: false,

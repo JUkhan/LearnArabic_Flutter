@@ -61,7 +61,7 @@ class BookPage extends StatelessWidget {
               children: <Widget>[
                 LoadingWidget(snapshot.data),
                 JErrorWidget(snapshot.data),
-                snapshot.data != null ? PageDataWidget(snapshot.data) : null
+                PageDataWidget(snapshot.data)
               ],
             ),
           );

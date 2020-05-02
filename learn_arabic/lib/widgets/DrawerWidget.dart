@@ -78,7 +78,10 @@ class DrawerWidget extends StatelessWidget {
       [bool isSelected = false]) {
     return ListTile(
       title: Text(title),
-      leading: Icon(icon),
+      leading: Icon(
+        icon,
+        color: Colors.blueGrey,
+      ),
       onTap: () async {
         if (navigateTo.startsWith('/book')) {
           dispatch(ActionTypes.CHANGE_BOOK_NAME, navigateTo);

@@ -244,7 +244,6 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
                       builder: (context) => PlayerPage(
                             video: v,
                             videoList: videos,
-                            progress: _memo.videoProgress,
                             lessRanSeconds:
                                 id == v.id ? _memo.lessRanSeconds : 0,
                           )));

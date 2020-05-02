@@ -18,6 +18,7 @@ class _SettingPageState extends State<SettingPage> {
   bool isLandscape = false;
   int lectureCategory = 1;
   int wordMeaningCategory = 1;
+  Color iconColor = Colors.blueGrey;
   //StreamSubscription streamSubscription;
   @override
   void initState() {
@@ -92,7 +93,10 @@ class _SettingPageState extends State<SettingPage> {
           getWordSpace(context),
           Card(
               child: ListTile(
-            leading: Icon(tts ? Icons.mic : Icons.mic_off),
+            leading: Icon(
+              tts ? Icons.mic : Icons.mic_off,
+              color: iconColor,
+            ),
             title: Text('English TTS'),
             trailing: Switch(
               value: tts,
@@ -102,7 +106,10 @@ class _SettingPageState extends State<SettingPage> {
 
           Card(
               child: ListTile(
-            leading: Icon(isLandscape ? Icons.landscape : Icons.portrait),
+            leading: Icon(
+              isLandscape ? Icons.landscape : Icons.portrait,
+              color: iconColor,
+            ),
             title: Text(isLandscape ? 'Landscape' : 'Protrait'),
             trailing: Switch(
               value: isLandscape,
@@ -166,7 +173,12 @@ class _SettingPageState extends State<SettingPage> {
     }
     return Card(
         child: Column(children: <Widget>[
-      ListTile(leading: Icon(Icons.graphic_eq), title: Text('WORD SPACE')),
+      ListTile(
+          leading: Icon(
+            Icons.graphic_eq,
+            color: iconColor,
+          ),
+          title: Text('WORD SPACE')),
       Slider(
         min: 1.0,
         max: 3.0,
@@ -189,7 +201,10 @@ class _SettingPageState extends State<SettingPage> {
         child: Column(
           children: <Widget>[
             ListTile(
-              leading: Icon(Icons.gesture),
+              leading: Icon(
+                Icons.gesture,
+                color: iconColor,
+              ),
               title: const Text('FONT SIZE'),
             ),
             Divider(),
@@ -222,7 +237,10 @@ class _SettingPageState extends State<SettingPage> {
         child: Column(
           children: <Widget>[
             ListTile(
-              leading: Icon(icon),
+              leading: Icon(
+                icon,
+                color: iconColor,
+              ),
               title: Text(title),
             ),
             Divider(),

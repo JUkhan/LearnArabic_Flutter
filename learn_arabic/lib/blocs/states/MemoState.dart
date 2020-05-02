@@ -9,7 +9,7 @@ class MemoState extends BaseState<MemoModel> {
   Stream<MemoModel> mapActionToState(MemoModel state, Action action) async* {
     switch (action.type) {
       case ActionTypes.SYNC_WITH_PREFERENCE:
-        yield action.payload['memo'];
+        yield action.payload['memo'] ?? state;
         break;
       case ActionTypes.SAVE_LESS_RUNNING_TIME:
         double vprogress =
@@ -44,7 +44,8 @@ class MemoState extends BaseState<MemoModel> {
         break;
       case ActionTypes.SET_VIDEO_ID:
         AppService.saveInPref(action.payload, AppService.prefkey_videoid);
-        yield state.copyWith(videoId: action.payload);
+        yield state.copyWith(
+            videoId: action.payload, videoProgress: 0.0, lessRanSeconds: 0.0);
         break;
       case ActionTypes.SET_SCROLL_OFFSET:
         AppService.saveInPref<String>(
