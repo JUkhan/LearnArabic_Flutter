@@ -80,7 +80,7 @@ class DrawerWidget extends StatelessWidget {
       title: Text(title),
       leading: Icon(
         icon,
-        color: Colors.blueGrey,
+        color: Colors.blue,
       ),
       onTap: () async {
         if (navigateTo.startsWith('/book')) {

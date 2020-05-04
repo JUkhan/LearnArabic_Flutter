@@ -2,7 +2,7 @@ import 'package:learn_arabic/blocs/models/BookInfo.dart';
 import 'package:learn_arabic/blocs/util.dart';
 
 class MemoModel {
-  final double lessRanSeconds;
+  double lessRanSeconds;
   final String videoId;
   final bool tts;
   final double fontSize;
@@ -10,10 +10,11 @@ class MemoModel {
   final double wordSpace;
   final String wordIndex;
   final JWord selectedWord;
-  final double scrollOffset;
+  final int prevSelectedWordId;
+  double scrollOffset;
   final bool isLandscape;
-  final double videoProgress;
-  final String pageIndexPerScroll;
+  double videoProgress;
+  String pageIndexPerScroll;
   final int wordMeaningCategory;
   final int lectureCategory;
 
@@ -25,6 +26,7 @@ class MemoModel {
       this.theme,
       this.pageIndexPerScroll,
       this.selectedWord,
+      this.prevSelectedWordId,
       this.isLandscape,
       this.scrollOffset,
       this.wordIndex,
@@ -40,6 +42,7 @@ class MemoModel {
       double fontSize,
       Themes theme,
       JWord selectedWord,
+      int prevSelectedWordId,
       bool isLandscape,
       double scrollOffset,
       double videoProgress,
@@ -59,6 +62,7 @@ class MemoModel {
         scrollOffset: scrollOffset ?? this.scrollOffset,
         isLandscape: isLandscape ?? this.isLandscape,
         wordSpace: wordSpace ?? this.wordSpace,
+        prevSelectedWordId: prevSelectedWordId ?? this.prevSelectedWordId,
         lectureCategory: lectureCategory ?? this.lectureCategory,
         wordMeaningCategory: wordMeaningCategory ?? this.wordMeaningCategory,
         pageIndexPerScroll: pageIndexPerScroll ?? this.pageIndexPerScroll,

@@ -180,9 +180,7 @@ class BookPage extends StatelessWidget {
   Widget _getSplitMeaning(BuildContext context, JWord word) {
     if (word.sp == null) return Container();
     List<Widget> widgets = List<Widget>();
-    widgets.add(Divider(
-      color: Colors.red,
-    ));
+    widgets.add(Divider());
     _setSplitTextWidget(context, word, widgets);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,

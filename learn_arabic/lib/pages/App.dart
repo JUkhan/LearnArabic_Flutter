@@ -27,7 +27,35 @@ class _AppState extends State<App> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
+    return DynamicThemeWidget(
+        //bloc: widget.block,
+        defaultTheme: Themes.light,
+        themedWidgetBuilder: (context, theme) => new MaterialApp(
+              title: 'Learn Arabic',
+              theme: theme,
+              initialRoute: '/',
+              routes: {
+                '/': (_) => HomePage(),
+                '/book': (_) => BookPage(),
+                '/lessons': (_) => BookLessonsPage(),
+                '/setting': (_) => SettingPage(),
+                '/page': (_) => Pages(),
+                '/markbook': (_) => BookMarkPage(),
+                '/player': (_) => PlayerPage()
+              },
+            ));
+  }
+
+  @override
+  void dispose() {
+    Util.disposeTTS();
+    widget.block.dispose();
+    super.dispose();
+  }
+}
+
+/*
+ClipRRect(
         borderRadius: BorderRadius.circular(4.0),
         child: DynamicThemeWidget(
             //bloc: widget.block,
@@ -46,11 +74,4 @@ class _AppState extends State<App> {
                     '/player': (_) => PlayerPage()
                   },
                 )));
-  }
-
-  @override
-  void dispose() {
-    widget.block.dispose();
-    super.dispose();
-  }
-}
+*/

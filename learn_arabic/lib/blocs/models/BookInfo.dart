@@ -30,14 +30,13 @@ T getValue<T>(Map<String, dynamic> json, String key, dynamic defaultValue) {
 }
 
 class JLine {
-  final String direction;
+  String direction;
   final String mode;
   final String img;
   final int lineno;
-  bool isHide = false;
   final double height;
   final List<JLine> lines;
-  final List<JWord> words;
+  List<JWord> words;
 
   JLine({
     this.direction,
@@ -72,6 +71,22 @@ class JLine {
         lines: lines,
         words: words);
   }
+  JLine copyWith(
+          {String direction,
+          String mode,
+          String img,
+          int lineno,
+          double height,
+          List<JLine> lines,
+          List<JWord> words}) =>
+      JLine(
+          direction: direction ?? this.direction,
+          mode: mode ?? this.mode,
+          img: img ?? this.img,
+          lineno: lineno ?? this.lineno,
+          height: height ?? this.height,
+          lines: lines ?? lines,
+          words: words ?? words);
 }
 
 class JWord {

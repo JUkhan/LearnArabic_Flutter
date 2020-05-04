@@ -18,7 +18,7 @@ class _SettingPageState extends State<SettingPage> {
   bool isLandscape = false;
   int lectureCategory = 1;
   int wordMeaningCategory = 1;
-  Color iconColor = Colors.blueGrey;
+  Color iconColor = Colors.blue;
   //StreamSubscription streamSubscription;
   @override
   void initState() {
@@ -58,7 +58,7 @@ class _SettingPageState extends State<SettingPage> {
         children: <Widget>[
           //getTheme(context),
           getOptions(
-              title: 'Theme',
+              title: 'Themes',
               items: [Item("Light", Themes.light), Item("Dark", Themes.dark)],
               groupValue: DynamicThemeWidget.of(context).theme,
               icon: Icons.ac_unit,
@@ -123,6 +123,11 @@ class _SettingPageState extends State<SettingPage> {
 
   ttsValueChanged(bool value) {
     dispatch(ActionTypes.SET_TTS, value);
+    if (value) {
+      Util.initTts();
+    } else {
+      Util.disposeTTS();
+    }
     setState(() {
       tts = value;
     });
@@ -179,6 +184,9 @@ class _SettingPageState extends State<SettingPage> {
             color: iconColor,
           ),
           title: Text('WORD SPACE')),
+      Divider(
+        color: iconColor,
+      ),
       Slider(
         min: 1.0,
         max: 3.0,
@@ -207,7 +215,7 @@ class _SettingPageState extends State<SettingPage> {
               ),
               title: const Text('FONT SIZE'),
             ),
-            Divider(),
+            Divider(color: iconColor),
             Slider(
               min: 1.0,
               max: 4.0,
@@ -243,7 +251,7 @@ class _SettingPageState extends State<SettingPage> {
               ),
               title: Text(title),
             ),
-            Divider(),
+            Divider(color: iconColor),
             JRadio(
               items: items,
               groupValue: groupValue,

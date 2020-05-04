@@ -16,10 +16,12 @@ class MemoState extends BaseState<MemoModel> {
             100 * action.payload['ranTime'] / action.payload['totalTime'];
         AppService.saveInPref('${action.payload['ranTime']}-$vprogress',
             AppService.prefkey_less_ran_times);
-
-        yield state.copyWith(
+        state.lessRanSeconds = action.payload['ranTime'];
+        state.videoProgress = vprogress;
+        yield state;
+        /*yield state.copyWith(
             lessRanSeconds: action.payload['ranTime'],
-            videoProgress: vprogress);
+            videoProgress: vprogress);*/
         break;
       case ActionTypes.SET_WORDSPACE:
         AppService.saveInPref(action.payload, AppService.prefkey_wordSpace);
@@ -44,27 +46,37 @@ class MemoState extends BaseState<MemoModel> {
         break;
       case ActionTypes.SET_VIDEO_ID:
         AppService.saveInPref(action.payload, AppService.prefkey_videoid);
-        yield state.copyWith(
-            videoId: action.payload, videoProgress: 0.0, lessRanSeconds: 0.0);
+        if (action.payload == state.videoId && state.videoProgress < 100) {
+          yield state.copyWith(videoId: action.payload);
+        } else {
+          yield state.copyWith(
+              videoId: action.payload, videoProgress: 0.0, lessRanSeconds: 0.0);
+        }
         break;
       case ActionTypes.SET_SCROLL_OFFSET:
         AppService.saveInPref<String>(
             '${action.payload['scroll']}-${action.payload['refPerScroll']}',
             AppService.prefkey_scrollOffset);
-        yield state.copyWith(
+        state.scrollOffset = action.payload['scroll'];
+        state.pageIndexPerScroll = action.payload['refPerScroll'];
+        /*yield state.copyWith(
             scrollOffset: action.payload['scroll'],
-            pageIndexPerScroll: action.payload['refPerScroll']);
+            pageIndexPerScroll: action.payload['refPerScroll']);*/
+        yield state;
         break;
       case ActionTypes.SELECT_WORD:
         AppService.saveInPref<String>(
             action.payload['wordIndex'], AppService.prefkey_wordIndex);
 
         yield state.copyWith(
+            prevSelectedWordId: state.selectedWord?.id ?? 0,
             selectedWord: action.payload['word'],
             wordIndex: action.payload['wordIndex']);
         break;
       case ActionTypes.SELECT_WORD_ONLY:
-        yield state.copyWith(selectedWord: action.payload);
+        yield state.copyWith(
+            selectedWord: action.payload,
+            prevSelectedWordId: action.payload.id);
         break;
       case ActionTypes.LECTURE_CATEGORY:
         AppService.saveInPref<int>(
