@@ -123,11 +123,6 @@ class _SettingPageState extends State<SettingPage> {
 
   ttsValueChanged(bool value) {
     dispatch(ActionTypes.SET_TTS, value);
-    if (value) {
-      Util.initTts();
-    } else {
-      Util.disposeTTS();
-    }
     setState(() {
       tts = value;
     });

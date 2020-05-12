@@ -1,4 +1,3 @@
-import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_arabic/blocs/util.dart';
 import 'package:learn_arabic/pages/BookLessonsPage.dart';
@@ -10,21 +9,9 @@ import 'package:learn_arabic/pages/PlayerPage.dart';
 import 'package:learn_arabic/pages/SettingPage.dart';
 import 'package:learn_arabic/widgets/DynamicThemeWidget.dart';
 
-class App extends StatefulWidget {
-  final Store block;
-  App({@required this.block});
+class App extends StatelessWidget {
+  const App({Key key}) : super(key: key);
 
-  @override
-  _AppState createState() => new _AppState();
-}
-
-class _AppState extends State<App> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return DynamicThemeWidget(
@@ -44,13 +31,6 @@ class _AppState extends State<App> {
                 '/player': (_) => PlayerPage()
               },
             ));
-  }
-
-  @override
-  void dispose() {
-    Util.disposeTTS();
-    widget.block.dispose();
-    super.dispose();
   }
 }
 

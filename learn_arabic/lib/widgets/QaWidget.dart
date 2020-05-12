@@ -22,7 +22,7 @@ class QaWidget extends StatefulWidget {
 class _QaWidgetState extends State<QaWidget> {
   @override
   Widget build(BuildContext context) {
-    print('-------------------qa--------------');
+    //print('-------------------qa--------------');
     return _getWidget(widget.line, widget.padding);
   }
 

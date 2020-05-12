@@ -6,9 +6,8 @@ import 'package:learn_arabic/blocs/states/bookState.dart';
 import 'package:learn_arabic/pages/App.dart';
 
 void main() {
-  return runApp(new App(
-      block: createStore(
-          states: [BookState(), MemoState()], effects: [BookEffects()])));
+  createStore(states: [BookState(), MemoState()], effects: [BookEffects()]);
+  return runApp(new App());
 }
 //export PATH="$PATH:/Users/jukhan/development/flutter/bin"
 //flutter build apk
@@ -24,3 +23,4 @@ void main() {
 //flutter pub get
 //export PUB_HOSTED_URL=https://pub.flutter-io.cn
 //export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+//hi

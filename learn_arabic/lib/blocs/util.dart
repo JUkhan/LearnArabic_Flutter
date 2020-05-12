@@ -67,16 +67,21 @@ class Util {
   static void disposeTTS() {
     if (flutterTts != null) {
       flutterTts.stop();
-      flutterTts = null;
+      //flutterTts = null;
     }
   }
 
   static void initTts() async {
-    flutterTts = new FlutterTts();
-    await flutterTts.setLanguage("en-US");
-    await flutterTts.setSpeechRate(0.7);
-    await flutterTts.setVolume(1.0);
-    await flutterTts.setPitch(1.5);
+    if (flutterTts == null) {
+      flutterTts = FlutterTts();
+      await flutterTts.setLanguage("en-US");
+      await flutterTts.setSpeechRate(0.5);
+      await flutterTts.setVolume(1.0);
+      //await flutterTts.setPitch(1.5);
+      flutterTts.errorHandler = (msg) {
+        print('--------------$msg----------');
+      };
+    }
   }
 
   static bool isFirstRender = true;

@@ -38,11 +38,15 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     });
     _memoSubscription = select<MemoModel>('memo').listen((data) {
       _memo = data;
+      if (_memo.tts && Util.flutterTts == null) {
+        Util.initTts();
+      }
+      if (Util.isFirstRender) {
+        _animateScroll();
+        Util.isFirstRender = false;
+      }
+      print('-----memo--------');
     });
-    if (Util.isFirstRender) {
-      _animateScroll();
-      Util.isFirstRender = false;
-    }
   }
 
   void _animateScroll() {
@@ -65,6 +69,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     _bookModelSubscription.cancel();
     _memoSubscription.cancel();
     _scrollController?.dispose();
+    Util.disposeTTS();
     super.dispose();
   }
 
@@ -107,6 +112,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
   @override
   Widget build(BuildContext context) {
+    //print('-------------------pageData---------------');
     return GestureDetector(
       child: ListView(
         //scrollDirection: A,
