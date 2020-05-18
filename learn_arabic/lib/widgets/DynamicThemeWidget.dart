@@ -4,18 +4,19 @@ import 'package:learn_arabic/blocs/util.dart';
 
 class AppTheme {
   static get dark {
-    final originalTextTheme = ThemeData.dark().textTheme;
-    final originalBody1 = originalTextTheme.body1;
+    //final originalTextTheme = ThemeData.dark().textTheme;
+    //final originalBody1 = originalTextTheme.bodyText2;
     return ThemeData.dark().copyWith(
-        primaryColor: Colors.grey[800],
-        accentColor: Colors.cyan[300],
-        buttonColor: Colors.grey[800],
-        textSelectionColor: Colors.cyan[100],
-        backgroundColor: Colors.grey[800],
-        textTheme: originalTextTheme.copyWith(
+      primaryColor: Colors.grey[800],
+      accentColor: Colors.cyan[300],
+      buttonColor: Colors.grey[800],
+      textSelectionColor: Colors.cyan[100],
+      backgroundColor: Colors.grey[800],
+      /*textTheme: originalTextTheme.copyWith(
             body1: originalBody1.copyWith(decorationColor: Colors.transparent),
-            headline: originalTextTheme.headline
-                .copyWith(color: Colors.indigo[100])));
+            headline: originalTextTheme.headline5
+                .copyWith(color: Colors.indigo[100]))*/
+    );
   }
 
   static get light {

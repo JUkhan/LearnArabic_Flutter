@@ -196,7 +196,7 @@ class _SettingPageState extends State<SettingPage> {
       Text(
         'اْلأَوَّلُ' + space + 'اَلدَّرْسُ',
         style: Util.getTextTheme(context, 'rtl', fontSize),
-      )
+      ),
     ]));
   }
 
@@ -225,6 +225,10 @@ class _SettingPageState extends State<SettingPage> {
             Text(
               'اَلدَّرْسُ اْلأَوَّلُ',
               style: Util.getTextTheme(context, 'rtl', fontSize),
+            ),
+            Text(
+              'Learn Quran',
+              style: Util.getTextTheme(context, 'ltr', fontSize),
             )
           ],
         ),

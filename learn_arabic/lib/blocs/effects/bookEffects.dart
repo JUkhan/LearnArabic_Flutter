@@ -166,7 +166,7 @@ class BookEffects extends BaseEffect {
             AppService.prefkey_scrollOffset, '0.0-00'))
         .split('-');
     var fontSize =
-        await AppService.getFromPref<double>(AppService.prefkey_fontSize, 2.0);
+        await AppService.getFromPref<double>(AppService.prefkey_fontSize, 1.0);
     var wordSpace =
         await AppService.getFromPref<double>(AppService.prefkey_wordSpace, 1.0);
     var tts = await AppService.getFromPref<bool>(AppService.prefkey_tts, false);
@@ -187,6 +187,7 @@ class BookEffects extends BaseEffect {
     var wmc =
         await AppService.getFromPref<int>(ActionTypes.WORDMEANING_CATEGORY, 1);
     Util.wordMeanCategory = wmc;
+    Util.isFirstRender = true;
     //print('-----------------------book-effects-----------------');
     //print('lc=$lc and wmc=$wmc');
     return {

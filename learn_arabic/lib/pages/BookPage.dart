@@ -98,8 +98,8 @@ class BookPage extends StatelessWidget {
                         : TextDirection.ltr,
                     textAlign: TextAlign.center,
                     style: Util.isArabic(snapshot.data.english)
-                        ? Theme.of(context).textTheme.headline
-                        : Theme.of(context).textTheme.title,
+                        ? Theme.of(context).textTheme.headline5
+                        : Theme.of(context).textTheme.headline6,
                   ),
           )),
           StreamBuilder<JWord>(
@@ -312,13 +312,14 @@ class BookPage extends StatelessWidget {
     }
     //Colors.grey[400]:Colors.black.withOpacity(0.9)
     return TextSpan(
-        style: Theme.of(context).textTheme.display1, children: txtSpans);
+        style: Theme.of(context).textTheme.headline4, children: txtSpans);
   }
 
   Widget _getBangla(BuildContext context, JWord word) {
     String str = _getBanglaText(word);
     return RichText(
-        text: TextSpan(text: str, style: Theme.of(context).textTheme.title));
+        text:
+            TextSpan(text: str, style: Theme.of(context).textTheme.headline6));
   }
 
   String _getBanglaText(JWord word) {
@@ -540,7 +541,7 @@ class BookPage extends StatelessWidget {
         text: TextSpan(
             text: word.english,
             style: Util.isArabic(word.english)
-                ? Theme.of(context).textTheme.headline
-                : Theme.of(context).textTheme.title));
+                ? Theme.of(context).textTheme.headline5
+                : Theme.of(context).textTheme.headline6));
   }
 }

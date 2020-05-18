@@ -211,19 +211,19 @@ class Util {
       BuildContext context, String direction, double _fontSize) {
     if (direction == 'ltr') {
       if (_fontSize == 1.0)
-        return Theme.of(context).textTheme.subhead;
-      else if (_fontSize == 2.0) return Theme.of(context).textTheme.title;
-      return Theme.of(context).textTheme.headline;
+        return Theme.of(context).textTheme.subtitle1;
+      else if (_fontSize == 2.0) return Theme.of(context).textTheme.headline6;
+      return Theme.of(context).textTheme.headline6;
     }
     if (_fontSize == 1.0)
-      return Theme.of(context).textTheme.title;
+      return Theme.of(context).textTheme.headline6;
     else if (_fontSize == 2.0)
-      return Theme.of(context).textTheme.headline;
+      return Theme.of(context).textTheme.headline5;
     else if (_fontSize == 3.0)
-      return Theme.of(context).textTheme.display1;
-    else if (_fontSize == 4.0) return Theme.of(context).textTheme.display2;
+      return Theme.of(context).textTheme.headline4;
+    else if (_fontSize == 4.0) return Theme.of(context).textTheme.headline3;
 
-    return Theme.of(context).textTheme.title;
+    return Theme.of(context).textTheme.headline5;
   }
 
   static setDeviceOrientation(bool isLandscape) {
@@ -244,35 +244,6 @@ class Util {
     if (str.trim().isEmpty) return false;
     return str.codeUnitAt(0) > 1000;
   }
-
-  static List<String> nums = [
-    '٠',
-    '١',
-    '٢',
-    '٣',
-    '٤',
-    '٥',
-    '٦',
-    '٧',
-    '٨',
-    '٩',
-    '١٠',
-    '١١',
-    '١٢',
-    '١٣',
-    '١٤',
-    '١٥',
-    '١٦',
-    '١٧',
-    '١٨',
-    '١٩',
-    '٢٠',
-    '٢١',
-    '٢٢',
-    '٢٣',
-    '٢٤',
-    '٢٥'
-  ];
 
   static TextDirection getDirection(String direction) =>
       direction == 'rtl' ? TextDirection.rtl : TextDirection.ltr;

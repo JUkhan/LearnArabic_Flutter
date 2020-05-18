@@ -1,53 +1,81 @@
 {
-    "lines": [
-        {"d":"ltr", "words":[{"w":"Nouns ending in long <<-a>> have no endings. They remain onchanged, e.g."}]},
-        {"mode":"card","lines":[
-            {"tap":0, "words":[{"w":"هَذِهِ  أَمْرِيكَا ."}]},
-            {"d":"ltr","words":[{"w":"This is America."}]},
-            {"tap":0,"words":[{"w":"أَنَا  مِنْ  أَمْرِيكَا ."}]} ,
-            {"d":"ltr","words":[{"w":"I am from America."}]} ,
-            {"tap":0,"words":[{"w":"هُوَ  رَأِيسُ  أَمْرِيكَا ."}]} ,
-            {"d":"ltr","words":[{"w":"He is the president of America."}]}
-        ]}, 
-        {"d":"ltr", "words":[{"w":"3. خَلْفُ \"behind\" أَمَامَ \"in front of\". The noun after these have <<-i>> ending e.g. "}]},
-        {"mode":"card","lines":[
-            {"tap":0, "words":[{"w":"البَيْتُ  خَلْفَ  الْمَسْجِدِ ."}]},
-            {"d":"ltr","words":[{"w":"This house is behind the mosque."}]},
-            {"tap":0,"words":[{"w":"حَمِدٌ  أَمَامَ  الْمُدَرِّسِ ."}]} ,
-            {"d":"ltr","words":[{"w":"Hamid is in front of the teacher."}]} 
-        ]}, 
-        {"d":"ltr", "words":[{"w":"4. جَلَسَ means \"he sat\". "}]},
-        {"mode":"card","lines":[
-            {"tap":0, "words":[{"w":"أَيْنَ  جَلَسَ  مُحَمَّدٌ ؟"}]},
-            {"d":"ltr","words":[{"w":"Where did Muhammad sit?"}]},
-            {"tap":0,"words":[{"w":"جَلَسَ  أَمَامَ  الْمُدَرِّسِ ."}]} ,
-            {"d":"ltr","words":[{"w":"He sat in front of the teacher."}]} 
-        ]}, 
-        {   "d":"ltr",
-            "mode":"lesson", "height":50.0,
-            "words":[{"w":"Vocabulary:"}]
-        },
+  "lines": [
+    {
+      "d": "ltr",
+      "words": [
         {
-            "mode": "vocab",
-            "words":[
-               {"w": "أَمْرِيكَا", "e":"America"},
-               {"w": "مُغْلَقٌ", "e":"closed"},
-               {"w": "السِّكِّينُ", "e":"knife"},
-               {"w": "الْمَانِيَا", "e":"Germany"},
-               {"w": "إِنْكَلْتَرَا", "e":"England"},
-               {"w": "الْعِرَاقُ", "e":"Iraq"},
-               {"w": "سُوِيسْرَا", "e":"Switzerland"},
-               {"w": "الْمُسْثَسْفَي", "e":"hospital"},
-               {"w": "خَلْفَ", "e":"behind"},
-               {"w": "أَمَامَ", "e":"in front of"},
-               {"w":"فِرَنْسَا", "e":"France"},
-               {"w":"السَّبُّورَةُ","e":"writing board"}
-              
-            ]  
-            
-        },
-        {   "d":"ltr", "words":[{"w":"Note that the final ي which is pronounced alif has no dots. So فِي is \"fi\" and عَلَي is \"ala\" "}]
+          "w": "Nouns ending in long <<-a>> have no endings. They remain unchanged, e.g."
         }
-        
-    ]
+      ]
+    },
+    {
+      "mode": "card",
+      "lines": [
+        { "tap": 0, "words": [{ "w": "هَذِهِ  أَمْرِيكَا ." }] },
+        { "d": "ltr", "words": [{ "w": "This is America." }] },
+        { "tap": 0, "words": [{ "w": "أَنَا  مِنْ  أَمْرِيكَا ." }] },
+        { "d": "ltr", "words": [{ "w": "I am from America." }] },
+        { "tap": 0, "words": [{ "w": "هُوَ  رَأِيسُ  أَمْرِيكَا ." }] },
+        { "d": "ltr", "words": [{ "w": "He is the president of America." }] }
+      ]
+    },
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "3. خَلْفُ \"behind\" أَمَامَ \"in front of\". The noun after these have <<-i>> ending e.g. "
+        }
+      ]
+    },
+    {
+      "mode": "card",
+      "lines": [
+        { "tap": 0, "words": [{ "w": "البَيْتُ  خَلْفَ  الْمَسْجِدِ ." }] },
+        { "d": "ltr", "words": [{ "w": "This house is behind the mosque." }] },
+        { "tap": 0, "words": [{ "w": "حَمِدٌ  أَمَامَ  الْمُدَرِّسِ ." }] },
+        { "d": "ltr", "words": [{ "w": "Hamid is in front of the teacher." }] }
+      ]
+    },
+    { "d": "ltr", "words": [{ "w": "4. جَلَسَ means \"he sat\". " }] },
+    {
+      "mode": "card",
+      "lines": [
+        { "tap": 0, "words": [{ "w": "أَيْنَ  جَلَسَ  مُحَمَّدٌ ؟" }] },
+        { "d": "ltr", "words": [{ "w": "Where did Muhammad sit?" }] },
+        { "tap": 0, "words": [{ "w": "جَلَسَ  أَمَامَ  الْمُدَرِّسِ ." }] },
+        { "d": "ltr", "words": [{ "w": "He sat in front of the teacher." }] }
+      ]
+    },
+    {
+      "d": "ltr",
+      "mode": "lesson",
+      "height": 50.0,
+      "words": [{ "w": "Vocabulary:" }]
+    },
+    {
+      "mode": "vocab",
+      "words": [
+        { "w": "أَمْرِيكَا", "e": "America" },
+        { "w": "مُغْلَقٌ", "e": "closed" },
+        { "w": "السِّكِّينُ", "e": "knife" },
+        { "w": "الْمَانِيَا", "e": "Germany" },
+        { "w": "إِنْكَلْتَرَا", "e": "England" },
+        { "w": "الْعِرَاقُ", "e": "Iraq" },
+        { "w": "سُوِيسْرَا", "e": "Switzerland" },
+        { "w": "الْمُسْثَسْفَي", "e": "hospital" },
+        { "w": "خَلْفَ", "e": "behind" },
+        { "w": "أَمَامَ", "e": "in front of" },
+        { "w": "فِرَنْسَا", "e": "France" },
+        { "w": "السَّبُّورَةُ", "e": "writing board" }
+      ]
+    },
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "Note that the final ي which is pronounced alif has no dots. So فِي is \"fi\" and عَلَي is \"ala\" "
+        }
+      ]
+    }
+  ]
 }

@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:learn_arabic/blocs/actionTypes.dart';
 import 'package:learn_arabic/blocs/models/BookInfo.dart';
 import 'package:learn_arabic/blocs/models/MemoModel.dart';
@@ -39,7 +38,6 @@ class _TextWidgetState extends State<TextWidget> {
     _memo = widget.memo;
     _gestures = List<TapGestureRecognizer>();
     _memoSubscription = select<MemoModel>('memo').listen((data) {
-      //print('---memo state----update---state');
       _memo = data;
       widget.line.words
           .where((w) =>
@@ -47,7 +45,6 @@ class _TextWidgetState extends State<TextWidget> {
               Util.getWordIndex(
                   data?.prevSelectedWordId ?? 0, widget.bookModel))
           .forEach((s) {
-        //print('-------------matched-word--------------');
         setState(() {});
       });
     });
@@ -64,18 +61,26 @@ class _TextWidgetState extends State<TextWidget> {
     super.dispose();
   }
 
+  String getArabicNumber(String str) {
+    if (str.length == 1) {
+      return '${String.fromCharCode(str.codeUnitAt(0) + 1584)}) ';
+    }
+    return '${String.fromCharCode(str.codeUnitAt(0) + 1584)}${String.fromCharCode(str.codeUnitAt(1) + 1584)}) ';
+  }
+
   @override
   Widget build(BuildContext context) {
-    //print('------------textWidget--------------');
     return widget.lineNo != null
         ? RichText(
             textAlign: widget.textAlign ?? TextAlign.start,
             textDirection: Util.getDirection(widget.line.direction),
             text: TextSpan(
-                style: Theme.of(context).textTheme.headline.apply(
-                      color: Colors.red[200],
-                    ),
-                text: '${Util.nums[widget.lineNo]}) ',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.red[200],
+                  height: 1.9,
+                ),
+                text: getArabicNumber(widget.lineNo.toString()),
                 children: widget.line.words
                     .map((word) => Util.getTextSpan(word, widget.line.direction,
                         _memo, widget.bookModel, _getGesture, context))
@@ -85,6 +90,7 @@ class _TextWidgetState extends State<TextWidget> {
             textAlign: widget.textAlign ?? TextAlign.start,
             textDirection: Util.getDirection(widget.line.direction),
             text: TextSpan(
+                style: TextStyle(height: 1.9),
                 children: widget.line.words
                     .map((word) => Util.getTextSpan(word, widget.line.direction,
                         _memo, widget.bookModel, _getGesture, context))

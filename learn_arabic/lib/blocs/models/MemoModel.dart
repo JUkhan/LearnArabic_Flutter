@@ -77,7 +77,7 @@ class MemoModel {
       wordSpace: 1.0,
       tts: false,
       scrollOffset: 0.0,
-      fontSize: 2.0,
+      fontSize: 1.0,
       wordMeaningCategory: 1,
       lectureCategory: 1,
       isLandscape: false);

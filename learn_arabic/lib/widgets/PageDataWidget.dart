@@ -29,6 +29,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   BookModel _bookModel;
   StreamSubscription _bookModelSubscription, _memoSubscription;
   MemoModel _memo;
+
   @override
   void initState() {
     super.initState();
@@ -45,7 +46,6 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         _animateScroll();
         Util.isFirstRender = false;
       }
-      print('-----memo--------');
     });
   }
 
@@ -112,7 +112,6 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
   @override
   Widget build(BuildContext context) {
-    //print('-------------------pageData---------------');
     return GestureDetector(
       child: ListView(
         //scrollDirection: A,
@@ -223,13 +222,6 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     );
   }
 
-  double _getHeight(double height) {
-    final fontSize = _memo.fontSize;
-    if (fontSize == 3.0) return height + height * 0.10;
-    if (fontSize == 4.0) return height + height * 0.35;
-    return height;
-  }
-
   Widget _getVocabMode(JLine line) {
     var children = List<Widget>();
     var items = List<Widget>();
@@ -304,7 +296,6 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   Widget _getLessonMode(JLine line, [double padding = 10.0]) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: padding),
-      height: _getHeight(line.height),
       width: double.infinity,
       decoration: BoxDecoration(
           gradient:
