@@ -20,7 +20,7 @@ class CircleProgress extends CustomPainter {
 
     Paint completeArc = Paint()
       ..strokeWidth = 2
-      ..color = Colors.redAccent
+      ..color = Colors.red
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 

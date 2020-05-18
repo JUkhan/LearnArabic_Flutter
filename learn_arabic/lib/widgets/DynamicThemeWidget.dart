@@ -7,6 +7,7 @@ class AppTheme {
     //final originalTextTheme = ThemeData.dark().textTheme;
     //final originalBody1 = originalTextTheme.bodyText2;
     return ThemeData.dark().copyWith(
+      visualDensity: VisualDensity.adaptivePlatformDensity,
       primaryColor: Colors.grey[800],
       accentColor: Colors.cyan[300],
       buttonColor: Colors.grey[800],
@@ -20,7 +21,10 @@ class AppTheme {
   }
 
   static get light {
-    return ThemeData.light();
+    return ThemeData.light().copyWith(
+      primaryColor: Colors.blue,
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+    );
   }
 }
 

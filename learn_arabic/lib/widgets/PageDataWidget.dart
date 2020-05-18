@@ -134,14 +134,22 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       list.add(_getLessonMode(page.title));
     }
     List<JVideo> videos = page.videos;
-    var eindex = page.videos.indexWhere((el) => el.title == 'English Lecture');
-    if (_bookModel?.bookName != 'Book 0' && videos.length > 2 && eindex > 0) {
+    if (_bookModel?.bookName != 'Book 0' &&
+        videos.length > 1 &&
+        (_memo?.lectureCategory == 1 || _memo?.lectureCategory == 2)) {
+      var eindex =
+          page.videos.indexWhere((el) => el.title == 'English Lecture');
+
       if (_memo?.lectureCategory == 1) {
-        videos = page.videos.sublist(eindex);
+        videos = eindex == -1 ? [] : page.videos.sublist(eindex);
       } else if (_memo?.lectureCategory == 2) {
-        videos = page.videos.sublist(
-            page.videos.indexWhere((el) => el.title == 'Bangla Lecture'),
-            eindex);
+        var bindex =
+            page.videos.indexWhere((el) => el.title == 'Bangla Lecture');
+        videos = bindex == -1
+            ? []
+            : eindex == -1
+                ? page.videos.sublist(bindex)
+                : page.videos.sublist(bindex, eindex);
       }
     }
 
@@ -295,7 +303,8 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
   Widget _getLessonMode(JLine line, [double padding = 10.0]) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: padding),
+      padding: EdgeInsets.fromLTRB(padding, line.direction == 'ltr' ? 2 : 0,
+          padding, line.direction == 'ltr' ? 12 : 0),
       width: double.infinity,
       decoration: BoxDecoration(
           gradient:
