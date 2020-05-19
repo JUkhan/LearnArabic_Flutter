@@ -8,6 +8,9 @@ class MemoState extends BaseState<MemoModel> {
   @override
   Stream<MemoModel> mapActionToState(MemoModel state, Action action) async* {
     switch (action.type) {
+      case ActionTypes.NEW_MEMO_INSTANCE:
+        yield state.copyWith();
+        break;
       case ActionTypes.SYNC_WITH_PREFERENCE:
         yield action.payload['memo'] ?? state;
         break;

@@ -113,10 +113,14 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: ListView(
-        //scrollDirection: A,
-        controller: _scrollController,
-        children: _getListItem(widget.page.data),
+      child: Container(
+        color:
+            _memo?.theme == Themes.light ? Colors.black12 : Colors.transparent,
+        child: ListView(
+          //scrollDirection: A,
+          controller: _scrollController,
+          children: _getListItem(widget.page.data),
+        ),
       ),
       onHorizontalDragStart: _dragStart,
       onHorizontalDragUpdate: _dragUpdate,
@@ -159,12 +163,13 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
             JLine(height: 45.0, words: [JWord(word: v.title, english: "")])));
       } else {
         list.add(Card(
+          color: Theme.of(context).accentColor,
           child: ListTile(
             leading: CircleProgressWidget(
               vid: v.id,
               theme: _memo.theme,
             ),
-            title: Text(v.title),
+            title: Text(v.title.toLowerCase()),
             onTap: () {
               var id = _memo.videoId;
               dispatch(ActionTypes.SET_VIDEO_ID, v.id);
@@ -306,9 +311,10 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       padding: EdgeInsets.fromLTRB(padding, line.direction == 'ltr' ? 2 : 0,
           padding, line.direction == 'ltr' ? 12 : 0),
       width: double.infinity,
-      decoration: BoxDecoration(
+      color: Theme.of(context).accentColor,
+      /*decoration: BoxDecoration(
           gradient:
-              _memo.theme == Themes.light ? _getGradient() : _getGradient2()),
+              _memo.theme == Themes.light ? _getGradient() : _getGradient2()),*/
       child: Center(
           child: TextWidget(
         line: line,
@@ -362,33 +368,11 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   Widget _getReadAndWrite(JLine line, [double padding = 10.0]) {
     return Container(
         padding: EdgeInsets.all(padding),
+        //color: _memo.theme == Themes.light ? Colors.black12 : Colors.white10,
         child: TextWidget(
           line: line,
           memo: _memo,
           bookModel: _bookModel,
         ));
   }
-
-  LinearGradient _getGradient() => LinearGradient(
-        begin: FractionalOffset.topCenter,
-        end: FractionalOffset.bottomCenter,
-        stops: [0.1, 0.5, 0.7, 0.9],
-        colors: [
-          Colors.blue[400],
-          Colors.blue[700],
-          Colors.blue[600],
-          Colors.blue[400]
-        ],
-      );
-  LinearGradient _getGradient2() => LinearGradient(
-        begin: FractionalOffset.topCenter,
-        end: FractionalOffset.bottomCenter,
-        stops: [0.1, 0.5, 0.7, 0.9],
-        colors: [
-          Colors.black12,
-          Colors.black54,
-          Colors.black54,
-          Colors.black26
-        ],
-      );
 }

@@ -1,35 +1,63 @@
 {
-    "title":{
-        "mode":"lesson", "d":"rtl", "height":50.0,
-        "words":[
-            {"w":"اَلدَّرْسُ", "e":"lesson"},
-            {"w":"الثَّامِنُ", "e":"two"}
-        ]
-    },
-    "videos":[
-        {"title":"Bangla Lecture"}, 
-        {
-            "id":"F26IgwPzmdU", "title":"Madinah Arabic Course B1 L8"
-        }       
-    ],
-    "lines": [                
-        {"d":"ltr", "words":[{"w":"In this lesson we learn:\n\n1. How to say \"this book\" in Arabic. We have seen that هَذَا  كِتَابٌ means \"this is a book\". Now we learn that هَذَا  الْكِتَابُ means \"this book\". This is not a sentence. To make it a sentence we must add a predicate e.g., \"this book is new\" . هَذا  الْكِتَابُ  جَدِيْدٌ \n\nAll demonstrative pronouns can be used to make this construction, e.g., "}]},
-        {"mode":"card","lines":[
-            {"tap":0, "words":[{"w":"ذَلِكَ  الرَّجُلُ  مُهَنْدِسٌ ."}]},
-            {"d":"ltr","words":[{"w":"This man is an engineer."}]},
-            {"tap":0,"words":[{"w":"هَذِهِ  السَّاعَةُ  جَمِيْلَةٌ ."}]} ,
-            {"d":"ltr","words":[{"w":"This watch is beautifull."}]} ,
-            {"tap":0,"words":[{"w":"تِلْكَ  الْمُمَرِّضَةُ  مِنَ  الْيَابَانِ ."}]} ,
-            {"d":"ltr","words":[{"w":"That nourse is from Japan."}]}
-        ]},        
-        {"d":"ltr","words":[{"w":"2. We have seen that the normal ending of a noun is <<-u>>, and it changes to <<-i>> after prepositions, and when the noun is a possessor, e,g."}]},
-        {"mode":"card","lines":[
-            {"tap":0, "words":[{"w":"البَيْتُ  جَمِيْلٌ ."}]},
-            {"d":"ltr","words":[{"w":"The house is beautifull."}]},
-            {"tap":0,"words":[{"w":"بِلَالٌ  فِيْ  الْبَيتِ ."}]} ,
-            {"d":"ltr","words":[{"w":"Bilal is in the house."}]} ,
-            {"tap":0,"words":[{"w":"هَذَا  مِفْتَاحُ  البَيْتِ ."}]} ,
-            {"d":"ltr","words":[{"w":"This is the key of the house."}]}
-        ]}  
+  "title": {
+    "mode": "lesson",
+    "d": "rtl",
+    "height": 50.0,
+    "words": [
+      { "w": "اَلدَّرْسُ", "e": "lesson" },
+      { "w": "الثَّامِنُ", "e": "eight" }
     ]
+  },
+  "videos": [
+    { "title": "Bangla Lecture" },
+    {
+      "id": "F26IgwPzmdU",
+      "title": "Madinah Arabic Course B1 L8"
+    },
+    { "title": "English Lecture" },
+    { "id": "5pTByFhM2-E", "title": "Revisiting the building blocks" }
+  ],
+  "lines": [
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "In this lesson we learn:\n\n1. How to say \"this book\" in Arabic. We have seen that هَذَا  كِتَابٌ means \"this is a book\". Now we learn that هَذَا  الْكِتَابُ means \"this book\". This is not a sentence. To make it a sentence we must add a predicate e.g., \"this book is new\" . هَذا  الْكِتَابُ  جَدِيْدٌ \n\nAll demonstrative pronouns can be used to make this construction, e.g., "
+        }
+      ]
+    },
+    {
+      "mode": "card",
+      "lines": [
+        { "tap": 0, "words": [{ "w": "ذَلِكَ  الرَّجُلُ  مُهَنْدِسٌ ." }] },
+        { "d": "ltr", "words": [{ "w": "This man is an engineer." }] },
+        { "tap": 0, "words": [{ "w": "هَذِهِ  السَّاعَةُ  جَمِيْلَةٌ ." }] },
+        { "d": "ltr", "words": [{ "w": "This watch is beautifull." }] },
+        {
+          "tap": 0,
+          "words": [{ "w": "تِلْكَ  الْمُمَرِّضَةُ  مِنَ  الْيَابَانِ ." }]
+        },
+        { "d": "ltr", "words": [{ "w": "That nourse is from Japan." }] }
+      ]
+    },
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "2. We have seen that the normal ending of a noun is <<-u>>, and it changes to <<-i>> after prepositions, and when the noun is a possessor, e,g."
+        }
+      ]
+    },
+    {
+      "mode": "card",
+      "lines": [
+        { "tap": 0, "words": [{ "w": "البَيْتُ  جَمِيْلٌ ." }] },
+        { "d": "ltr", "words": [{ "w": "The house is beautifull." }] },
+        { "tap": 0, "words": [{ "w": "بِلَالٌ  فِيْ  الْبَيتِ ." }] },
+        { "d": "ltr", "words": [{ "w": "Bilal is in the house." }] },
+        { "tap": 0, "words": [{ "w": "هَذَا  مِفْتَاحُ  البَيْتِ ." }] },
+        { "d": "ltr", "words": [{ "w": "This is the key of the house." }] }
+      ]
+    }
+  ]
 }

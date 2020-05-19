@@ -31,7 +31,7 @@ class _AnsWidgetState extends State<AnsWidget> {
     List<Widget> widgets = List<Widget>();
     widgets.add(RaisedButton(
       child: const Text('Ans'),
-      color: _isHidden ? Colors.blue : Colors.red,
+      color: _isHidden ? Theme.of(context).accentColor : Colors.red,
       onPressed: () {
         setState(() {
           _endColor = Colors.red;

@@ -18,8 +18,8 @@ class _SettingPageState extends State<SettingPage> {
   bool isLandscape = false;
   int lectureCategory = 1;
   int wordMeaningCategory = 1;
-  Color iconColor = Colors.blue;
-  //StreamSubscription streamSubscription;
+  Color iconColor = Colors.teal;
+
   @override
   void initState() {
     select<MemoModel>('memo').take(1).listen((memo) {
@@ -37,7 +37,6 @@ class _SettingPageState extends State<SettingPage> {
 
   @override
   void dispose() {
-    //streamSubscription.cancel();
     super.dispose();
   }
 
@@ -48,75 +47,81 @@ class _SettingPageState extends State<SettingPage> {
   ];
   @override
   Widget build(BuildContext context) {
+    iconColor = Theme.of(context).backgroundColor;
     return Scaffold(
       drawer: DrawerWidget(),
       appBar: AppBar(
         title: Text('Settings'),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(10.0),
-        children: <Widget>[
-          //getTheme(context),
-          getOptions(
-              title: 'Themes',
-              items: [Item("Light", Themes.light), Item("Dark", Themes.dark)],
-              groupValue: DynamicThemeWidget.of(context).theme,
-              icon: Icons.ac_unit,
-              onChange: (value) {
-                DynamicThemeWidget.of(context).setTheme(value);
-                dispatch(ActionTypes.SET_THEME, value);
-              }),
-          getOptions(
-              title: 'Lecture Series',
-              items: _items,
-              groupValue: lectureCategory,
-              icon: Icons.language,
-              onChange: (value) {
-                setState(() {
-                  lectureCategory = value;
-                });
-                dispatch(ActionTypes.LECTURE_CATEGORY, value);
-              }),
-          getOptions(
-              title: 'Word Meaning',
-              items: _items,
-              groupValue: wordMeaningCategory,
-              icon: Icons.wb_auto,
-              onChange: (value) {
-                setState(() {
-                  wordMeaningCategory = value;
-                });
-                Util.wordMeanCategory = value;
-                dispatch(ActionTypes.WORDMEANING_CATEGORY, value);
-              }),
-          getFontSize(context),
-          getWordSpace(context),
-          Card(
-              child: ListTile(
-            leading: Icon(
-              tts ? Icons.mic : Icons.mic_off,
-              color: iconColor,
-            ),
-            title: Text('English TTS'),
-            trailing: Switch(
-              value: tts,
-              onChanged: ttsValueChanged,
-            ),
-          )),
+      body: Container(
+        color: DynamicThemeWidget.of(context).theme == Themes.light
+            ? Colors.black12
+            : Colors.transparent,
+        child: ListView(
+          padding: const EdgeInsets.all(10.0),
+          children: <Widget>[
+            //getTheme(context),
+            getOptions(
+                title: 'Themes',
+                items: [Item("Light", Themes.light), Item("Dark", Themes.dark)],
+                groupValue: DynamicThemeWidget.of(context).theme,
+                icon: Icons.ac_unit,
+                onChange: (value) {
+                  DynamicThemeWidget.of(context).setTheme(value);
+                  dispatch(ActionTypes.SET_THEME, value);
+                }),
+            getOptions(
+                title: 'Lecture Series',
+                items: _items,
+                groupValue: lectureCategory,
+                icon: Icons.language,
+                onChange: (value) {
+                  setState(() {
+                    lectureCategory = value;
+                  });
+                  dispatch(ActionTypes.LECTURE_CATEGORY, value);
+                }),
+            getOptions(
+                title: 'Word Meaning',
+                items: _items,
+                groupValue: wordMeaningCategory,
+                icon: Icons.wb_auto,
+                onChange: (value) {
+                  setState(() {
+                    wordMeaningCategory = value;
+                  });
+                  Util.wordMeanCategory = value;
+                  dispatch(ActionTypes.WORDMEANING_CATEGORY, value);
+                }),
+            getFontSize(context),
+            getWordSpace(context),
+            Card(
+                child: ListTile(
+              leading: Icon(
+                tts ? Icons.mic : Icons.mic_off,
+                color: iconColor,
+              ),
+              title: Text('English TTS'),
+              trailing: Switch(
+                value: tts,
+                onChanged: ttsValueChanged,
+              ),
+            )),
 
-          Card(
-              child: ListTile(
-            leading: Icon(
-              isLandscape ? Icons.landscape : Icons.portrait,
-              color: iconColor,
-            ),
-            title: Text(isLandscape ? 'Landscape' : 'Protrait'),
-            trailing: Switch(
-              value: isLandscape,
-              onChanged: landscapeValueChanged,
-            ),
-          )),
-        ],
+            Card(
+                child: ListTile(
+              leading: Icon(
+                isLandscape ? Icons.landscape : Icons.portrait,
+                color: iconColor,
+              ),
+              title: Text(isLandscape ? 'Landscape' : 'Protrait'),
+              trailing: Switch(
+                value: isLandscape,
+                onChanged: landscapeValueChanged,
+              ),
+            )),
+          ],
+        ),
       ),
     );
   }

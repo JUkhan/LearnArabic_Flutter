@@ -36,7 +36,7 @@ class Util {
       case 'لَ':
       case 'لِ':
       case 'بِ':
-        color = Colors.red;
+        color = Colors.purple;
         break;
 
       case 'هِ':

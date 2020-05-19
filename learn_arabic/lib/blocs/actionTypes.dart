@@ -25,4 +25,5 @@ class ActionTypes {
   static const String SELECT_WORD_ONLY = 'swo';
   static const String LECTURE_CATEGORY = 'lcabc';
   static const String WORDMEANING_CATEGORY = 'wmcabc';
+  static const String NEW_MEMO_INSTANCE = 'nmi';
 }

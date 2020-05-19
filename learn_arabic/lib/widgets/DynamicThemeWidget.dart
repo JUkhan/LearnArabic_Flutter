@@ -2,32 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:learn_arabic/blocs/appService.dart';
 import 'package:learn_arabic/blocs/util.dart';
 
-class AppTheme {
-  static get dark {
-    //final originalTextTheme = ThemeData.dark().textTheme;
-    //final originalBody1 = originalTextTheme.bodyText2;
-    return ThemeData.dark().copyWith(
-      visualDensity: VisualDensity.adaptivePlatformDensity,
-      primaryColor: Colors.grey[800],
-      accentColor: Colors.cyan[300],
-      buttonColor: Colors.grey[800],
-      textSelectionColor: Colors.cyan[100],
-      backgroundColor: Colors.grey[800],
-      /*textTheme: originalTextTheme.copyWith(
-            body1: originalBody1.copyWith(decorationColor: Colors.transparent),
-            headline: originalTextTheme.headline5
-                .copyWith(color: Colors.indigo[100]))*/
-    );
-  }
-
-  static get light {
-    return ThemeData.light().copyWith(
-      primaryColor: Colors.blue,
-      visualDensity: VisualDensity.adaptivePlatformDensity,
-    );
-  }
-}
-
 typedef Widget ThemedWidgetBuilder(BuildContext context, ThemeData theme);
 
 class DynamicThemeWidget extends StatefulWidget {
@@ -65,7 +39,8 @@ class DynamicThemeWidgetState extends State<DynamicThemeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.themedWidgetBuilder(context, _getThem());
+    return widget.themedWidgetBuilder(
+        context, theme == Themes.light ? light : dark);
   }
 
   setTheme(Themes theme) async {
@@ -74,7 +49,22 @@ class DynamicThemeWidgetState extends State<DynamicThemeWidget> {
     });
   }
 
-  _getThem() {
-    return theme == Themes.light ? AppTheme.light : AppTheme.dark;
-  }
+  get dark => ThemeData(
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primaryColor: Colors.grey[800],
+        accentColor: Colors.grey[800],
+        brightness: Brightness.dark,
+        backgroundColor: Colors.white70,
+        //fontFamily: 'Georgia',
+      );
+  get light => ThemeData(
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primaryColor: Colors.teal,
+        accentColor: Colors.teal[200],
+        brightness: Brightness.light,
+        backgroundColor: Colors.teal[700],
+        //cardColor: Colors.teal[200],
+        //fontFamily: 'Georgia',
+        dividerColor: Colors.teal[200],
+      );
 }

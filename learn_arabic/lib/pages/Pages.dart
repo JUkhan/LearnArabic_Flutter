@@ -25,23 +25,24 @@ class Pages extends StatelessWidget {
         //stream: bloc.bookBloc.totalPageStream,
         stream: totalPage$,
         builder: (_, snapshot) => ListView.builder(
-              itemCount: snapshot.data,
-              itemBuilder: (context, index) => ListTile(
-                    leading: CircleAvatar(
-                      child: Text(
-                        '${index + 1}',
-                      ),
-                    ),
-                    title: Text('Page ${index + 1}'),
-                    trailing: Icon(Icons.arrow_forward),
-                    //selected: bloc.bookBloc.selectedLessonIndex==index+1,
-                    onTap: () {
-                      //bloc.bookBloc.moveToPage(index + 1);
-                      dispatch(ActionTypes.SET_PAGE_No, index + 1);
-                      Navigator.pushReplacementNamed(context, '/book');
-                    },
-                  ),
+          itemCount: snapshot.data,
+          itemBuilder: (context, index) => ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Theme.of(context).backgroundColor,
+              child: Text(
+                '${index + 1}',
+              ),
             ),
+            title: Text('Page ${index + 1}'),
+            trailing: Icon(Icons.arrow_forward),
+            //selected: bloc.bookBloc.selectedLessonIndex==index+1,
+            onTap: () {
+              //bloc.bookBloc.moveToPage(index + 1);
+              dispatch(ActionTypes.SET_PAGE_No, index + 1);
+              Navigator.pushReplacementNamed(context, '/book');
+            },
+          ),
+        ),
       ),
       drawer: DrawerWidget(),
     );

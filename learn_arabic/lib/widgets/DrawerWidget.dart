@@ -40,6 +40,7 @@ class DrawerWidget extends StatelessWidget {
                           );
                   }),
               currentAccountPicture: new CircleAvatar(
+                backgroundColor: Theme.of(context).backgroundColor,
                 backgroundImage: AssetImage('assets/launcher.png'),
               )),
           getTile(context, 'Home', Icons.home, '/'),
@@ -80,7 +81,7 @@ class DrawerWidget extends StatelessWidget {
       title: Text(title),
       leading: Icon(
         icon,
-        color: Colors.blue,
+        color: Theme.of(context).backgroundColor,
       ),
       onTap: () async {
         if (navigateTo.startsWith('/book')) {

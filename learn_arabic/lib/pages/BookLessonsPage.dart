@@ -52,20 +52,21 @@ class LessonWidget extends StatelessWidget {
       child: ListView.builder(
         itemCount: book.data?.lessons ?? 0,
         itemBuilder: (context, index) => ListTile(
-              leading: CircleAvatar(
-                child: Text(
-                  '${index + 1}',
-                ),
-              ),
-              title: Text('Lesson ${index + 1}'),
-              trailing: Icon(Icons.arrow_forward),
-              //selected: bloc.bookBloc.selectedLessonIndex == index + 1,
-              onTap: () {
-                //bloc.bookBloc.moveToLesson(index + 1);
-                dispatch(ActionTypes.SET_LESSON_NO, index + 1);
-                Navigator.pushReplacementNamed(context, '/page');
-              },
+          leading: CircleAvatar(
+            backgroundColor: Theme.of(context).backgroundColor,
+            child: Text(
+              '${index + 1}',
             ),
+          ),
+          title: Text('Lesson ${index + 1}'),
+          trailing: Icon(Icons.arrow_forward),
+          //selected: bloc.bookBloc.selectedLessonIndex == index + 1,
+          onTap: () {
+            //bloc.bookBloc.moveToLesson(index + 1);
+            dispatch(ActionTypes.SET_LESSON_NO, index + 1);
+            Navigator.pushReplacementNamed(context, '/page');
+          },
+        ),
       ),
     );
   }

@@ -27,6 +27,7 @@ class _PlayerPageState extends State<PlayerPage>
 
   @override
   void dispose() {
+    dispatch(ActionTypes.NEW_MEMO_INSTANCE);
     Util.setDeviceOrientation(false);
     super.dispose();
   }
@@ -52,6 +53,7 @@ class _PlayerPageState extends State<PlayerPage>
   @override
   void onStateChange(String state) {
     if (state == 'ENDED') {
+      dispatch(ActionTypes.NEW_MEMO_INSTANCE);
       Util.setDeviceOrientation(false);
       Navigator.of(context).pop();
     }
