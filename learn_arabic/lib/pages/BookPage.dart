@@ -127,7 +127,7 @@ class BookPage extends StatelessWidget {
         context: context,
         builder: (bc) {
           return Container(
-            //color: Theme.of(context).primaryColor,
+            color: Theme.of(context).backgroundColor,
             padding: const EdgeInsets.all(5.0),
             child: Column(
               children: <Widget>[

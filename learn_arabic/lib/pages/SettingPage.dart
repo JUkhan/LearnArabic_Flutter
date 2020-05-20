@@ -68,6 +68,7 @@ class _SettingPageState extends State<SettingPage> {
             children: <Widget>[
               Card(
                 child: Column(
+                  mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     ListTile(
                       leading: Icon(
@@ -84,6 +85,7 @@ class _SettingPageState extends State<SettingPage> {
                           DynamicThemeWidget.of(context).setTheme(color);
                           dispatch(ActionTypes.SET_THEME, color.value);
                           themeColor = color;
+                          print(color.value);
                         },
                         selectedColor: themeColor,
                       ),

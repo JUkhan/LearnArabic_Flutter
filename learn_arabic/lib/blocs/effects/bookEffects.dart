@@ -172,7 +172,7 @@ class BookEffects extends BaseEffect {
     var tts = await AppService.getFromPref<bool>(AppService.prefkey_tts, false);
 
     int theme =
-        await AppService.getFromPref<int>(AppService.prefkey_theme, 4278228616);
+        await AppService.getFromPref<int>(AppService.prefkey_theme, 4278190080);
 
     var isLandscape =
         await AppService.getFromPref<bool>(AppService.prefkey_landscape, false);

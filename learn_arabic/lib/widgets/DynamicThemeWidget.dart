@@ -6,7 +6,7 @@ typedef Widget ThemedWidgetBuilder(BuildContext context, ThemeData theme);
 
 class DynamicThemeWidget extends StatefulWidget {
   final ThemedWidgetBuilder themedWidgetBuilder;
-  final MaterialColor defaultTheme;
+  final Color defaultTheme;
 
   DynamicThemeWidget({Key key, this.defaultTheme, this.themedWidgetBuilder})
       : super(key: key);
@@ -25,10 +25,9 @@ class DynamicThemeWidgetState extends State<DynamicThemeWidget> {
   @override
   void initState() {
     color = widget.defaultTheme;
-
-    AppService.getFromPref(AppService.prefkey_theme, 0).then((value) {
+    AppService.getFromPref(AppService.prefkey_theme, Colors.black.value)
+        .then((value) {
       setState(() {
-        //theme = value == 0 ? Themes.light : Themes.dark;
         color = materialColors.firstWhere((element) => element.value == value);
       });
     });
@@ -55,16 +54,7 @@ class DynamicThemeWidgetState extends State<DynamicThemeWidget> {
         backgroundColor: Colors.grey[800],
         //fontFamily: 'Georgia',
       );
-  get light => ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        primaryColor: Colors.deepPurple,
-        accentColor: Colors.deepPurple[800],
-        brightness: Brightness.light,
-        backgroundColor: Colors.deepPurple[200],
-        cardColor: Colors.deepPurple[200],
-        //fontFamily: 'Georgia',
-        dividerColor: Colors.deepPurple[200],
-      );
+
   _getLightTheme(MaterialColor color) => ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
         primaryColor: color,

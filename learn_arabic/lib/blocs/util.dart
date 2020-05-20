@@ -18,25 +18,25 @@ class Util {
     Color color;
     switch (text) {
       case 'وَ':
-        color = Colors.green;
+        color = Colors.green[600];
         break;
       case 'أَ':
       case 'أ':
-        color = Colors.lightBlue;
+        color = Colors.blue[600];
         break;
       case 'الْ':
       case 'ال':
       case 'اَلْ':
       case 'لْ':
       case 'ل':
-        color = Colors.cyan;
+        color = Colors.cyan[600];
         break;
 
       case 'فِي':
       case 'لَ':
       case 'لِ':
       case 'بِ':
-        color = Colors.purple;
+        color = Colors.purple[600];
         break;
 
       case 'هِ':
@@ -54,11 +54,11 @@ class Util {
       case 'تُ':
       case 'نَا':
       case 'وا':
-        color = Colors.indigoAccent[400];
+        color = Colors.indigo[600];
         break;
 
       default:
-        color = Colors.orange;
+        color = Colors.orange[600];
     }
     return color;
   }
@@ -362,16 +362,12 @@ class Util {
             ? Util.getTextTheme(context, direction, memo.fontSize).copyWith(
                 shadows: [
                   Shadow(
-                    color: memo.theme == Themes.light
-                        ? Colors.yellow
-                        : Colors.blue,
+                    color: Colors.green[300],
                     blurRadius: 10.0,
                     offset: Offset(5.0, 5.0),
                   ),
                   Shadow(
-                    color: memo.theme == Themes.light
-                        ? Colors.yellowAccent
-                        : Colors.yellow,
+                    color: Colors.yellowAccent,
                     blurRadius: 10.0,
                     offset: Offset(-5.0, 5.0),
                   ),
