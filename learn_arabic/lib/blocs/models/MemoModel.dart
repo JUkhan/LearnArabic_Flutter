@@ -6,7 +6,7 @@ class MemoModel {
   final String videoId;
   final bool tts;
   final double fontSize;
-  final Themes theme;
+  final int theme;
   final double wordSpace;
   final String wordIndex;
   final JWord selectedWord;
@@ -40,7 +40,7 @@ class MemoModel {
       String videoId,
       bool tts,
       double fontSize,
-      Themes theme,
+      int theme,
       JWord selectedWord,
       int prevSelectedWordId,
       bool isLandscape,
@@ -72,7 +72,7 @@ class MemoModel {
   String get getWordSpace => ' ' * wordSpace.toInt();
 
   factory MemoModel.init() => MemoModel(
-      theme: Themes.light,
+      theme: 4278228616,
       lessRanSeconds: 0,
       wordSpace: 1.0,
       tts: false,
@@ -80,5 +80,6 @@ class MemoModel {
       fontSize: 1.0,
       wordMeaningCategory: 1,
       lectureCategory: 1,
+      videoProgress: 0.0,
       isLandscape: false);
 }

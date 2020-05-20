@@ -114,8 +114,9 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        color:
-            _memo?.theme == Themes.light ? Colors.black12 : Colors.transparent,
+        color: _memo?.theme == Colors.black.value
+            ? Colors.black12
+            : Colors.transparent,
         child: ListView(
           //scrollDirection: A,
           controller: _scrollController,
@@ -163,7 +164,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
             JLine(height: 45.0, words: [JWord(word: v.title, english: "")])));
       } else {
         list.add(Card(
-          color: Theme.of(context).accentColor,
+          //color: Theme.of(context).backgroundColor,
           child: ListTile(
             leading: CircleProgressWidget(
               vid: v.id,
@@ -311,7 +312,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       padding: EdgeInsets.fromLTRB(padding, line.direction == 'ltr' ? 2 : 0,
           padding, line.direction == 'ltr' ? 12 : 0),
       width: double.infinity,
-      color: Theme.of(context).accentColor,
+      color: Theme.of(context).backgroundColor,
       /*decoration: BoxDecoration(
           gradient:
               _memo.theme == Themes.light ? _getGradient() : _getGradient2()),*/

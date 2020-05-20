@@ -6,7 +6,7 @@ typedef Widget ThemedWidgetBuilder(BuildContext context, ThemeData theme);
 
 class DynamicThemeWidget extends StatefulWidget {
   final ThemedWidgetBuilder themedWidgetBuilder;
-  final Themes defaultTheme;
+  final MaterialColor defaultTheme;
 
   DynamicThemeWidget({Key key, this.defaultTheme, this.themedWidgetBuilder})
       : super(key: key);
@@ -21,17 +21,15 @@ class DynamicThemeWidget extends StatefulWidget {
 }
 
 class DynamicThemeWidgetState extends State<DynamicThemeWidget> {
-  Themes theme;
+  Color color;
   @override
   void initState() {
-    if (widget.defaultTheme == null) {
-      theme = Themes.light;
-    } else
-      theme = widget.defaultTheme;
+    color = widget.defaultTheme;
 
     AppService.getFromPref(AppService.prefkey_theme, 0).then((value) {
       setState(() {
-        theme = value == 0 ? Themes.light : Themes.dark;
+        //theme = value == 0 ? Themes.light : Themes.dark;
+        color = materialColors.firstWhere((element) => element.value == value);
       });
     });
     super.initState();
@@ -40,31 +38,40 @@ class DynamicThemeWidgetState extends State<DynamicThemeWidget> {
   @override
   Widget build(BuildContext context) {
     return widget.themedWidgetBuilder(
-        context, theme == Themes.light ? light : dark);
+        context, color == Colors.black ? dark : _getLightTheme(color));
   }
 
-  setTheme(Themes theme) async {
+  setTheme(Color color) {
     setState(() {
-      this.theme = theme;
+      this.color = color;
     });
   }
 
   get dark => ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
         primaryColor: Colors.grey[800],
-        accentColor: Colors.grey[800],
+        accentColor: Colors.white60,
         brightness: Brightness.dark,
-        backgroundColor: Colors.white70,
+        backgroundColor: Colors.grey[800],
         //fontFamily: 'Georgia',
       );
   get light => ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        primaryColor: Colors.teal,
-        accentColor: Colors.teal[200],
+        primaryColor: Colors.deepPurple,
+        accentColor: Colors.deepPurple[800],
         brightness: Brightness.light,
-        backgroundColor: Colors.teal[700],
-        //cardColor: Colors.teal[200],
+        backgroundColor: Colors.deepPurple[200],
+        cardColor: Colors.deepPurple[200],
         //fontFamily: 'Georgia',
-        dividerColor: Colors.teal[200],
+        dividerColor: Colors.deepPurple[200],
+      );
+  _getLightTheme(MaterialColor color) => ThemeData(
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primaryColor: color,
+        accentColor: color[800],
+        brightness: Brightness.light,
+        backgroundColor: color[200],
+        cardColor: color[200],
+        dividerColor: color[200],
       );
 }

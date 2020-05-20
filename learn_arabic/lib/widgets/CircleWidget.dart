@@ -7,15 +7,17 @@ import 'package:learn_arabic/blocs/util.dart';
 
 class CircleProgress extends CustomPainter {
   double currentProgress;
-  Themes theme;
-  CircleProgress(this.currentProgress, this.theme);
-
+  int theme;
+  CircleProgress(this.currentProgress, this.theme, this.outerColor);
+  Color outerColor;
   @override
   void paint(Canvas canvas, Size size) {
     //this is base circle
     Paint outerCircle = Paint()
       ..strokeWidth = 2
-      ..color = Themes.light == theme ? Colors.black : Colors.white
+      ..color = outerColor == Colors.grey[800]
+          ? Colors.white
+          : outerColor // Themes.light == theme ? Colors.black : Colors.white
       ..style = PaintingStyle.stroke;
 
     Paint completeArc = Paint()
@@ -44,7 +46,7 @@ class CircleProgress extends CustomPainter {
 
 class CircleProgressWidget extends StatelessWidget {
   final String vid;
-  final Themes theme;
+  final int theme;
   const CircleProgressWidget({Key key, this.vid, this.theme}) : super(key: key);
 
   @override
@@ -61,11 +63,16 @@ class CircleProgressWidget extends StatelessWidget {
           return Container(
             child: CustomPaint(
               //size: Size.fromHeight(30),
-              foregroundPainter: CircleProgress(snapshot.data, theme),
+              foregroundPainter: CircleProgress(
+                  snapshot.data, theme, Theme.of(context).primaryColor),
               child: Icon(
                 Icons.play_arrow,
                 size: 18,
-                color: snapshot.data == 0 ? Colors.blueAccent : Colors.red,
+                color: snapshot.data == 0
+                    ? Theme.of(context).primaryColor == Colors.grey[800]
+                        ? Colors.white
+                        : Theme.of(context).primaryColor
+                    : Colors.red,
               ),
             ),
           );

@@ -1,32 +1,111 @@
 {
-    "videos":[
-        {"title":"Bangla Lecture"},       
-        {"id":"AiPUZhotAcg", "title":"Madinah Arabic Course B1 L3 P2"},
-        {"title":"English Lecture"},
-        {"id":"IN3w20yjQ4I", "title":"Lesson Masculine And Feminine Plurals"}        
-    ],
-    "lines":[
-        {"d":"ltr","words":[{"w":"In this part we learn the following:\n\n1. The plural of هِيَ \"she\" is هُنًّ e.g."}]},
-        {"mode":"text","d":"ltr","words":[{"w":"They are my brothers"}]},
-        {"mode":"text","words":[{"w":"هُمْ أِخْوَتِي"}]},
-        {"mode":"text","d":"ltr","words":[{"w":"and they are my sisters"}]},
-        {"mode":"text","words":[{"w":"وَهُنًّ أَخْوَاتِي"}]},
-        {"mode":"text","d":"ltr","words":[{"w":"They are my classmates and this is their house."}]},
-        {"mode":"text","words":[{"w":"هُنًّ زَمِيلَاتِي وَهَذَ بَيْتُهُنَّ."}]},
-        {"d":"ltr","words":[{"w":"2. We have already learnt that the plural of هَذِهِ is هَؤُلَاءِ, i.e., it is the same for both the masculine and feminine.\n\n3. We have learnt in Part A that ذَهَبُوا means \"they went\" (masculine). \"They went\" (feminine) is ذَهَبْنَ (dhahabna), e.g., "}]},
-        {"mode":"text","d":"ltr","words":[{"w":"Where are your brothers?"}]},
-        {"mode":"text","words":[{"w":"أَيْنَ إِخْوَتُكَ؟"}]},
-        {"mode":"text","d":"ltr","words":[{"w":"They went to the university."}]},
-        {"mode":"text","words":[{"w":"ذَهَبُوا إِلَي الجَمِعَةِ."}]},
-        {"mode":"text","d":"ltr","words":[{"w":"And where are your sisters?"}]},
-        {"mode":"text","words":[{"w":"أَيْنَ أَخْوَاتُكَ؟"}]},
-        {"mode":"text","d":"ltr","words":[{"w":"They went to the library"}]},
-        {"mode":"text","words":[{"w":"ذَهَبْنَ إِلَي المَكْتَبَةِ."}]},
-        {"d":"ltr","words":[{"w":"4. We have already learnt the formation of the sound feminine plural. In the pronunciation the \"a\" before the \"t\" is lengthened. In writing, in addition to this, the \"round ta\" is changed to \"open ta\", e.g. "}]},
-        {"mode":"vocab","words":[{"w":"مُسْلِمَةٌ","e":""},{"w":"مُسْلِمَاتٌ","e":""},{"w":"muslimat-u-n","e":""},{"w":"muslimaat-u-n","e":""}]},
-        {"d":"ltr","words":[{"w":"Note that the following plurals wich are irregular:"}]},
-        {"mode":"vocab","words":[{"w":"بِنْتٌ","e":"bint-un"},{"w":"بَنَاتٌ","e":"banaat-un"},{"w":"أُخْتٌ","e":"ukht-un"},{"w":"أَخَوَاتٌ","e":"akhawaat-un"},{"w":"فَتَاةٌ","e":"fataat-un"},{"w":"فَتَيَاتٌ","e":"fatayaat-un"}]},
-        {"mode":"lesson","words":[{"w":"Vocabulary"}]},
-        {"mode":"vocab","words":[{"w":"أُسْتَاذَةٌ","e":"lady professor"},{"w":"عَمَّةٌ","e":"paternal aunt"},{"w":"زَوْجَةٌ","e":"wife"},{"w":"زَوْجٌ","e":"husband"},{"w":"المَرْأَةُ","e":"woman"},{"w":"النِّسَاءُ","e":"women"}]}
-    ]
+  "videos": [
+    { "title": "Bangla Lecture" },
+    { "id": "AiPUZhotAcg", "title": "Madinah Arabic Course B1 L3 P2" },
+    { "title": "English Lecture" },
+    { "id": "IN3w20yjQ4I", "title": "Lesson Masculine And Feminine Plurals" }
+  ],
+  "lines": [
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "In this part we learn the following:\n\n1. The plural of هِيَ \"she\" is هُنًّ e.g."
+        }
+      ]
+    },
+    { "mode": "text", "d": "ltr", "words": [{ "w": "They are my brothers" }] },
+    { "mode": "text", "words": [{ "w": "هُمْ أِخْوَتِي" }] },
+    {
+      "mode": "text",
+      "d": "ltr",
+      "words": [{ "w": "and they are my sisters" }]
+    },
+    { "mode": "text", "words": [{ "w": "وَهُنًّ أَخْوَاتِي" }] },
+    {
+      "mode": "text",
+      "d": "ltr",
+      "words": [{ "w": "They are my classmates and this is their house." }]
+    },
+    {
+      "mode": "text",
+      "words": [{ "w": "هُنًّ زَمِيلَاتِي وَهَذَ بَيْتُهُنَّ." }]
+    },
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "2. We have already learnt that the plural of هَذِهِ is هَؤُلَاءِ, i.e., it is the same for both the masculine and feminine.\n\n3. We have learnt in Part A that ذَهَبُوا means \"they went\" (masculine). \"They went\" (feminine) is ذَهَبْنَ (dhahabna), e.g., "
+        }
+      ]
+    },
+    {
+      "mode": "text",
+      "d": "ltr",
+      "words": [{ "w": "Where are your brothers?" }]
+    },
+    { "mode": "text", "words": [{ "w": "أَيْنَ إِخْوَتُكَ؟" }] },
+    {
+      "mode": "text",
+      "d": "ltr",
+      "words": [{ "w": "They went to the university." }]
+    },
+    { "mode": "text", "words": [{ "w": "ذَهَبُوا إِلَي الجَمِعَةِ." }] },
+    {
+      "mode": "text",
+      "d": "ltr",
+      "words": [{ "w": "And where are your sisters?" }]
+    },
+    { "mode": "text", "words": [{ "w": "أَيْنَ أَخْوَاتُكَ؟" }] },
+    {
+      "mode": "text",
+      "d": "ltr",
+      "words": [{ "w": "They went to the library" }]
+    },
+    { "mode": "text", "words": [{ "w": "ذَهَبْنَ إِلَي المَكْتَبَةِ." }] },
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "4. We have already learnt the formation of the sound feminine plural. In the pronunciation the \"a\" before the \"t\" is lengthened. In writing, in addition to this, the \"round ta\" is changed to \"open ta\", e.g. "
+        }
+      ]
+    },
+    {
+      "mode": "vocab",
+      "words": [
+        { "w": "مُسْلِمَةٌ", "e": "" },
+        { "w": "مُسْلِمَاتٌ", "e": "" },
+        { "w": "muslimat-u-n", "e": "" },
+        { "w": "muslimaat-u-n", "e": "" }
+      ]
+    },
+    {
+      "d": "ltr",
+      "words": [{ "w": "Note that the following plurals wich are irregular:" }]
+    },
+    {
+      "mode": "vocab",
+      "words": [
+        { "w": "بِنْتٌ", "e": "bint-un" },
+        { "w": "بَنَاتٌ", "e": "banaat-un" },
+        { "w": "أُخْتٌ", "e": "ukht-un" },
+        { "w": "أَخَوَاتٌ", "e": "akhawaat-un" },
+        { "w": "فَتَاةٌ", "e": "fataat-un" },
+        { "w": "فَتَيَاتٌ", "e": "fatayaat-un" }
+      ]
+    },
+    { "mode": "lesson", "d": "ltr", "words": [{ "w": "Vocabulary" }] },
+    {
+      "mode": "vocab",
+      "words": [
+        { "w": "أُسْتَاذَةٌ", "e": "lady professor" },
+        { "w": "عَمَّةٌ", "e": "paternal aunt" },
+        { "w": "زَوْجَةٌ", "e": "wife" },
+        { "w": "زَوْجٌ", "e": "husband" },
+        { "w": "المَرْأَةُ", "e": "woman" },
+        { "w": "النِّسَاءُ", "e": "women" }
+      ]
+    }
+  ]
 }

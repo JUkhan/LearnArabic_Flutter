@@ -15,8 +15,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DynamicThemeWidget(
-        //bloc: widget.block,
-        defaultTheme: Themes.light,
+        defaultTheme: Colors.deepPurple,
         themedWidgetBuilder: (context, theme) => new MaterialApp(
               title: 'Learn Arabic',
               theme: theme,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:learn_arabic/blocs/actionTypes.dart';
 import 'package:learn_arabic/blocs/models/MemoModel.dart';
 import 'package:learn_arabic/blocs/util.dart';
+import 'package:learn_arabic/widgets/ColorThemeWidget.dart';
 import 'package:learn_arabic/widgets/DrawerWidget.dart';
 import 'package:learn_arabic/widgets/DynamicThemeWidget.dart';
 
@@ -19,7 +20,7 @@ class _SettingPageState extends State<SettingPage> {
   int lectureCategory = 1;
   int wordMeaningCategory = 1;
   Color iconColor = Colors.teal;
-
+  Color themeColor;
   @override
   void initState() {
     select<MemoModel>('memo').take(1).listen((memo) {
@@ -27,6 +28,8 @@ class _SettingPageState extends State<SettingPage> {
         fontSize = memo.fontSize;
         wordSpace = memo.wordSpace;
         tts = memo.tts;
+        themeColor =
+            materialColors.firstWhere((element) => element.value == memo.theme);
         isLandscape = memo.isLandscape;
         lectureCategory = memo.lectureCategory;
         wordMeaningCategory = memo.wordMeaningCategory;
@@ -47,80 +50,98 @@ class _SettingPageState extends State<SettingPage> {
   ];
   @override
   Widget build(BuildContext context) {
-    iconColor = Theme.of(context).backgroundColor;
+    iconColor = Theme.of(context).accentColor;
     return Scaffold(
       drawer: DrawerWidget(),
       appBar: AppBar(
         title: Text('Settings'),
       ),
       body: Container(
-        color: DynamicThemeWidget.of(context).theme == Themes.light
-            ? Colors.black12
-            : Colors.transparent,
-        child: ListView(
-          padding: const EdgeInsets.all(10.0),
-          children: <Widget>[
-            //getTheme(context),
-            getOptions(
-                title: 'Themes',
-                items: [Item("Light", Themes.light), Item("Dark", Themes.dark)],
-                groupValue: DynamicThemeWidget.of(context).theme,
-                icon: Icons.ac_unit,
-                onChange: (value) {
-                  DynamicThemeWidget.of(context).setTheme(value);
-                  dispatch(ActionTypes.SET_THEME, value);
-                }),
-            getOptions(
-                title: 'Lecture Series',
-                items: _items,
-                groupValue: lectureCategory,
-                icon: Icons.language,
-                onChange: (value) {
-                  setState(() {
-                    lectureCategory = value;
-                  });
-                  dispatch(ActionTypes.LECTURE_CATEGORY, value);
-                }),
-            getOptions(
-                title: 'Word Meaning',
-                items: _items,
-                groupValue: wordMeaningCategory,
-                icon: Icons.wb_auto,
-                onChange: (value) {
-                  setState(() {
-                    wordMeaningCategory = value;
-                  });
-                  Util.wordMeanCategory = value;
-                  dispatch(ActionTypes.WORDMEANING_CATEGORY, value);
-                }),
-            getFontSize(context),
-            getWordSpace(context),
-            Card(
-                child: ListTile(
-              leading: Icon(
-                tts ? Icons.mic : Icons.mic_off,
-                color: iconColor,
+        color: DynamicThemeWidget.of(context).color == Colors.black
+            ? Colors.transparent
+            : Colors.black12,
+        padding: const EdgeInsets.all(2),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            // padding: const EdgeInsets.all(10.0),
+            children: <Widget>[
+              Card(
+                child: Column(
+                  children: <Widget>[
+                    ListTile(
+                      leading: Icon(
+                        Icons.ac_unit,
+                        color: iconColor,
+                      ),
+                      title: Text('Themes'),
+                    ),
+                    Divider(color: iconColor),
+                    Container(
+                      height: 230,
+                      child: ColorThemeWidget(
+                        onColorChange: (color) {
+                          DynamicThemeWidget.of(context).setTheme(color);
+                          dispatch(ActionTypes.SET_THEME, color.value);
+                          themeColor = color;
+                        },
+                        selectedColor: themeColor,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              title: Text('English TTS'),
-              trailing: Switch(
-                value: tts,
-                onChanged: ttsValueChanged,
-              ),
-            )),
-
-            Card(
-                child: ListTile(
-              leading: Icon(
-                isLandscape ? Icons.landscape : Icons.portrait,
-                color: iconColor,
-              ),
-              title: Text(isLandscape ? 'Landscape' : 'Protrait'),
-              trailing: Switch(
-                value: isLandscape,
-                onChanged: landscapeValueChanged,
-              ),
-            )),
-          ],
+              getOptions(
+                  title: 'Lecture Series',
+                  items: _items,
+                  groupValue: lectureCategory,
+                  icon: Icons.language,
+                  onChange: (value) {
+                    setState(() {
+                      lectureCategory = value;
+                    });
+                    dispatch(ActionTypes.LECTURE_CATEGORY, value);
+                  }),
+              getOptions(
+                  title: 'Word Meaning',
+                  items: _items,
+                  groupValue: wordMeaningCategory,
+                  icon: Icons.wb_auto,
+                  onChange: (value) {
+                    setState(() {
+                      wordMeaningCategory = value;
+                    });
+                    Util.wordMeanCategory = value;
+                    dispatch(ActionTypes.WORDMEANING_CATEGORY, value);
+                  }),
+              getFontSize(context),
+              getWordSpace(context),
+              Card(
+                  child: ListTile(
+                leading: Icon(
+                  tts ? Icons.mic : Icons.mic_off,
+                  color: iconColor,
+                ),
+                title: Text('English TTS'),
+                trailing: Switch(
+                  value: tts,
+                  onChanged: ttsValueChanged,
+                ),
+              )),
+              Card(
+                  child: ListTile(
+                leading: Icon(
+                  isLandscape ? Icons.landscape : Icons.portrait,
+                  color: iconColor,
+                ),
+                title: Text(isLandscape ? 'Landscape' : 'Protrait'),
+                trailing: Switch(
+                  value: isLandscape,
+                  onChanged: landscapeValueChanged,
+                ),
+              )),
+            ],
+          ),
         ),
       ),
     );
@@ -239,14 +260,16 @@ class _SettingPageState extends State<SettingPage> {
         ),
       );
 
-  Widget getOptions(
-          {List<Item> items,
-          String title,
-          dynamic groupValue,
-          IconData icon,
-          Function onChange}) =>
+  Widget getOptions({
+    List<Item> items,
+    String title,
+    dynamic groupValue,
+    IconData icon,
+    Function onChange,
+  }) =>
       Card(
         child: Column(
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             ListTile(
               leading: Icon(

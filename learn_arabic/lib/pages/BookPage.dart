@@ -74,7 +74,7 @@ class BookPage extends StatelessWidget {
 
   Widget _navBar(BuildContext context) {
     return BottomAppBar(
-      color: Theme.of(context).accentColor,
+      color: Theme.of(context).backgroundColor,
       //elevation: 37.0,
       //hasNotch: true,
       child: Row(
@@ -127,7 +127,7 @@ class BookPage extends StatelessWidget {
         context: context,
         builder: (bc) {
           return Container(
-            color: Theme.of(context).primaryColor,
+            //color: Theme.of(context).primaryColor,
             padding: const EdgeInsets.all(5.0),
             child: Column(
               children: <Widget>[

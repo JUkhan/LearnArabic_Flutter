@@ -40,7 +40,7 @@ class MemoState extends BaseState<MemoModel> {
         yield state.copyWith(isLandscape: action.payload);
         break;
       case ActionTypes.SET_THEME:
-        AppService.saveInPref(action.payload.index, AppService.prefkey_theme);
+        AppService.saveInPref(action.payload, AppService.prefkey_theme);
         yield state.copyWith(theme: action.payload);
         break;
       case ActionTypes.SET_TTS:
