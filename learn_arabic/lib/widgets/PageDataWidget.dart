@@ -307,21 +307,80 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         ));
   }
 
+  List<JLine> _getLines(JLine line) {
+    var find = line.words.where((element) =>
+        element.word == 'وَاكْتُبْ' || element.word.contains('Read and Write'));
+
+    if (find.length > 0) {
+      var index = widget.page.data.lines.indexOf(line) + 1;
+      var nextLine = widget.page.data.lines[index];
+      List<JLine> lines;
+      switch (nextLine.mode) {
+        case 'qa':
+          lines = nextLine.lines[0].lines;
+          if (lines.length == 0) {
+            lines = nextLine.lines;
+          }
+          break;
+        case 'raw':
+          lines = nextLine.words
+              .map((e) => JLine(words: [e], direction: 'rtl'))
+              .toList();
+          break;
+        case 'img-sentence':
+          lines = widget.page.data.lines
+              .sublist(index)
+              .map((e) => e.lines[0])
+              .toList();
+          break;
+        case 'card':
+          lines = nextLine.lines.where((e) => e.mode != 'divider').toList();
+          break;
+        default:
+          lines = null;
+      }
+      dispatch('painterLines', lines?.length ?? 0);
+      return lines;
+    }
+    return null;
+  }
+
   Widget _getLessonMode(JLine line, [double padding = 10.0]) {
+    Widget child;
+    var lines = _getLines(line);
+    if (lines != null) {
+      child = Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          IconButton(
+            tooltip: 'Writing board',
+            icon: Icon(Icons.edit),
+            onPressed: () {
+              Util.showWritingBoard(context, lines, _memo, _bookModel,
+                  Theme.of(context).primaryColor.value);
+            },
+          ),
+          TextWidget(
+            line: line,
+            memo: _memo,
+            bookModel: _bookModel,
+          )
+        ],
+      );
+    } else {
+      child = Center(
+          child: TextWidget(
+        line: line,
+        memo: _memo,
+        bookModel: _bookModel,
+      ));
+    }
     return Container(
       padding: EdgeInsets.fromLTRB(padding, line.direction == 'ltr' ? 2 : 0,
           padding, line.direction == 'ltr' ? 12 : 0),
       width: double.infinity,
       color: Theme.of(context).backgroundColor,
-      /*decoration: BoxDecoration(
-          gradient:
-              _memo.theme == Themes.light ? _getGradient() : _getGradient2()),*/
-      child: Center(
-          child: TextWidget(
-        line: line,
-        memo: _memo,
-        bookModel: _bookModel,
-      )),
+      child: child,
     );
   }
 

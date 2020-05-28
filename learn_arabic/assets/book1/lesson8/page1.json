@@ -30,7 +30,7 @@
       "mode": "card",
       "lines": [
         { "tap": 0, "words": [{ "w": "ذَلِكَ  الرَّجُلُ  مُهَنْدِسٌ ." }] },
-        { "d": "ltr", "words": [{ "w": "This man is an engineer." }] },
+        { "d": "ltr", "words": [{ "w": "That man is an engineer." }] },
         { "tap": 0, "words": [{ "w": "هَذِهِ  السَّاعَةُ  جَمِيْلَةٌ ." }] },
         { "d": "ltr", "words": [{ "w": "This watch is beautifull." }] },
         {

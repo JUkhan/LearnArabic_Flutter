@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -5,12 +6,10 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'package:learn_arabic/blocs/actionTypes.dart';
 import 'package:learn_arabic/blocs/models/BookInfo.dart';
 import 'package:learn_arabic/blocs/models/MemoModel.dart';
+import 'package:learn_arabic/blocs/models/PainterModel.dart';
 import 'package:learn_arabic/blocs/models/bookModel.dart';
+import 'package:learn_arabic/pages/BookPage.dart';
 import 'package:learn_arabic/widgets/TextWidget.dart';
-//import 'package:url_launcher/url_launcher.dart';
-//import 'dart:async';
-
-enum Themes { light, dark }
 
 class Util {
   static int wordMeanCategory = 1;
@@ -362,14 +361,14 @@ class Util {
             ? Util.getTextTheme(context, direction, memo.fontSize).copyWith(
                 shadows: [
                   Shadow(
-                    color: Colors.green[300],
+                    color: (memo.theme == Colors.yellow.value ||
+                            memo.theme == Colors.amber.value ||
+                            memo.theme == Colors.lime.value ||
+                            memo.theme == 4278190080)
+                        ? Colors.green
+                        : Colors.yellowAccent,
                     blurRadius: 10.0,
-                    offset: Offset(5.0, 5.0),
-                  ),
-                  Shadow(
-                    color: Colors.yellowAccent,
-                    blurRadius: 10.0,
-                    offset: Offset(-5.0, 5.0),
+                    offset: Offset(0.0, -10.0),
                   ),
                 ],
               )
@@ -405,6 +404,135 @@ class Util {
       widgets.add(Divider());
       lineNo++;
     }
+  }
+
+  static void showWritingBoard(BuildContext context, List<JLine> lines,
+      MemoModel memo, BookModel book, int theme) {
+    Timer timer;
+    int lineIndex = 0;
+    showDialog(
+        context: context,
+        //enableDrag: false,
+        builder: (bc) {
+          return Container(
+            padding: const EdgeInsets.only(top: 5),
+            //height: MediaQuery.of(context).size.height * 0.5,
+            color: Colors.white,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {
+                        dispatch('painterPrev');
+                      },
+                      child: _getMaterialButton(
+                          context, Icons.navigate_before, theme),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        dispatch('painterNext');
+                      },
+                      child: _getMaterialButton(
+                          context, Icons.navigate_next, theme),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        dispatch('clearOffset');
+                      },
+                      child:
+                          _getMaterialButton(context, Icons.clear_all, theme),
+                    ),
+                    GestureDetector(
+                      onTapDown: (h) {
+                        if (timer != null && timer.isActive) {
+                          timer.cancel();
+                        }
+                        timer = Timer.periodic(Duration(milliseconds: 50), (t) {
+                          dispatch('popOffset');
+                        });
+                      },
+                      onTapUp: (details) {
+                        timer.cancel();
+                        dispatch('addOffset', null);
+                      },
+                      child: _getMaterialButton(
+                          context, Icons.keyboard_backspace, theme),
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: _getMaterialButton(context, Icons.close, theme)),
+                  ],
+                ),
+                Divider(
+                  color: Colors.black,
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 3),
+                  height: 60,
+                  child: SingleChildScrollView(
+                    child: StreamBuilder<int>(
+                        initialData: 0,
+                        stream: select<PainterModel>('painter')
+                            .map((event) => event.currentIndex),
+                        builder: (context, snapshot) {
+                          return lines == null
+                              ? Container()
+                              : TextWidget(
+                                  line: lines[snapshot.data],
+                                  memo: memo,
+                                  bookModel: book,
+                                );
+                        }),
+                  ),
+                ),
+                Divider(
+                  color: Colors.black,
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    onPanUpdate: (DragUpdateDetails details) {
+                      RenderBox obj = context.findRenderObject();
+                      var offset = obj.globalToLocal(details.globalPosition);
+                      dispatch('addOffset', offset.translate(0, -80));
+                    },
+                    onPanEnd: (DragEndDetails details) {
+                      dispatch('addOffset', null);
+                    },
+                    child: StreamBuilder<PainterModel>(
+                        initialData: PainterModel.init(),
+                        stream: select('painter'),
+                        builder: (context, snapshot) {
+                          return CustomPaint(
+                            painter: Painter(snapshot.data),
+                            size: Size.infinite,
+                          );
+                        }),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
+  static Material _getMaterialButton(
+      BuildContext context, IconData icon, int theme) {
+    return Material(
+      elevation: 4.0,
+      shape: const CircleBorder(),
+      child: CircleAvatar(
+        radius: 45.0 / 2,
+        backgroundColor: Theme.of(context).backgroundColor,
+        child: Icon(icon,
+            color:
+                theme == Colors.grey[800].value ? Colors.white : Colors.black),
+      ),
+    );
   }
 }
 

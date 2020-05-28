@@ -2,18 +2,19 @@ import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_arabic/blocs/effects/bookEffects.dart';
 import 'package:learn_arabic/blocs/states/MemoState.dart';
+import 'package:learn_arabic/blocs/states/PainterState.dart';
 import 'package:learn_arabic/blocs/states/bookState.dart';
 import 'package:learn_arabic/pages/App.dart';
 
 void main() {
   createStore(
-      states: [BookState(), MemoState()],
-      effects: [BookEffects()],
-      block: true);
-  exportState().listen((event) {
+    states: [BookState(), MemoState(), PainterState()],
+    effects: [BookEffects()],
+  );
+  /*exportState().listen((event) {
     print(
         '------ action type : ${event[0].type}, payload: ${event[0].payload}');
-  });
+  });*/
   return runApp(new App());
 }
 //export PATH="$PATH:/Users/jukhan/development/flutter/bin"

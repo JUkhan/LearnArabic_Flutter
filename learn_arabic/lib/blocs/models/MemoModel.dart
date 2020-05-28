@@ -72,7 +72,7 @@ class MemoModel {
   String get getWordSpace => ' ' * wordSpace.toInt();
 
   factory MemoModel.init() => MemoModel(
-      theme: 4278228616,
+      theme: 4278190080,
       lessRanSeconds: 0,
       wordSpace: 1.0,
       tts: false,

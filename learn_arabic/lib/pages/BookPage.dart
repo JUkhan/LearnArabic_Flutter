@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:ajwah_bloc/ajwah_bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_arabic/blocs/actionTypes.dart';
 import 'package:learn_arabic/blocs/models/AsyncData.dart';
 import 'package:learn_arabic/blocs/models/BookInfo.dart';
 import 'package:learn_arabic/blocs/models/MemoModel.dart';
+import 'package:learn_arabic/blocs/models/PainterModel.dart';
 import 'package:learn_arabic/blocs/models/bookModel.dart';
 import 'package:learn_arabic/blocs/util.dart';
 import 'package:learn_arabic/widgets/DrawerWidget.dart';
@@ -21,7 +25,7 @@ class BookPage extends StatelessWidget {
   final selectedWord$ = select<MemoModel>('memo')
       .map((memo) => memo.selectedWord)
       .where((book) => book != null);
-
+  final theme$ = select<MemoModel>('memo').map((memo) => memo.theme);
   void bookMarkHandler() {
     dispatch(ActionTypes.ADD_BOOKMARK);
   }
@@ -67,12 +71,13 @@ class BookPage extends StatelessWidget {
           );
         },
       ),
-      bottomNavigationBar: _navBar(context),
+      bottomNavigationBar:
+          _navBar(context, Theme.of(context).primaryColor.value),
       drawer: DrawerWidget(),
     );
   }
 
-  Widget _navBar(BuildContext context) {
+  Widget _navBar(BuildContext context, int theme) {
     return BottomAppBar(
       color: Theme.of(context).backgroundColor,
       //elevation: 37.0,
@@ -544,4 +549,27 @@ class BookPage extends StatelessWidget {
                 ? Theme.of(context).textTheme.headline5
                 : Theme.of(context).textTheme.headline6));
   }
+}
+
+class Painter extends CustomPainter {
+  PainterModel pModel;
+  Painter(this.pModel);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    var paint = Paint()
+      ..color = pModel.color
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 2.0;
+
+    for (int i = 0; i < pModel.points.length - 1; i++) {
+      if (pModel.points[i] != null && pModel.points[i + 1] != null) {
+        canvas.drawLine(pModel.points[i], pModel.points[i + 1], paint);
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(Painter painter) =>
+      true; // painter.points.length != points.length;
 }

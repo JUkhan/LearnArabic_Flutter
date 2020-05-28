@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_arabic/blocs/models/MemoModel.dart';
-import 'package:learn_arabic/blocs/util.dart';
 
 class CircleProgress extends CustomPainter {
   double currentProgress;

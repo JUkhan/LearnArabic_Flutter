@@ -76,8 +76,8 @@ class _TextWidgetState extends State<TextWidget> {
             textDirection: Util.getDirection(widget.line.direction),
             text: TextSpan(
                 style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.red[200],
+                  fontSize: 22,
+                  color: Theme.of(context).backgroundColor,
                   height: 1.9,
                 ),
                 text: getArabicNumber(widget.lineNo.toString()),

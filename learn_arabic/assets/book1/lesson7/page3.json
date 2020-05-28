@@ -60,7 +60,7 @@
     },
     {
       "mode": "qa",
-      "words": [{ "w": "Read and write:", "d": "ltr" }],
+      "words": [{ "w": "Read and Write:", "d": "ltr" }],
       "lines": [
         {
           "words": [

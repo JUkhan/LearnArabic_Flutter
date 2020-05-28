@@ -1,3 +1,4 @@
+import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_arabic/blocs/models/BookInfo.dart';
 import 'package:learn_arabic/blocs/models/MemoModel.dart';
@@ -30,22 +31,54 @@ class _QaWidgetState extends State<QaWidget> {
     var widgets = List<Widget>();
     var titleContainer = List<Widget>();
     if (line.words.length > 0) {
-      titleContainer.add(TextWidget(
-        line: line.copyWith(
-            direction: 'ltr',
-            words: line.words.where((d) => d.direction == 'ltr').toList()),
-        textAlign: TextAlign.justify,
-        memo: widget.memo,
-        bookModel: widget.bookModel,
-      ));
+      var find = line.words
+          .where((element) =>
+              element.word == 'وَاكْتُبْ' ||
+              element.word.contains('Read and Write'))
+          .toList();
 
-      titleContainer.add(TextWidget(
-        line: line.copyWith(
-            direction: 'rtl',
-            words: line.words.where((d) => d.direction == 'rtl').toList()),
-        memo: widget.memo,
-        bookModel: widget.bookModel,
-      ));
+      if (find.length > 0) {
+        dispatch('painterLines', line?.lines?.length ?? 0);
+        titleContainer.add(Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            IconButton(
+              tooltip: 'Writing board',
+              icon: Icon(Icons.edit),
+              onPressed: () {
+                Util.showWritingBoard(context, line.lines, widget.memo,
+                    widget.bookModel, Theme.of(context).primaryColor.value);
+              },
+            ),
+            TextWidget(
+              line: line.copyWith(
+                  direction: find[0].direction,
+                  words: line.words
+                      .where((d) => d.direction == find[0].direction)
+                      .toList()),
+              textAlign: TextAlign.justify,
+              memo: widget.memo,
+              bookModel: widget.bookModel,
+            ),
+          ],
+        ));
+      } else {
+        titleContainer.add(TextWidget(
+          line: line.copyWith(
+              direction: 'ltr',
+              words: line.words.where((d) => d.direction == 'ltr').toList()),
+          textAlign: TextAlign.justify,
+          memo: widget.memo,
+          bookModel: widget.bookModel,
+        ));
+        titleContainer.add(TextWidget(
+          line: line.copyWith(
+              direction: 'rtl',
+              words: line.words.where((d) => d.direction == 'rtl').toList()),
+          memo: widget.memo,
+          bookModel: widget.bookModel,
+        ));
+      }
     }
 
     if (line.lines.length > 0) {

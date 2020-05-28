@@ -56,7 +56,7 @@ class _ColorThemeWidgetState extends State<ColorThemeWidget> {
   @protected
   void didUpdateWidget(covariant ColorThemeWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _initSelectedValue();
+    //_initSelectedValue();
   }
 
   void _initSelectedValue() {
