@@ -46,8 +46,8 @@ class _QaWidgetState extends State<QaWidget> {
               tooltip: 'Writing board',
               icon: Icon(Icons.edit),
               onPressed: () {
-                Util.showWritingBoard(context, line.lines, widget.memo,
-                    widget.bookModel, Theme.of(context).primaryColor.value);
+                Util.showWritingBoard(
+                    context, line.lines, widget.memo, widget.bookModel);
               },
             ),
             TextWidget(

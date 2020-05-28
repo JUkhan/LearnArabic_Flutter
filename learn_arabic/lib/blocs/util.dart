@@ -406,17 +406,17 @@ class Util {
     }
   }
 
-  static void showWritingBoard(BuildContext context, List<JLine> lines,
-      MemoModel memo, BookModel book, int theme) {
+  static void showWritingBoard(
+      BuildContext context, List<JLine> lines, MemoModel memo, BookModel book) {
     Timer timer;
-    int lineIndex = 0;
     showDialog(
         context: context,
-        //enableDrag: false,
         builder: (bc) {
           return Container(
             padding: const EdgeInsets.only(top: 5),
-            //height: MediaQuery.of(context).size.height * 0.5,
+            /*color: memo.theme == Colors.black.value
+                ? Colors.cyan[400]
+                : Colors.cyan[400],*/
             color: Colors.white,
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -429,21 +429,21 @@ class Util {
                         dispatch('painterPrev');
                       },
                       child: _getMaterialButton(
-                          context, Icons.navigate_before, theme),
+                          context, Icons.navigate_before, memo.theme),
                     ),
                     GestureDetector(
                       onTap: () {
                         dispatch('painterNext');
                       },
                       child: _getMaterialButton(
-                          context, Icons.navigate_next, theme),
+                          context, Icons.navigate_next, memo.theme),
                     ),
                     GestureDetector(
                       onTap: () {
                         dispatch('clearOffset');
                       },
-                      child:
-                          _getMaterialButton(context, Icons.clear_all, theme),
+                      child: _getMaterialButton(
+                          context, Icons.clear_all, memo.theme),
                     ),
                     GestureDetector(
                       onTapDown: (h) {
@@ -459,21 +459,27 @@ class Util {
                         dispatch('addOffset', null);
                       },
                       child: _getMaterialButton(
-                          context, Icons.keyboard_backspace, theme),
+                          context, Icons.keyboard_backspace, memo.theme),
                     ),
                     GestureDetector(
                         onTap: () {
                           Navigator.of(context).pop();
                         },
-                        child: _getMaterialButton(context, Icons.close, theme)),
+                        child: _getMaterialButton(
+                            context, Icons.close, memo.theme)),
                   ],
                 ),
                 Divider(
-                  color: Colors.black,
+                  color: Theme.of(context).backgroundColor,
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 3),
+                  color: memo.theme == Colors.black.value
+                      ? Colors.grey[800]
+                      : Colors.black12,
                   height: 60,
+                  width: MediaQuery.of(context).size.width,
+                  alignment: Alignment.center,
                   child: SingleChildScrollView(
                     child: StreamBuilder<int>(
                         initialData: 0,
@@ -491,7 +497,7 @@ class Util {
                   ),
                 ),
                 Divider(
-                  color: Colors.black,
+                  color: Theme.of(context).backgroundColor,
                 ),
                 Expanded(
                   child: GestureDetector(
@@ -529,8 +535,7 @@ class Util {
         radius: 45.0 / 2,
         backgroundColor: Theme.of(context).backgroundColor,
         child: Icon(icon,
-            color:
-                theme == Colors.grey[800].value ? Colors.white : Colors.black),
+            color: theme == Colors.black.value ? Colors.white : Colors.black),
       ),
     );
   }

@@ -356,8 +356,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
             tooltip: 'Writing board',
             icon: Icon(Icons.edit),
             onPressed: () {
-              Util.showWritingBoard(context, lines, _memo, _bookModel,
-                  Theme.of(context).primaryColor.value);
+              Util.showWritingBoard(context, lines, _memo, _bookModel);
             },
           ),
           TextWidget(
