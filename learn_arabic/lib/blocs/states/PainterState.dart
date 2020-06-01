@@ -1,14 +1,16 @@
 import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:learn_arabic/blocs/models/PainterModel.dart';
+import 'package:learn_arabic/blocs/util.dart';
 
 class PainterState extends BaseState<PainterModel> {
   PainterState() : super(name: 'painter', initialState: PainterModel.init());
   @override
   Stream<PainterModel> mapActionToState(
       PainterModel state, Action action) async* {
+    print(action.type + state.totalLines.toString());
     switch (action.type) {
       case 'paintColor':
-        yield state.copyWith(color: action.payload);
+        yield state.copyWith(color: action.payload, colorPickerOpened: false);
         break;
       case 'addOffset':
         if (action.payload == null) {
@@ -17,25 +19,15 @@ class PainterState extends BaseState<PainterModel> {
             return;
           }
         }
-        state.points.add(action.payload);
+        state.points.add(OffsetStatus(action.payload, state.color));
         yield state.copyWith();
         break;
       case 'clearOffset':
         state.points.clear();
         yield state.copyWith();
         break;
-      case 'popOffset':
-        if (state.points.length == 0) {
-          yield state;
-          return;
-        }
-        if (state.points.last == null) {
-          state.points.removeLast();
-        }
-        if (state.points.length > 0) {
-          state.points.removeLast();
-        }
-        yield state.copyWith();
+      case 'openColorPicker':
+        yield state.copyWith(colorPickerOpened: !state.colorPickerOpened);
         break;
       case 'painterLines':
         yield state
@@ -54,7 +46,7 @@ class PainterState extends BaseState<PainterModel> {
           yield state;
         break;
       default:
-        yield state;
+        yield latestState(this);
     }
   }
 }

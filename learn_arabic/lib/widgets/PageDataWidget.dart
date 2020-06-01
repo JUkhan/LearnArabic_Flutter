@@ -114,7 +114,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        color: _memo?.theme == Colors.black.value
+        color: _memo?.theme != Colors.black.value
             ? Colors.black12
             : Colors.transparent,
         child: ListView(

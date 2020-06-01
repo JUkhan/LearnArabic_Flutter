@@ -9,6 +9,7 @@ import 'package:learn_arabic/blocs/models/MemoModel.dart';
 import 'package:learn_arabic/blocs/models/PainterModel.dart';
 import 'package:learn_arabic/blocs/models/bookModel.dart';
 import 'package:learn_arabic/pages/BookPage.dart';
+import 'package:learn_arabic/widgets/ColorThemeWidget.dart';
 import 'package:learn_arabic/widgets/TextWidget.dart';
 
 class Util {
@@ -408,15 +409,12 @@ class Util {
 
   static void showWritingBoard(
       BuildContext context, List<JLine> lines, MemoModel memo, BookModel book) {
-    Timer timer;
+    List<Color> colors = materialColors.sublist(0)..add(Colors.white);
     showDialog(
         context: context,
         builder: (bc) {
           return Container(
             padding: const EdgeInsets.only(top: 5),
-            /*color: memo.theme == Colors.black.value
-                ? Colors.cyan[400]
-                : Colors.cyan[400],*/
             color: Colors.white,
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -440,26 +438,23 @@ class Util {
                     ),
                     GestureDetector(
                       onTap: () {
+                        // dispatch('paintColor');
+                        dispatch('openColorPicker');
+                      },
+                      child: StreamBuilder<PainterModel>(
+                          initialData: PainterModel.init(),
+                          stream: select<PainterModel>('painter'),
+                          builder: (context, snapshot) {
+                            return _getMaterialButton(context,
+                                Icons.brightness_1, null, snapshot.data.color);
+                          }),
+                    ),
+                    GestureDetector(
+                      onTap: () {
                         dispatch('clearOffset');
                       },
                       child: _getMaterialButton(
                           context, Icons.clear_all, memo.theme),
-                    ),
-                    GestureDetector(
-                      onTapDown: (h) {
-                        if (timer != null && timer.isActive) {
-                          timer.cancel();
-                        }
-                        timer = Timer.periodic(Duration(milliseconds: 50), (t) {
-                          dispatch('popOffset');
-                        });
-                      },
-                      onTapUp: (details) {
-                        timer.cancel();
-                        dispatch('addOffset', null);
-                      },
-                      child: _getMaterialButton(
-                          context, Icons.keyboard_backspace, memo.theme),
                     ),
                     GestureDetector(
                         onTap: () {
@@ -473,52 +468,61 @@ class Util {
                   color: Theme.of(context).backgroundColor,
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 3),
-                  color: memo.theme == Colors.black.value
-                      ? Colors.grey[800]
-                      : Colors.black12,
-                  height: 60,
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  color: Theme.of(context).backgroundColor,
+                  height: 120,
                   width: MediaQuery.of(context).size.width,
                   alignment: Alignment.center,
                   child: SingleChildScrollView(
-                    child: StreamBuilder<int>(
-                        initialData: 0,
-                        stream: select<PainterModel>('painter')
-                            .map((event) => event.currentIndex),
+                    child: StreamBuilder<PainterModel>(
+                        initialData: PainterModel.init(),
+                        stream: select<PainterModel>('painter'),
                         builder: (context, snapshot) {
-                          return lines == null
-                              ? Container()
-                              : TextWidget(
-                                  line: lines[snapshot.data],
-                                  memo: memo,
-                                  bookModel: book,
-                                );
+                          return snapshot.data.colorPickerOpened
+                              ? Container(
+                                  height: 120,
+                                  child: ColorThemeWidget(
+                                    circleSize: 30,
+                                    colors: colors,
+                                    onColorChange: (color) {
+                                      dispatch('paintColor', color);
+                                    },
+                                    selectedColor: snapshot.data.color,
+                                  ),
+                                )
+                              : lines == null
+                                  ? Container()
+                                  : TextWidget(
+                                      line: lines[snapshot.data.currentIndex],
+                                      memo: memo,
+                                      bookModel: book,
+                                    );
                         }),
                   ),
                 ),
                 Divider(
                   color: Theme.of(context).backgroundColor,
                 ),
-                Expanded(
-                  child: GestureDetector(
-                    onPanUpdate: (DragUpdateDetails details) {
-                      RenderBox obj = context.findRenderObject();
-                      var offset = obj.globalToLocal(details.globalPosition);
-                      dispatch('addOffset', offset.translate(0, -80));
-                    },
-                    onPanEnd: (DragEndDetails details) {
-                      dispatch('addOffset', null);
-                    },
-                    child: StreamBuilder<PainterModel>(
-                        initialData: PainterModel.init(),
-                        stream: select('painter'),
-                        builder: (context, snapshot) {
-                          return CustomPaint(
-                            painter: Painter(snapshot.data),
-                            size: Size.infinite,
-                          );
-                        }),
-                  ),
+                GestureDetector(
+                  onPanDown: (details) {
+                    dispatch('addOffset', details.localPosition);
+                  },
+                  onPanUpdate: (DragUpdateDetails details) {
+                    dispatch('addOffset', details.localPosition);
+                  },
+                  onPanEnd: (DragEndDetails details) {
+                    dispatch('addOffset', null);
+                  },
+                  child: StreamBuilder<PainterModel>(
+                      initialData: PainterModel.init(),
+                      stream: select('painter'),
+                      builder: (context, snapshot) {
+                        return CustomPaint(
+                          painter: Painter(snapshot.data),
+                          size: Size(MediaQuery.of(context).size.width,
+                              MediaQuery.of(context).size.height - 226),
+                        );
+                      }),
                 ),
               ],
             ),
@@ -527,7 +531,8 @@ class Util {
   }
 
   static Material _getMaterialButton(
-      BuildContext context, IconData icon, int theme) {
+      BuildContext context, IconData icon, int theme,
+      [Color eraser]) {
     return Material(
       elevation: 4.0,
       shape: const CircleBorder(),
@@ -535,7 +540,10 @@ class Util {
         radius: 45.0 / 2,
         backgroundColor: Theme.of(context).backgroundColor,
         child: Icon(icon,
-            color: theme == Colors.black.value ? Colors.white : Colors.black),
+            //size: eraser != null ? 32 : 25,
+            color: eraser != null
+                ? eraser
+                : theme == Colors.black.value ? Colors.white : Colors.black),
       ),
     );
   }
@@ -563,3 +571,5 @@ const List<Color> materialColors = const <Color>[
   Colors.blueGrey,
   Colors.black
 ];
+dynamic latestState(BaseState obj) =>
+    getStore().value[obj.name] ?? obj.initialState;

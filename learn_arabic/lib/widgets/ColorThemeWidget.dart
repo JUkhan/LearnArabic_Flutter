@@ -6,7 +6,7 @@ class ColorThemeWidget extends StatefulWidget {
   final Color selectedColor;
   final ValueChanged<Color> onColorChange;
   //final ValueChanged<ColorSwatch> onMainColorChange;
-  //final List<ColorSwatch> colors;
+  final List<Color> colors;
   final bool shrinkWrap;
   final ScrollPhysics physics;
   //final bool allowShades;
@@ -22,7 +22,7 @@ class ColorThemeWidget extends StatefulWidget {
     this.selectedColor,
     this.onColorChange,
     //this.onMainColorChange,
-    //this.colors,
+    this.colors,
     this.shrinkWrap = false,
     this.physics,
     //this.allowShades = true,
@@ -39,13 +39,9 @@ class ColorThemeWidget extends StatefulWidget {
 }
 
 class _ColorThemeWidgetState extends State<ColorThemeWidget> {
-  //final _defaultValue = materialColors[0];
-
-  List<Color> _colors = materialColors;
+  List<Color> _colors;
 
   Color _mainColor;
-  //Color _shadeColor;
-  //bool _isMainSelection;
 
   @override
   void initState() {
@@ -56,26 +52,12 @@ class _ColorThemeWidgetState extends State<ColorThemeWidget> {
   @protected
   void didUpdateWidget(covariant ColorThemeWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
-    //_initSelectedValue();
+    _initSelectedValue();
   }
 
   void _initSelectedValue() {
     _mainColor = widget.selectedColor;
-    /*if (widget.colors != null) _colors = widget.colors;
-
-    Color shadeColor = widget.selectedColor ?? _defaultValue;
-    ColorSwatch mainColor = _findMainColor(shadeColor);
-
-    if (mainColor == null) {
-      mainColor = _colors[0];
-      shadeColor = mainColor[500] ?? mainColor[400];
-    }
-
-    setState(() {
-      _mainColor = mainColor;
-      _shadeColor = shadeColor;
-      _isMainSelection = true;
-    });*/
+    _colors = widget.colors == null ? materialColors : widget.colors;
   }
 
   void _onMainColorSelected(Color color) {
@@ -109,7 +91,7 @@ class _ColorThemeWidgetState extends State<ColorThemeWidget> {
       child: GridView.count(
         shrinkWrap: widget.shrinkWrap,
         physics: widget.physics,
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(top: 4, left: 8, right: 8, bottom: 4),
         crossAxisSpacing: widget.spacing,
         mainAxisSpacing: widget.spacing,
         crossAxisCount: nbrCircleLine,

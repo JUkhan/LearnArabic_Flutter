@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/cupertino.dart';
@@ -558,13 +559,19 @@ class Painter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     var paint = Paint()
-      ..color = pModel.color
-      ..strokeCap = StrokeCap.round
-      ..strokeWidth = 2.0;
-
+      ..isAntiAlias = true
+      ..strokeCap = StrokeCap.round;
     for (int i = 0; i < pModel.points.length - 1; i++) {
-      if (pModel.points[i] != null && pModel.points[i + 1] != null) {
-        canvas.drawLine(pModel.points[i], pModel.points[i + 1], paint);
+      if (pModel.points[i].offset != null &&
+          pModel.points[i + 1].offset != null) {
+        paint.color = pModel.points[i].color;
+        paint.strokeWidth = pModel.points[i].color == Colors.white ? 4.0 : 1.0;
+        canvas.drawLine(
+            pModel.points[i].offset, pModel.points[i + 1].offset, paint);
+      } else if (pModel.points[i].offset != null &&
+          pModel.points[i + 1].offset == null) {
+        paint.strokeWidth = 2;
+        canvas.drawPoints(PointMode.points, [pModel.points[i].offset], paint);
       }
     }
   }

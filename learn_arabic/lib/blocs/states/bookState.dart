@@ -3,6 +3,7 @@ import 'package:learn_arabic/blocs/actionTypes.dart';
 import 'package:learn_arabic/blocs/appService.dart';
 import 'package:learn_arabic/blocs/models/Bookmarks.dart';
 import 'package:learn_arabic/blocs/models/bookModel.dart';
+import 'package:learn_arabic/blocs/util.dart';
 
 class BookState extends BaseState<BookModel> {
   BookState() : super(name: 'book', initialState: BookModel());
@@ -58,7 +59,7 @@ class BookState extends BaseState<BookModel> {
         break;
 
       default:
-        yield state;
+        yield latestState(this);
     }
   }
 }

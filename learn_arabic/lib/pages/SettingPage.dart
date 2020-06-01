@@ -85,7 +85,6 @@ class _SettingPageState extends State<SettingPage> {
                           DynamicThemeWidget.of(context).setTheme(color);
                           dispatch(ActionTypes.SET_THEME, color.value);
                           themeColor = color;
-                          print(color.value);
                         },
                         selectedColor: themeColor,
                       ),
