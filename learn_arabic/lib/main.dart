@@ -8,14 +8,13 @@ import 'package:learn_arabic/pages/App.dart';
 
 void main() {
   createStore(
-      states: [BookState(), MemoState(), PainterState()],
-      effects: [BookEffects()],
-      block: true);
-  exportState().listen((event) {
+    states: [BookState(), MemoState(), PainterState()],
+    effects: [BookEffects()],
+  );
+  /*exportState().listen((event) {
     print(
         '------ action type : ${event[0].type}, payload: ${event[0].payload}');
-    print(event[1]['painter'].totalLines);
-  });
+  });*/
   return runApp(new App());
 }
 //export PATH="$PATH:/Users/jukhan/development/flutter/bin"
@@ -32,4 +31,4 @@ void main() {
 //flutter pub get
 //export PUB_HOSTED_URL=https://pub.flutter-io.cn
 //export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
-//hi
+//flutter build apk --release && flutter install

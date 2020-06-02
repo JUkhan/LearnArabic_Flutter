@@ -3,8 +3,6 @@ import 'package:learn_arabic/blocs/actionTypes.dart';
 import 'package:learn_arabic/blocs/appService.dart';
 import 'package:learn_arabic/blocs/models/MemoModel.dart';
 
-import '../util.dart';
-
 class MemoState extends BaseState<MemoModel> {
   MemoState() : super(name: 'memo', initialState: MemoModel.init());
   @override

@@ -571,5 +571,3 @@ const List<Color> materialColors = const <Color>[
   Colors.blueGrey,
   Colors.black
 ];
-dynamic latestState(BaseState obj) =>
-    getStore().value[obj.name] ?? obj.initialState;

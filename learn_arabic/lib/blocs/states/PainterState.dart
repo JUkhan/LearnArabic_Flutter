@@ -1,13 +1,11 @@
 import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:learn_arabic/blocs/models/PainterModel.dart';
-import 'package:learn_arabic/blocs/util.dart';
 
 class PainterState extends BaseState<PainterModel> {
   PainterState() : super(name: 'painter', initialState: PainterModel.init());
   @override
   Stream<PainterModel> mapActionToState(
       PainterModel state, Action action) async* {
-    print(action.type + state.totalLines.toString());
     switch (action.type) {
       case 'paintColor':
         yield state.copyWith(color: action.payload, colorPickerOpened: false);
