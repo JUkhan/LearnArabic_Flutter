@@ -38,7 +38,6 @@ class _QaWidgetState extends State<QaWidget> {
           .toList();
 
       if (find.length > 0) {
-        dispatch('painterLines', line?.lines?.length ?? 0);
         titleContainer.add(Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -46,6 +45,7 @@ class _QaWidgetState extends State<QaWidget> {
               tooltip: 'Writing board',
               icon: Icon(Icons.edit),
               onPressed: () {
+                dispatch('painterLines', line?.lines?.length ?? 0);
                 Util.showWritingBoard(
                     context, line.lines, widget.memo, widget.bookModel);
               },

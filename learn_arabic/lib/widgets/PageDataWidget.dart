@@ -339,7 +339,6 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         default:
           lines = null;
       }
-      dispatch('painterLines', lines?.length ?? 0);
       return lines;
     }
     return null;
@@ -356,6 +355,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
             tooltip: 'Writing board',
             icon: Icon(Icons.edit),
             onPressed: () {
+              dispatch('painterLines', lines?.length ?? 0);
               Util.showWritingBoard(context, lines, _memo, _bookModel);
             },
           ),

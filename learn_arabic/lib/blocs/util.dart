@@ -89,6 +89,10 @@ class Util {
     if (wordMeanCategory == 3) return text;
     if (wordMeanCategory == 1) {
       var ss = text.replaceAll(RegExp(r'[অ-৺ং]'), '').trim();
+      ss = ss
+          .replaceFirst(' / ', ' ')
+          .replaceFirst(' /', ' ')
+          .replaceFirst('/)', ')');
       if (ss.endsWith(',')) {
         return ss.substring(0, ss.length - 1);
       }
@@ -478,7 +482,8 @@ class Util {
                         initialData: PainterModel.init(),
                         stream: select<PainterModel>('painter'),
                         builder: (context, snapshot) {
-                          return snapshot.data.colorPickerOpened
+                          return snapshot.data.colorPickerOpened ||
+                                  lines == null
                               ? Container(
                                   height: 120,
                                   child: ColorThemeWidget(
@@ -490,13 +495,11 @@ class Util {
                                     selectedColor: snapshot.data.color,
                                   ),
                                 )
-                              : lines == null
-                                  ? Container()
-                                  : TextWidget(
-                                      line: lines[snapshot.data.currentIndex],
-                                      memo: memo,
-                                      bookModel: book,
-                                    );
+                              : TextWidget(
+                                  line: lines[snapshot.data.currentIndex],
+                                  memo: memo,
+                                  bookModel: book,
+                                );
                         }),
                   ),
                 ),

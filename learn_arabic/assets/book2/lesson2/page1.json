@@ -1,36 +1,123 @@
 {
-    "videos":[
-        {"title":"Bangla Lecture"},
-        {"id":"pgiZxVTVVRQ", "title":"Madinah Arabic Course B1 L2"},
-        {"title":"English Lecture"},
-        {"id":"ndDzQLPr0Io", "title":"Simple Conversations Using Feminine Nouns"}
-    ],
-    "lines": [
-        
-        {"d":"ltr","words":[{"w":"In this lesson we learn the following:"}]},
-        {"d":"ltr","words":[{"w":"1. We have learnt before أَنْتَ (anta) \"you\" for masculine singular. Now we learn أَنْتِ (anti) \"you\" for feminine singular, e.g. "}]},
-        {"d":"ltr","mode":"text","words":[{"w":"Where are you from, Aminah?"}]},
-        {"mode":"text","words":[{"w":"مِنْ أَيْنَ أَنْتِ يَا أَمِنَةُ؟"}]},        
-        {"d":"ltr","words":[{"w":"The possessive pronoun form of أَنْتِ is كِ, e.g."}]},
-        {"d":"ltr","mode":"text","words":[{"w":"Where is your house, Maryam?"}]},
-        {"mode":"text","words":[{"w":"أَيْنَ بَيْتُكِ يَا مَرْيَمُ؟"}]},
-        {"d":"ltr","words":[{"w":"2. We have already learnt that the possessive pronoun form of أَنْتَ is كَ (-ka), e.g. "}]},
-        {"mode":"text", "d":"ltr","words":[{"w":"Where is your house, Bilal?"}]},
-        {"mode":"text", "words":[{"w":"أَيْنَ بَيْتُكَ يَا بِلَالُ؟"}]},
-        {"d":"ltr","words":[{"w":"We have already learnt ذَهَبَ \"he went\", ذَهَبْتُ \"I went\" and ذَهَبْتَ \"you went\". Now we can learn ذَهَبَتْ \"shw went\", e.g."}]},
-        {"mode":"text","d":"ltr","words":[{"w":"Where is Aminah?"}]},
-        {"mode":"text","words":[{"w":"أَيْنَ آمِنَةُ؟"}]},
-        {"mode":"text","d":"ltr","words":[{"w":"She went to the university."}]},
-        {"mode":"text","words":[{"w":"ذَهَبَتْ إِلَي الجَمِعَةِ."}]},
-        {"d":"ltr","words":[{"w":"If the subject is mentioned the pronoun \"she\" has to be dropped, e.g. "}]},
-        {"mode":"text", "d":"ltr","words":[{"w":"Maryam went to school."}]},
-        {"mode":"text", "words":[{"w":"ذَهَبَتْ مَرْيَمُ إِلَي المَدْرَسَةِ."}]},
-        {"d":"ltr","words":[{"w":"In ذَهَبَتْ the last letter تْ has sukun. If a verb like this is followed by اَلْ the sukun is changed to kasrah e.g. "}]},
-        {"mode":"text","d":"ltr","words":[{"w":"The girl went."}]},
-        {"mode":"text","words":[{"w":"ذَهَبَتِ البِنْتُ."}]},
-        {"d":"ltr","words":[{"w":"3. We have already learnt الَّذِي \"who, which\" for masculine singular. Now we learn الَّتِي for feminine singular, e.g."}]},
-        {"mode":"text","d":"ltr","words":[{"w":"The girl student who sat in front of the lady teacher is from Germany."}]},
-        {"mode":"text","words":[{"w":"الطَّالِبَةُ الَّتِي جَلَسَتْ أَمَامَ المُدَرِّسَةِ مِنْ أَلْمَانِيَا."}]}
-        
-    ]
+  "videos": [
+    { "title": "Bangla Lecture" },
+    { "id": "pgiZxVTVVRQ", "title": "Madinah Arabic Course B1 L2" },
+    { "title": "English Lecture" },
+    {
+      "id": "ndDzQLPr0Io",
+      "title": "Simple Conversations Using Feminine Nouns"
+    }
+  ],
+  "lines": [
+    {
+      "d": "ltr",
+      "words": [{ "w": "In this lesson we learn the following:" }]
+    },
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "1. We have learnt before أَنْتَ (anta) \"you\" for masculine singular. Now we learn أَنْتِ (anti) \"you\" for feminine singular, e.g. "
+        }
+      ]
+    },
+    {
+      "d": "ltr",
+      "mode": "text",
+      "words": [{ "w": "Where are you from, Aminah?" }]
+    },
+    { "mode": "text", "words": [{ "w": "مِنْ أَيْنَ أَنْتِ يَا أَمِنَةُ؟" }] },
+    {
+      "d": "ltr",
+      "words": [{ "w": "The possessive pronoun form of أَنْتِ is كِ, e.g." }]
+    },
+    {
+      "d": "ltr",
+      "mode": "text",
+      "words": [{ "w": "Where is your house, Maryam?" }]
+    },
+    { "mode": "text", "words": [{ "w": "أَيْنَ بَيْتُكِ يَا مَرْيَمُ؟" }] },
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "2. We have already learnt that the possessive pronoun form of أَنْتَ is كَ (-ka), e.g. "
+        }
+      ]
+    },
+    {
+      "mode": "text",
+      "d": "ltr",
+      "words": [{ "w": "Where is your house, Bilal?" }]
+    },
+    { "mode": "text", "words": [{ "w": "أَيْنَ بَيْتُكَ يَا بِلَالُ؟" }] },
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "We have already learnt ذَهَبَ \"he went\", ذَهَبْتُ \"I went\" and ذَهَبْتَ \"you went\". Now we can learn ذَهَبَتْ \"she went\", e.g."
+        }
+      ]
+    },
+    { "mode": "text", "d": "ltr", "words": [{ "w": "Where is Aminah?" }] },
+    { "mode": "text", "words": [{ "w": "أَيْنَ آمِنَةُ؟" }] },
+    {
+      "mode": "text",
+      "d": "ltr",
+      "words": [{ "w": "She went to the university." }]
+    },
+    { "mode": "text", "words": [{ "w": "ذَهَبَتْ إِلَي الجَمِعَةِ." }] },
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "If the subject is mentioned the pronoun \"she\" has to be dropped, e.g. "
+        }
+      ]
+    },
+    {
+      "mode": "text",
+      "d": "ltr",
+      "words": [{ "w": "Maryam went to school." }]
+    },
+    {
+      "mode": "text",
+      "words": [{ "w": "ذَهَبَتْ مَرْيَمُ إِلَي المَدْرَسَةِ." }]
+    },
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "In ذَهَبَتْ the last letter تْ has sukun. If a verb like this is followed by اَلْ the sukun is changed to kasrah e.g. "
+        }
+      ]
+    },
+    { "mode": "text", "d": "ltr", "words": [{ "w": "The girl went." }] },
+    { "mode": "text", "words": [{ "w": "ذَهَبَتِ البِنْتُ." }] },
+    {
+      "d": "ltr",
+      "words": [
+        {
+          "w": "3. We have already learnt الَّذِي \"who, which\" for masculine singular. Now we learn الَّتِي for feminine singular, e.g."
+        }
+      ]
+    },
+    {
+      "mode": "text",
+      "d": "ltr",
+      "words": [
+        {
+          "w": "The girl student who sat in front of the lady teacher is from Germany."
+        }
+      ]
+    },
+    {
+      "mode": "text",
+      "words": [
+        {
+          "w": "الطَّالِبَةُ الَّتِي جَلَسَتْ أَمَامَ المُدَرِّسَةِ مِنْ أَلْمَانِيَا."
+        }
+      ]
+    }
+  ]
 }

@@ -14,6 +14,7 @@ void main() {
   /*exportState().listen((event) {
     print(
         '------ action type : ${event[0].type}, payload: ${event[0].payload}');
+    print(event[1]['painter'].totalLines);
   });*/
   return runApp(new App());
 }
