@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,11 +5,9 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'package:learn_arabic/blocs/actionTypes.dart';
 import 'package:learn_arabic/blocs/models/BookInfo.dart';
 import 'package:learn_arabic/blocs/models/MemoModel.dart';
-import 'package:learn_arabic/blocs/models/PainterModel.dart';
 import 'package:learn_arabic/blocs/models/bookModel.dart';
-import 'package:learn_arabic/pages/BookPage.dart';
-import 'package:learn_arabic/widgets/ColorThemeWidget.dart';
 import 'package:learn_arabic/widgets/TextWidget.dart';
+import 'package:learn_arabic/widgets/WritingBoardWidget.dart';
 
 class Util {
   static int wordMeanCategory = 1;
@@ -18,25 +15,25 @@ class Util {
     Color color;
     switch (text) {
       case 'وَ':
-        color = Colors.green[600];
+        color = Colors.green;
         break;
       case 'أَ':
       case 'أ':
-        color = Colors.blue[600];
+        color = Colors.blue;
         break;
       case 'الْ':
       case 'ال':
       case 'اَلْ':
       case 'لْ':
       case 'ل':
-        color = Colors.cyan[600];
+        color = Colors.cyan;
         break;
 
       case 'فِي':
       case 'لَ':
       case 'لِ':
       case 'بِ':
-        color = Colors.purple[600];
+        color = Colors.purple;
         break;
 
       case 'هِ':
@@ -54,11 +51,11 @@ class Util {
       case 'تُ':
       case 'نَا':
       case 'وا':
-        color = Colors.indigo[600];
+        color = Colors.orange;
         break;
 
       default:
-        color = Colors.orange[600];
+        color = Colors.red;
     }
     return color;
   }
@@ -368,12 +365,13 @@ class Util {
                   Shadow(
                     color: (memo.theme == Colors.yellow.value ||
                             memo.theme == Colors.amber.value ||
-                            memo.theme == Colors.lime.value ||
-                            memo.theme == 4278190080)
+                            memo.theme == Colors.lime.value)
                         ? Colors.green
-                        : Colors.yellowAccent,
+                        : memo.theme == 4278190080
+                            ? Colors.yellow[100]
+                            : Colors.yellow,
                     blurRadius: 10.0,
-                    offset: Offset(0.0, -10.0),
+                    offset: Offset(0.0, -15.0),
                   ),
                 ],
               )
@@ -416,139 +414,11 @@ class Util {
     List<Color> colors = materialColors.sublist(0)..add(Colors.white);
     showDialog(
         context: context,
+        barrierDismissible: true,
         builder: (bc) {
-          return Container(
-            padding: const EdgeInsets.only(top: 5),
-            color: Colors.white,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    GestureDetector(
-                      onTap: () {
-                        dispatch('painterPrev');
-                      },
-                      child: _getMaterialButton(
-                          context, Icons.navigate_before, memo.theme),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        dispatch('painterNext');
-                      },
-                      child: _getMaterialButton(
-                          context, Icons.navigate_next, memo.theme),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        // dispatch('paintColor');
-                        dispatch('openColorPicker');
-                      },
-                      child: StreamBuilder<PainterModel>(
-                          initialData: PainterModel.init(),
-                          stream: select<PainterModel>('painter'),
-                          builder: (context, snapshot) {
-                            return _getMaterialButton(context,
-                                Icons.brightness_1, null, snapshot.data.color);
-                          }),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        dispatch('clearOffset');
-                      },
-                      child: _getMaterialButton(
-                          context, Icons.clear_all, memo.theme),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: _getMaterialButton(
-                            context, Icons.close, memo.theme)),
-                  ],
-                ),
-                Divider(
-                  color: Theme.of(context).backgroundColor,
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  color: Theme.of(context).backgroundColor,
-                  height: 120,
-                  width: MediaQuery.of(context).size.width,
-                  alignment: Alignment.center,
-                  child: SingleChildScrollView(
-                    child: StreamBuilder<PainterModel>(
-                        initialData: PainterModel.init(),
-                        stream: select<PainterModel>('painter'),
-                        builder: (context, snapshot) {
-                          return snapshot.data.colorPickerOpened ||
-                                  lines == null
-                              ? Container(
-                                  height: 120,
-                                  child: ColorThemeWidget(
-                                    circleSize: 30,
-                                    colors: colors,
-                                    onColorChange: (color) {
-                                      dispatch('paintColor', color);
-                                    },
-                                    selectedColor: snapshot.data.color,
-                                  ),
-                                )
-                              : TextWidget(
-                                  line: lines[snapshot.data.currentIndex],
-                                  memo: memo,
-                                  bookModel: book,
-                                );
-                        }),
-                  ),
-                ),
-                Divider(
-                  color: Theme.of(context).backgroundColor,
-                ),
-                GestureDetector(
-                  onPanDown: (details) {
-                    dispatch('addOffset', details.localPosition);
-                  },
-                  onPanUpdate: (DragUpdateDetails details) {
-                    dispatch('addOffset', details.localPosition);
-                  },
-                  onPanEnd: (DragEndDetails details) {
-                    dispatch('addOffset', null);
-                  },
-                  child: StreamBuilder<PainterModel>(
-                      initialData: PainterModel.init(),
-                      stream: select('painter'),
-                      builder: (context, snapshot) {
-                        return CustomPaint(
-                          painter: Painter(snapshot.data),
-                          size: Size(MediaQuery.of(context).size.width,
-                              MediaQuery.of(context).size.height - 226),
-                        );
-                      }),
-                ),
-              ],
-            ),
-          );
+          return WritingBoardWidget(
+              colors: colors, memo: memo, lines: lines, book: book);
         });
-  }
-
-  static Material _getMaterialButton(
-      BuildContext context, IconData icon, int theme,
-      [Color eraser]) {
-    return Material(
-      elevation: 4.0,
-      shape: const CircleBorder(),
-      child: CircleAvatar(
-        radius: 45.0 / 2,
-        backgroundColor: Theme.of(context).backgroundColor,
-        child: Icon(icon,
-            //size: eraser != null ? 32 : 25,
-            color: eraser != null
-                ? eraser
-                : theme == Colors.black.value ? Colors.white : Colors.black),
-      ),
-    );
   }
 }
 

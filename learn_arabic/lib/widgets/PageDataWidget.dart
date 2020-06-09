@@ -308,8 +308,10 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   }
 
   List<JLine> _getLines(JLine line) {
-    var find = line.words.where((element) =>
-        element.word == 'وَاكْتُبْ' || element.word.contains('Read and Write'));
+    var find = line.words.map((e) => e.word.toLowerCase()).where((element) =>
+        element == 'وَاكْتُبْ' ||
+        element.contains('read and write') ||
+        element.contains('write the'));
 
     if (find.length > 0) {
       var index = widget.page.data.lines.indexOf(line) + 1;
@@ -323,6 +325,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
           }
           break;
         case 'raw':
+        case "":
           lines = nextLine.words
               .map((e) => JLine(words: [e], direction: 'rtl'))
               .toList();
@@ -352,17 +355,21 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           IconButton(
-            tooltip: 'Writing board',
+            tooltip: 'Writing Board',
             icon: Icon(Icons.edit),
             onPressed: () {
               dispatch('painterLines', lines?.length ?? 0);
               Util.showWritingBoard(context, lines, _memo, _bookModel);
             },
           ),
-          TextWidget(
-            line: line,
-            memo: _memo,
-            bookModel: _bookModel,
+          Expanded(
+            child: Center(
+              child: TextWidget(
+                line: line,
+                memo: _memo,
+                bookModel: _bookModel,
+              ),
+            ),
           )
         ],
       );

@@ -17,7 +17,8 @@ class PainterState extends BaseState<PainterModel> {
             return;
           }
         }
-        state.points.add(OffsetStatus(action.payload, state.color));
+        state.points
+            .add(OffsetStatus(action.payload, state.color, state.strokeWidth));
         yield state.copyWith();
         break;
       case 'clearOffset':
@@ -27,7 +28,14 @@ class PainterState extends BaseState<PainterModel> {
       case 'openColorPicker':
         yield state.copyWith(colorPickerOpened: !state.colorPickerOpened);
         break;
+      case 'setStrokeWidth':
+        yield state.copyWith(strokeWidth: action.payload);
+        break;
       case 'painterLines':
+        if (state.totalLines == action.payload) {
+          yield state;
+          return;
+        }
         yield state
             .copyWith(totalLines: action.payload, currentIndex: 0, points: []);
         break;

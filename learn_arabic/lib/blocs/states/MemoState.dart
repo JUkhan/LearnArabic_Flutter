@@ -1,6 +1,7 @@
 import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:learn_arabic/blocs/actionTypes.dart';
 import 'package:learn_arabic/blocs/appService.dart';
+import 'package:learn_arabic/blocs/models/BookInfo.dart';
 import 'package:learn_arabic/blocs/models/MemoModel.dart';
 
 class MemoState extends BaseState<MemoModel> {
@@ -62,12 +63,13 @@ class MemoState extends BaseState<MemoModel> {
             AppService.prefkey_scrollOffset);
         state.scrollOffset = action.payload['scroll'];
         state.pageIndexPerScroll = action.payload['refPerScroll'];
-        /*yield state.copyWith(
-            scrollOffset: action.payload['scroll'],
-            pageIndexPerScroll: action.payload['refPerScroll']);*/
         yield state;
         break;
       case ActionTypes.SELECT_WORD:
+        if (action.payload['word'] == state.selectedWord) {
+          action.payload['wordIndex'] = '0';
+          action.payload['word'] = JWord.empty();
+        }
         AppService.saveInPref<String>(
             action.payload['wordIndex'], AppService.prefkey_wordIndex);
 

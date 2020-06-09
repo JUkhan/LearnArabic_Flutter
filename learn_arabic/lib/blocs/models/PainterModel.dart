@@ -6,25 +6,30 @@ class PainterModel {
   final int totalLines;
   final int currentIndex;
   final bool colorPickerOpened;
+  final double strokeWidth;
   PainterModel(this.color, this.points, this.totalLines, this.currentIndex,
-      this.colorPickerOpened);
-  factory PainterModel.init() => PainterModel(Colors.black, [], 0, 0, false);
+      this.colorPickerOpened, this.strokeWidth);
+  factory PainterModel.init() =>
+      PainterModel(Colors.black, [], 0, 0, false, 1.5);
   PainterModel copyWith(
           {Color color,
           List<OffsetStatus> points,
           int totalLines,
           bool colorPickerOpened,
-          int currentIndex}) =>
+          int currentIndex,
+          double strokeWidth}) =>
       PainterModel(
           color ?? this.color,
           points ?? this.points,
           totalLines ?? this.totalLines,
           currentIndex ?? this.currentIndex,
-          colorPickerOpened ?? this.colorPickerOpened);
+          colorPickerOpened ?? this.colorPickerOpened,
+          strokeWidth ?? this.strokeWidth);
 }
 
 class OffsetStatus {
   final Offset offset;
   final Color color;
-  OffsetStatus(this.offset, this.color);
+  final double strokeWidth;
+  OffsetStatus(this.offset, this.color, this.strokeWidth);
 }

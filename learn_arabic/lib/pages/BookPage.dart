@@ -8,7 +8,6 @@ import 'package:learn_arabic/blocs/actionTypes.dart';
 import 'package:learn_arabic/blocs/models/AsyncData.dart';
 import 'package:learn_arabic/blocs/models/BookInfo.dart';
 import 'package:learn_arabic/blocs/models/MemoModel.dart';
-import 'package:learn_arabic/blocs/models/PainterModel.dart';
 import 'package:learn_arabic/blocs/models/bookModel.dart';
 import 'package:learn_arabic/blocs/util.dart';
 import 'package:learn_arabic/widgets/DrawerWidget.dart';
@@ -550,33 +549,4 @@ class BookPage extends StatelessWidget {
                 ? Theme.of(context).textTheme.headline5
                 : Theme.of(context).textTheme.headline6));
   }
-}
-
-class Painter extends CustomPainter {
-  PainterModel pModel;
-  Painter(this.pModel);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    var paint = Paint()
-      ..isAntiAlias = true
-      ..strokeCap = StrokeCap.round;
-    for (int i = 0; i < pModel.points.length - 1; i++) {
-      if (pModel.points[i].offset != null &&
-          pModel.points[i + 1].offset != null) {
-        paint.color = pModel.points[i].color;
-        paint.strokeWidth = pModel.points[i].color == Colors.white ? 4.0 : 1.0;
-        canvas.drawLine(
-            pModel.points[i].offset, pModel.points[i + 1].offset, paint);
-      } else if (pModel.points[i].offset != null &&
-          pModel.points[i + 1].offset == null) {
-        paint.strokeWidth = 2;
-        canvas.drawPoints(PointMode.points, [pModel.points[i].offset], paint);
-      }
-    }
-  }
-
-  @override
-  bool shouldRepaint(Painter painter) =>
-      true; // painter.points.length != points.length;
 }

@@ -27,8 +27,8 @@
       "words": [
         { "w": "قَرْيَةٌ", "e": "village" },
         { "w": "النَّاسُ", "e": "people" },
-        { "w": "المَطْعَمُ", "e": "restaurant,mess" },
-        { "w": "" },
+        { "w": "المَطْعَمُ", "e": "restaurant, mess" },
+        { "w": "مَلْعَبٌ", "e": "play ground" },
         { "w": "Singular" },
         { "w": "Plural" },
         { "w": "فَتًي", "e": "young man" },

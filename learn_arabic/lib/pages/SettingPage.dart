@@ -163,36 +163,6 @@ class _SettingPageState extends State<SettingPage> {
     });
   }
 
-  valueChange(double value) {
-    if (value >= 1.5 && value <= 2.4) {
-      value = 2.0;
-    } else if (value >= 2.5 && value <= 3.4) {
-      value = 3.0;
-    } else if (value >= 3.5 && value <= 4.0) {
-      value = 4.0;
-    } else {
-      value = 1.0;
-    }
-    setState(() {
-      fontSize = value;
-    });
-    dispatch(ActionTypes.SET_FONTSIZE, value);
-  }
-
-  wordSpaceValueChange(double value) {
-    if (value >= 1.5 && value <= 2.4) {
-      value = 2.0;
-    } else if (value >= 2.5 && value <= 3.4) {
-      value = 3.0;
-    } else {
-      value = 1.0;
-    }
-    setState(() {
-      wordSpace = value;
-    });
-    dispatch(ActionTypes.SET_WORDSPACE, value);
-  }
-
   Widget getWordSpace(BuildContext context) {
     var space = '';
     for (var i = 0.0; i < wordSpace; i++) {
@@ -211,14 +181,15 @@ class _SettingPageState extends State<SettingPage> {
       ),
       Slider(
         min: 1.0,
-        max: 3.0,
+        max: 5.0,
         value: wordSpace,
+        divisions: 4,
         onChanged: (value) {
           setState(() {
             wordSpace = value;
           });
+          dispatch(ActionTypes.SET_WORDSPACE, value);
         },
-        onChangeEnd: wordSpaceValueChange,
       ),
       Text(
         'اْلأَوَّلُ' + space + 'اَلدَّرْسُ',
@@ -240,14 +211,15 @@ class _SettingPageState extends State<SettingPage> {
             Divider(color: iconColor),
             Slider(
               min: 1.0,
-              max: 4.0,
+              max: 5.0,
+              divisions: 4,
               value: fontSize,
               onChanged: (value) {
                 setState(() {
                   fontSize = value;
                 });
+                dispatch(ActionTypes.SET_FONTSIZE, value);
               },
-              onChangeEnd: valueChange,
             ),
             Text(
               'اَلدَّرْسُ اْلأَوَّلُ',

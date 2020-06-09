@@ -42,7 +42,7 @@ class _QaWidgetState extends State<QaWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             IconButton(
-              tooltip: 'Writing board',
+              tooltip: 'Writing Board',
               icon: Icon(Icons.edit),
               onPressed: () {
                 dispatch('painterLines', line?.lines?.length ?? 0);
