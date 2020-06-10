@@ -160,8 +160,10 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
 
     videos.forEach((v) {
       if ((v.id == null || v.id.isEmpty) && v.title.isNotEmpty) {
-        list.add(_getLessonMode(
-            JLine(height: 45.0, words: [JWord(word: v.title, english: "")])));
+        if (_memo?.lectureCategory == 3) {
+          list.add(_getLessonMode(
+              JLine(height: 45.0, words: [JWord(word: v.title, english: "")])));
+        }
       } else {
         list.add(Card(
           //color: Theme.of(context).backgroundColor,
@@ -374,16 +376,16 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         ],
       );
     } else {
-      child = Center(
-          child: TextWidget(
+      child = TextWidget(
         line: line,
         memo: _memo,
         bookModel: _bookModel,
-      ));
+      );
     }
     return Container(
       padding: EdgeInsets.fromLTRB(padding, line.direction == 'ltr' ? 2 : 0,
           padding, line.direction == 'ltr' ? 12 : 0),
+      alignment: Alignment.center,
       width: double.infinity,
       color: Theme.of(context).backgroundColor,
       child: child,
@@ -423,12 +425,12 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   Widget _getText(JLine line) {
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 10.0),
-        child: Center(
-            child: TextWidget(
+        alignment: Alignment.center,
+        child: TextWidget(
           line: line,
           memo: _memo,
           bookModel: _bookModel,
-        )));
+        ));
   }
 
   Widget _getReadAndWrite(JLine line, [double padding = 10.0]) {
