@@ -22,12 +22,7 @@ void main() {
 //flutter build apk
 //flutter install
 //flutter build apk --target-platform android-arm,android-arm64,android-x64 --split-per-abi
-//flutter build appbundle --target-platform android-arm,android-arm64,android-x64
-// /Users/jukhan/key.jks
-//keytool -list -v -keystore keystore.jks -alias mydomain
-//Owner: CN=jasim khan, OU=mobileApp, O=zaitun, L=Dhaka, ST=Banasree, C=BD
-//keytool -genkeypair -alias mykey -keyalg RSA -keysize 2048 -validity 10000 -keystore keystore.jks
-//keytool -export -rfc -alias upload -file upload_certificate.pem -keystore keystore.jks
+//flutter build appbundle --target-platform android-arm,android-arm64,android-x6
 //flutter devices
 //flutter pub get
 //export PUB_HOSTED_URL=https://pub.flutter-io.cn

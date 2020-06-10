@@ -34,7 +34,6 @@ class JLine {
   final String mode;
   final String img;
   final int lineno;
-  final double height;
   final List<JLine> lines;
   List<JWord> words;
 
@@ -44,7 +43,6 @@ class JLine {
     this.img,
     this.lines,
     this.words,
-    this.height,
     this.lineno,
   });
   factory JLine.fromJson(Map<String, dynamic> json) {
@@ -67,7 +65,6 @@ class JLine {
         mode: getValue<String>(json, 'mode', ''),
         img: getValue<String>(json, 'img', ''),
         lineno: getValue<int>(json, 'lineno', 1),
-        height: getValue<double>(json, 'height', 45.0),
         lines: lines,
         words: words);
   }
@@ -76,7 +73,6 @@ class JLine {
           String mode,
           String img,
           int lineno,
-          double height,
           List<JLine> lines,
           List<JWord> words}) =>
       JLine(
@@ -84,7 +80,6 @@ class JLine {
           mode: mode ?? this.mode,
           img: img ?? this.img,
           lineno: lineno ?? this.lineno,
-          height: height ?? this.height,
           lines: lines ?? lines,
           words: words ?? words);
 }

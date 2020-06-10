@@ -162,7 +162,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       if ((v.id == null || v.id.isEmpty) && v.title.isNotEmpty) {
         if (_memo?.lectureCategory == 3) {
           list.add(_getLessonMode(
-              JLine(height: 45.0, words: [JWord(word: v.title, english: "")])));
+              JLine(words: [JWord(word: v.title, english: "")])));
         }
       } else {
         list.add(Card(
@@ -204,7 +204,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
           break;
         case 'padding':
           list.add(SizedBox(
-            height: line.height,
+            height: 45,
           ));
           break;
         case 'card':
