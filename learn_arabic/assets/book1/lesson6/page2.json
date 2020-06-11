@@ -1,1 +1,77 @@
-{"lines":[{"d":"ltr","words":[{"w":"3. لِ is a preposition meaning \"belongs to\", for example: \n\nThis belongs to Bilal and that belongs to Hamid.\nهَذَا  لِبِلاَلٍ، وَدَلِكَ  لِحَامِدٍ\n\nPraise belongs to Allah\nالحَمْدُ  لِلَّهِ\n\n Note that the word اللَّهُ becomes لِلَّهِ lillah-i(belongs to Allah) by just dropping the alif. No lam need to be added to the word.\nلِمَنْ means \"whose\" or \"belongs to whom\" e.g.\n\nWhose is this?(Whom does this belongs to?)\nلِمَنْ هَذَا \n\nWhose is the book?\n ?لِمَنِ  الكِتَابُ\n\nNote that مَنْ becomes مَنِ when followed by اَلْ \n\n4. أَيْضًا means \"also\", e.g.\n\nThis is beautifull,\nهَذَا  جَمِيْلٌ\n\nand that is also beautifull.\n وَذَلِكَ  أَيْضًا  جَمِيْلٌ \n\n5. جِدًّا means \"very\", e.g.\n\nThis is very big\nهَذَا  كَبِيْرٌ  جِدًّا "}]},{"d":"ltr","mode":"lesson","height":50,"words":[{"w":"Vocabulary:"}]},{"mode":"vocab","words":[{"w":"دَرَّاجَةٌ","e":"bicycle"},{"w":"فَلَّاحٌ","e":"farmer"},{"w":"قَهْوَةٌ","e":"coffee"},{"w":"سَرِيْعٌ","e":"fast"},{"w":"بَقَرَةٌ","e":"cow"},{"w":"ثَلَّاجَةٌ","e":"fridge"},{"w":"أُذُنٌ","e":"ear"},{"w":"يَدٌ","e":"hand"},{"w":"شَرْقٌ","e":"east"},{"w":"رَأْسٌ","e":"head"},{"w":"عَيْنٌ","e":"eye"},{"w":"مِكْوَاةٌ","e":"iron (for ironing)"},{"w":"وَجْهٌ","e":"face"},{"w":"رِجْلٌ","e":"leg"},{"w":"شَايٌ","e":"tea"},{"w":"قِدْرٌ","e":"cooking pot"},{"w":"فَمٌ","e":"mouth"},{"w":"مَغْرِبٌ","e":"west"},{"w":"أَنْفٌ","e":"nose"},{"w":"نَافِزَةٌ","e":"window"},{"w":"مِلْعَقَةٌ","e":"spoon"}]}]}
+{
+  "lines": [
+    {
+      "words": [
+        {
+          "w": "3. لِ is a preposition meaning \"belongs to\", for example:"
+        }
+      ]
+    },
+    {
+      "mode": "text",
+      "words": [{ "w": "This belongs to bilal and that belongs to hamid." }]
+    },
+    {
+      "mode": "text",
+      "words": [{ "w": "هَذَا  لِبِلاَلٍ، وَدَلِكَ  لِحَامِدٍ" }]
+    },
+    { "mode": "text", "words": [{ "w": "Praise belongs to Allah" }] },
+    { "mode": "text", "words": [{ "w": "الحَمْدُ  لِلَّهِ" }] },
+    {
+      "words": [
+        {
+          "w": " Note that the word اللَّهُ becomes لِلَّهِ lillah-i(belongs to Allah) by just dropping the alif. No lam need to be added to the word. لِمَنْ means \"whose\" or \"belongs to whom\" e.g."
+        }
+      ]
+    },
+    {
+      "mode": "text",
+      "words": [{ "w": "Whose is this?(Whom does this belongs to?)" }]
+    },
+    { "mode": "text", "words": [{ "w": "لِمَنْ هَذَا " }] },
+    { "mode": "text", "words": [{ "w": "Whose is the book?" }] },
+    { "mode": "text", "words": [{ "w": "?لِمَنِ  الكِتَابُ" }] },
+    {
+      "words": [{ "w": "Note that مَنْ becomes مَنِ when followed by اَلْ " }]
+    },
+    { "words": [{ "w": "4. أَيْضًا means \"also\", e.g." }] },
+    { "mode": "text", "words": [{ "w": "This is beautifull." }] },
+    { "mode": "text", "words": [{ "w": "هَذَا  جَمِيْلٌ" }] },
+    { "mode": "text", "words": [{ "w": "And that is also beautifull." }] },
+    { "mode": "text", "words": [{ "w": " وَذَلِكَ  أَيْضًا  جَمِيْلٌ" }] },
+    { "words": [{ "w": "5. جِدًّا means \"very\", e.g." }] },
+    { "mode": "text", "words": [{ "w": "This is very big." }] },
+    { "mode": "text", "words": [{ "w": "هَذَا  كَبِيْرٌ  جِدًّا" }] },
+
+    {
+      "mode": "lesson",
+      "words": [{ "w": "Vocabulary:" }]
+    },
+    {
+      "mode": "vocab",
+      "words": [
+        { "w": "دَرَّاجَةٌ", "e": "bicycle" },
+        { "w": "فَلَّاحٌ", "e": "farmer" },
+        { "w": "قَهْوَةٌ", "e": "coffee" },
+        { "w": "سَرِيْعٌ", "e": "fast" },
+        { "w": "بَقَرَةٌ", "e": "cow" },
+        { "w": "ثَلَّاجَةٌ", "e": "fridge" },
+        { "w": "أُذُنٌ", "e": "ear" },
+        { "w": "يَدٌ", "e": "hand" },
+        { "w": "شَرْقٌ", "e": "east" },
+        { "w": "رَأْسٌ", "e": "head" },
+        { "w": "عَيْنٌ", "e": "eye" },
+        { "w": "مِكْوَاةٌ", "e": "iron (for ironing)" },
+        { "w": "وَجْهٌ", "e": "face" },
+        { "w": "رِجْلٌ", "e": "leg" },
+        { "w": "شَايٌ", "e": "tea" },
+        { "w": "قِدْرٌ", "e": "cooking pot" },
+        { "w": "فَمٌ", "e": "mouth" },
+        { "w": "مَغْرِبٌ", "e": "west" },
+        { "w": "أَنْفٌ", "e": "nose" },
+        { "w": "نَافِزَةٌ", "e": "window" },
+        { "w": "مِلْعَقَةٌ", "e": "spoon" }
+      ]
+    }
+  ]
+}

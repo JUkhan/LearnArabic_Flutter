@@ -242,12 +242,17 @@ class Util {
   }
 
   static bool isArabic(String str) {
-    if (str.trim().isEmpty) return false;
-    return str.codeUnitAt(0) > 1000;
+    return !str.contains(RegExp(r'[a-zA-Z]'));
+    /*if (str.codeUnitAt(0) > 1000)
+      return true;
+    else if (str.startsWith('('))
+      return str.codeUnitAt(1) > 1000;
+    else if (str.startsWith('......')) return true;
+    return false;*/
   }
 
-  static TextDirection getDirection(String direction) =>
-      direction == 'rtl' ? TextDirection.rtl : TextDirection.ltr;
+  static TextDirection getDirection(String str) =>
+      isArabic(str) ? TextDirection.rtl : TextDirection.ltr;
 
   static bool hasSelectedWord(int id, MemoModel memo, BookModel bookModel) =>
       memo?.wordIndex == getWordIndex(id, bookModel);
@@ -266,8 +271,8 @@ class Util {
           text: hasWordSpac ? text + memo.getWordSpace : text,
           style: hasColor ? TextStyle(color: Util.getColor(text)) : null);
 
-  static TextSpan getTextSpan(JWord word, String direction, MemoModel memo,
-      BookModel bookModel, Function getGesture, BuildContext context) {
+  static TextSpan getTextSpan(JWord word, MemoModel memo, BookModel bookModel,
+      Function getGesture, BuildContext context) {
     if (word.english.isNotEmpty) {
       if (hasSelectedWord(word.id, memo, bookModel)) {
         if (memo.selectedWord == null) {
@@ -276,7 +281,7 @@ class Util {
       }
     }
     final txtSpans = List<TextSpan>();
-    if (direction == 'rtl' && !Util.isArabic(word.word)) direction = 'ltr';
+    String direction = Util.isArabic(word.word) ? 'rtl' : 'ltr';
     var gesture = word.english.isNotEmpty ? getGesture(word) : null;
     if (word.sp != null) {
       int len = word.sp.length;
@@ -419,6 +424,38 @@ class Util {
           return WritingBoardWidget(
               colors: colors, memo: memo, lines: lines, book: book);
         });
+  }
+
+  static Row getWritingBoardComp(List<JLine> lines, JLine line,
+      BuildContext context, MemoModel memo, BookModel book) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        IconButton(
+          tooltip: 'Writing Board',
+          icon: Icon(Icons.edit),
+          onPressed: () {
+            dispatch('painterLines', lines?.length ?? 0);
+            Util.showWritingBoard(context, lines, memo, book);
+          },
+        ),
+        line.words[0].word.length > 30
+            ? Expanded(
+                child: Center(
+                  child: TextWidget(
+                    line: line,
+                    memo: memo,
+                    bookModel: book,
+                  ),
+                ),
+              )
+            : TextWidget(
+                line: line,
+                memo: memo,
+                bookModel: book,
+              )
+      ],
+    );
   }
 }
 

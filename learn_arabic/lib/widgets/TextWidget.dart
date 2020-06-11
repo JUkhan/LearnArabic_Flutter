@@ -73,7 +73,8 @@ class _TextWidgetState extends State<TextWidget> {
     return widget.lineNo != null
         ? RichText(
             textAlign: widget.textAlign ?? TextAlign.start,
-            textDirection: Util.getDirection(widget.line.direction),
+            textDirection:
+                TextDirection.rtl, //  Util.getDirection(widget.line.direction),
             text: TextSpan(
                 style: TextStyle(
                   fontSize: 22,
@@ -82,18 +83,18 @@ class _TextWidgetState extends State<TextWidget> {
                 ),
                 text: getArabicNumber(widget.lineNo.toString()),
                 children: widget.line.words
-                    .map((word) => Util.getTextSpan(word, widget.line.direction,
-                        _memo, widget.bookModel, _getGesture, context))
+                    .map((word) => Util.getTextSpan(
+                        word, _memo, widget.bookModel, _getGesture, context))
                     .toList()),
           )
         : RichText(
             textAlign: widget.textAlign ?? TextAlign.start,
-            textDirection: Util.getDirection(widget.line.direction),
+            textDirection: Util.getDirection(widget.line.words[0].word),
             text: TextSpan(
                 style: TextStyle(height: 1.9),
                 children: widget.line.words
-                    .map((word) => Util.getTextSpan(word, widget.line.direction,
-                        _memo, widget.bookModel, _getGesture, context))
+                    .map((word) => Util.getTextSpan(
+                        word, _memo, widget.bookModel, _getGesture, context))
                     .toList()),
           );
   }

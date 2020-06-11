@@ -32,13 +32,19 @@ class _QaWidgetState extends State<QaWidget> {
     var titleContainer = List<Widget>();
     if (line.words.length > 0) {
       var find = line.words
+          .map((e) => e.word.toLowerCase())
           .where((element) =>
-              element.word == 'وَاكْتُبْ' ||
-              element.word.contains('Read and Write'))
+              element == 'وَاكْتُبْ' || element.contains('read and write'))
           .toList();
 
       if (find.length > 0) {
-        titleContainer.add(Row(
+        titleContainer.add(Util.getWritingBoardComp(
+            line.lines,
+            line.copyWith(words: line.words),
+            context,
+            widget.memo,
+            widget.bookModel));
+        /*titleContainer.add(Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             IconButton(
@@ -50,34 +56,45 @@ class _QaWidgetState extends State<QaWidget> {
                     context, line.lines, widget.memo, widget.bookModel);
               },
             ),
-            TextWidget(
-              line: line.copyWith(
-                  direction: find[0].direction,
-                  words: line.words
-                      .where((d) => d.direction == find[0].direction)
-                      .toList()),
-              textAlign: TextAlign.justify,
-              memo: widget.memo,
-              bookModel: widget.bookModel,
+            Expanded(
+              child: Center(
+                child: TextWidget(
+                  line: line.copyWith(
+                      // direction:  find[0].direction,
+                      words: line.words
+                      /*.where((d) => d.direction == find[0].direction)
+                          .toList()*/
+                      ),
+                  textAlign: TextAlign.justify,
+                  memo: widget.memo,
+                  bookModel: widget.bookModel,
+                ),
+              ),
             ),
           ],
-        ));
+        ));*/
       } else {
-        titleContainer.add(TextWidget(
-          line: line.copyWith(
-              direction: 'ltr',
-              words: line.words.where((d) => d.direction == 'ltr').toList()),
-          textAlign: TextAlign.justify,
-          memo: widget.memo,
-          bookModel: widget.bookModel,
-        ));
-        titleContainer.add(TextWidget(
-          line: line.copyWith(
-              direction: 'rtl',
-              words: line.words.where((d) => d.direction == 'rtl').toList()),
-          memo: widget.memo,
-          bookModel: widget.bookModel,
-        ));
+        var _words = line.words.where((d) => !Util.isArabic(d.word)).toList();
+        if (_words.length > 0) {
+          titleContainer.add(TextWidget(
+            line: line.copyWith(
+                // direction: 'ltr',
+                words: _words),
+            textAlign: TextAlign.justify,
+            memo: widget.memo,
+            bookModel: widget.bookModel,
+          ));
+        }
+        _words = line.words.where((d) => Util.isArabic(d.word)).toList();
+        if (_words.length > 0) {
+          titleContainer.add(TextWidget(
+            line: line.copyWith(
+                //direction: 'rtl',
+                words: _words),
+            memo: widget.memo,
+            bookModel: widget.bookModel,
+          ));
+        }
       }
     }
 
@@ -139,7 +156,7 @@ class _QaWidgetState extends State<QaWidget> {
         child: TextWidget(
       line: JLine(
         words: [word],
-        direction: 'rtl',
+        // direction: 'rtl',
       ),
       memo: widget.memo,
       bookModel: widget.bookModel,

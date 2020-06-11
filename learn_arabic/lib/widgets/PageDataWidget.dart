@@ -328,9 +328,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
           break;
         case 'raw':
         case "":
-          lines = nextLine.words
-              .map((e) => JLine(words: [e], direction: 'rtl'))
-              .toList();
+          lines = nextLine.words.map((e) => JLine(words: [e])).toList();
           break;
         case 'img-sentence':
           lines = widget.page.data.lines
@@ -353,28 +351,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     Widget child;
     var lines = _getLines(line);
     if (lines != null) {
-      child = Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          IconButton(
-            tooltip: 'Writing Board',
-            icon: Icon(Icons.edit),
-            onPressed: () {
-              dispatch('painterLines', lines?.length ?? 0);
-              Util.showWritingBoard(context, lines, _memo, _bookModel);
-            },
-          ),
-          Expanded(
-            child: Center(
-              child: TextWidget(
-                line: line,
-                memo: _memo,
-                bookModel: _bookModel,
-              ),
-            ),
-          )
-        ],
-      );
+      child = Util.getWritingBoardComp(lines, line, context, _memo, _bookModel);
     } else {
       child = TextWidget(
         line: line,
@@ -383,8 +360,11 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       );
     }
     return Container(
-      padding: EdgeInsets.fromLTRB(padding, line.direction == 'ltr' ? 2 : 0,
-          padding, line.direction == 'ltr' ? 12 : 0),
+      padding: EdgeInsets.fromLTRB(
+          padding,
+          Util.isArabic(line.words[0].word) ? 0 : 2,
+          padding,
+          Util.isArabic(line.words[0].word) ? 0 : 12),
       alignment: Alignment.center,
       width: double.infinity,
       color: Theme.of(context).backgroundColor,

@@ -30,7 +30,7 @@ T getValue<T>(Map<String, dynamic> json, String key, dynamic defaultValue) {
 }
 
 class JLine {
-  String direction;
+  //String direction;
   final String mode;
   final String img;
   final int lineno;
@@ -38,7 +38,7 @@ class JLine {
   List<JWord> words;
 
   JLine({
-    this.direction,
+    //this.direction,
     this.mode,
     this.img,
     this.lines,
@@ -61,7 +61,7 @@ class JLine {
           .toList();
     }
     return JLine(
-        direction: getValue<String>(json, 'd', 'rtl'),
+        //direction: getValue<String>(json, 'd', 'rtl'),
         mode: getValue<String>(json, 'mode', ''),
         img: getValue<String>(json, 'img', ''),
         lineno: getValue<int>(json, 'lineno', 1),
@@ -69,14 +69,15 @@ class JLine {
         words: words);
   }
   JLine copyWith(
-          {String direction,
+          {
+          //String direction,
           String mode,
           String img,
           int lineno,
           List<JLine> lines,
           List<JWord> words}) =>
       JLine(
-          direction: direction ?? this.direction,
+          // direction: direction ?? this.direction,
           mode: mode ?? this.mode,
           img: img ?? this.img,
           lineno: lineno ?? this.lineno,
@@ -85,7 +86,7 @@ class JLine {
 }
 
 class JWord {
-  final String direction;
+  //final String direction;
   final String word;
   final String bangla;
   final String english;
@@ -93,7 +94,7 @@ class JWord {
   final List<int> sp;
   final int id;
   JWord(
-      {this.direction,
+      { //this.direction,
       this.bangla,
       this.english,
       this.word,
@@ -108,7 +109,7 @@ class JWord {
     }
     return JWord(
         word: getValue<String>(json, 'w', ''),
-        direction: getValue<String>(json, 'd', 'rtl'),
+        //direction: getValue<String>(json, 'd', 'rtl'),
         bangla: getValue<String>(json, 'b', ''),
         english: getValue<String>(json, 'e', ''),
         wordSpace: getValue<int>(json, 'ws', 0),
@@ -117,7 +118,7 @@ class JWord {
 
   factory JWord.empty({String text = ''}) {
     return JWord(
-      direction: '',
+      //direction: '',
       bangla: '',
       english: '',
       word: text,
