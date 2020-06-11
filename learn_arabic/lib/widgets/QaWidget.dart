@@ -1,4 +1,3 @@
-import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_arabic/blocs/models/BookInfo.dart';
 import 'package:learn_arabic/blocs/models/MemoModel.dart';
@@ -44,35 +43,6 @@ class _QaWidgetState extends State<QaWidget> {
             context,
             widget.memo,
             widget.bookModel));
-        /*titleContainer.add(Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            IconButton(
-              tooltip: 'Writing Board',
-              icon: Icon(Icons.edit),
-              onPressed: () {
-                dispatch('painterLines', line?.lines?.length ?? 0);
-                Util.showWritingBoard(
-                    context, line.lines, widget.memo, widget.bookModel);
-              },
-            ),
-            Expanded(
-              child: Center(
-                child: TextWidget(
-                  line: line.copyWith(
-                      // direction:  find[0].direction,
-                      words: line.words
-                      /*.where((d) => d.direction == find[0].direction)
-                          .toList()*/
-                      ),
-                  textAlign: TextAlign.justify,
-                  memo: widget.memo,
-                  bookModel: widget.bookModel,
-                ),
-              ),
-            ),
-          ],
-        ));*/
       } else {
         var _words = line.words.where((d) => !Util.isArabic(d.word)).toList();
         if (_words.length > 0) {

@@ -2,6 +2,7 @@
   "lines": [
     {
       "mode": "qa",
+      "lineno": 0,
       "words": [{ "w": "Read and Write", "d": "ltr" }],
       "lines": [
         {

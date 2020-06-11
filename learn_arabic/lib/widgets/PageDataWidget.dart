@@ -416,7 +416,6 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   Widget _getReadAndWrite(JLine line, [double padding = 10.0]) {
     return Container(
         padding: EdgeInsets.all(padding),
-        //color: _memo.theme == Themes.light ? Colors.black12 : Colors.white10,
         child: TextWidget(
           line: line,
           memo: _memo,

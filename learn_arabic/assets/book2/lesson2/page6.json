@@ -80,6 +80,7 @@
     },
     {
       "mode": "qa",
+      "lineno": 0,
       "words": [{ "w": "Read the following sentences:", "d": "ltr" }],
       "lines": [
         {

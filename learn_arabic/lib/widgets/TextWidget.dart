@@ -71,31 +71,46 @@ class _TextWidgetState extends State<TextWidget> {
   @override
   Widget build(BuildContext context) {
     return widget.lineNo != null
-        ? RichText(
-            textAlign: widget.textAlign ?? TextAlign.start,
-            textDirection:
-                TextDirection.rtl, //  Util.getDirection(widget.line.direction),
-            text: TextSpan(
-                style: TextStyle(
-                  fontSize: 22,
-                  color: Theme.of(context).backgroundColor,
-                  height: 1.9,
+        ? Row(
+            children: <Widget>[
+              Expanded(
+                child: RichText(
+                  textAlign: widget.textAlign ?? TextAlign.start,
+                  textDirection: TextDirection
+                      .rtl, //  Util.getDirection(widget.line.direction),
+                  text: TextSpan(
+                      children: widget.line.words
+                          .map((word) => Util.getTextSpan(word, _memo,
+                              widget.bookModel, _getGesture, context))
+                          .toList()),
                 ),
-                text: getArabicNumber(widget.lineNo.toString()),
-                children: widget.line.words
-                    .map((word) => Util.getTextSpan(
-                        word, _memo, widget.bookModel, _getGesture, context))
-                    .toList()),
+              ),
+              Container(
+                child: Text(
+                  getArabicNumber(widget.lineNo.toString()),
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: Theme.of(context).backgroundColor,
+                    height: 1.9,
+                  ),
+                ),
+              )
+            ],
           )
-        : RichText(
-            textAlign: widget.textAlign ?? TextAlign.start,
-            textDirection: Util.getDirection(widget.line.words[0].word),
-            text: TextSpan(
-                style: TextStyle(height: 1.9),
-                children: widget.line.words
-                    .map((word) => Util.getTextSpan(
-                        word, _memo, widget.bookModel, _getGesture, context))
-                    .toList()),
+        : Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: RichText(
+              textAlign: widget.textAlign ?? TextAlign.start,
+              textDirection: Util.getDirection(widget.line.words[0].word),
+              text: TextSpan(
+                  style: TextStyle(height: 1.9),
+                  //text: '  ',
+                  children: widget.line.words
+                      .map((word) => Util.getTextSpan(
+                          word, _memo, widget.bookModel, _getGesture, context))
+                      .toList()),
+            ),
           );
   }
 

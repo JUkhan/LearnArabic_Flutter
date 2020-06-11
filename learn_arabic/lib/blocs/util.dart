@@ -405,7 +405,7 @@ class Util {
 
       widgets.add(TextWidget(
         line: l.copyWith(words: spans),
-        lineNo: lineNo,
+        lineNo: line.lineno == 0 ? null : lineNo,
         memo: memo,
         bookModel: bookModel,
       ));
