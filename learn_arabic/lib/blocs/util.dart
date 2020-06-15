@@ -33,7 +33,7 @@ class Util {
       case 'لَ':
       case 'لِ':
       case 'بِ':
-        color = Colors.purple;
+        color = Colors.lightBlue;
         break;
 
       case 'هِ':
@@ -55,9 +55,101 @@ class Util {
         break;
 
       default:
-        color = Colors.red;
+        if (text.contains('عَلَ')) {
+          color = Colors.lightBlue;
+        } else if (text.contains('كُم')) {
+          color = Colors.orange;
+        } else
+          color = Colors.red;
     }
     return color;
+  }
+
+  static String getText(String text) {
+    switch (text) {
+      case 'وَ':
+        text += ' : and এবং';
+        break;
+      case 'أَ':
+      case 'أ':
+        text += ' : interrogative particle প্রশ্নোত্তর কণা';
+        break;
+      case 'الْ':
+      case 'ال':
+      case 'اَلْ':
+      case 'لْ':
+      case 'ل':
+        text += ' - اَلْ : the টি';
+        break;
+
+      case 'لَ':
+      case 'لِ':
+        text += ' : for, belongs to জন্য, সম্পর্কিত';
+        break;
+      case 'بِ':
+        text += ' : in, at মধ্যে';
+        break;
+      case 'فِي':
+        text += ' : in মধ্যে';
+        break;
+
+      case 'كَ':
+        text += ' : you/your তুমি/তোমার (masculine/পুংলিঙ্গ)';
+        break;
+
+      case 'كِ':
+        text += ' : you/your তুমি/তোমার (feminine/স্ত্রীলিঙ্গ)';
+        break;
+      case 'هِ':
+      case 'هُ':
+        text += ' : him/his/it তাকে/তাহার/এটা';
+        break;
+      case 'هَا':
+        text += ' : her তাকে/তাহার';
+        break;
+      case 'ي':
+        text += ' : me/my আমাকে/আমার';
+        break;
+
+      case 'الَّذِي':
+        text += ' : who/which কে/যাহা';
+        break;
+      case 'هُمْ':
+        text += ' : they/them/their তাহারা/তাদের (masculine/পুংলিঙ্গ)';
+        break;
+      case 'هُنَّ':
+        text += ' : they/them/their তাহারা/তাদের (feminine/স্ত্রীলিঙ্গ)';
+        break;
+
+      //subject/doer
+      case 'نَ':
+        text += ' : [doer] they/them/their তাহারা (feminine/স্ত্রীলিঙ্গ)';
+        break;
+      case 'وا':
+        text += ' : [doer] they/them/their তাহারা (masculine/পুংলিঙ্গ)';
+        break;
+      case 'تَ':
+        text += ' : [doer] you/your তুমি (masculine/পুংলিঙ্গ)';
+        break;
+      case 'تِ':
+        text += ' : [doer] you/your তুমি (feminine/স্ত্রীলিঙ্গ)';
+        break;
+      case 'تُ':
+        text += ' : [doer] i/me/my আমি';
+        break;
+      case 'نَا':
+        text += ' : [doer] we/us/our আমরা';
+        break;
+
+      default:
+        if (text.contains('عَلَ'))
+          text += ' : on';
+        else if (text.contains('كُم')) {
+          text += ' : you/your plural (masculine)';
+        } else
+          text += ' : under construction';
+    }
+    return text;
   }
 
   static FlutterTts flutterTts;
@@ -99,87 +191,6 @@ class Util {
       return text.replaceAll(RegExp(r'[a-zA-Z]'), '');
     }
     return '';
-  }
-
-  static String getText(String text) {
-    switch (text) {
-      case 'وَ':
-        text += ' : and এবং';
-        break;
-      case 'أَ':
-      case 'أ':
-        text += ' : interrogative particle প্রশ্নোত্তর কণা';
-        break;
-      case 'الْ':
-      case 'ال':
-      case 'اَلْ':
-      case 'لْ':
-      case 'ل':
-        text += ' - اَلْ : the টি';
-        break;
-
-      case 'لَ':
-      case 'لِ':
-        text += ' : for, belongs to জন্য, সম্পর্কিত';
-        break;
-      case 'بِ':
-        text += ' : in, at মধ্যে';
-        break;
-      case 'فِي':
-        text += ' : in মধ্যে';
-        break;
-
-      case 'كَ':
-        text += ' : you/your তুমি/তোমার (masculine/পুংলিঙ্গ)';
-        break;
-      case 'كِ':
-        text += ' : you/your তুমি/তোমার (feminine/স্ত্রীলিঙ্গ)';
-        break;
-      case 'هِ':
-      case 'هُ':
-        text += ' : him/his/it তাকে/তাহার/এটা';
-        break;
-      case 'هَا':
-        text += ' : her তাকে/তাহার';
-        break;
-      case 'ي':
-        text += ' : me/my আমাকে/আমার';
-        break;
-
-      case 'الَّذِي':
-        text += ' : who/which কে/যাহা';
-        break;
-      case 'هُمْ':
-        text += ' : they/their তাহারা/তাদের (masculine/পুংলিঙ্গ)';
-        break;
-      case 'هُنَّ':
-        text += ' : they/their তাহারা/তাদের (feminine/স্ত্রীলিঙ্গ)';
-        break;
-
-      //subject/doer
-      case 'نَ':
-        text += ' : [subject/doer] they তাহারা (feminine/স্ত্রীলিঙ্গ)';
-        break;
-      case 'وا':
-        text += ' : [subject/doer] they তাহারা (masculine/পুংলিঙ্গ)';
-        break;
-      case 'تَ':
-        text += ' : [subject/doer] you তুমি (masculine/পুংলিঙ্গ)';
-        break;
-      case 'تِ':
-        text += ' : [subject/doer] you তুমি (feminine/স্ত্রীলিঙ্গ)';
-        break;
-      case 'تُ':
-        text += ' : [subject/doer] i আমি';
-        break;
-      case 'نَا':
-        text += ' : [subject/doer] we আমরা';
-        break;
-
-      default:
-        text += ' : under construction';
-    }
-    return text;
   }
 
   static alert({BuildContext context, String message}) {
@@ -431,9 +442,10 @@ class Util {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        IconButton(
+        FloatingActionButton(
+          mini: true,
           tooltip: 'Writing Board',
-          icon: Icon(Icons.edit),
+          child: Icon(Icons.edit),
           onPressed: () {
             dispatch('painterLines', lines?.length ?? 0);
             Util.showWritingBoard(context, lines, memo, book);

@@ -23,6 +23,7 @@ class Painter extends CustomPainter {
       } else if (pModel.points[i].offset != null &&
           pModel.points[i + 1].offset == null &&
           pModel.points[i].offset.dy > 0) {
+        paint.color = pModel.points[i].color;
         paint.strokeWidth =
             pModel.strokeWidth < 2 ? 2.0 : pModel.points[i].strokeWidth;
         canvas.drawPoints(PointMode.points, [pModel.points[i].offset], paint);

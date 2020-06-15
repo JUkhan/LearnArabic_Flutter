@@ -1,9 +1,7 @@
 {
   "videos": [
-    { "title": "Bangla Lecture" },
-    { "id": "YLBOQsnr240", "title": "Madinah Arabic Course B1 L11" },
-    { "title": "English Lecture" },
-    { "id": "JMTCPZ9fEQs", "title": "Understanding new نعت and بدل" }
+    { "id": "JMTCPZ9fEQs", "title": "Understanding new نعت and بدل" },
+    { "id": "AfWD6wkL5C4", "title": "understanding نعت and أيُّ" }
   ],
   "lines": [
     {
@@ -46,9 +44,43 @@
     { "mode": "text", "words": [{ "w": "اللهُ رَبُّنَا." }] },
     { "mode": "text", "words": [{ "w": "Islam is our faith." }] },
     { "mode": "text", "words": [{ "w": "الإسْلَامُ دِيْنُنَا." }] },
-    { "mode": "text", "words": [{ "w": "We are Muslims (masculine)" }] },
-    { "mode": "text", "words": [{ "w": "نَحْنُ مُسْلِمُونَ." }] },
-    { "mode": "text", "words": [{ "w": "We are Muslims (feminine)" }] },
-    { "mode": "text", "words": [{ "w": "نَحْنُ مُسْلِمَاتٌ." }] }
+    {
+      "mode": "text",
+      "words": [
+        {
+          "w": "Muhammad (peach and blessing of Allah be upon him) is our prophet."
+        }
+      ]
+    },
+    {
+      "mode": "text",
+      "words": [
+        { "w": "مُحَمَّدٌ (صَلَّي اللَّهُ عَلَيهِ وَسَلَّمَ) نَبِيُّنَا." }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "3. ذَهَبْتَ means \"you went\" (mas. sing.). ذَهَبْتُمْ means \"you went\" (mas. pl.), e.g."
+        }
+      ]
+    },
+    { "mode": "text", "words": [{ "w": "Where did you go, my sons?" }] },
+    { "mode": "text", "words": [{ "w": "أَيُنَ ذَهَبْتُمْ يَا أَبْنَاءِي؟" }] },
+    {
+      "words": [
+        {
+          "w": "4. ذَهَبْتُ means \"I went\". And \"we went\" is ذَهَبْنَا (dhahabnâ). Note that \"they went\" (feminine) is ذَهَبْنَ dhahabna. The difference between the two is that in ذَهَبْنَ the final <<a>> is short, and in ذَهَبْنَا it is long."
+        }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "5. We have seen that feminine proper nouns have no tanwîn, e.g. "
+        }
+      ]
+    },
+    { "mode": "text", "words": [{ "w": "آمِنَةُ، مَرِيَمُ، خَدِيْجَةُ" }] }
   ]
 }

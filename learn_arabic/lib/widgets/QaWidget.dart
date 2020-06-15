@@ -33,12 +33,14 @@ class _QaWidgetState extends State<QaWidget> {
       var find = line.words
           .map((e) => e.word.toLowerCase())
           .where((element) =>
-              element == 'وَاكْتُبْ' || element.contains('read and write'))
+              element == 'وَاكْتُبْ' ||
+              element == 'conversation' ||
+              element.contains('read and write'))
           .toList();
 
       if (find.length > 0) {
         titleContainer.add(Util.getWritingBoardComp(
-            line.lines,
+            line.lines[0].lines.length > 0 ? line.lines[0].lines : line.lines,
             line.copyWith(words: line.words),
             context,
             widget.memo,

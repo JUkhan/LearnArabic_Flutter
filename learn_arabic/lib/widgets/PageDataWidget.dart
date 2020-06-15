@@ -145,7 +145,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       var eindex =
           page.videos.indexWhere((el) => el.title == 'English Lecture');
 
-      if (_memo?.lectureCategory == 1) {
+      if (_memo?.lectureCategory == 1 && eindex >= 0) {
         videos = eindex == -1 ? [] : page.videos.sublist(eindex);
       } else if (_memo?.lectureCategory == 2) {
         var bindex =

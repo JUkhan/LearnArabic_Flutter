@@ -1,1 +1,115 @@
-{"lines":[]}
+{
+  "lines": [
+    {
+      "words": [
+        {
+          "w": "Now we learn that non-Arabic proper nouns also have no tanwîn, e.g.,"
+        }
+      ]
+    },
+    {
+      "mode": "text",
+      "words": [
+        { "w": "وِلْيَمُ، بَارِيسُ، وَاشِنْطُنُ، لَنْدَنُ، بَاكِسْتَانُ" }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "The names of most of the prophets are non-Arabic, and therefore, they have no tanwîn, e.g.,"
+        }
+      ]
+    },
+    {
+      "mode": "text",
+      "words": [
+        { "w": "آدَمُ، إِبْرَاهِيْمُ، إِسْحَاقُ، إِسْمَاعِيْلُ، يَعْقُوبُ" }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "If however, the non-Arabic proper noun has only three letters, and is masculine, it has tanwîn, e.g.,"
+        }
+      ]
+    },
+    { "mode": "text", "words": [{ "w": "نُوْحٌ، لُوْطٌ، جُرْجٌ، خَانٌ" }] },
+    {
+      "words": [
+        {
+          "w": "6. We have learnt that the mudâf is definate by position. So, when the mudâf has an adjective it must be definite, e.g.,"
+        }
+      ]
+    },
+    { "mode": "text", "words": [{ "w": "The imam's new house." }] },
+    { "mode": "text", "words": [{ "w": "بَيْتُ الإِمَامِ الْجَدِيدُ." }] },
+    {
+      "mode": "text",
+      "words": [
+        {
+          "w": "Here بَيْتُ is the mudâf, and it is definate by position. The same applies to the mudâf whose mudâf ilaihi is a possessive pronoun, e.g."
+        }
+      ]
+    },
+    { "mode": "text", "words": [{ "w": "His new house." }] },
+    { "mode": "text", "words": [{ "w": "بَيْتُهُ الْجَدِيدُ." }] },
+    { "words": [{ "w": "Note the following:" }] },
+    { "mode": "text", "words": [{ "w": "The imam's new house." }] },
+    { "mode": "text", "words": [{ "w": "بَيْتُ الإِمَامِ الْجَدِيدُ." }] },
+    { "mode": "text", "words": [{ "w": "The new imam's house." }] },
+    { "mode": "text", "words": [{ "w": "بَيْتُ الإِمَامِ الْجَدِيدِ" }] },
+    {
+      "mode": "text",
+      "words": [{ "w": "7. أَيُّ \"which\". It is used  as a mudâf, e.g.," }]
+    },
+    { "mode": "text", "words": [{ "w": "Which house is this?" }] },
+    { "mode": "text", "words": [{ "w": "أَيُّ بَيْتٍ هَذَا؟" }] },
+
+    { "mode": "text", "words": [{ "w": "Which student went out?" }] },
+    { "mode": "text", "words": [{ "w": "أَيُّ طَالِبٍ خَرَجَ؟" }] },
+    {
+      "words": [
+        {
+          "w": "When preceded by a preposition it is in the genitive case, e.g.,"
+        }
+      ]
+    },
+    { "mode": "text", "words": [{ "w": "Which country are you from?" }] },
+    { "mode": "text", "words": [{ "w": "مِنْ أَيِّ بَلَدٍ أَنْتَ؟" }] },
+    { "mode": "text", "words": [{ "w": "In which class-room did you sit?" }] },
+    { "mode": "text", "words": [{ "w": "فِي أَيِّ فَصْلٍ جَلَسْتَ؟" }] },
+    { "words": [{ "w": "It can be in the accusative case, e.g.," }] },
+    { "mode": "text", "words": [{ "w": "Which language do you like?" }] },
+    { "mode": "text", "words": [{ "w": "أَيَّ لُغَةٍ تُحِبُّ؟" }] },
+    { "mode": "lesson", "d": "ltr", "words": [{ "w": "Vocabulary" }] },
+    {
+      "mode": "vocab",
+      "words": [
+        { "w": "أهْلاً وَسَهْلاً وَمَرْحَبً", "e": "welcome" },
+        { "w": "يَوْمُ السَّبْتِ", "e": "Saturday" },
+        { "w": "شَفَاهُ اللهُ", "e": "May Allah grant him health!" },
+        { "w": "الدُّسْتُورُ", "e": "constitution (law)" },
+        { "w": "طِفْلَةٌ", "e": "child (feminine)" },
+        { "w": "القِبْلَةُ", "e": "prayer direction" },
+        { "w": "المَطَارُ", "e": "airport" },
+        { "w": "المَحْكَمَةُ", "e": "lawcourt" },
+        { "w": "الكُلِّيَّةُ", "e": "faculty, college" },
+        { "w": "كُلِّيَّةُ الطِّبِّ", "e": "faculty of medicine" },
+        { "w": "كُلِّيَّةُ الهَنْدَسَةِ", "e": "faculty of engineering" },
+        { "w": "كُلِّيَّةُ التِّجَارَةِ", "e": "faculty of commerce" },
+        { "w": "كُلِّيَّةُ الشَّرِيْعَةِ", "e": "faculty of Islamic law" },
+        { "w": "حَفِيدٌ", "e": "grandson, plural حَفَدَةٌ" },
+
+        { "w": "حَدِيقَةٌ", "e": "garden" },
+        { "w": "الرَّبُ", "e": "lord" },
+        { "w": "الشَّهْرُ", "e": "month" },
+        { "w": "رَجَبٌ", "e": "the month of Rajat" },
+        { "w": "اليُونَانُ", "e": "Greece" },
+        { "w": "نَصْرَانِيٌّ", "e": "Christian, plural نَصَارَي" },
+        { "w": "النَّبِيُّ", "e": "prophet" },
+        { "w": "الدِّيْنُ", "e": "religion" },
+        { "w": "إِخْوَةٌ", "e": "plural of أَخٌ" }
+      ]
+    }
+  ]
+}

@@ -1,1 +1,106 @@
-{"lines":[{"mode":"img-sentence","img":"3house.png","lines":[{"d":"rtl","words":[{"w":"بَيْتٌ","e":"a house"},{"w":":"},{"w":"الْبَيْتُ","e":"the house","sp":[0,3,7]}]},{"d":"rtl","words":[{"w":"قَلَمٌ","e":"a pen"},{"w":":"},{"w":"الْقَلَمُ","e":"the pen","sp":[0,3,7]}]}]},{"mode":"img-sentence","img":"book.png","lines":[{"d":"rtl","words":[{"w":"كِتَابٌ","e":"a book"},{"w":":"},{"w":"الْكِتَابُ","e":"the book","sp":[0,3,8]}]},{"d":"rtl","words":[{"w":"جَمَلٌ","e":"a camel"},{"w":":"},{"w":"الْجَمَلُ","e":"the camel","sp":[0,3,7]}]}]},{"mode":"img-sentence","img":"3pen.png","d":"rtl","words":[{"w":"الْقَلَمُ","sp":[0,3],"e":"the pen"},{"w":"مَكْسُورٌ.","e":"broken"}]},{"mode":"img-sentence","img":"3door.png","d":"rtl","words":[{"w":"البَابُ","sp":[0,2],"e":"the door"},{"w":"مَفْتُوحٌ.","e":"open"}]},{"mode":"img-sentence","img":"3boy.png","d":"rtl","words":[{"w":"الْوَلَدُ","sp":[0,3],"e":"the boy"},{"w":"جَالِسٌ.","e":"sitting"}]},{"mode":"img-sentence","img":"3teacher.png","d":"rtl","words":[{"w":"وَالْمُدَرِّسُ","sp":[0,2,2,5],"e":"and the teacher"},{"w":"وَاقِفٌ.","e":"standing"}]},{"mode":"img-sentence","img":"3book.png","d":"rtl","words":[{"w":"الْكِتَابُ","sp":[0,3],"e":"the book"},{"w":"جَدِيْدٌ","e":"new"},{"w":"وَالْقَلَمُ","sp":[0,2,2,5],"e":"and the pen"},{"w":"قَدِيْمٌ","e":"old"}]},{"mode":"img-sentence","img":"3horse.png","d":"rtl","words":[{"w":"الْحِمَارُ","sp":[0,3],"e":"the donkey"},{"w":"صَغِرٌ","e":"small"},{"w":"وَالْحِصَانُ","sp":[0,2,2,5],"e":"and the horse"},{"w":"كَبِيرٌ","e":"big"}]}]}
+{
+  "lines": [
+    {
+      "mode": "img-sentence",
+      "img": "3house.png",
+      "lines": [
+        {
+          "d": "rtl",
+          "words": [
+            { "w": "بَيْتٌ", "e": "a house" },
+            { "w": ":" },
+            { "w": "الْبَيْتُ", "e": "the house", "sp": [0, 3] }
+          ]
+        },
+        {
+          "d": "rtl",
+          "words": [
+            { "w": "قَلَمٌ", "e": "a pen" },
+            { "w": ":" },
+            { "w": "الْقَلَمُ", "e": "the pen", "sp": [0, 3] }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "img-sentence",
+      "img": "book.png",
+      "lines": [
+        {
+          "d": "rtl",
+          "words": [
+            { "w": "كِتَابٌ", "e": "a book" },
+            { "w": ":" },
+            { "w": "الْكِتَابُ", "e": "the book", "sp": [0, 3] }
+          ]
+        },
+        {
+          "d": "rtl",
+          "words": [
+            { "w": "جَمَلٌ", "e": "a camel" },
+            { "w": ":" },
+            { "w": "الْجَمَلُ", "e": "the camel", "sp": [0, 3] }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "img-sentence",
+      "img": "3pen.png",
+      "d": "rtl",
+      "words": [
+        { "w": "الْقَلَمُ", "sp": [0, 3], "e": "the pen" },
+        { "w": "مَكْسُورٌ.", "e": "broken" }
+      ]
+    },
+    {
+      "mode": "img-sentence",
+      "img": "3door.png",
+      "d": "rtl",
+      "words": [
+        { "w": "البَابُ", "sp": [0, 2], "e": "the door" },
+        { "w": "مَفْتُوحٌ.", "e": "open" }
+      ]
+    },
+    {
+      "mode": "img-sentence",
+      "img": "3boy.png",
+      "d": "rtl",
+      "words": [
+        { "w": "الْوَلَدُ", "sp": [0, 3], "e": "the boy" },
+        { "w": "جَالِسٌ.", "e": "sitting" }
+      ]
+    },
+    {
+      "mode": "img-sentence",
+      "img": "3teacher.png",
+      "d": "rtl",
+      "words": [
+        { "w": "وَالْمُدَرِّسُ", "sp": [0, 2, 2, 5], "e": "and the teacher" },
+        { "w": "وَاقِفٌ.", "e": "standing" }
+      ]
+    },
+    {
+      "mode": "img-sentence",
+      "img": "3book.png",
+      "d": "rtl",
+      "words": [
+        { "w": "الْكِتَابُ", "sp": [0, 3], "e": "the book" },
+        { "w": "جَدِيْدٌ", "e": "new" },
+        { "w": "وَالْقَلَمُ", "sp": [0, 2, 2, 5], "e": "and the pen" },
+        { "w": "قَدِيْمٌ", "e": "old" }
+      ]
+    },
+    {
+      "mode": "img-sentence",
+      "img": "3horse.png",
+      "d": "rtl",
+      "words": [
+        { "w": "الْحِمَارُ", "sp": [0, 3], "e": "the donkey" },
+        { "w": "صَغِرٌ", "e": "small" },
+        { "w": "وَالْحِصَانُ", "sp": [0, 2, 2, 5], "e": "and the horse" },
+        { "w": "كَبِيرٌ", "e": "big" }
+      ]
+    }
+  ]
+}

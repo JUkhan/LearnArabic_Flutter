@@ -43,6 +43,15 @@ class BookPage extends StatelessWidget {
         ),
         actions: <Widget>[
           IconButton(
+            tooltip: 'Writing Board',
+            icon: Icon(Icons.edit),
+            onPressed: () {
+              dispatch('painterLines', 0);
+              Util.showWritingBoard(
+                  context, null, MemoModel.init(), BookModel());
+            },
+          ),
+          IconButton(
               onPressed: bookMarkHandler,
               tooltip: 'Toggle Book Marks',
               icon: StreamBuilder<bool>(
