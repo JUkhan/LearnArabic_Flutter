@@ -1,1 +1,95 @@
-{"videos":[{"title":"Bangla Lecture"},{"id":"YLBOQsnr240","title":"Madinah Arabic Course B1 L11"},{"title":"English Lecture"},{"id":"4l-qhHrZedw","title":"LEARNING MUBTADA KHABAR"}],"lines":[]}
+{
+  "videos": [{ "id": "4ClJmsatVZ8", "title": "Lesson 5" }],
+  "lines": [
+    {
+      "words": [
+        {
+          "w": "In this lesson we learn the following:\n1. The plural of أَنْتَ \"you\" (feminine singular) is أَنْتُنَْ."
+        }
+      ]
+    },
+    { "mode": "text", "words": [{ "w": "Who are you, my sister?" }] },
+    {
+      "mode": "text",
+      "words": [{ "w": "مَنْ أَنْتُنَْ يَا أَخَوَاتِي؟", "sp": [28, 29] }]
+    },
+    { "mode": "text", "words": [{ "w": "We are the imam's daughters." }] },
+    { "mode": "text", "words": [{ "w": "نَحْنُ بَنَاتُ الإِمَامِ." }] },
+    {
+      "words": [
+        {
+          "w": "2. The plural of كِ \"your\" (feminine singular) is كُنَْ, e.g.,"
+        }
+      ]
+    },
+    { "mode": "text", "words": [{ "w": "Where is your house, ladies?" }] },
+    {
+      "mode": "text",
+      "words": [{ "w": "أَنْتَ بَيْتُكُنَْ يَا سَيِّدَاتُ؟" }]
+    },
+    { "mode": "text", "words": [{ "w": "Our house is near the mosque." }] },
+    {
+      "mode": "text",
+      "words": [{ "w": "بَيْتُنَا قَرِيبٌ مِنَ المَسْجِدِ." }]
+    },
+    {
+      "words": [
+        {
+          "w": "3. We have learnt ذَهَبْتِ \"you went\" (feminine singular). Its plural is ذَهَبْتُنَّ e.g.,"
+        }
+      ]
+    },
+    { "mode": "text", "words": [{ "w": "Where did you go, sisters?" }] },
+    { "mode": "text", "words": [{ "w": "أَيْنَ ذَهَبْتُنَّ يَا أَخَوَاتُ؟" }] },
+    { "mode": "text", "words": [{ "w": "Where did you go, brothers?" }] },
+    { "mode": "text", "words": [{ "w": "أَيْنَ ذَهَبْتُمْ يَا إِخَوَانُ؟" }] },
+    {
+      "words": [
+        {
+          "w": "4. قَبْلَ means \"before\", بَعْدَ means \"after\". They are always mudâf, and the noun following them is in the genitive case. e.g. ,"
+        }
+      ]
+    },
+    { "mode": "text", "words": [{ "w": "After the lesson" }] },
+    { "mode": "text", "words": [{ "w": "بَعْدَ الدَّرْسِ" }] },
+    { "mode": "text", "words": [{ "w": "Before the prayer" }] },
+    { "mode": "text", "words": [{ "w": "قَبْلَ الصَّلاَةِ" }] },
+    { "words": [{ "w": "5. رَجَعَ \"he returned\"." }] },
+    {
+      "mode": "text",
+      "words": [{ "w": "Has the imâm returned from the mosque?" }]
+    },
+    {
+      "mode": "text",
+      "words": [{ "w": "أَرَجَعَ الإمَامُ مِنَ المَسْجِدِ؟", "sp": [0, 2] }]
+    },
+    {
+      "mode": "text",
+      "words": [
+        {
+          "w": "I went to the mosque before the adhân and returned after the salât."
+        }
+      ]
+    },
+    {
+      "mode": "text",
+      "words": [
+        {
+          "w": "ذَهَبْتُ إِلَي المَسْجِدِ قَبْلَ الأَذَانِ وَرَجَعْتُ بَعْدَ الصَّلاَةِ."
+        }
+      ]
+    },
+    { "mode": "lesson", "words": [{ "w": "Vocabulary" }] },
+    {
+      "mode": "vocab",
+
+      "words": [
+        { "w": "القَاهِرَةُ", "e": "Cairo" },
+        { "w": "الآنَ", "e": "now" },
+        { "w": "الأُسْبُوعُ", "e": "week" },
+        { "w": "الاِخْتِبَارُ", "e": "examination" },
+        { "w": "الدَرْسُ", "e": "lesson" }
+      ]
+    }
+  ]
+}

@@ -57,7 +57,9 @@ class Util {
       default:
         if (text.contains('عَلَ')) {
           color = Colors.lightBlue;
-        } else if (text.contains('كُم')) {
+        } else if (text.contains('كُم') ||
+            text.contains('كُن') ||
+            text.contains('تُن')) {
           color = Colors.orange;
         } else
           color = Colors.red;
@@ -145,6 +147,8 @@ class Util {
         if (text.contains('عَلَ'))
           text += ' : on';
         else if (text.contains('كُم')) {
+          text += ' : you/your plural (masculine)';
+        } else if (text.contains('كُن') || text.contains('تُن')) {
           text += ' : you/your plural (masculine)';
         } else
           text += ' : under construction';
