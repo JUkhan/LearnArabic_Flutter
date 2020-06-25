@@ -41,7 +41,7 @@ class _AnsWidgetState extends State<AnsWidget> {
     ));
     if (!_isHidden) {
       widgets.add(TweenAnimationBuilder(
-        duration: Duration(seconds: 2),
+        duration: Duration(milliseconds: 1200),
         tween: ColorTween(begin: Colors.blue, end: _endColor),
         onEnd: () {
           setState(() {

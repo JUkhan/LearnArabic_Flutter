@@ -35,7 +35,7 @@ class _QaWidgetState extends State<QaWidget> {
           .where((element) =>
               element == 'وَاكْتُبْ' ||
               element == 'conversation' ||
-              element.contains('read and write'))
+              element.contains('write'))
           .toList();
 
       if (find.length > 0) {

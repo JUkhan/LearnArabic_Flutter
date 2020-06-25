@@ -23,9 +23,7 @@ class MemoState extends BaseState<MemoModel> {
         state.lessRanSeconds = action.payload['ranTime'];
         state.videoProgress = vprogress;
         yield state;
-        /*yield state.copyWith(
-            lessRanSeconds: action.payload['ranTime'],
-            videoProgress: vprogress);*/
+
         break;
       case ActionTypes.SET_WORDSPACE:
         AppService.saveInPref(action.payload, AppService.prefkey_wordSpace);
@@ -83,6 +81,7 @@ class MemoState extends BaseState<MemoModel> {
             selectedWord: action.payload,
             prevSelectedWordId: action.payload.id);
         break;
+
       case ActionTypes.LECTURE_CATEGORY:
         AppService.saveInPref<int>(
             action.payload, ActionTypes.LECTURE_CATEGORY);

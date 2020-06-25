@@ -11,10 +11,10 @@
         }
       ]
     },
-    { "mode": "lesson", "words": [{ "w": "Conversation" }] },
+
     {
       "mode": "qa",
-      "lineno": 0,
+      "words": [{ "w": "Read and Write" }],
       "lines": [
         {
           "words": [

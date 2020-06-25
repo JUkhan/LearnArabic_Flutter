@@ -39,14 +39,21 @@ class _TextWidgetState extends State<TextWidget> {
     _gestures = List<TapGestureRecognizer>();
     _memoSubscription = select<MemoModel>('memo').listen((data) {
       _memo = data;
-      widget.line.words
-          .where((w) =>
-              Util.getWordIndex(w.id, widget.bookModel) ==
-              Util.getWordIndex(
-                  data?.prevSelectedWordId ?? 0, widget.bookModel))
-          .forEach((s) {
+      if (widget.line.words
+              .where((w) =>
+                  Util.getWordIndex(w.id, widget.bookModel) ==
+                  Util.getWordIndex(
+                      data?.prevSelectedWordId ?? 0, widget.bookModel))
+              .length >
+          0) {
         setState(() {});
-      });
+      } else if (widget.line.words
+              .where((w) =>
+                  Util.getWordIndex(w.id, widget.bookModel) == _memo.wordIndex)
+              .length >
+          0) {
+        setState(() {});
+      }
     });
     super.initState();
   }
@@ -78,11 +85,7 @@ class _TextWidgetState extends State<TextWidget> {
                   textAlign: widget.textAlign ?? TextAlign.start,
                   textDirection: TextDirection
                       .rtl, //  Util.getDirection(widget.line.direction),
-                  text: TextSpan(
-                      children: widget.line.words
-                          .map((word) => Util.getTextSpan(word, _memo,
-                              widget.bookModel, _getGesture, context))
-                          .toList()),
+                  text: TextSpan(children: getSpansChildren(context)),
                 ),
               ),
               Container(
@@ -106,12 +109,23 @@ class _TextWidgetState extends State<TextWidget> {
               text: TextSpan(
                   style: TextStyle(height: 1.9),
                   //text: '  ',
-                  children: widget.line.words
-                      .map((word) => Util.getTextSpan(
-                          word, _memo, widget.bookModel, _getGesture, context))
-                      .toList()),
+                  children: getSpansChildren(context)),
             ),
           );
+  }
+
+  List<TextSpan> getSpansChildren(BuildContext context) {
+    var lastWord = widget.line.words.last;
+    return widget.line.words
+        .fold(List<JWord>(), (List<JWord> previousValue, element) {
+          previousValue.add(element);
+          if (element != lastWord)
+            previousValue.add(JWord.empty(text: widget.memo.getWordSpace));
+          return previousValue;
+        })
+        .map((word) => Util.getTextSpan(
+            word, _memo, widget.bookModel, _getGesture, context))
+        .toList();
   }
 
   _selectWord(JWord word) {

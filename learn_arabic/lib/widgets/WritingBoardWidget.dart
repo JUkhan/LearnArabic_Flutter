@@ -28,18 +28,21 @@ class WritingBoardWidget extends StatelessWidget {
       appBar: AppBar(
         actions: <Widget>[
           FloatingActionButton(
+            heroTag: 'tags1',
             onPressed: () => dispatch('painterPrev'),
             child: Icon(Icons.navigate_before),
             tooltip: 'Previous',
             mini: true,
           ),
           FloatingActionButton(
+            heroTag: 'tags2',
             onPressed: () => dispatch('painterNext'),
             child: Icon(Icons.navigate_next),
             tooltip: 'Next',
             mini: true,
           ),
           FloatingActionButton(
+            heroTag: 'tags3',
             onPressed: () => dispatch('openColorPicker'),
             tooltip: 'Choose Color',
             mini: true,
@@ -51,6 +54,7 @@ class WritingBoardWidget extends StatelessWidget {
                 }),
           ),
           FloatingActionButton(
+            heroTag: 'tags5',
             onPressed: () => dispatch('clearOffset'),
             child: Icon(Icons.clear_all),
             tooltip: 'Clear All',

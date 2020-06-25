@@ -2,7 +2,7 @@
   "lines": [
     {
       "mode": "qa",
-      "lineno": 0,
+
       "words": [{ "w": "Conversation" }],
       "lines": [
         {
@@ -70,7 +70,7 @@
     },
     {
       "mode": "qa",
-      "lineno": 0,
+
       "words": [{ "w": "Read the following examples: " }],
       "lines": [
         {

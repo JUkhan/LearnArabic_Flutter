@@ -7,21 +7,21 @@ import 'package:learn_arabic/blocs/models/MemoModel.dart';
 class CircleProgress extends CustomPainter {
   double currentProgress;
   int theme;
-  CircleProgress(this.currentProgress, this.theme, this.outerColor);
+  CircleProgress(
+      this.currentProgress, this.theme, this.outerColor, this.progressColor);
   Color outerColor;
+  Color progressColor;
   @override
   void paint(Canvas canvas, Size size) {
     //this is base circle
     Paint outerCircle = Paint()
       ..strokeWidth = 2
-      ..color = outerColor == Colors.grey[800]
-          ? Colors.white
-          : outerColor // Themes.light == theme ? Colors.black : Colors.white
+      ..color = outerColor == Colors.grey[800] ? Colors.white : outerColor
       ..style = PaintingStyle.stroke;
 
     Paint completeArc = Paint()
       ..strokeWidth = 2
-      ..color = Colors.red
+      ..color = progressColor
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
@@ -62,8 +62,8 @@ class CircleProgressWidget extends StatelessWidget {
           return Container(
             child: CustomPaint(
               //size: Size.fromHeight(30),
-              foregroundPainter: CircleProgress(
-                  snapshot.data, theme, Theme.of(context).primaryColor),
+              foregroundPainter: CircleProgress(snapshot.data, theme,
+                  Theme.of(context).primaryColor, progressColor(context)),
               child: Icon(
                 Icons.play_arrow,
                 size: 18,
@@ -71,7 +71,7 @@ class CircleProgressWidget extends StatelessWidget {
                     ? Theme.of(context).primaryColor == Colors.grey[800]
                         ? Colors.white
                         : Theme.of(context).primaryColor
-                    : Colors.red,
+                    : progressColor(context),
               ),
             ),
           );
@@ -79,56 +79,11 @@ class CircleProgressWidget extends StatelessWidget {
       ),
     );
   }
+
+  Color progressColor(BuildContext context) =>
+      (Theme.of(context).primaryColor.value == Colors.red.value ||
+              Theme.of(context).primaryColor.value == Colors.pink.value ||
+              Theme.of(context).primaryColor.value == Colors.deepOrange.value)
+          ? Colors.purple
+          : Colors.red;
 }
-/*class CircleProgressWidget extends StatefulWidget {
-  final String vid;
-  final Themes theme;
-  CircleProgressWidget({Key key, this.vid, this.theme})
-      : super(key: key);
-
-  @override
-  _CircleProgressWidgetState createState() => _CircleProgressWidgetState();
-}
-
-class _CircleProgressWidgetState extends State<CircleProgressWidget>
-    with SingleTickerProviderStateMixin {
-  AnimationController progressController;
-  Animation animation;
-
-  @override
-  void initState() {
-    super.initState();
-    progressController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 1000));
-    animation =
-        Tween(begin: 0, end: widget.currentProgress).animate(progressController)
-          ..addListener(() {
-            setState(() {});
-          });
-    progressController.forward();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-        width: 40,
-        height: 40,
-        child: CustomPaint(
-          //size: Size.fromHeight(30),
-          foregroundPainter: CircleProgress(animation.value.toDouble(),
-              widget.theme), // this will add custom painter after child
-          child: Icon(
-            Icons.play_arrow,
-            size: 18,
-            color: widget.currentProgress == 0 ? Colors.blueAccent : Colors.red,
-          ),
-        ));
-  }
-
-  @override
-  void dispose() {
-    progressController.dispose();
-    super.dispose();
-  }
-}
-*/

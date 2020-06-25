@@ -93,13 +93,19 @@ class JWord {
   final int wordSpace;
   final List<int> sp;
   final int id;
+  final bool bold;
+  final bool colord;
+  final bool underlined;
   JWord(
       { //this.direction,
       this.bangla,
       this.english,
       this.word,
       this.wordSpace,
-      this.sp})
+      this.sp,
+      this.colord,
+      this.bold,
+      this.underlined})
       : id = Util.getId();
 
   factory JWord.fromJson(Map<String, dynamic> json) {
@@ -113,17 +119,22 @@ class JWord {
         bangla: getValue<String>(json, 'b', ''),
         english: getValue<String>(json, 'e', ''),
         wordSpace: getValue<int>(json, 'ws', 0),
+        colord: getValue<bool>(json, 'c', false),
+        underlined: getValue<bool>(json, '_', false),
+        bold: getValue<bool>(json, 'bo', false),
         sp: sps);
   }
 
   factory JWord.empty({String text = ''}) {
     return JWord(
-      //direction: '',
-      bangla: '',
-      english: '',
-      word: text,
-      wordSpace: 0,
-    );
+        //direction: '',
+        bangla: '',
+        english: '',
+        word: text,
+        wordSpace: 0,
+        bold: false,
+        underlined: false,
+        colord: false);
   }
 }
 

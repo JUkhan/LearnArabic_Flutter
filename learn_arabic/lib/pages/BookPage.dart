@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_arabic/blocs/actionTypes.dart';
 import 'package:learn_arabic/blocs/models/AsyncData.dart';
+
 import 'package:learn_arabic/blocs/models/BookInfo.dart';
 import 'package:learn_arabic/blocs/models/MemoModel.dart';
 import 'package:learn_arabic/blocs/models/bookModel.dart';
@@ -87,53 +88,45 @@ class BookPage extends StatelessWidget {
   }
 
   Widget _navBar(BuildContext context, int theme) {
-    return BottomAppBar(
-      color: Theme.of(context).backgroundColor,
-      //elevation: 37.0,
-      //hasNotch: true,
-      child: Row(
-        children: <Widget>[
-          Expanded(
-              child: StreamBuilder<JWord>(
-            initialData: JWord.empty(),
-            stream: selectedWord$,
-            builder: (_, snapshot) => snapshot.data.word.isEmpty
-                ? const Text('')
-                : Text(
-                    (Util.wordMeanCategory == 1
-                        ? snapshot.data.english
-                        : Util.wordMeanCategory == 2
-                            ? _getBanglaText(snapshot.data)
-                            : snapshot.data.english +
-                                ' ' +
-                                _getBanglaText(snapshot.data)),
-                    textDirection: Util.isArabic(snapshot.data.english)
-                        ? TextDirection.rtl
-                        : TextDirection.ltr,
-                    textAlign: TextAlign.center,
-                    style: Util.isArabic(snapshot.data.english)
-                        ? Theme.of(context).textTheme.headline5
-                        : Theme.of(context).textTheme.headline6,
-                  ),
-          )),
-          StreamBuilder<JWord>(
-              initialData: JWord.empty(),
-              stream: selectedWord$,
-              builder: (_, snapshot) {
-                if (snapshot.data.word.isNotEmpty) {
-                  return IconButton(
-                    tooltip: 'Details meaning',
-                    icon: Icon(Icons.details),
-                    onPressed: () {
-                      _showBottomSheet(context, snapshot.data);
-                    },
-                  );
-                }
-                return const Text('');
-              }),
-        ],
-      ),
-    );
+    return StreamBuilder<JWord>(
+        initialData: JWord.empty(),
+        stream: selectedWord$,
+        builder: (_, snapshot) => snapshot.data.word.isEmpty
+            ? BottomAppBar()
+            : BottomAppBar(
+                color: Theme.of(context).backgroundColor,
+                //elevation: 4.0,
+                //hasNotch: true,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Text(
+                        (Util.wordMeanCategory == 1
+                            ? snapshot.data.english
+                            : Util.wordMeanCategory == 2
+                                ? _getBanglaText(snapshot.data)
+                                : snapshot.data.english +
+                                    ' ' +
+                                    _getBanglaText(snapshot.data)),
+                        textDirection: Util.isArabic(snapshot.data.english)
+                            ? TextDirection.rtl
+                            : TextDirection.ltr,
+                        textAlign: TextAlign.center,
+                        style: Util.isArabic(snapshot.data.english)
+                            ? Theme.of(context).textTheme.headline5
+                            : Theme.of(context).textTheme.headline6,
+                      ),
+                    ),
+                    IconButton(
+                      tooltip: 'Details meaning',
+                      icon: Icon(Icons.details),
+                      onPressed: () {
+                        _showBottomSheet(context, snapshot.data);
+                      },
+                    ),
+                  ],
+                ),
+              ));
   }
 
   void _showBottomSheet(BuildContext context, JWord word) {
@@ -141,7 +134,7 @@ class BookPage extends StatelessWidget {
         context: context,
         builder: (bc) {
           return Container(
-            color: Theme.of(context).backgroundColor,
+            //color: Theme.of(context).primaryColor,
             padding: const EdgeInsets.all(5.0),
             child: Column(
               children: <Widget>[

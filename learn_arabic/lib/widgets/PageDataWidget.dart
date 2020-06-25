@@ -92,18 +92,22 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       double dx = details.globalPosition.dx;
       if (startPx < dx && (dx - startPx) > 100) {
         _hasPage = true;
-        Navigator.pushReplacement(
+        Navigator.of(context)
+            .pushReplacement(createRoute(BookPage(), SlideDirection.Right));
+        /* Navigator.pushReplacement(
             context,
             SlideRoute(
-                widget: BookPage(), sildeDirection: SlideDirection.Right));
+                widget: BookPage(), sildeDirection: SlideDirection.Right));*/
 
         dispatch(ActionTypes.SLIDE_PAGE, true);
       } else if (startPx > dx && (startPx - dx) > 100) {
         _hasPage = true;
-        Navigator.pushReplacement(
+        Navigator.of(context)
+            .pushReplacement(createRoute(BookPage(), SlideDirection.Left));
+        /* Navigator.pushReplacement(
             context,
             SlideRoute(
-                widget: BookPage(), sildeDirection: SlideDirection.Left));
+                widget: BookPage(), sildeDirection: SlideDirection.Left));*/
 
         dispatch(ActionTypes.SLIDE_PAGE, false);
       }
@@ -113,15 +117,10 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Container(
-        color: _memo?.theme != Colors.black.value
-            ? Colors.black12
-            : Colors.transparent,
-        child: ListView(
-          //scrollDirection: A,
-          controller: _scrollController,
-          children: _getListItem(widget.page.data),
-        ),
+      child: ListView(
+        //scrollDirection: A,
+        controller: _scrollController,
+        children: _getListItem(widget.page.data),
       ),
       onHorizontalDragStart: _dragStart,
       onHorizontalDragUpdate: _dragUpdate,
