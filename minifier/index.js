@@ -2,6 +2,7 @@ var fs = require("fs");
 
 function readInput(filename) {
   var text = fs.readFileSync(filename).toString();
+  text = text.replace(/,\s?\"e\":\s?\"\"/g, "");
   var data = JSON.parse(text);
 
   fs.writeFileSync(filename, JSON.stringify(data));
