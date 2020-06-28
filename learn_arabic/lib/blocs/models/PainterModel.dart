@@ -10,7 +10,7 @@ class PainterModel {
   PainterModel(this.color, this.points, this.totalLines, this.currentIndex,
       this.colorPickerOpened, this.strokeWidth);
   factory PainterModel.init() =>
-      PainterModel(Colors.black, [], 0, 0, false, 1.5);
+      PainterModel(Colors.teal, [], 0, 0, false, 2.0);
   PainterModel copyWith(
           {Color color,
           List<OffsetStatus> points,

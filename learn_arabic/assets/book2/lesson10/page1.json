@@ -1,1 +1,33 @@
-{"videos":[{"title":"Bangla Lecture"},{"id":"YLBOQsnr240","title":"Madinah Arabic Course B1 L11"},{"title":"English Lecture"},{"id":"4l-qhHrZedw","title":"LEARNING MUBTADA KHABAR"}],"lines":[]}
+{
+  "videos": [{ "id": "YLBOQsnr240", "title": "Madinah Arabic Course B1 L11" }],
+  "lines": [
+    {
+      "words": [
+        {
+          "w": "In this lesson we learn the numbers of 3 to 10 with feminine ma´dûd. We have already learnt these numbers with the masculine ma´dûd, e.g.,"
+        }
+      ]
+    },
+    { "mode": "text", "words": [{ "w": "ثَلَاثَةُ أَبْنَاءٍ" }] },
+    { "mode": "text", "words": [{ "w": "Three sons" }] },
+    {
+      "words": [
+        {
+          "w": "Now if the ma´dûd is feminine, the \"ta-marbûtah\" (ة) at the end of the number is omitted, e.g.,"
+        }
+      ]
+    },
+    { "mode": "text", "words": [{ "w": "" }] },
+    { "mode": "text", "words": [{ "w": "" }] },
+    { "mode": "text", "words": [{ "w": "" }] },
+    { "mode": "text", "words": [{ "w": "" }] },
+    { "mode": "text", "words": [{ "w": "" }] },
+    { "mode": "text", "words": [{ "w": "" }] },
+    { "mode": "text", "words": [{ "w": "" }] },
+    { "mode": "text", "words": [{ "w": "" }] },
+    { "mode": "text", "words": [{ "w": "" }] },
+    { "mode": "text", "words": [{ "w": "" }] },
+    { "mode": "text", "words": [{ "w": "" }] },
+    { "mode": "text", "words": [{ "w": "" }] }
+  ]
+}

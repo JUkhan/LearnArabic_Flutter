@@ -24,7 +24,7 @@ async function getFiles(dir) {
   return Array.prototype.concat(...files);
 }
 getFiles(
-  "/Users/jukhan/Documents/flutter-apps/LearnArabic_Flutter/learn_arabic/assets/book2"
+  "/Users/jukhan/Documents/flutter-apps/LearnArabic_Flutter/learn_arabic/assets/book1"
 )
   .then((files) =>
     files.map((file) => {

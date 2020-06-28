@@ -29,7 +29,7 @@ class BookModel {
       lessonIndex >= 0 ? 'Lesson $lessonIndex page $pageIndex was reading' : '';
   bool get hasPrev => pageIndex > 1;
   bool get hasNext => pageIndex < totalPage;
-  String get pageTitle => 'Lesson$lessonIndex - Page $pageIndex of $totalPage';
+  String get pageTitle => 'Lesson$lessonIndex - $pageIndex of $totalPage';
   String get bookName => 'Book ${bookPath.substring(bookPath.length - 1)}';
   bool get hasBookMark =>
       bm?.find(int.parse(bookPath.substring(5)), lessonIndex, pageIndex);

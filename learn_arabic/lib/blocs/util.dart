@@ -104,13 +104,13 @@ class Util {
         break;
       case 'هِ':
       case 'هُ':
-        text += ' : him/his/it তাকে/তাহার/এটা';
+        text += ' : he/him/his/it তাকে/তাহার/এটা';
         break;
       case 'هَا':
-        text += ' : her তাকে/তাহার';
+        text += ' : she/her/it তাকে/তাহার';
         break;
       case 'ي':
-        text += ' : me/my আমাকে/আমার';
+        text += ' : I/me/my আমাকে/আমার';
         break;
 
       case 'الَّذِي':
@@ -363,7 +363,7 @@ class Util {
     return TextSpan(
         style: hasSelectedWord(word.id, memo, bookModel)
             ? Util.getTextTheme(context, direction, memo.fontSize).copyWith(
-                shadows: [
+                /*shadows: [
                   Shadow(
                     color: (memo.theme == Colors.yellow.value ||
                             memo.theme == Colors.amber.value ||
@@ -375,13 +375,12 @@ class Util {
                     blurRadius: 10.0,
                     offset: Offset(0.0, -15.0),
                   ),
-                ],
-                fontWeight: FontWeight.bold,
-                //decoration: TextDecoration.underline
-                /*foreground: Paint()
+                ],*/
+
+                foreground: Paint()
                   ..invertColors = true
                   ..color = Colors.green,
-                fontWeight: FontWeight.bold,*/
+                fontWeight: FontWeight.bold,
               )
             : Util.getTextTheme(context, direction, memo.fontSize).copyWith(
                 fontWeight: word.bold ? FontWeight.bold : FontWeight.normal,

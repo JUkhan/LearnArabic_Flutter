@@ -4,6 +4,7 @@ import 'package:learn_arabic/blocs/models/BookInfo.dart';
 import 'package:learn_arabic/blocs/models/MemoModel.dart';
 import 'package:learn_arabic/blocs/models/bookModel.dart';
 import 'package:learn_arabic/widgets/ColorThemeWidget.dart';
+import 'package:learn_arabic/widgets/NavBarWidget.dart';
 import 'package:learn_arabic/widgets/Painter.dart';
 import 'package:learn_arabic/widgets/TextWidget.dart';
 import 'package:learn_arabic/blocs/models/PainterModel.dart';
@@ -63,6 +64,7 @@ class WritingBoardWidget extends StatelessWidget {
         ],
       ),
       //drawer: DrawerWidget(),
+      bottomNavigationBar: NavBarWidget(),
       body: Container(
           //padding: const EdgeInsets.only(top: 5),
           color: Colors.white,
@@ -138,7 +140,7 @@ class WritingBoardWidget extends StatelessWidget {
                       return CustomPaint(
                         painter: Painter(snapshot.data),
                         size: Size(MediaQuery.of(context).size.width,
-                            MediaQuery.of(context).size.height - 200),
+                            MediaQuery.of(context).size.height - 200 - 34 - 23),
                       );
                     }),
               ),

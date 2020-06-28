@@ -312,7 +312,8 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
     var find = line.words.map((e) => e.word.toLowerCase()).where((element) =>
         element == 'وَاكْتُبْ' ||
         element.contains('read and write') ||
-        element.contains('write the'));
+        element.contains('write the') ||
+        element.contains('vocabulary'));
 
     if (find.length > 0) {
       var index = widget.page.data.lines.indexOf(line) + 1;
@@ -326,6 +327,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
           }
           break;
         case 'raw':
+        case 'vocab':
         case "":
           lines = nextLine.words.map((e) => JLine(words: [e])).toList();
           break;
