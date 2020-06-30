@@ -250,7 +250,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       if (items.length == 2) {
         children.add(Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: items.sublist(0),
+          children: [items[1], items[0]],
         ));
         items.clear();
       }

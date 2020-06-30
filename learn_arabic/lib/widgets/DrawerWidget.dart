@@ -1,9 +1,8 @@
 import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_arabic/blocs/actionTypes.dart';
-import 'package:learn_arabic/blocs/models/MemoModel.dart';
+
 import 'package:learn_arabic/blocs/models/bookModel.dart';
-import 'package:learn_arabic/blocs/util.dart';
 
 class DrawerWidget extends StatelessWidget {
   final bookName$ = select<BookModel>('book').map((book) => book.bookName);

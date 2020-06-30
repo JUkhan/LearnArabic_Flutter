@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
 
 import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/cupertino.dart';

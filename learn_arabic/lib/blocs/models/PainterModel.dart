@@ -7,6 +7,7 @@ class PainterModel {
   final int currentIndex;
   final bool colorPickerOpened;
   final double strokeWidth;
+  bool hasSelectedWord = false;
   PainterModel(this.color, this.points, this.totalLines, this.currentIndex,
       this.colorPickerOpened, this.strokeWidth);
   factory PainterModel.init() =>

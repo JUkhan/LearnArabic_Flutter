@@ -43,7 +43,7 @@ You must enable JavaScript in your web browser : see the <a class="ext" href="ht
 <br>
 <input type="button" class="eff" title="clear" onclick="reset();conversion.saisie.focus()" value="">
 </div>
-<textarea name="saisie" id="bar" onkeyup="transcrire()" rows="10" class="cadr"></textarea>
+<textarea name="saisie" id="bar" onkeydown="keyDownn(event)" onkeyup="transcrire(event)" rows="10" class="cadr"></textarea>
 <br>
 <br>
 <!-- <input type="button" class="bf" xdata-clipboard-action="copy" data-clipboard-target="#bar" value="copy"> -->

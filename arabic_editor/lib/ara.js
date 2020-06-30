@@ -36,8 +36,37 @@ function copier() {
 }
 
 var car;
-
-function transcrire() {
+function keyDownn(e) {
+  if (e.keyCode >= 49 && e.keyCode <= 57) {
+    if (e.key == "1") {
+      alpha("\u064E");
+    } else if (e.key == "2") {
+      alpha("\u064F");
+    } else if (e.key == "3") {
+      alpha("\u0650");
+    } else if (e.key == "4") {
+      alpha("\u064B");
+    } else if (e.key == "5") {
+      alpha("\u064C");
+    } else if (e.key == "6") {
+      alpha("\u064D");
+    } else if (e.key == "7") {
+      alpha("\u0651");
+    } else if (e.key == "8") {
+      alpha("\u0652");
+    }
+    e.preventDefault();
+    return true;
+  }
+}
+var isRemovedChar = false;
+function transcrire(e) {
+  var input = document.conversion.saisie;
+  var cursorPos = input.selectionStart;
+  var scrollTop = input.scrollTop;
+  if (e.keyCode >= 49 && e.keyCode <= 57) {
+    return;
+  }
   car = document.conversion.saisie.value;
 
   car = car.replace(/’/g, "'");
@@ -117,27 +146,24 @@ function transcrire() {
   car = car.replace(/\;/g, "؛");
   car = car.replace(/\,/g, "،");
 
-  if (car.endsWith("1")) {
-    car = car.replace("1", "\u064E");
-  } else if (car.endsWith("2")) {
-    car = car.replace("2", "\u064F");
-  } else if (car.endsWith("3")) {
-    car = car.replace("3", "\u0650");
-  } else if (car.endsWith("4")) {
-    car = car.replace("4", "\u064B");
-  } else if (car.endsWith("5")) {
-    car = car.replace("5", "\u064C");
-  } else if (car.endsWith("6")) {
-    car = car.replace("6", "\u064D");
-  } else if (car.endsWith("7")) {
-    car = car.replace("7", "\u0651");
-  } else if (car.endsWith("8")) {
-    car = car.replace("8", "\u0652");
-  }
   document.conversion.saisie.value = car;
-  var obj = document.conversion.saisie;
-  obj.focus();
-  obj.scrollTop = obj.scrollHeight;
+
+  if (e.key == "Backspace") {
+    isRemovedChar = true;
+  } else if (e.key == "ArrowRight") {
+  } else if (e.key == "ArrowLeft") {
+  } else if (e.key == "ArrowUp" || e.key == "ArrowDown") {
+  } else {
+    if (isRemovedChar) {
+      isRemovedChar = false;
+      cursorPos--;
+    }
+    cursorPos++;
+  }
+  input.focus();
+  input.selectionStart = cursorPos;
+  input.selectionEnd = cursorPos;
+  input.scrollTop = scrollTop;
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -156,7 +182,7 @@ function map() {
     str = document.getElementById("bar").value;
   localStorage.setItem("raw", str);
   var isQA = str.includes("$");
-  var arr = str.split("\n");
+  var arr = str.split("\n").filter((it) => it != "");
   if (isQA) {
     res = arr.map((line) => {
       var qa = line.split("$");
@@ -166,7 +192,8 @@ function map() {
     res = arr.map((line) => {
       return {
         words: line
-          .split(/\s+/)
+          .split(/\s+/g)
+          .filter((it) => it != "")
           .reduce((arr, item) => {
             var len = arr.length - 1;
             if (item.startsWith("'")) {

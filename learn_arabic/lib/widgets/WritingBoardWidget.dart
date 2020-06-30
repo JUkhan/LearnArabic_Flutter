@@ -8,6 +8,7 @@ import 'package:learn_arabic/widgets/NavBarWidget.dart';
 import 'package:learn_arabic/widgets/Painter.dart';
 import 'package:learn_arabic/widgets/TextWidget.dart';
 import 'package:learn_arabic/blocs/models/PainterModel.dart';
+import 'package:learn_arabic/blocs/models/CombinnedPainter.dart';
 
 class WritingBoardWidget extends StatelessWidget {
   const WritingBoardWidget({
@@ -133,14 +134,18 @@ class WritingBoardWidget extends StatelessWidget {
                 onPanEnd: (DragEndDetails details) {
                   dispatch('addOffset', null);
                 },
-                child: StreamBuilder<PainterModel>(
-                    initialData: PainterModel.init(),
-                    stream: select('painter'),
+                child: StreamBuilder<CombinnedPainter>(
+                    initialData: CombinnedPainter(PainterModel.init(), false),
+                    stream: select2((m) => CombinnedPainter(m['painter'],
+                        m['memo'].selectedWord?.word?.isNotEmpty)),
                     builder: (context, snapshot) {
                       return CustomPaint(
-                        painter: Painter(snapshot.data),
-                        size: Size(MediaQuery.of(context).size.width,
-                            MediaQuery.of(context).size.height - 200 - 34 - 23),
+                        painter: Painter(snapshot.data.painter),
+                        size: Size(
+                            MediaQuery.of(context).size.width,
+                            //200 -(34 + 34)
+                            MediaQuery.of(context).size.height -
+                                (snapshot.data.hasSelectedWord ? 268 : 200)),
                       );
                     }),
               ),

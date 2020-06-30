@@ -1,5 +1,4 @@
 import 'package:learn_arabic/blocs/models/BookInfo.dart';
-import 'package:learn_arabic/blocs/util.dart';
 
 class MemoModel {
   double lessRanSeconds;

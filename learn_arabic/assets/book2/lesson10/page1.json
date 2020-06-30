@@ -1,5 +1,7 @@
 {
-  "videos": [{ "id": "YLBOQsnr240", "title": "Madinah Arabic Course B1 L11" }],
+  "videos": [
+    { "id": "ewIQBrMoAI4", "title": "Lesson on numbers with feminine nouns" }
+  ],
   "lines": [
     {
       "words": [
@@ -17,17 +19,62 @@
         }
       ]
     },
-    { "mode": "text", "words": [{ "w": "" }] },
-    { "mode": "text", "words": [{ "w": "" }] },
-    { "mode": "text", "words": [{ "w": "" }] },
-    { "mode": "text", "words": [{ "w": "" }] },
-    { "mode": "text", "words": [{ "w": "" }] },
-    { "mode": "text", "words": [{ "w": "" }] },
-    { "mode": "text", "words": [{ "w": "" }] },
-    { "mode": "text", "words": [{ "w": "" }] },
-    { "mode": "text", "words": [{ "w": "" }] },
-    { "mode": "text", "words": [{ "w": "" }] },
-    { "mode": "text", "words": [{ "w": "" }] },
-    { "mode": "text", "words": [{ "w": "" }] }
+
+    {
+      "mode": "vocab",
+      "words": [
+        { "w": "ثَلَاثَةُ أَبْنَاءٍ", "e": "three sons" },
+        { "w": "ثَلَاثُ بَنَاتٍ", "e": "three daughters" },
+        { "w": "أَرْبَعَةُ إخْوَةٍ", "e": "four brothers" },
+        { "w": "أَرْبَعُ أخَوَاتٍ", "e": "four sisters" },
+        { "w": "خَمْسَةُ آبَاءٍ", "e": "five fathers" },
+        { "w": "خَمْسُ أُمَّهَاتٍ", "e": "five mothers" },
+        { "w": "سِتَّةُ رِجَالٍ", "e": "six men" },
+        { "w": "سِتُّ نِسَاءٍ", "e": "six women" },
+        { "w": "سَبْعَةُ طُلَّابٍ", "e": "seven students" },
+        { "w": "سَبْعُ طَالَابٍ", "e": "seven lady students" },
+        { "w": "ثَمَانِيَةُ بُيُوتٍ", "e": "eight houses" },
+        { "w": "ثَمَانِيَ غُرَفٍ", "e": "eight rooms" },
+        { "w": "عَشَرَةُ رِجَالٍ", "e": "ten men" },
+        { "w": "عَشْرُ نِسَاءٍ", "e": "ten women" }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "Note that ثَمَانِيَ has sukûn on the last letter and also note that عَشَرَةُ has fathah on the (ش) and عَشْرُ has sukûn."
+        }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "The feminine of وَاحِدٌ is وَاحِدَةٌ and of اِثْنَانِ is اِثْتَانِ e.g."
+        }
+      ]
+    },
+    {
+      "mode": "text",
+      "words": [{ "w": "لِي أُخْتٌ وَاحِدَةٌ / لِي أُخْتَانِ اِثْتَانِ" }]
+    },
+    { "mode": "lesson", "words": [{ "w": "Vocabulary" }] },
+    {
+      "mode": "vocab",
+      "words": [
+        { "w": "كَلِمَاتٌ", "e": "pl of كَلِمَةٌ word" },
+        { "w": "إنْدُونِيسِيَا", "e": "Indonesia" },
+        { "w": "مَجَلَّةٌ", "e": "magazine, journal" },
+        {
+          "w": "غُرَفٌ",
+          "e": "pl of غُرْفَةٌ room"
+        },
+        {
+          "w": "حَرْفٌ",
+          "e": "letter (of the alphabet), pl حُرُوفٌ، أَحْرُفٌ"
+        },
+        { "w": "دُرُوسٌ", "e": "pl of دَرْسٌ lesson" },
+        { "w": "أَعْمَامٌ", "e": "pl of عَمًّ paternal uncle" }
+      ]
+    }
   ]
 }
