@@ -1,1 +1,59 @@
-{"videos":[{"title":"Bangla Lecture"},{"id":"YLBOQsnr240","title":"Madinah Arabic Course B1 L11"},{"title":"English Lecture"},{"id":"4l-qhHrZedw","title":"LEARNING MUBTADA KHABAR"}],"lines":[]}
+{
+  "videos": [
+    { "id": "_nbpHgePRg4", "title": "DIPTOTE CONTINUED" },
+    { "id": "DBqmV7Tppz8", "title": "arabic vocabulary" }
+  ],
+  "lines": [
+    {
+      "words": [
+        {
+          "w": "We have learnt before that a noun is in the genitive case when it:"
+        }
+      ]
+    },
+    { "words": [{ "w": "i) is preceded by a preposition, e.g." }] },
+    {
+      "mode": "text",
+      "words": [{ "w": "البَيْتُ: فِي البَيْتِ         بِلاَلٌ: مِنْ بِلاَلٍ" }]
+    },
+    { "words": [{ "w": "ii) is mudâf ilaihi, e.g." }] },
+    {
+      "mode": "text",
+      "words": [
+        { "w": "المُدَرِّسُ: كِتَابُ المُدَرِّسِ   بِلاَلٌ: بِنْتُ بِلاَلٍ" }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "Please note that a diptote in these two situations takes a fathah instead of kasrah, i.e. the genitive ending in ordinary nouns is <<-i>>, but in diptotes it is <<-a>>, e.g."
+        }
+      ]
+    },
+    {
+      "mode": "text",
+      "words": [{ "w": "بِلاَلٌ:        مِنْ بِلاَلٍ         كِتَابُ بِلاَلٍ" }]
+    },
+    {
+      "mode": "text",
+      "words": [
+        { "w": "أَحْمَدُ:        مِنْ أَحْمَدَ        كِتَابُ أَحْمَدَ" }
+      ]
+    },
+    {
+      "mode": "text",
+      "words": [
+        { "w": "إِبْرَاهِيمُ:     مِنْ إِبْرَاهِيمَ    كِتَابُ إِبْرَاهِيمَ" }
+      ]
+    },
+    { "mode": "lesson", "words": [{ "w": "Vocabulary" }] },
+    {
+      "mode": "vocab",
+      "words": [
+        { "w": "إِصْطَنْبُولُ", "e": "Istanbul" },
+        { "w": "وَاشِنْطُنُ", "e": "Washington" },
+        { "w": "الطَّاءِفُ", "e": "Taif City" }
+      ]
+    }
+  ]
+}

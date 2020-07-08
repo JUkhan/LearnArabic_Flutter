@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Noto Naskh Arabic";
+  src: url(NotoNaskhArabic/NotoNaskhArabicUI-Regular.ttf);
+}
+
 body {
   color: #330066;
   background: #ffffff;
@@ -325,7 +330,8 @@ a.npa:hover {
   border: 1px #aeaeff;
 }
 textarea {
-  font-family: Arial, sans-serif;
+  font-family: "Noto Naskh Arabic", arial, sans-serif !important;
+
   color: #5b5b5b;
   font-size: 12pt;
 }

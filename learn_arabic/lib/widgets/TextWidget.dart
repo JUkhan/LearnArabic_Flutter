@@ -107,7 +107,9 @@ class _TextWidgetState extends State<TextWidget> {
               textAlign: widget.textAlign ?? TextAlign.start,
               textDirection: Util.getDirection(widget.line.words[0].word),
               text: TextSpan(
-                  style: TextStyle(height: 1.9),
+                  style: TextStyle(
+                    height: 2,
+                  ),
                   //text: '  ',
                   children: getSpansChildren(context)),
             ),

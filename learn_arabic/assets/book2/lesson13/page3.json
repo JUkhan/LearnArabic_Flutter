@@ -1,1 +1,12 @@
-{"lines":[]}
+{
+  "lines": [
+    {
+      "mode": "qa",
+      "words": [{ "w": "Read the following examples:" }]
+    },
+    {
+      "mode": "qa",
+      "words": [{ "w": "Read and write:" }]
+    }
+  ]
+}

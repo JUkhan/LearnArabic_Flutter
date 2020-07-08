@@ -1,1 +1,142 @@
-{"videos":[{"title":"Bangla Lecture"},{"id":"YLBOQsnr240","title":"Madinah Arabic Course B1 L11"},{"title":"English Lecture"},{"id":"4l-qhHrZedw","title":"LEARNING MUBTADA KHABAR"}],"lines":[]}
+{
+  "videos": [{ "id": "OBJNkiTQ0cA", "title": "ممنوع من الصرف diptotes" }],
+  "lines": [
+    {
+      "words": [
+        {
+          "w": "We have learnt several of nouns and adjectives which do not have tanwîn. Most nouns and adjectives have tanwîn. Tanwîn is omitted in the following cases:"
+        }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "i) When the noun and adjective has اَلْ e.g. كِتَابٌ: الكِتَابُ"
+        }
+      ]
+    },
+    {
+      "words": [{ "w": "ii) When it is mudâf, e.g. كِتَابٌ: كِتَابُ بِلَالٍ" }]
+    },
+    {
+      "words": [
+        {
+          "w": "iii) When it is preceded by يَا e.g. أُسْتَاذٌ: يَا أُسْتَاذُ"
+        }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "But there are certain nouns and adjectives which never have tanwîn. They are called diptotes (In Arabic المَمْنُوعُ مِنَ الصَّرْفِ)."
+        }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "We have learnt in this book the following groups of nouns and adjectives which are diptotes:"
+        }
+      ]
+    },
+    {
+      "words": [{ "w": "1. Feminine proper nouns e.g. آمِنَةُ، زَيْنَبُ" }]
+    },
+    {
+      "words": [
+        {
+          "w": "2. Masculine proper nouns ending in \"ta marbûtah\" (ة) e.g. حَمْزَةُ، أُسَامَةُ"
+        }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "3. Masculine proper nouns ending in <<-ân>> e.g. عُسْمَانُ، رَمَضَانُ"
+        }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "4. Adjective on the pattern of فَعْلَانُ e.g. كَسُلَانُ، مَلآنُ"
+        }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "5. Masculine proper nouns on the patterns of أَفْعَلُ e.g. أَحْمَدُ، أَنْوَرُ"
+        }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "6. Adjective on the pattern أَفْعَلُ e.g. أَسْوَدُ، أَحْمَرُ"
+        }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "7. Non-Arabic proper nouns e.g. وِلْيَمُ، لَنْدَنُ، بَاكِسْتَانُ"
+        }
+      ]
+    },
+    {
+      "words": [{ "w": "8. The following patterns are of broken plural:" }]
+    },
+    {
+      "mode": "text",
+      "words": [
+        { "w": "a) أَفْعِلَاءُ e.g. أَصْدِقَاءُ، أَغْنِيَاءُ، أَقْوِيَاءُ    " }
+      ]
+    },
+    {
+      "mode": "text",
+      "words": [
+        { "w": "b) فُعَلَاءُ e.g. فُقَرَاءُ، زُمَلَاءُ، وُزَرَاءُ       " }
+      ]
+    },
+    {
+      "mode": "text",
+      "words": [
+        { "w": "c) مَفَاعِلُ e.g. مَسَاجِدُ، فَنَادِقُ، مَكَاتِبُ     " }
+      ]
+    },
+    {
+      "mode": "text",
+      "words": [
+        { "w": "d) مَفَاعِيلُ e.g. مَنَادِيلُ، مَفَاتِيحُ، فَنَاجِينُ" }
+      ]
+    },
+    {
+      "words": [
+        {
+          "w": "Note that أَطِبَّاءُ is originally أَطْبِبَاءُ on the pattern of أَفْعِلَاءُ, but because of the assimilation of the two \"b\"s, the form has been slightly changed."
+        }
+      ]
+    },
+    { "mode": "lesson", "words": [{ "w": "Vocabulary" }] },
+    {
+      "mode": "vocab",
+      "words": [
+        { "w": "أَحْمَرُ", "e": "red" },
+        { "w": "بَغْدَادُ", "e": "Baghdad" },
+        { "w": "أَزْرَقُ", "e": "blue" },
+        { "w": "جَدَّةُ", "e": "Jeddah" },
+        { "w": "أَخْضَرُ", "e": "green" },
+        { "w": "فِنْجَانٌ", "e": "tea-cup, pl. فَنَاجِينُ" },
+        { "w": "أَسْوَدُ", "e": "black" },
+        { "w": "دَقِيقَةٌ", "e": "minute, pl. دَقَاءِقُ" },
+        { "w": "أَصْفَرُ", "e": "yellow" },
+        { "w": "مَنَادِيلُ", "e": "pl. of مِنْدِيلٌ kerchief" },
+        { "w": "أَبْتَضُ", "e": "white" },
+        { "w": "مَفَاتِيحُ", "e": "pl. of مِفْتَاحٌ key" },
+        { "w": "قَالَ", "e": "he said" },
+        { "w": "قَالَتْ", "e": "she said" }
+      ]
+    }
+  ]
+}

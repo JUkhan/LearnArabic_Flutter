@@ -23,26 +23,26 @@
     {
       "mode": "vocab",
       "words": [
-        { "w": "ثَلَاثَةُ أَبْنَاءٍ", "e": "three sons" },
         { "w": "ثَلَاثُ بَنَاتٍ", "e": "three daughters" },
-        { "w": "أَرْبَعَةُ إخْوَةٍ", "e": "four brothers" },
+        { "w": "ثَلَاثَةُ أَبْنَاءٍ", "e": "three sons" },
         { "w": "أَرْبَعُ أخَوَاتٍ", "e": "four sisters" },
-        { "w": "خَمْسَةُ آبَاءٍ", "e": "five fathers" },
+        { "w": "أَرْبَعَةُ إخْوَةٍ", "e": "four brothers" },
         { "w": "خَمْسُ أُمَّهَاتٍ", "e": "five mothers" },
-        { "w": "سِتَّةُ رِجَالٍ", "e": "six men" },
+        { "w": "خَمْسَةُ آبَاءٍ", "e": "five fathers" },
         { "w": "سِتُّ نِسَاءٍ", "e": "six women" },
-        { "w": "سَبْعَةُ طُلَّابٍ", "e": "seven students" },
+        { "w": "سِتَّةُ رِجَالٍ", "e": "six men" },
         { "w": "سَبْعُ طَالَابٍ", "e": "seven lady students" },
+        { "w": "سَبْعَةُ طُلَّابٍ", "e": "seven students" },
+        { "w": "ثَمَانِي غُرَفٍ", "e": "eight rooms" },
         { "w": "ثَمَانِيَةُ بُيُوتٍ", "e": "eight houses" },
-        { "w": "ثَمَانِيَ غُرَفٍ", "e": "eight rooms" },
-        { "w": "عَشَرَةُ رِجَالٍ", "e": "ten men" },
-        { "w": "عَشْرُ نِسَاءٍ", "e": "ten women" }
+        { "w": "عَشْرُ نِسَاءٍ", "e": "ten women" },
+        { "w": "عَشَرَةُ رِجَالٍ", "e": "ten men" }
       ]
     },
     {
       "words": [
         {
-          "w": "Note that ثَمَانِيَ has sukûn on the last letter and also note that عَشَرَةُ has fathah on the (ش) and عَشْرُ has sukûn."
+          "w": "Note that ثَمَانِي has sukûn on the last letter and also note that عَشَرَةُ has fathah on the (ش) and عَشْرُ has sukûn."
         }
       ]
     },

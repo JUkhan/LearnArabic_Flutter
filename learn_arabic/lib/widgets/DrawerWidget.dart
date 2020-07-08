@@ -51,16 +51,23 @@ class DrawerWidget extends StatelessWidget {
           ),
           getTile(
             context,
-            'Madinah Arabic Reader Book 1',
+            'Book 1',
             Icons.book,
             '/book1',
             /*block.bookBloc.isBookNo(1)*/
           ),
           getTile(
             context,
-            'Madinah Arabic Reader Book 2',
+            'Book 2',
             Icons.book,
             '/book2',
+            /*block.bookBloc.isBookNo(2)*/
+          ),
+          getTile(
+            context,
+            'Book 3',
+            Icons.book,
+            '/book3',
             /*block.bookBloc.isBookNo(2)*/
           ),
           Divider(),

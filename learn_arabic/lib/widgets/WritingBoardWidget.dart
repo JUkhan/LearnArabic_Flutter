@@ -137,7 +137,7 @@ class WritingBoardWidget extends StatelessWidget {
                 child: StreamBuilder<CombinnedPainter>(
                     initialData: CombinnedPainter(PainterModel.init(), false),
                     stream: select2((m) => CombinnedPainter(m['painter'],
-                        m['memo'].selectedWord?.word?.isNotEmpty)),
+                        m['memo'].selectedWord?.word?.isNotEmpty ?? false)),
                     builder: (context, snapshot) {
                       return CustomPaint(
                         painter: Painter(snapshot.data.painter),

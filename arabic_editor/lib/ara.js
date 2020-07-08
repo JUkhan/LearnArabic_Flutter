@@ -37,7 +37,7 @@ function copier() {
 
 var car;
 function keyDownn(e) {
-  if (e.keyCode >= 49 && e.keyCode <= 57) {
+  if (e.shiftKey == false && e.keyCode >= 49 && e.keyCode <= 57) {
     if (e.key == "1") {
       alpha("\u064E");
     } else if (e.key == "2") {
@@ -61,10 +61,11 @@ function keyDownn(e) {
 }
 var isRemovedChar = false;
 function transcrire(e) {
+  console.log(e);
   var input = document.conversion.saisie;
   var cursorPos = input.selectionStart;
   var scrollTop = input.scrollTop;
-  if (e.keyCode >= 49 && e.keyCode <= 57) {
+  if (e.shiftKey == false && e.keyCode >= 49 && e.keyCode <= 57) {
     return;
   }
   car = document.conversion.saisie.value;
@@ -150,15 +151,20 @@ function transcrire(e) {
 
   if (e.key == "Backspace") {
     isRemovedChar = true;
-  } else if (e.key == "ArrowRight") {
-  } else if (e.key == "ArrowLeft") {
-  } else if (e.key == "ArrowUp" || e.key == "ArrowDown") {
+  } else if (e.key == "'") {
+    cursorPos--;
+  } else if (
+    e.key == "ArrowRight" ||
+    e.key == "ArrowLeft" ||
+    e.key == "ArrowUp" ||
+    e.key == "ArrowDown"
+  ) {
   } else {
     if (isRemovedChar) {
       isRemovedChar = false;
-      cursorPos--;
+      //cursorPos--;
     }
-    cursorPos++;
+    //cursorPos++;
   }
   input.focus();
   input.selectionStart = cursorPos;

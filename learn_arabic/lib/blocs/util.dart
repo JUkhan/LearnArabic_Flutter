@@ -363,7 +363,7 @@ class Util {
     return TextSpan(
         style: hasSelectedWord(word.id, memo, bookModel)
             ? Util.getTextTheme(context, direction, memo.fontSize).copyWith(
-                /*shadows: [
+                shadows: [
                   Shadow(
                     color: (memo.theme == Colors.yellow.value ||
                             memo.theme == Colors.amber.value ||
@@ -375,12 +375,13 @@ class Util {
                     blurRadius: 10.0,
                     offset: Offset(0.0, -15.0),
                   ),
-                ],*/
+                ],
 
                 foreground: Paint()
                   ..invertColors = true
-                  ..color = Colors.green,
-                fontWeight: FontWeight.bold,
+                  ..color =
+                      memo.theme == 4278190080 ? Colors.cyan : Colors.yellow,
+                //fontWeight: FontWeight.bold,
               )
             : Util.getTextTheme(context, direction, memo.fontSize).copyWith(
                 fontWeight: word.bold ? FontWeight.bold : FontWeight.normal,

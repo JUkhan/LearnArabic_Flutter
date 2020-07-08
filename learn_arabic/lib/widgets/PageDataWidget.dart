@@ -250,7 +250,7 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
       if (items.length == 2) {
         children.add(Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [items[1], items[0]],
+          children: [items[0], items[1]],
         ));
         items.clear();
       }
@@ -360,16 +360,24 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
         bookModel: _bookModel,
       );
     }
-    return Container(
-      padding: EdgeInsets.fromLTRB(
-          padding,
-          Util.isArabic(line.words[0].word) ? 0 : 2,
-          padding,
-          Util.isArabic(line.words[0].word) ? 0 : 12),
-      alignment: Alignment.center,
-      width: double.infinity,
-      color: Theme.of(context).backgroundColor,
-      child: child,
+    return Column(
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.fromLTRB(
+              padding,
+              0, //Util.isArabic(line.words[0].word) ? 0 : 5,
+              padding,
+              2 //Util.isArabic(line.words[0].word) ? 2 : 8
+              ),
+          alignment: Alignment.center,
+          width: double.infinity,
+          color: Theme.of(context).backgroundColor,
+          child: child,
+        ),
+        Container(
+          height: 10,
+        ),
+      ],
     );
   }
 
