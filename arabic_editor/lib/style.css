@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Noto Naskh Arabic";
-  src: url(NotoNaskhArabic/NotoNaskhArabicUI-Regular.ttf);
+  src: url(NotoNaskhArabic/NotoNaskhArabic-Regular.ttf);
 }
 
 body {
@@ -1033,6 +1033,6 @@ footer .center {
   margin-left: 5%;
   height: 700px;
 }
-.cadr {
+.xcadr {
   line-height: 40px;
 }
