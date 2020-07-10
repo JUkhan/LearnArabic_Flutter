@@ -370,7 +370,7 @@ class Util {
                             memo.theme == Colors.lime.value)
                         ? Colors.green
                         : memo.theme == 4278190080
-                            ? Colors.yellow[100]
+                            ? Colors.black87
                             : Colors.yellow,
                     blurRadius: 10.0,
                     offset: Offset(0.0, -15.0),
