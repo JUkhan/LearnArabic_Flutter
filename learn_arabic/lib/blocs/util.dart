@@ -218,12 +218,15 @@ class Util {
     if (_fontSize == 1.0)
       return Theme.of(context).textTheme.headline6;
     else if (_fontSize == 2.0)
-      return Theme.of(context).textTheme.headline5;
+      return Theme.of(context).textTheme.headline6.copyWith(fontSize: 25);
     else if (_fontSize == 3.0)
-      return Theme.of(context).textTheme.headline4;
-    else if (_fontSize == 4.0) return Theme.of(context).textTheme.headline3;
+      return Theme.of(context).textTheme.headline6.copyWith(fontSize: 27);
+    else if (_fontSize == 4.0)
+      return Theme.of(context).textTheme.headline6.copyWith(fontSize: 30);
+    else if (_fontSize == 5.0)
+      return Theme.of(context).textTheme.headline6.copyWith(fontSize: 32);
 
-    return Theme.of(context).textTheme.headline5;
+    return Theme.of(context).textTheme.headline6;
   }
 
   static setDeviceOrientation(bool isLandscape) {
@@ -240,8 +243,9 @@ class Util {
     }
   }
 
+  static RegExp regxIsArabic = RegExp(r'[a-zA-Z)]');
   static bool isArabic(String str) {
-    return !str.contains(RegExp(r'[a-zA-Z]'));
+    return !str.contains(regxIsArabic);
   }
 
   static TextDirection getDirection(String str) =>
@@ -253,20 +257,20 @@ class Util {
   static String getWordIndex(int id, BookModel bookModel) =>
       '$id${bookModel.lessonIndex}${bookModel.pageIndex}';
 
-  static TextSpan textSpan({
-    String text,
-    dynamic recognizer,
-    bool hasColor = true,
-    //MemoModel memo,
-    //bool hasWordSpac = false
-  }) =>
+  static TextSpan textSpan(
+          {String text,
+          dynamic recognizer,
+          bool hasColor = true,
+          //MemoModel memo,
+          //bool hasWordSpac = false
+          TextStyle styles}) =>
       TextSpan(
           recognizer: recognizer,
           //text: hasWordSpac ? text + memo.getWordSpace : text,
           text: text,
-          style: hasColor ? TextStyle(color: Util.getColor(text)) : null);
+          style: hasColor ? TextStyle(color: Util.getColor(text)) : styles);
 
-  static TextSpan getTextSpan(JWord word, MemoModel memo, BookModel bookModel,
+  /*static TextSpan getTextSpan__(JWord word, MemoModel memo, BookModel bookModel,
       Function getGesture, BuildContext context) {
     if (word.english.isNotEmpty) {
       if (hasSelectedWord(word.id, memo, bookModel)) {
@@ -391,6 +395,164 @@ class Util {
                 color: word.colord ? (Colors.red) : null,
               ),
         children: txtSpans);
+  }*/
+  static RegExp regexSepArabic = RegExp(
+      "([a-z0-9?\\\"()`,:'<> \n.´ûî-]+)|([^a-z.\\\"()]+)",
+      multiLine: true,
+      caseSensitive: false);
+  static TextSpan getTextSpan(JWord word, MemoModel memo, BookModel bookModel,
+      Function getGesture, BuildContext context) {
+    if (word.english.isNotEmpty) {
+      if (hasSelectedWord(word.id, memo, bookModel)) {
+        if (memo.selectedWord == null) {
+          dispatch(ActionTypes.SELECT_WORD_ONLY, memo.selectedWord ?? word);
+        }
+      }
+    }
+    final txtSpans = List<TextSpan>();
+    bool isArabic = Util.isArabic(word.word);
+    String direction = isArabic ? 'rtl' : 'ltr';
+    var gesture = word.english.isNotEmpty ? getGesture(word) : null;
+
+    if (!isArabic) {
+      regexSepArabic.allMatches(word.word).forEach((e) {
+        //print(e[0]);
+        isArabic = Util.isArabic(e[0]);
+        var style = isArabic
+            ? Util.getTextTheme(
+                context,
+                isArabic ? 'rtl' : 'ltr',
+                /* memo.fontSize > 2.0 ? 2.0 :*/ memo.fontSize)
+            : null;
+        _makeSpans(word.copyWith(e[0]), txtSpans, gesture, memo, bookModel,
+            context, style);
+      });
+    } else {
+      _makeSpans(word, txtSpans, gesture, memo, bookModel, context, null);
+    }
+    return TextSpan(
+        style: hasSelectedWord(word.id, memo, bookModel)
+            ? Util.getTextTheme(context, direction, memo.fontSize).copyWith(
+                shadows: [
+                  Shadow(
+                    color: (memo.theme == Colors.yellow.value ||
+                            memo.theme == Colors.amber.value ||
+                            memo.theme == Colors.lime.value)
+                        ? Colors.green
+                        : memo.theme == 4278190080
+                            ? Colors.black87
+                            : Colors.yellow,
+                    blurRadius: 10.0,
+                    offset: Offset(0.0, -15.0),
+                  ),
+                ],
+
+                foreground: Paint()
+                  ..invertColors = true
+                  ..color =
+                      memo.theme == 4278190080 ? Colors.cyan : Colors.yellow,
+                //fontWeight: FontWeight.bold,
+              )
+            : Util.getTextTheme(context, direction, memo.fontSize).copyWith(
+                fontWeight: word.bold ? FontWeight.bold : FontWeight.normal,
+                decoration: word.underlined
+                    ? TextDecoration.underline
+                    : TextDecoration.none,
+                color: word.colord ? (Colors.red) : null,
+              ),
+        children: txtSpans);
+  }
+
+  static void _makeSpans(
+      JWord word,
+      List<TextSpan> txtSpans,
+      gesture,
+      MemoModel memo,
+      BookModel bookModel,
+      BuildContext context,
+      TextStyle style) {
+    if (word.sp != null) {
+      int len = word.sp.length;
+      if (len == 1) {
+        txtSpans.add(textSpan(
+            recognizer: gesture,
+            text: word.word.substring(0, word.sp[0]),
+            //memo: memo,
+            hasColor: false));
+        txtSpans.add(textSpan(
+          recognizer: gesture,
+          text: word.word.substring(word.sp[0]),
+          //memo: memo,
+          //hasWordSpac: true
+        ));
+      } else {
+        int i = 0, pairIndex;
+        bool isFirst = true;
+        if (word.sp[0] > 0)
+          txtSpans.add(textSpan(
+              recognizer: gesture,
+              text: word.word.substring(0, word.sp[0]),
+              //memo: memo,
+              hasColor: false));
+        do {
+          if (isFirst) {
+            isFirst = false;
+            txtSpans.add(textSpan(
+              recognizer: gesture,
+              text: word.word.substring(word.sp[i], word.sp[i + 1]),
+              //memo: memo,
+            ));
+            pairIndex = i + 1;
+            i += 2;
+          } else {
+            if (word.sp[pairIndex] == word.sp[i] && i + 1 < len) {
+              txtSpans.add(textSpan(
+                recognizer: gesture,
+                text: word.word.substring(word.sp[i], word.sp[i + 1]),
+                //memo: memo,
+              ));
+              pairIndex = i + 1;
+              i += 2;
+            } else {
+              txtSpans.add(textSpan(
+                  recognizer: gesture,
+                  hasColor: false,
+                  //memo: memo,
+                  text: word.word.substring(word.sp[pairIndex], word.sp[i])));
+              if (len % 2 == 0 || i + 1 < len)
+                isFirst = true;
+              else {
+                i++;
+                pairIndex = i;
+              }
+            }
+          }
+        } while (i < len);
+        if (len % 2 != 0) {
+          txtSpans.add(textSpan(
+            recognizer: gesture,
+            //memo: memo,
+            text: word.word.substring(word.sp[len - 1]),
+            //hasWordSpac: true
+          ));
+        } else if (i < word.word.length && pairIndex < len) {
+          txtSpans.add(textSpan(
+              recognizer: gesture,
+              //memo: memo,
+              //hasWordSpac: true,
+              hasColor: false,
+              text: word.word.substring(word.sp[pairIndex])));
+        }
+      }
+    } else {
+      txtSpans.add(textSpan(
+          recognizer: gesture,
+          //memo: memo,
+          text: word.word,
+          //hasWordSpac: true,
+          hasColor: false,
+          styles: style));
+    }
   }
 
   static setWidget(

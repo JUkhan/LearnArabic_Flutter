@@ -136,6 +136,15 @@ class JWord {
         underlined: false,
         colord: false);
   }
+  JWord copyWith(String word) => JWord(
+      word: word,
+      english: this.english,
+      bangla: this.bangla,
+      bold: this.bold,
+      colord: this.colord,
+      sp: this.sp,
+      underlined: this.underlined,
+      wordSpace: this.wordSpace);
 }
 
 class JPage {
