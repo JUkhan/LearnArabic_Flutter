@@ -401,14 +401,17 @@ class _ViewPageDataWidgetState extends State<PageDataWidget> {
             bookModel: _bookModel,
           )));
     }
-    return Card(
-        child: Container(
-      padding: const EdgeInsets.only(
-          top: 10.0, left: 10.0, right: 5.0, bottom: 10.0),
-      child: Column(
-        children: list,
-      ),
-    ));
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+          child: Container(
+        padding: const EdgeInsets.only(
+            top: 10.0, left: 10.0, right: 10.0, bottom: 10.0),
+        child: Column(
+          children: list,
+        ),
+      )),
+    );
   }
 
   Widget _getText(JLine line) {

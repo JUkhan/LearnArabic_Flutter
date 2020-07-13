@@ -228,9 +228,9 @@ class Util {
           .headline6
           .copyWith(fontWeight: FontWeight.bold);
     else if (_fontSize == 3.0)
-      return Theme.of(context).textTheme.headline6.copyWith(fontSize: 25);
+      return Theme.of(context).textTheme.headline6.copyWith(fontSize: 22);
     else if (_fontSize == 4.0)
-      return Theme.of(context).textTheme.headline6.copyWith(fontSize: 27);
+      return Theme.of(context).textTheme.headline6.copyWith(fontSize: 25);
     else if (_fontSize == 5.0)
       return Theme.of(context).textTheme.headline6.copyWith(fontSize: 30);
 
@@ -251,7 +251,7 @@ class Util {
     }
   }
 
-  static RegExp regxIsArabic = RegExp(r'[a-zA-Z)]');
+  static RegExp regxIsArabic = RegExp(r'[a-zA-Z]');
   static bool isArabic(String str) {
     return !str.contains(regxIsArabic);
   }
@@ -405,7 +405,7 @@ class Util {
         children: txtSpans);
   }*/
   static RegExp regexSepArabic = RegExp(
-      "([a-z0-9?\\\"()`,:'<> \n.´ûî-]+)|([^a-z.\\\"()]+)",
+      "([a-z0-9?\\\"()`,:'<> \n.´ûîâ-]+)|([^a-z.\\\"()]+)",
       multiLine: true,
       caseSensitive: false);
   static TextSpan getTextSpan(JWord word, MemoModel memo, BookModel bookModel,
