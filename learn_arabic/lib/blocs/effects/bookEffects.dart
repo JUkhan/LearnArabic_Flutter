@@ -166,7 +166,7 @@ class BookEffects extends BaseEffect {
             AppService.prefkey_scrollOffset, '0.0-00'))
         .split('-');
     var fontSize =
-        await AppService.getFromPref<double>(AppService.prefkey_fontSize, 1.0);
+        await AppService.getFromPref<double>(AppService.prefkey_fontSize, 2.0);
     var wordSpace =
         await AppService.getFromPref<double>(AppService.prefkey_wordSpace, 1.0);
     var tts = await AppService.getFromPref<bool>(AppService.prefkey_tts, false);

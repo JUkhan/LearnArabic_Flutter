@@ -212,19 +212,27 @@ class Util {
     if (direction == 'ltr') {
       if (_fontSize == 1.0)
         return Theme.of(context).textTheme.subtitle1;
-      else if (_fontSize == 2.0) return Theme.of(context).textTheme.headline6;
+      else if (_fontSize == 2.0)
+        return Theme.of(context)
+            .textTheme
+            .subtitle1
+            .copyWith(fontWeight: FontWeight.bold);
+      else if (_fontSize == 3.0) return Theme.of(context).textTheme.headline6;
       return Theme.of(context).textTheme.headline6;
     }
     if (_fontSize == 1.0)
       return Theme.of(context).textTheme.headline6;
     else if (_fontSize == 2.0)
-      return Theme.of(context).textTheme.headline6.copyWith(fontSize: 25);
+      return Theme.of(context)
+          .textTheme
+          .headline6
+          .copyWith(fontWeight: FontWeight.bold);
     else if (_fontSize == 3.0)
-      return Theme.of(context).textTheme.headline6.copyWith(fontSize: 27);
+      return Theme.of(context).textTheme.headline6.copyWith(fontSize: 25);
     else if (_fontSize == 4.0)
-      return Theme.of(context).textTheme.headline6.copyWith(fontSize: 30);
+      return Theme.of(context).textTheme.headline6.copyWith(fontSize: 27);
     else if (_fontSize == 5.0)
-      return Theme.of(context).textTheme.headline6.copyWith(fontSize: 32);
+      return Theme.of(context).textTheme.headline6.copyWith(fontSize: 30);
 
     return Theme.of(context).textTheme.headline6;
   }
@@ -440,24 +448,25 @@ class Util {
                             memo.theme == Colors.lime.value)
                         ? Colors.green
                         : memo.theme == 4278190080
-                            ? Colors.black87
+                            ? Colors.white
                             : Colors.yellow,
                     blurRadius: 10.0,
                     offset: Offset(0.0, -15.0),
                   ),
                 ],
-
-                foreground: Paint()
+                /*foreground: Paint()
                   ..invertColors = true
                   ..color =
-                      memo.theme == 4278190080 ? Colors.cyan : Colors.yellow,
-                //fontWeight: FontWeight.bold,
+                      memo.theme == 4278190080 ? Colors.cyan : Colors.yellow,*/
               )
             : Util.getTextTheme(context, direction, memo.fontSize).copyWith(
-                fontWeight: word.bold ? FontWeight.bold : FontWeight.normal,
-                decoration: word.underlined
-                    ? TextDecoration.underline
-                    : TextDecoration.none,
+                fontWeight: word.bold || memo.fontSize == 2.0
+                    ? FontWeight.bold
+                    : FontWeight.normal,
+                decoration:
+                    word.underlined || (word.bold && memo.fontSize == 2.0)
+                        ? TextDecoration.underline
+                        : TextDecoration.none,
                 color: word.colord ? (Colors.red) : null,
               ),
         children: txtSpans);
